@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>240</x>
+      <y>160</y>
+      <w>160</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Klient niezarejetrowany</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>610</x>
+      <y>40</y>
+      <w>280</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Przeglądanie oferty aktualnych kursów
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>630</x>
+      <y>160</y>
+      <w>270</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Rejestracja
+bg=blue
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>640</x>
+      <y>280</y>
+      <w>270</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Przeglądanie kursów archiwlanych
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>380</x>
+      <y>70</y>
+      <w>250</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;140.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>380</x>
+      <y>180</y>
+      <w>270</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;50.0;250.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>240</y>
+      <w>270</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;250.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>260</y>
+      <w>300</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;280.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>640</x>
+      <y>400</y>
+      <w>270</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Kontakt z organizatorem kursów
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
