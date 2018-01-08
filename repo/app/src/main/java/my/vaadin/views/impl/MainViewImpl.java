@@ -46,13 +46,7 @@ public class MainViewImpl extends CustomComponent
         setCompositionRoot(layout);
     }
 
-    private Boolean getLoginStatus() {
-        if (VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGIN_NAME) != null) {
-            return (Boolean) VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGIN_NAME);
-        } else {
-            return false;
-        }
-    }
+    
 
     private Component generateLoginWindow() {
         Component comp = null;
