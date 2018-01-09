@@ -6,7 +6,7 @@
  * w tym w szczególności jego modyfikacja lub nieuprawnione kopiowanie jest sprzeczne z prawem.
  * Wersja opracowana dla Domax Sp. z o.o. z siedzibą w Łężycach
  */
-package com.pjkurs.vaadin.models;
+package com.pjkurs.vaadin.views.models;
 
 import com.vaadin.ui.UI;
 

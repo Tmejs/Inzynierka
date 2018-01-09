@@ -10,7 +10,7 @@ package com.pjkurs.vaadin.views;
 
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.usables.Words;
-import com.pjkurs.vaadin.models.MainViewModel;
+import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.sun.org.apache.bcel.internal.generic.AASTORE;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;

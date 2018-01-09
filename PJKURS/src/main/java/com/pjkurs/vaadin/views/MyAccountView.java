@@ -8,8 +8,8 @@
  */
 package com.pjkurs.vaadin.views;
 
-import com.pjkurs.vaadin.models.MyAccountViewModel;
-import com.pjkurs.vaadin.models.RegisterViewModel;
+import com.pjkurs.vaadin.views.models.MyAccountViewModel;
+import com.pjkurs.vaadin.views.models.RegisterViewModel;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;

@@ -8,7 +8,7 @@
  */
 package com.pjkurs.vaadin.views;
 
-import com.pjkurs.vaadin.models.MyModel;
+import com.pjkurs.vaadin.views.models.MyModel;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.Component;
 

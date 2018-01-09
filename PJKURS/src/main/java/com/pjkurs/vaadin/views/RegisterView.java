@@ -9,8 +9,8 @@
 package com.pjkurs.vaadin.views;
 
 import com.pjkurs.vaadin.NavigatorUI;
-import com.pjkurs.vaadin.models.MyModel;
-import com.pjkurs.vaadin.models.RegisterViewModel;
+import com.pjkurs.vaadin.views.models.MyModel;
+import com.pjkurs.vaadin.views.models.RegisterViewModel;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.ClassResource;

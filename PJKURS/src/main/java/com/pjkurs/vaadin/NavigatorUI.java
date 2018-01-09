@@ -1,9 +1,9 @@
 package com.pjkurs.vaadin;
 
 import com.pjkurs.usables.Words;
-import com.pjkurs.vaadin.models.MainViewModel;
-import com.pjkurs.vaadin.models.MyAccountViewModel;
-import com.pjkurs.vaadin.models.RegisterViewModel;
+import com.pjkurs.vaadin.views.models.MainViewModel;
+import com.pjkurs.vaadin.views.models.MyAccountViewModel;
+import com.pjkurs.vaadin.views.models.RegisterViewModel;
 import com.pjkurs.vaadin.views.MainView;
 import com.pjkurs.vaadin.views.MyAccountView;
 import com.pjkurs.vaadin.views.RegisterView;
