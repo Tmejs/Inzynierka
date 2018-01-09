@@ -8,9 +8,10 @@
  */
 package com.pjkurs.vaadin.views;
 
-import com.pjkurs.NavigatorUI;
+import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.models.MainViewModel;
+import com.sun.org.apache.bcel.internal.generic.AASTORE;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.VaadinSession;
@@ -29,48 +30,30 @@ import java.util.logging.Logger;
  *
  * @author Tmejs
  */
-public class MainView extends VerticalLayout implements View, MyView<MainViewModel> {
+public class MainView extends MyContainer<MainViewModel> implements View, InterfacePJKURSView {
 
-    private MainViewModel model;
-
-    public MainView() {
-        setSizeFull();
-        setSpacing(true);
-        this.setModel(new MainViewModel(getUI()));
-        buildUI();
-    }
-
-    @Override
-    public void setModel(MainViewModel model) {
-        this.model = model;
-    }
-
-    @Override
-    public MainViewModel getModel() {
-        return model;
+    public MainView(MainViewModel model) {
+        super(model);
     }
 
     //Zbudowanie widoku głównej aplikacji
-    private void buildUI() {
-        addComponent(generateTopPanel());
-
-        addComponent(generateMenu());
-    }
-
-    public void clearView() {
-        this.removeAllComponents();
+    @Override
+    public Component buildView() {
+        generateTopPanel();
+        generateMenu();
+        generateMainAppPanel();
+        return null;
     }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
         Notification.show("Showing view: Main!");
-
-        this.removeAllComponents();
-        buildUI();
+        buildView();
     }
 
     private Component generateLoginWindow() {
         Component comp = null;
+
         //W przypadku zalogowania
         if (NavigatorUI.getLoginStatus()) {
             Logger.getGlobal().log(Level.ALL, "login true");
@@ -90,6 +73,7 @@ public class MainView extends VerticalLayout implements View, MyView<MainViewMod
     public final Component generateTopPanel() {
         //Główny komponent
         HorizontalLayout horizontalLayout = new HorizontalLayout();
+        horizontalLayout.setStyleName("to-horizontalLayout");
 
         //Rozmiary komponentu
         horizontalLayout.setWidth("100%");
@@ -99,12 +83,14 @@ public class MainView extends VerticalLayout implements View, MyView<MainViewMod
         //TODO podmienić na zdjęcie
         TextArea area = new TextArea("Tutaj będzie logo aplikacji");
         area.setWidth("30%");
+
         horizontalLayout.addComponent(area);
 
         //Nazwa aplikacji
         //TODO podmienić na zdjęcie
         TextField appNameArea = new TextField(Words.TXT_APP_NAME);
         area.setWidth("30%");
+
         horizontalLayout.addComponent(appNameArea);
 
         //Okno logowania
@@ -161,6 +147,7 @@ public class MainView extends VerticalLayout implements View, MyView<MainViewMod
         myDataLayout.addComponent(myDataButton);
 
         Button logoutButton = new Button(Words.TXT_LOGOUT);
+
         logoutButton.setStyleName(ValoTheme.BUTTON_DANGER);
         logoutButton.addClickListener((event) -> {
             model.logoutButtonClick(event);
@@ -178,6 +165,8 @@ public class MainView extends VerticalLayout implements View, MyView<MainViewMod
         HorizontalLayout retLayout = new HorizontalLayout();
 
         Button loginButton = new Button(Words.TXT_LOGIN);
+        //TODO przykład stylowania guzika
+        loginButton.setPrimaryStyleName("to-horizontalLayout");
 //        loginButton.setTheme("valo");
         loginButton.addClickListener((event) -> {
             model.loginButtonClick(event);
@@ -188,22 +177,28 @@ public class MainView extends VerticalLayout implements View, MyView<MainViewMod
         return retLayout;
     }
 
-    private Component generateMenu() {
+//    @Override
+//    public Component generateMenu() {
+//        VerticalLayout menuLayout = new VerticalLayout();
+//
+//        menuLayout.setWidth("100%");
+//        //powinien byc przekazanu menuLayout
+//        generateMenu();
+//        return menuLayout;
+//    }
+    @Override
+    public Component generateMenu() {
+        //TODO
+        //wywaliłem żeby zgadzało się z interfacem
+        //VerticalLayout menuLayout
         VerticalLayout menuLayout = new VerticalLayout();
-
-        menuLayout.setWidth("100%");
-        generateMenuPanel(menuLayout);
-
-        return menuLayout;
-    }
-
-    private void generateMenuPanel(VerticalLayout menuLayout) {
         //Generowanie menu jeśli zalogowany
         if (NavigatorUI.getLoginStatus()) {
             generateMenuPanelIfLogged(menuLayout);
         } else {
             generateMenuPanelIfLoggedOut(menuLayout);
         }
+        return null;
     }
 
     private void generateMenuPanelIfLogged(VerticalLayout menuLayout) {
@@ -221,6 +216,11 @@ public class MainView extends VerticalLayout implements View, MyView<MainViewMod
         });
 
         menuLayout.addComponent(loggedButton);
+    }
+
+    @Override
+    public Component generateMainAppPanel() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

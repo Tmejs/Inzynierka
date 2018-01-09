@@ -18,16 +18,46 @@ import com.vaadin.ui.UI;
 public class MainViewModel extends MyModel {
 
     public final UI currentUI;
-    
+
     public MainViewModel(UI ui) {
-        this.currentUI=ui;
+        this.currentUI = ui;
     }
 
-    public void loginButtonClick(Button.ClickEvent event){
-        
-    }
-    public void logoutButtonClick(Button.ClickEvent event) {
+    public void coursesButtonClicked(Button.ClickEvent event) {
        
     }
+
+    public void archiveButtonClicked(Button.ClickEvent event) {
+
+    }
+
+    public void detailCourseButtonClickd(Button.ClickEvent event) {
+
+    }
+
+    public void registerButtonClicked(Button.ClickEvent event) {
+
+    }
+
+    public void myCoursesButtonClicked(Button.ClickEvent event) {
+
+    }
+
+    public void personalDataButtonClicked(Button.ClickEvent event) {
+
+    }
     
+    
+    public void registerToCourseButtonClicked(Button.ClickEvent event){
+        
+    }
+
+    public void logoutButtonClick(Button.ClickEvent event) {
+        
+    }
+
+    public void loginButtonClick(Button.ClickEvent event) {
+        
+    }
+
 }

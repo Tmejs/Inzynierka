@@ -9,11 +9,37 @@
 package com.pjkurs.vaadin.models;
 
 import com.vaadin.ui.UI;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  *
  * @author Tmejs
  */
 public class MyModel {
-    
+
+    private HashMap<String, Object> modelParams;
+
+    public MyModel() {
+        modelParams = new HashMap<>();
+    }
+
+    public void setParam(String paramName, Object value) throws Exception {
+        //Sprawdzenie czy nazwa null
+        if (paramName == null) {
+            throw new Exception();
+        }
+
+        modelParams.put(paramName, value);
+    }
+
+    public void deleteParameter(String paramName) {
+        modelParams.remove(paramName);
+    }
+
+    public <T> T getParam(String paramName) {
+        return (T) modelParams.get(paramName);
+    }
+
 }

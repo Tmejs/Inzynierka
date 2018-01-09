@@ -10,14 +10,22 @@ package com.pjkurs.vaadin.views;
 
 import com.pjkurs.vaadin.models.MyModel;
 import com.vaadin.navigator.View;
+import com.vaadin.ui.Component;
 
 /**
  *
  * @author Tmejs
  */
-public interface MyView<T extends MyModel> extends View {
+public interface InterfacePJKURSView {
+    
+    
+    
+    //Generacja Informacyjnego okna aplikacji
+    public Component generateTopPanel();
 
-    public void setModel(T model);
+    //Generacja menu aplikacji
+    public Component generateMenu();
 
-    public T getModel();
+    //Generacja głównego okna aplikacji
+    public Component generateMainAppPanel();
 }

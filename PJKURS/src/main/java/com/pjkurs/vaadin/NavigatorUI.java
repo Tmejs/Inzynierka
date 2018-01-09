@@ -1,7 +1,11 @@
-package com.pjkurs;
+package com.pjkurs.vaadin;
 
 import com.pjkurs.usables.Words;
+import com.pjkurs.vaadin.models.MainViewModel;
+import com.pjkurs.vaadin.models.MyAccountViewModel;
+import com.pjkurs.vaadin.models.RegisterViewModel;
 import com.pjkurs.vaadin.views.MainView;
+import com.pjkurs.vaadin.views.MyAccountView;
 import com.pjkurs.vaadin.views.RegisterView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -31,7 +35,10 @@ import javax.servlet.annotation.WebServlet;
 @Theme("pjtheme")
 @SuppressWarnings("serial")
 public class NavigatorUI extends UI {
-
+    /**
+     * To jest jakliś nasz śmieszny opis
+     * @return 
+     */
     public static Boolean getLoginStatus() {
         if (VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGIN_NAME) != null) {
             return (Boolean) VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGIN_NAME);
@@ -46,7 +53,7 @@ public class NavigatorUI extends UI {
     //Widoki w aplikacji
     public enum View {
         MAINVIEW(""),
-        REGISTER_VIEW("register");
+        REGISTER_VIEW("register"), MY_ACCOUNT_VIEW("my");
 
         private String name;
 
@@ -68,8 +75,9 @@ public class NavigatorUI extends UI {
         Navigator.ComponentContainerViewDisplay viewDisplay = new Navigator.ComponentContainerViewDisplay(layout);
         navigator = new Navigator(UI.getCurrent(), viewDisplay);
 
-        navigator.addView(View.MAINVIEW.getName(), new MainView());
-        navigator.addView(View.REGISTER_VIEW.getName(), new RegisterView());
+        navigator.addView(View.MAINVIEW.getName(), new MainView(new MainViewModel(this)));
+        navigator.addView(View.REGISTER_VIEW.getName(), new RegisterView(new RegisterViewModel(this)));
+        navigator.addView(View.MY_ACCOUNT_VIEW.getName(), new MyAccountView(new MyAccountViewModel(this)));
     }
 
     @WebServlet(urlPatterns = "/*", name = "NavigatorUI", asyncSupported = true)

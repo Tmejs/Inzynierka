@@ -32,7 +32,11 @@
 @import "../valo/valo.scss";
 
 @mixin pjtheme {
-  @include valo;
+    @include valo;
 
-  // Insert your own theme rules here
+    // Insert your own theme rules here
+    .to-horizontalLayout {
+        background-color: red; 
+        border: 1px solid black;
+    }
 }

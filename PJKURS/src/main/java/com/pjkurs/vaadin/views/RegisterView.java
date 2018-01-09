@@ -8,12 +8,14 @@
  */
 package com.pjkurs.vaadin.views;
 
-import com.pjkurs.NavigatorUI;
+import com.pjkurs.vaadin.NavigatorUI;
+import com.pjkurs.vaadin.models.MyModel;
 import com.pjkurs.vaadin.models.RegisterViewModel;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.ClassResource;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.VerticalLayout;
@@ -22,9 +24,11 @@ import com.vaadin.ui.VerticalLayout;
  *
  * @author Tmejs
  */
-public class RegisterView extends HorizontalLayout implements View, MyView<RegisterViewModel> {
+public class RegisterView extends MyContainer<RegisterViewModel> implements View, InterfacePJKURSView {
 
-    RegisterViewModel model;
+    public RegisterView(RegisterViewModel model) {
+        super(model);
+    }
 
     @Override
     public void setModel(RegisterViewModel model) {
@@ -36,28 +40,38 @@ public class RegisterView extends HorizontalLayout implements View, MyView<Regis
         return model;
     }
 
-    public RegisterView() {
-        setModel(new RegisterViewModel(getUI()));
-        setSizeFull();
-
-        setSpacing(true);
-
-        buildView();
-    }
-
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
         Notification.show("Showing view: Register!");
     }
 
     //Zbudowanie Widoku dla panelu rejestrowania
-    private void buildView() {
-        addComponent(new Button("Back To ma", new Button.ClickListener() {
-            @Override
-            public void buttonClick(Button.ClickEvent event) {
-                getUI().getNavigator().navigateTo(NavigatorUI.View.MAINVIEW.getName());
-            }
-        }));
+    @Override
+    public Component buildView() {
+        generateTopPanel();
+
+        generateMenu();
+
+        generateMainAppPanel();
+        return null;
+    }
+
+    @Override
+    public Component generateTopPanel() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
+    }
+
+    @Override
+    public Component generateMenu() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
+    }
+
+    @Override
+    public Component generateMainAppPanel() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
 }
