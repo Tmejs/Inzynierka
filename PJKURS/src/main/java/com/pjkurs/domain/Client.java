@@ -14,6 +14,10 @@ package com.pjkurs.domain;
  */
 public class Client {
     
-    
+    public Integer id;
+    public String name;
+    public String surname;
+    public String email;
+    public String password;
     
 }

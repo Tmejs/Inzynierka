@@ -14,4 +14,11 @@ package com.pjkurs.domain;
  */
 public class Course {
     
+    public Integer id;
+    public String name;
+    public String categoryName;
+    public String subcategoryName;
+    public String lecturer;
+    public Integer countOfCoursants;
+    
 }

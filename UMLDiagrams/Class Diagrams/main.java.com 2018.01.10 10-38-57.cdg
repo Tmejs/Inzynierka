@@ -1,4 +1,6 @@
-<ClassDiagram>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.com">
   <ClassDiagramComponents>
     <Class name="DbDataProvider" package="com.pjkurs.db" visibility="public" xPosition="20.0" yPosition="20.0">
       <Fields/>
@@ -18,9 +20,9 @@
           <Argument type="Client" name="client"/>
           <Argument type="Course" name="course"/>
         </Method>
-        <Method name="getAvalibleCourses" returnType="List<Course>" visibility="public"/>
-        <Method name="getMyCourses" returnType="List<MyCourse>" visibility="public"/>
-        <Method name="getArchiveCourses" returnType="List<ArchiveCourse>" visibility="public"/>
+        <Method name="getAvalibleCourses" returnType="List&lt;Course&gt;" visibility="public"/>
+        <Method name="getMyCourses" returnType="List&lt;MyCourse&gt;" visibility="public"/>
+        <Method name="getArchiveCourses" returnType="List&lt;ArchiveCourse&gt;" visibility="public"/>
         <Method name="addnewCourse" returnType="Boolean" visibility="public">
           <Argument type="Course" name="newCourse"/>
         </Method>
@@ -40,7 +42,13 @@
       <Methods/>
     </Class>
     <Class name="Course" package="com.pjkurs.domain" visibility="public" xPosition="920.0" yPosition="20.0">
-      <Fields/>
+      <Fields>
+        <Field name="id" type="Integer" visibility="public"/>
+        <Field name="name" type="String" visibility="public"/>
+        <Field name="categoryName" type="String" visibility="public"/>
+        <Field name="subcategoryName" type="String" visibility="public"/>
+        <Field name="lecturer" type="String" visibility="public"/>
+      </Fields>
       <Constructors/>
       <Methods/>
     </Class>
@@ -65,9 +73,9 @@
           <Argument type="Client" name="client"/>
           <Argument type="Course" name="course"/>
         </Method>
-        <Method name="getAvalibleCourses" returnType="List<Course>" visibility="public"/>
-        <Method name="getMyCourses" returnType="List<MyCourse>" visibility="public"/>
-        <Method name="getArchiveCourses" returnType="List<ArchiveCourse>" visibility="public"/>
+        <Method name="getAvalibleCourses" returnType="List&lt;Course&gt;" visibility="public"/>
+        <Method name="getMyCourses" returnType="List&lt;MyCourse&gt;" visibility="public"/>
+        <Method name="getArchiveCourses" returnType="List&lt;ArchiveCourse&gt;" visibility="public"/>
         <Method name="addnewCourse" returnType="Boolean" visibility="public">
           <Argument type="Course" name="newCourse"/>
         </Method>
@@ -97,7 +105,154 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="MainViewModel" package="com.pjkurs.vaadin.models" visibility="public" xPosition="20.0" yPosition="420.0">
+    <Class name="NavigatorUI" package="com.pjkurs.vaadin" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="navigator" type="Navigator" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getLoginStatus" returnType="Boolean" visibility="public" isStatic="true"/>
+        <Method name="init" returnType="void" visibility="protected">
+          <Argument type="VaadinRequest" name="request"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CoursesPanel" package="com.pjkurs.vaadin.ui.containers" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="T" name="model"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="buildView" returnType="Component" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DetailedCoursePanel" package="com.pjkurs.vaadin.ui.containers" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="T" name="model"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="buildView" returnType="Component" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LoggedInPanel" package="com.pjkurs.vaadin.ui.containers" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="LoginPanel" package="com.pjkurs.vaadin.ui.containers" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="T" name="model"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="buildView" returnType="Component" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="RegisterPanel" package="com.pjkurs.vaadin.ui.containers" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="T" name="model"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="buildView" returnType="Component" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="StudentCourseDataPanel" package="com.pjkurs.vaadin.ui.containers" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="T" name="model"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="buildView" returnType="Component" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="TopPanel" package="com.pjkurs.vaadin.ui.containers" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="T" name="model"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="buildView" returnType="Component" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MainMenuPanel" package="com.pjkurs.vaadin.ui.menu" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="T" name="model"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="buildView" returnType="Component" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MyMainMenuPanel" package="com.pjkurs.vaadin.ui.menu" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="T" name="model"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="buildView" returnType="Component" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="InterfaceMyView" package="com.pjkurs.vaadin.views" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Methods>
+        <Method name="setModel" returnType="void" visibility="public">
+          <Argument type="T" name="model"/>
+        </Method>
+        <Method name="getModel" returnType="T" visibility="public"/>
+        <Method name="buildView" returnType="Component" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="InterfacePJKURSView" package="com.pjkurs.vaadin.views" visibility="public" xPosition="920.0" yPosition="820.0">
+      <Methods>
+        <Method name="generateTopPanel" returnType="Component" visibility="public"/>
+        <Method name="generateMenu" returnType="Component" visibility="public"/>
+        <Method name="generateMainAppPanel" returnType="Component" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Class name="MainView" package="com.pjkurs.vaadin.views" visibility="public" xPosition="1220.0" yPosition="820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="MainViewModel" name="model"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="buildView" returnType="Component" visibility="public"/>
+        <Method name="enter" returnType="void" visibility="public">
+          <Argument type="ViewChangeListener.ViewChangeEvent" name="event"/>
+        </Method>
+        <Method name="generateLoginWindow" returnType="Component" visibility="private"/>
+        <Method name="generateTopPanel" returnType="Component" visibility="public" isFinal="true"/>
+        <Method name="generateLoggedLoginComponent" returnType="Component" visibility="private"/>
+        <Method name="generateLoggedOutLoginComponent" returnType="Component" visibility="private"/>
+        <Method name="generateMenu" returnType="Component" visibility="public"/>
+        <Method name="generateMenuPanelIfLogged" returnType="void" visibility="private">
+          <Argument type="VerticalLayout" name="menuLayout"/>
+        </Method>
+        <Method name="generateMenuPanelIfLoggedOut" returnType="void" visibility="private">
+          <Argument type="VerticalLayout" name="menuLayout"/>
+        </Method>
+        <Method name="generateMainAppPanel" returnType="Component" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MainViewModel" package="com.pjkurs.vaadin.views.models" visibility="public" xPosition="1520.0" yPosition="820.0">
       <Fields>
         <Field name="currentUI" type="UI" visibility="public" isFinal="true"/>
       </Fields>
@@ -136,7 +291,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="MyAccountViewModel" package="com.pjkurs.vaadin.models" visibility="public" xPosition="320.0" yPosition="420.0">
+    <Class name="MyAccountViewModel" package="com.pjkurs.vaadin.views.models" visibility="public" xPosition="1820.0" yPosition="820.0">
       <Fields>
         <Field name="currentUI" type="UI" visibility="public" isFinal="true"/>
       </Fields>
@@ -160,9 +315,9 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="MyModel" package="com.pjkurs.vaadin.models" visibility="public" xPosition="620.0" yPosition="420.0">
+    <Class name="MyModel" package="com.pjkurs.vaadin.views.models" visibility="public" xPosition="2120.0" yPosition="820.0">
       <Fields>
-        <Field name="modelParams" type="HashMap<String, Object>" visibility="private"/>
+        <Field name="modelParams" type="HashMap&lt;String, Object&gt;" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public"/>
@@ -180,7 +335,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="RegisterViewModel" package="com.pjkurs.vaadin.models" visibility="public" xPosition="920.0" yPosition="420.0">
+    <Class name="RegisterViewModel" package="com.pjkurs.vaadin.views.models" visibility="public" xPosition="20.0" yPosition="1220.0">
       <Fields>
         <Field name="ui" type="UI" visibility="private" isFinal="true"/>
       </Fields>
@@ -190,153 +345,6 @@
         </Constructor>
       </Constructors>
       <Methods/>
-    </Class>
-    <Class name="NavigatorUI" package="com.pjkurs.vaadin" visibility="public" xPosition="1220.0" yPosition="420.0">
-      <Fields>
-        <Field name="navigator" type="Navigator" visibility="public"/>
-      </Fields>
-      <Constructors/>
-      <Methods>
-        <Method name="getLoginStatus" returnType="Boolean" visibility="public" isStatic="true"/>
-        <Method name="init" returnType="void" visibility="protected">
-          <Argument type="VaadinRequest" name="request"/>
-        </Method>
-      </Methods>
-    </Class>
-    <Class name="CoursesPanel" package="com.pjkurs.vaadin.ui.containers" visibility="public" xPosition="1520.0" yPosition="420.0">
-      <Fields/>
-      <Constructors>
-        <Constructor visibility="public">
-          <Argument type="T" name="model"/>
-        </Constructor>
-      </Constructors>
-      <Methods>
-        <Method name="buildView" returnType="Component" visibility="public"/>
-      </Methods>
-    </Class>
-    <Class name="DetailedCoursePanel" package="com.pjkurs.vaadin.ui.containers" visibility="public" xPosition="1820.0" yPosition="420.0">
-      <Fields/>
-      <Constructors>
-        <Constructor visibility="public">
-          <Argument type="T" name="model"/>
-        </Constructor>
-      </Constructors>
-      <Methods>
-        <Method name="buildView" returnType="Component" visibility="public"/>
-      </Methods>
-    </Class>
-    <Class name="LoggedInPanel" package="com.pjkurs.vaadin.ui.containers" visibility="public" xPosition="2120.0" yPosition="420.0">
-      <Fields/>
-      <Constructors/>
-      <Methods/>
-    </Class>
-    <Class name="LoginPanel" package="com.pjkurs.vaadin.ui.containers" visibility="public" xPosition="20.0" yPosition="820.0">
-      <Fields/>
-      <Constructors>
-        <Constructor visibility="public">
-          <Argument type="T" name="model"/>
-        </Constructor>
-      </Constructors>
-      <Methods>
-        <Method name="buildView" returnType="Component" visibility="public"/>
-      </Methods>
-    </Class>
-    <Class name="RegisterPanel" package="com.pjkurs.vaadin.ui.containers" visibility="public" xPosition="320.0" yPosition="820.0">
-      <Fields/>
-      <Constructors>
-        <Constructor visibility="public">
-          <Argument type="T" name="model"/>
-        </Constructor>
-      </Constructors>
-      <Methods>
-        <Method name="buildView" returnType="Component" visibility="public"/>
-      </Methods>
-    </Class>
-    <Class name="StudentCourseDataPanel" package="com.pjkurs.vaadin.ui.containers" visibility="public" xPosition="620.0" yPosition="820.0">
-      <Fields/>
-      <Constructors>
-        <Constructor visibility="public">
-          <Argument type="T" name="model"/>
-        </Constructor>
-      </Constructors>
-      <Methods>
-        <Method name="buildView" returnType="Component" visibility="public"/>
-      </Methods>
-    </Class>
-    <Class name="TopPanel" package="com.pjkurs.vaadin.ui.containers" visibility="public" xPosition="920.0" yPosition="820.0">
-      <Fields/>
-      <Constructors>
-        <Constructor visibility="public">
-          <Argument type="T" name="model"/>
-        </Constructor>
-      </Constructors>
-      <Methods>
-        <Method name="buildView" returnType="Component" visibility="public"/>
-      </Methods>
-    </Class>
-    <Class name="MainMenuPanel" package="com.pjkurs.vaadin.ui.menu" visibility="public" xPosition="1220.0" yPosition="820.0">
-      <Fields/>
-      <Constructors>
-        <Constructor visibility="public">
-          <Argument type="T" name="model"/>
-        </Constructor>
-      </Constructors>
-      <Methods>
-        <Method name="buildView" returnType="Component" visibility="public"/>
-      </Methods>
-    </Class>
-    <Class name="MyMainMenuPanel" package="com.pjkurs.vaadin.ui.menu" visibility="public" xPosition="1520.0" yPosition="820.0">
-      <Fields/>
-      <Constructors>
-        <Constructor visibility="public">
-          <Argument type="T" name="model"/>
-        </Constructor>
-      </Constructors>
-      <Methods>
-        <Method name="buildView" returnType="Component" visibility="public"/>
-      </Methods>
-    </Class>
-    <Interface name="InterfaceMyView" package="com.pjkurs.vaadin.views" visibility="public" xPosition="1820.0" yPosition="820.0">
-      <Methods>
-        <Method name="setModel" returnType="void" visibility="public">
-          <Argument type="T" name="model"/>
-        </Method>
-        <Method name="getModel" returnType="T" visibility="public"/>
-        <Method name="buildView" returnType="Component" visibility="public"/>
-      </Methods>
-    </Interface>
-    <Interface name="InterfacePJKURSView" package="com.pjkurs.vaadin.views" visibility="public" xPosition="2120.0" yPosition="820.0">
-      <Methods>
-        <Method name="generateTopPanel" returnType="Component" visibility="public"/>
-        <Method name="generateMenu" returnType="Component" visibility="public"/>
-        <Method name="generateMainAppPanel" returnType="Component" visibility="public"/>
-      </Methods>
-    </Interface>
-    <Class name="MainView" package="com.pjkurs.vaadin.views" visibility="public" xPosition="20.0" yPosition="1220.0">
-      <Fields/>
-      <Constructors>
-        <Constructor visibility="public">
-          <Argument type="MainViewModel" name="model"/>
-        </Constructor>
-      </Constructors>
-      <Methods>
-        <Method name="buildView" returnType="Component" visibility="public"/>
-        <Method name="enter" returnType="void" visibility="public">
-          <Argument type="ViewChangeListener.ViewChangeEvent" name="event"/>
-        </Method>
-        <Method name="generateLoginWindow" returnType="Component" visibility="private"/>
-        <Method name="generateTopPanel" returnType="Component" visibility="public" isFinal="true"/>
-        <Method name="generateLoggedLoginComponent" returnType="Component" visibility="private"/>
-        <Method name="generateLoggedOutLoginComponent" returnType="Component" visibility="private"/>
-        <Method name="generateMenu" returnType="Component" visibility="public"/>
-        <Method name="generateMenuPanelIfLogged" returnType="void" visibility="private">
-          <Argument type="VerticalLayout" name="menuLayout"/>
-        </Method>
-        <Method name="generateMenuPanelIfLoggedOut" returnType="void" visibility="private">
-          <Argument type="VerticalLayout" name="menuLayout"/>
-        </Method>
-        <Method name="generateMainAppPanel" returnType="Component" visibility="public"/>
-      </Methods>
     </Class>
     <Class name="MyAccountView" package="com.pjkurs.vaadin.views" visibility="public" xPosition="320.0" yPosition="1220.0">
       <Fields/>
@@ -396,34 +404,34 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <IsRelation name="is" source="com.pjkurs.vaadin.models.MainViewModel" target="com.pjkurs.vaadin.models.MyModel"/>
-    <IsRelation name="is" source="com.pjkurs.vaadin.models.MyAccountViewModel" target="com.pjkurs.vaadin.models.MyModel"/>
-    <IsRelation name="is" source="com.pjkurs.vaadin.ui.menu.MyMainMenuPanel" target="com.pjkurs.vaadin.views.MyContainer"/>
-    <IsRelation name="is" source="com.pjkurs.domain.ArchiveCourse" target="com.pjkurs.domain.Course"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.pjkurs.vaadin.views.MyAccountView" target="com.pjkurs.vaadin.views.InterfacePJKURSView"/>
     <IsRelation name="is" source="com.pjkurs.vaadin.views.RegisterView" target="com.pjkurs.vaadin.views.MyContainer"/>
-    <ImplementsRelation name="<<implements>>" source="com.pjkurs.vaadin.views.MyContainer" target="com.pjkurs.vaadin.views.InterfaceMyView"/>
-    <ImplementsRelation name="<<implements>>" source="com.pjkurs.vaadin.views.MainView" target="com.pjkurs.vaadin.views.InterfacePJKURSView"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.pjkurs.vaadin.views.RegisterView" target="com.pjkurs.vaadin.views.InterfacePJKURSView"/>
     <UseRelation source="com.pjkurs.db.DbDataProvider" target="com.pjkurs.domain.Course" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.pjkurs.vaadin.ui.containers.CoursesPanel" target="com.pjkurs.vaadin.views.MyContainer"/>
+    <UseRelation source="com.pjkurs.vaadin.views.MyAccountView" target="com.pjkurs.vaadin.views.MyAccountView" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.pjkurs.vaadin.views.MainView" target="com.pjkurs.vaadin.views.InterfacePJKURSView"/>
+    <IsRelation name="is" source="com.pjkurs.vaadin.ui.containers.StudentCourseDataPanel" target="com.pjkurs.vaadin.views.MyContainer"/>
+    <UseRelation source="com.pjkurs.db.DbDataProvider" target="com.pjkurs.domain.MyCourse" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.pjkurs.vaadin.ui.containers.LoginPanel" target="com.pjkurs.vaadin.views.MyContainer"/>
+    <IsRelation name="is" source="com.pjkurs.domain.ArchiveCourse" target="com.pjkurs.domain.Course"/>
+    <IsRelation name="is" source="com.pjkurs.domain.MyCourse" target="com.pjkurs.domain.Course"/>
+    <IsRelation name="is" source="com.pjkurs.vaadin.ui.menu.MyMainMenuPanel" target="com.pjkurs.vaadin.views.MyContainer"/>
+    <UseRelation source="com.pjkurs.vaadin.views.RegisterView" target="com.pjkurs.vaadin.views.RegisterView" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.pjkurs.db.DbDataProvider" target="com.pjkurs.domain.Client" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.pjkurs.vaadin.views.MyContainer" target="com.pjkurs.vaadin.views.InterfaceMyView"/>
+    <IsRelation name="is" source="com.pjkurs.vaadin.views.models.MainViewModel" target="com.pjkurs.vaadin.views.models.MyModel"/>
+    <UseRelation source="com.pjkurs.usables.InterfacePjkursDataProvider" target="com.pjkurs.domain.Client" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.pjkurs.vaadin.views.models.RegisterViewModel" target="com.pjkurs.vaadin.views.models.MyModel"/>
+    <IsRelation name="is" source="com.pjkurs.vaadin.ui.containers.DetailedCoursePanel" target="com.pjkurs.vaadin.views.MyContainer"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.pjkurs.db.DbDataProvider" target="com.pjkurs.usables.InterfacePjkursDataProvider"/>
+    <IsRelation name="is" source="com.pjkurs.vaadin.views.MyAccountView" target="com.pjkurs.vaadin.views.MyContainer"/>
+    <UseRelation source="com.pjkurs.usables.InterfacePjkursDataProvider" target="com.pjkurs.domain.Course" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.pjkurs.vaadin.ui.containers.RegisterPanel" target="com.pjkurs.vaadin.views.MyContainer"/>
+    <IsRelation name="is" source="com.pjkurs.vaadin.views.MainView" target="com.pjkurs.vaadin.views.MyContainer"/>
     <IsRelation name="is" source="com.pjkurs.vaadin.ui.containers.TopPanel" target="com.pjkurs.vaadin.views.MyContainer"/>
     <IsRelation name="is" source="com.pjkurs.vaadin.ui.menu.MainMenuPanel" target="com.pjkurs.vaadin.views.MyContainer"/>
-    <IsRelation name="is" source="com.pjkurs.vaadin.ui.containers.RegisterPanel" target="com.pjkurs.vaadin.views.MyContainer"/>
-    <UseRelation source="com.pjkurs.db.DbDataProvider" target="com.pjkurs.domain.MyCourse" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="com.pjkurs.usables.InterfacePjkursDataProvider" target="com.pjkurs.domain.Client" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="com.pjkurs.vaadin.views.MainView" target="com.pjkurs.vaadin.views.MyContainer"/>
-    <IsRelation name="is" source="com.pjkurs.vaadin.models.RegisterViewModel" target="com.pjkurs.vaadin.models.MyModel"/>
-    <ImplementsRelation name="<<implements>>" source="com.pjkurs.vaadin.views.MyAccountView" target="com.pjkurs.vaadin.views.InterfacePJKURSView"/>
-    <UseRelation source="com.pjkurs.usables.InterfacePjkursDataProvider" target="com.pjkurs.domain.Course" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="com.pjkurs.vaadin.ui.containers.DetailedCoursePanel" target="com.pjkurs.vaadin.views.MyContainer"/>
-    <ImplementsRelation name="<<implements>>" source="com.pjkurs.db.DbDataProvider" target="com.pjkurs.usables.InterfacePjkursDataProvider"/>
-    <IsRelation name="is" source="com.pjkurs.vaadin.ui.containers.LoginPanel" target="com.pjkurs.vaadin.views.MyContainer"/>
-    <IsRelation name="is" source="com.pjkurs.domain.MyCourse" target="com.pjkurs.domain.Course"/>
-    <IsRelation name="is" source="com.pjkurs.vaadin.views.MyAccountView" target="com.pjkurs.vaadin.views.MyContainer"/>
-    <ImplementsRelation name="<<implements>>" source="com.pjkurs.vaadin.views.RegisterView" target="com.pjkurs.vaadin.views.InterfacePJKURSView"/>
-    <UseRelation source="com.pjkurs.vaadin.views.MyAccountView" target="com.pjkurs.vaadin.views.MyAccountView" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="com.pjkurs.vaadin.ui.containers.StudentCourseDataPanel" target="com.pjkurs.vaadin.views.MyContainer"/>
-    <IsRelation name="is" source="com.pjkurs.vaadin.ui.containers.CoursesPanel" target="com.pjkurs.vaadin.views.MyContainer"/>
-    <UseRelation source="com.pjkurs.db.DbDataProvider" target="com.pjkurs.domain.Client" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="com.pjkurs.vaadin.views.RegisterView" target="com.pjkurs.vaadin.views.RegisterView" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.pjkurs.vaadin.views.models.MyAccountViewModel" target="com.pjkurs.vaadin.views.models.MyModel"/>
     <UseRelation source="com.pjkurs.usables.InterfacePjkursDataProvider" target="com.pjkurs.domain.MyCourse" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

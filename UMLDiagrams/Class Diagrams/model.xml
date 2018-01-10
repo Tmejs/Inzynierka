@@ -1,4 +1,5 @@
-<ClassDiagram>
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram name="PJKURS">
   <ClassDiagramComponents>
     <Class name="DbDataProvider" package="com.pjkurs.db" visibility="public" xPosition="20.0" yPosition="20.0">
       <Fields/>

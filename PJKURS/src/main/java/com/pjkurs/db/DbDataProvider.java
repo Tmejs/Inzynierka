@@ -12,7 +12,7 @@ import com.pjkurs.domain.ArchiveCourse;
 import com.pjkurs.domain.Client;
 import com.pjkurs.domain.Course;
 import com.pjkurs.domain.MyCourse;
-import com.pjkurs.usables.InterfacePjkursDataProvider;
+import com.pjkurs.InterfacePjkursDataProvider;
 import java.util.List;
 
 /**

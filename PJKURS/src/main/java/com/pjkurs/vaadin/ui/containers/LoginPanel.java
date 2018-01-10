@@ -8,9 +8,11 @@
  */
 package com.pjkurs.vaadin.ui.containers;
 
-import com.pjkurs.vaadin.views.models.MyModel;
+import com.pjkurs.vaadin.views.models.MainViewModel;
+import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.MyContainer;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.TextField;
 
 /**
  *
@@ -24,7 +26,15 @@ public class LoginPanel<T extends MyModel> extends MyContainer<T> {
 
     @Override
     public Component buildView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(getModel() instanceof MainViewModel){
+            if((Boolean)getUI().getSession().getAttribute("Czy zalogowany")){
+                return new TextField("Zalogowany");
+            }else{
+                return new TextField("NieZalogowany");
+            }
+        }
+
+        return null;
     }
 
 }

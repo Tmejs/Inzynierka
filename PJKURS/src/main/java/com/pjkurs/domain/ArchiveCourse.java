@@ -8,10 +8,14 @@
  */
 package com.pjkurs.domain;
 
+import java.sql.Date;
+
 /**
  *
  * @author Tmejs
  */
 public class ArchiveCourse extends Course {
 
+    public Date dateOfCourseEnd;
+    
 }

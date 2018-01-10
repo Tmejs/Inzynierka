@@ -8,20 +8,23 @@
  */
 package com.pjkurs.vaadin.views.models;
 
+import com.pjkurs.vaadin.NavigatorUI;
+import com.pjkurs.vaadin.views.system.MyModel;
+import com.pjkurs.vaadin.views.MainView;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
 /**
  *
  * @author Tmejs
  */
-public class MainViewModel extends MyModel {
-
-    public final UI currentUI;
+public class MainViewModel extends MyModel<MainView>{
 
     public MainViewModel(UI ui) {
         this.currentUI = ui;
     }
+    
 
     public void coursesButtonClicked(Button.ClickEvent event) {
        
@@ -60,4 +63,12 @@ public class MainViewModel extends MyModel {
         
     }
 
+    public void notifButtonClicked(Button.ClickEvent clickEvent) {
+       
+       getView().setLoginButtonClicked();
+    }
+
+    public void niezlogowanyButtonClicked(Button.ClickEvent event) {
+     getUi().getNavigator().navigateTo(NavigatorUI.View.REGISTER_VIEW.getName());
+    }
 }

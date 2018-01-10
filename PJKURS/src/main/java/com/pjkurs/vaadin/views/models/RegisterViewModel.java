@@ -8,20 +8,20 @@
  */
 package com.pjkurs.vaadin.views.models;
 
+import com.pjkurs.vaadin.views.system.MyModel;
+import com.pjkurs.vaadin.views.RegisterView;
 import com.vaadin.ui.UI;
 
 /**
  *
  * @author Tmejs
  */
-public class RegisterViewModel extends MyModel {
+public class RegisterViewModel extends MyModel<RegisterView> {
 
-    private final UI ui;
 
     public RegisterViewModel(UI ui) {
+        super();
         this.ui = ui;
     }
     
-    
-
 }

@@ -53,7 +53,8 @@ public class NavigatorUI extends UI {
     //Widoki w aplikacji
     public enum View {
         MAINVIEW(""),
-        REGISTER_VIEW("register"), MY_ACCOUNT_VIEW("my");
+        REGISTER_VIEW("register"),
+        MY_ACCOUNT_VIEW("my");
 
         private String name;
 

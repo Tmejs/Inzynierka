@@ -8,13 +8,9 @@
  */
 package com.pjkurs.vaadin.views;
 
-import com.pjkurs.vaadin.views.models.MyModel;
-import com.pjkurs.vaadin.views.InterfaceMyView;
-import com.vaadin.ui.AbstractComponent;
-import com.vaadin.ui.AbstractLayout;
-import com.vaadin.ui.Component;
+import com.pjkurs.vaadin.views.system.InterfaceMyView;
+import com.pjkurs.vaadin.views.system.MyModel;
 import com.vaadin.ui.VerticalLayout;
-import java.util.Iterator;
 
 /**
  *
@@ -23,7 +19,6 @@ import java.util.Iterator;
 public abstract class MyContainer<T extends MyModel> extends VerticalLayout implements InterfaceMyView<T> {
 
     T model;
-
     @Override
     public void setModel(T model) {
         this.model = model;
@@ -36,6 +31,7 @@ public abstract class MyContainer<T extends MyModel> extends VerticalLayout impl
 
     public MyContainer(T model) {
         setModel(model);
+        model.setView(this);
         buildView();
     }
     

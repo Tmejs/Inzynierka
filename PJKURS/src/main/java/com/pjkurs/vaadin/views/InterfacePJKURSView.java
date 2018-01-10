@@ -8,8 +8,6 @@
  */
 package com.pjkurs.vaadin.views;
 
-import com.pjkurs.vaadin.views.models.MyModel;
-import com.vaadin.navigator.View;
 import com.vaadin.ui.Component;
 
 /**
@@ -17,9 +15,7 @@ import com.vaadin.ui.Component;
  * @author Tmejs
  */
 public interface InterfacePJKURSView {
-    
-    
-    
+
     //Generacja Informacyjnego okna aplikacji
     public Component generateTopPanel();
 

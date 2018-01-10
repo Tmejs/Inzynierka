@@ -6,9 +6,8 @@
  * w tym w szczególności jego modyfikacja lub nieuprawnione kopiowanie jest sprzeczne z prawem.
  * Wersja opracowana dla Domax Sp. z o.o. z siedzibą w Łężycach
  */
-package com.pjkurs.vaadin.views;
+package com.pjkurs.vaadin.views.system;
 
-import com.pjkurs.vaadin.views.models.MyModel;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.Component;
 
@@ -24,5 +23,6 @@ public interface InterfaceMyView<T extends MyModel> extends View {
         public T getModel();
         
         public Component buildView();
+        
         //
     }

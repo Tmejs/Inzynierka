@@ -8,6 +8,8 @@
  */
 package com.pjkurs.vaadin.views.models;
 
+import com.pjkurs.vaadin.views.system.MyModel;
+import com.pjkurs.vaadin.views.MyAccountView;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.UI;
 
@@ -15,7 +17,7 @@ import com.vaadin.ui.UI;
  *
  * @author Tmejs
  */
-public class MyAccountViewModel extends MyModel {
+public class MyAccountViewModel extends MyModel<MyAccountView> {
 
     public final UI currentUI;
 

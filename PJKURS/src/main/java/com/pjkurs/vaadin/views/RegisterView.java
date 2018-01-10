@@ -8,17 +8,11 @@
  */
 package com.pjkurs.vaadin.views;
 
-import com.pjkurs.vaadin.NavigatorUI;
-import com.pjkurs.vaadin.views.models.MyModel;
 import com.pjkurs.vaadin.views.models.RegisterViewModel;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.server.ClassResource;
-import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
-import com.vaadin.ui.VerticalLayout;
 
 /**
  *

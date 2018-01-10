@@ -8,10 +8,12 @@
  */
 package com.pjkurs.domain;
 
-/**
+/** 
  *
  * @author Tmejs
  */
 public class MyCourse extends Course {
 
+    public Boolean isPaid;
+    
 }

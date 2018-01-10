@@ -8,10 +8,24 @@
  */
 package com.pjkurs.vaadin.ui.containers;
 
+import com.pjkurs.vaadin.views.MyContainer;
+import com.pjkurs.vaadin.views.system.MyModel;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.TextField;
+
 /**
  *
  * @author Tmejs
  */
-public class LoggedInPanel {
-    
+public class LoggedInPanel <T extends MyModel> extends MyContainer<T> {
+
+
+    public LoggedInPanel(T model) {
+        super(model);
+    }
+
+    @Override
+    public Component buildView() {
+        return new TextField("Zalogowany");
+    }
 }

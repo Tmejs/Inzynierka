@@ -6,8 +6,9 @@
  * w tym w szczególności jego modyfikacja lub nieuprawnione kopiowanie jest sprzeczne z prawem.
  * Wersja opracowana dla Domax Sp. z o.o. z siedzibą w Łężycach
  */
-package com.pjkurs.vaadin.views.models;
+package com.pjkurs.vaadin.views.system;
 
+import com.pjkurs.vaadin.views.InterfacePJKURSView;
 import com.vaadin.ui.UI;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,14 +18,28 @@ import java.util.List;
  *
  * @author Tmejs
  */
-public class MyModel {
+public class MyModel<T>{
 
     private HashMap<String, Object> modelParams;
-
+    private T view;
+    public UI currentUI;
+    
+    
+    public UI getUi(){
+        return currentUI;
+    }
     public MyModel() {
         modelParams = new HashMap<>();
     }
-
+    
+    public void setView(T view){
+        this.view=view;
+    }
+    
+    public T getView(){
+        return view;
+    }
+    
     public void setParam(String paramName, Object value) throws Exception {
         //Sprawdzenie czy nazwa null
         if (paramName == null) {

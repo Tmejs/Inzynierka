@@ -23,8 +23,7 @@ public class MyAccountView extends MyContainer<MyAccountViewModel> implements Vi
     public MyAccountView(MyAccountViewModel model) {
         super(model);
     }
-    
-    
+
     @Override
     public void setModel(MyAccountViewModel model) {
         this.model = model;
@@ -35,7 +34,6 @@ public class MyAccountView extends MyContainer<MyAccountViewModel> implements Vi
         return null;
     }
 
-    
     @Override
     public MyAccountViewModel getModel() {
         return model;
