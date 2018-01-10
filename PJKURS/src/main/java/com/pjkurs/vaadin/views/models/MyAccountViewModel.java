@@ -19,8 +19,6 @@ import com.vaadin.ui.UI;
  */
 public class MyAccountViewModel extends MyModel<MyAccountView> {
 
-    public final UI currentUI;
-
     public MyAccountViewModel(UI ui) {
         this.currentUI = ui;
     }

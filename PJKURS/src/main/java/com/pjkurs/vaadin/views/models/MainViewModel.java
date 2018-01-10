@@ -8,6 +8,8 @@
  */
 package com.pjkurs.vaadin.views.models;
 
+import com.pjkurs.db.DbDataProvider;
+import com.pjkurs.domain.Client;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.MainView;
@@ -39,7 +41,7 @@ public class MainViewModel extends MyModel<MainView>{
     }
 
     public void registerButtonClicked(Button.ClickEvent event) {
-
+        registerNewUser();
     }
 
     public void myCoursesButtonClicked(Button.ClickEvent event) {
@@ -52,7 +54,7 @@ public class MainViewModel extends MyModel<MainView>{
     
     
     public void registerToCourseButtonClicked(Button.ClickEvent event){
-        
+
     }
 
     public void logoutButtonClick(Button.ClickEvent event) {
@@ -64,11 +66,19 @@ public class MainViewModel extends MyModel<MainView>{
     }
 
     public void notifButtonClicked(Button.ClickEvent clickEvent) {
-       
        getView().setLoginButtonClicked();
     }
 
     public void niezlogowanyButtonClicked(Button.ClickEvent event) {
      getUi().getNavigator().navigateTo(NavigatorUI.View.REGISTER_VIEW.getName());
+    }
+
+    private void registerNewUser(){
+        DbDataProvider dataProvider=new DbDataProvider();
+        if(dataProvider.registerNewClient(new Client())){
+            Notification.show("Poprawnie zalogowano");
+        }else{
+            Notification.show("Zle zalogowano");
+        }
     }
 }

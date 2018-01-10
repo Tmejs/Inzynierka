@@ -8,6 +8,8 @@
  */
 package com.pjkurs.vaadin.views;
 
+import com.pjkurs.db.DbDataProvider;
+import com.pjkurs.domain.Client;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.ui.containers.LoggedInPanel;
@@ -162,10 +164,11 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
 //
 //        myDataLayout.addComponent(logoutButton);
 //
-//        verticalLayout.addComponent(myDataLayout);
+//        verticalLayout.addComponent(myDataLayout)
 //
 //        return verticalLayout;
     }
+
 
     private Component generateLoggedOutLoginComponent() {
 
@@ -176,23 +179,14 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
         loginButton.setPrimaryStyleName("to-horizontalLayout");
 //        loginButton.setTheme("valo");
         loginButton.addClickListener((event) -> {
-            model.loginButtonClick(event);
+            model.registerButtonClicked(event);
         });
 
         retLayout.addComponent(loginButton);
 
         return retLayout;
     }
-
-//    @Override
-//    public Component generateMenu() {
-//        VerticalLayout menuLayout = new VerticalLayout();
-//
-//        menuLayout.setWidth("100%");
-//        //powinien byc przekazanu menuLayout
-//        generateMenu();
-//        return menuLayout;
-//    }
+    
     @Override
     public Component generateMenu() {
         //Generowanie menu jeśli zalogowany

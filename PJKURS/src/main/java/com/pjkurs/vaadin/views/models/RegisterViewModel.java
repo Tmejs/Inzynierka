@@ -21,7 +21,7 @@ public class RegisterViewModel extends MyModel<RegisterView> {
 
     public RegisterViewModel(UI ui) {
         super();
-        this.ui = ui;
+        
     }
     
 }
