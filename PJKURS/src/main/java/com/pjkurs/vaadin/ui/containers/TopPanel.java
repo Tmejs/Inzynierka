@@ -8,9 +8,15 @@
  */
 package com.pjkurs.vaadin.ui.containers;
 
+import com.pjkurs.usables.Words;
+import com.pjkurs.vaadin.NavigatorUI;
+import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyModel;
-import com.pjkurs.vaadin.views.MyContainer;
+import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Image;
+import com.vaadin.ui.TextField;
 
 /**
  *
@@ -20,11 +26,36 @@ public class TopPanel<T extends MyModel> extends MyContainer<T> {
 
     public TopPanel(T model) {
         super(model);
+
     }
 
     @Override
-    public Component buildView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void buildView() {
+        HorizontalLayout mainLayout = new HorizontalLayout();
+        //
+        if (getModel() instanceof MainViewModel) {
+            MainViewModel currentModel = (MainViewModel) getModel();
+
+            //LOGO aplikacji
+            Image logoImage = new Image();
+            logoImage.setAlternateText(Words.TXT_LOGO_NAME);
+            logoImage.setIcon(currentModel.getLogoResource());
+
+            mainLayout.addComponent(logoImage);
+
+            //Nazwa aplikcji
+            TextField textField = new TextField(Words.TXT_APP_NAME);
+            mainLayout.addComponent(textField);
+            
+            
+            //Panel logowania
+            if (NavigatorUI.getLoginStatus()) {
+                mainLayout.addComponent(new LoggedInPanel(currentModel));
+            } else {
+                mainLayout.addComponent(new LoginPanel(currentModel));
+            }
+        }
+        this.addComponent(mainLayout);
     }
 
 }

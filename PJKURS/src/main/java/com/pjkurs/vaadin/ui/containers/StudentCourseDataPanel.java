@@ -9,8 +9,9 @@
 package com.pjkurs.vaadin.ui.containers;
 
 import com.pjkurs.vaadin.views.system.MyModel;
-import com.pjkurs.vaadin.views.MyContainer;
+import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.TextField;
 
 /**
  *
@@ -23,8 +24,8 @@ public class StudentCourseDataPanel<T extends MyModel> extends MyContainer<T> {
     }
 
     @Override
-    public Component buildView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void buildView() {
+        this.addComponent(new TextField(this.getClass().toString()));
     }
 
 }

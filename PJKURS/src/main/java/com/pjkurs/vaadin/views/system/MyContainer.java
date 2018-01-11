@@ -6,7 +6,7 @@
  * w tym w szczególności jego modyfikacja lub nieuprawnione kopiowanie jest sprzeczne z prawem.
  * Wersja opracowana dla Domax Sp. z o.o. z siedzibą w Łężycach
  */
-package com.pjkurs.vaadin.views;
+package com.pjkurs.vaadin.views.system;
 
 import com.pjkurs.vaadin.views.system.InterfaceMyView;
 import com.pjkurs.vaadin.views.system.MyModel;
@@ -18,7 +18,7 @@ import com.vaadin.ui.VerticalLayout;
  */
 public abstract class MyContainer<T extends MyModel> extends VerticalLayout implements InterfaceMyView<T> {
 
-    T model;
+    private T model;
     @Override
     public void setModel(T model) {
         this.model = model;

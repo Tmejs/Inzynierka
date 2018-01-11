@@ -8,11 +8,16 @@
  */
 package com.pjkurs.vaadin.ui.containers;
 
+import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyModel;
-import com.pjkurs.vaadin.views.MyContainer;
+import com.pjkurs.vaadin.views.system.MyContainer;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
 
 /**
  *
@@ -25,16 +30,30 @@ public class LoginPanel<T extends MyModel> extends MyContainer<T> {
     }
 
     @Override
-    public Component buildView() {
-        if(getModel() instanceof MainViewModel){
-            if((Boolean)getUI().getSession().getAttribute("Czy zalogowany")){
-                return new TextField("Zalogowany");
-            }else{
-                return new TextField("NieZalogowany");
-            }
+    public void buildView() {
+        HorizontalLayout mainLayout = new HorizontalLayout();
+
+        //Budowa okna w zalezności od strony na której jest wświetlane
+        if (getModel() instanceof MainViewModel) {
+            MainViewModel tempModel = (MainViewModel) getModel();
+            mainLayout.setWidth("100%");
+            
+            mainLayout.addComponent(new Label(Words.TXT_LOGIN_TO_SERWIS));
+            /*
+            Email : []
+            Hasało: []
+            [Zarejestruj]       [Zaloguj]
+            Zapomniałeś hasła(url do storny z przypomniajka)
+            
+            
+            
+            */
+            
+            
+
         }
 
-        return null;
+        this.addComponent(mainLayout);
     }
 
 }

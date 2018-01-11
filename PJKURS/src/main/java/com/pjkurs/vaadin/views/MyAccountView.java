@@ -8,11 +8,14 @@
  */
 package com.pjkurs.vaadin.views;
 
+import com.pjkurs.vaadin.views.system.MyContainer;
+import com.pjkurs.vaadin.ui.containers.RegisterPanel;
 import com.pjkurs.vaadin.views.models.MyAccountViewModel;
 import com.pjkurs.vaadin.views.models.RegisterViewModel;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.TextField;
 
 /**
  *
@@ -25,33 +28,23 @@ public class MyAccountView extends MyContainer<MyAccountViewModel> implements Vi
     }
 
     @Override
-    public void setModel(MyAccountViewModel model) {
-        this.model = model;
-    }
-
-    @Override
-    public Component buildView() {
-        return null;
-    }
-
-    @Override
-    public MyAccountViewModel getModel() {
-        return model;
+    public void buildView() {
+        this.addComponent(new RegisterPanel(getModel()));
     }
 
     @Override
     public Component generateTopPanel() {
-        return null;
+        return new TextField(this.getClass().toString() + " generateTopPanel()");
     }
 
     @Override
     public Component generateMenu() {
-        return null;
+        return new TextField(this.getClass().toString() + " generateMenu()");
     }
 
     @Override
     public Component generateMainAppPanel() {
-        return null;
+        return new TextField(this.getClass().toString() + " generateMainAppPanel()");
     }
 
 }

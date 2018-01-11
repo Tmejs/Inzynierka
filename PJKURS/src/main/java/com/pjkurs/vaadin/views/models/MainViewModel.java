@@ -10,26 +10,30 @@ package com.pjkurs.vaadin.views.models;
 
 import com.pjkurs.db.DbDataProvider;
 import com.pjkurs.domain.Client;
+import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.MainView;
+import com.vaadin.server.FileResource;
+import com.vaadin.server.Resource;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
+import java.io.File;
 
 /**
  *
  * @author Tmejs
  */
-public class MainViewModel extends MyModel<MainView>{
+public class MainViewModel extends MyModel<MainView> {
 
     public MainViewModel(UI ui) {
         this.currentUI = ui;
     }
-    
 
     public void coursesButtonClicked(Button.ClickEvent event) {
-       
+
     }
 
     public void archiveButtonClicked(Button.ClickEvent event) {
@@ -51,34 +55,49 @@ public class MainViewModel extends MyModel<MainView>{
     public void personalDataButtonClicked(Button.ClickEvent event) {
 
     }
-    
-    
-    public void registerToCourseButtonClicked(Button.ClickEvent event){
+
+    public void registerToCourseButtonClicked(Button.ClickEvent event) {
 
     }
 
     public void logoutButtonClick(Button.ClickEvent event) {
-        
+
     }
 
     public void loginButtonClick(Button.ClickEvent event) {
-        
+
     }
 
     public void notifButtonClicked(Button.ClickEvent clickEvent) {
-       getView().setLoginButtonClicked();
+        getView().setLoginButtonClicked();
     }
 
     public void niezlogowanyButtonClicked(Button.ClickEvent event) {
-     getUi().getNavigator().navigateTo(NavigatorUI.View.REGISTER_VIEW.getName());
+        getUi().getNavigator().navigateTo(NavigatorUI.View.REGISTER_VIEW.getName());
     }
 
-    private void registerNewUser(){
-        DbDataProvider dataProvider=new DbDataProvider();
-        if(dataProvider.registerNewClient(new Client())){
+    private void registerNewUser() {
+        DbDataProvider dataProvider = new DbDataProvider();
+        if (dataProvider.registerNewClient(new Client())) {
             Notification.show("Poprawnie zalogowano");
-        }else{
+        } else {
             Notification.show("Zle zalogowano");
         }
+    }
+
+    public void myDataButtonClicked(Button.ClickEvent event) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Resource getLogoResource() {
+        // Find the application directory
+        String basepath = VaadinService.getCurrent()
+                .getBaseDirectory().getAbsolutePath();
+
+// Image as a file resource
+        FileResource resource = new FileResource(new File(basepath
+                + Words.IMAGE_FOLDER_PATH + "/" + Words.PJURS_LOGO_IMAGE_NAME));
+
+        return resource;
     }
 }

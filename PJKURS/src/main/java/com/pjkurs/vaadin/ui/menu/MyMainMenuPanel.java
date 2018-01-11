@@ -9,9 +9,10 @@
 package com.pjkurs.vaadin.ui.menu;
 
 import com.pjkurs.vaadin.views.system.MyModel;
-import com.pjkurs.vaadin.views.MyContainer;
+import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 
 /**
@@ -25,8 +26,8 @@ public class MyMainMenuPanel<T extends MyModel> extends MyContainer<T> {
     }
 
     @Override
-    public Component buildView() {
-        return null;
+    public void buildView() {
+        this.addComponent(new TextField(this.getClass().toString()));
     }
 
 }
