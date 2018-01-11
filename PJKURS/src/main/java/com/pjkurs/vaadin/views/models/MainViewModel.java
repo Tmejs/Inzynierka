@@ -24,25 +24,16 @@ import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.MainView;
 import com.vaadin.data.Binder;
-import com.vaadin.data.BinderValidationStatusHandler;
 import com.vaadin.data.BindingValidationStatus;
-import com.vaadin.data.HasValue;
-import com.vaadin.data.ValidationException;
-import com.vaadin.data.validator.AbstractValidator;
-import com.vaadin.data.validator.EmailValidator;
-import com.vaadin.server.DefaultErrorHandler;
-import com.vaadin.server.ErrorEvent;
+import com.vaadin.data.Validator;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.Resource;
-import com.vaadin.server.Setter;
 import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Component;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import java.io.File;
-import java.rmi.ServerError;
 
 /**
  *
@@ -51,6 +42,7 @@ import java.rmi.ServerError;
 public class MainViewModel extends MyModel<MainView> {
 
     public final static String PARAM_BINDED_LOGIN_DATA = "PARAM_BINDED_LOGIN_DATA";
+    public final static String PARAM_BINDER_LOGIN = "PARAM_BINDER_LOGIN";
 
     public MainViewModel(UI ui) {
         this.currentUI = ui;
@@ -89,9 +81,13 @@ public class MainViewModel extends MyModel<MainView> {
     }
 
     public void loginButtonClick(Button.ClickEvent event) {
+        if (((Binder) getParam(PARAM_BINDER_LOGIN)).writeBeanIfValid(getParam(PARAM_BINDED_LOGIN_DATA))) {
+            Notification.show("Wprowadzony login:" + ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email + "\n"
+                    + "Wprowadzone hasło:" + ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password);
+        } else {
+            Notification.show("Wprowadzony poprawne dane");
+        }
 
-        Notification.show("Wprowadzony login:" + ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email + "\n"
-                + "Wprowadzone hasło:" + ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password);
     }
 
     public void notifButtonClicked(Button.ClickEvent clickEvent) {
@@ -127,40 +123,19 @@ public class MainViewModel extends MyModel<MainView> {
         return resource;
     }
 
-    public void bindLoginEmailTextField(TextField emailTextField) {
-        Binder<LoginData> binder = new Binder<>(LoginData.class);
-        if (getParam(PARAM_BINDED_LOGIN_DATA) == null) {
-            LoginData loginData = new LoginData();
-            setParam(PARAM_BINDED_LOGIN_DATA, loginData);
-            binder.setBean(loginData);
-        } else {
-            binder.setBean((LoginData) getParam(PARAM_BINDED_LOGIN_DATA));
-        }
+    public void bindLoginData(TextField emailTextField, TextField passwordTextField) {
+        Binder<LoginData> loginBinder = new Binder<>(LoginData.class);
+        LoginData loginData = new LoginData();
+        setParam(PARAM_BINDED_LOGIN_DATA, loginData);
+        setParam(PARAM_BINDER_LOGIN, loginBinder);
 
-        binder.forField(emailTextField)
+        loginBinder.forField(emailTextField)
                 .withValidator(
                         t -> t.contains("@"),
                         "Email musi zawierać @"
                 ).
                 bind(LoginData::getEmail, LoginData::setEmail);
 
-    }
-
-    public void bindLoginPaswordTextField(TextField passwordTextField) {
-        Binder<LoginData> binder = new Binder<>(LoginData.class);
-        if (getParam(PARAM_BINDED_LOGIN_DATA) == null) {
-            LoginData loginData = new LoginData();
-            setParam(PARAM_BINDED_LOGIN_DATA, loginData);
-            binder.setBean(loginData);
-        } else {
-            binder.setBean((LoginData) getParam(PARAM_BINDED_LOGIN_DATA));
-        }
-
-        binder.forField(passwordTextField).withValidationStatusHandler((statusChange) -> {
-            if (statusChange.getStatus() != BindingValidationStatus.Status.OK) {
-                ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password = "";
-            }
-        }).bind(LoginData::getPassword, LoginData::setPassword);
-
+        loginBinder.forField(passwordTextField).bind(LoginData::getPassword, LoginData::setPassword);
     }
 }

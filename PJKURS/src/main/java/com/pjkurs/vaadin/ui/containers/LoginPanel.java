@@ -63,15 +63,16 @@ public class LoginPanel<T extends MyModel> extends MyContainer<T> {
 
             // email
             TextField emailTextField = new TextField(Words.TXT_EMAIL);
-            tempModel.bindLoginEmailTextField(emailTextField);
+            
             
             mainLayout.addComponent(emailTextField);
 
             //hasło
             TextField passwordTextField = new PasswordField(Words.TXT_PASSWORD);
-            tempModel.bindLoginPaswordTextField(passwordTextField);
+            
             mainLayout.addComponent(passwordTextField);
-
+            
+            tempModel.bindLoginData(emailTextField,passwordTextField);
             //Guzik logowania
             Button loginButton = new Button(Words.TXT_LOGIN_BUTTON, ((event) -> {
                 tempModel.loginButtonClick(event);
