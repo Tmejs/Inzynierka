@@ -1,10 +1,18 @@
 /*
- * AWS PROJECT (c) 2017 by tmejs (mateusz.rzad@gmail.com)
- * --------------------------------------------------------
- * Niniejszy program chroniony jest prawem autorskim. Jego rozpowszechnianie bez wyraźnej zgody autora
- * jest zabronione. Jakakolwiek ingerencja w oprogramowanie bez upoważnienia autora,
- * w tym w szczególności jego modyfikacja lub nieuprawnione kopiowanie jest sprzeczne z prawem.
- * Wersja opracowana dla Domax Sp. z o.o. z siedzibą w Łężycach
+ * Copyright (C) 2018 Tmejs
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.pjkurs.vaadin.ui.containers;
 
@@ -13,9 +21,9 @@ import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
-import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 
 /**
@@ -44,10 +52,9 @@ public class TopPanel<T extends MyModel> extends MyContainer<T> {
             mainLayout.addComponent(logoImage);
 
             //Nazwa aplikcji
-            TextField textField = new TextField(Words.TXT_APP_NAME);
+            Label textField = new Label(Words.TXT_APP_NAME);
             mainLayout.addComponent(textField);
-            
-            
+
             //Panel logowania
             if (NavigatorUI.getLoginStatus()) {
                 mainLayout.addComponent(new LoggedInPanel(currentModel));

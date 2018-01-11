@@ -40,12 +40,7 @@ public class MyModel<T>{
         return view;
     }
     
-    public void setParam(String paramName, Object value) throws Exception {
-        //Sprawdzenie czy nazwa null
-        if (paramName == null) {
-            throw new Exception();
-        }
-
+    public void setParam(String paramName, Object value){
         modelParams.put(paramName, value);
     }
 

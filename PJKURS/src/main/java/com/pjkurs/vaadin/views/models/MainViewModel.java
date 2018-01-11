@@ -1,32 +1,56 @@
 /*
- * AWS PROJECT (c) 2017 by tmejs (mateusz.rzad@gmail.com)
- * --------------------------------------------------------
- * Niniejszy program chroniony jest prawem autorskim. Jego rozpowszechnianie bez wyraźnej zgody autora
- * jest zabronione. Jakakolwiek ingerencja w oprogramowanie bez upoważnienia autora,
- * w tym w szczególności jego modyfikacja lub nieuprawnione kopiowanie jest sprzeczne z prawem.
- * Wersja opracowana dla Domax Sp. z o.o. z siedzibą w Łężycach
+ * Copyright (C) 2018 Tmejs
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.pjkurs.vaadin.views.models;
 
 import com.pjkurs.db.DbDataProvider;
 import com.pjkurs.domain.Client;
+import com.pjkurs.domain.LoginData;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.MainView;
+import com.vaadin.data.Binder;
+import com.vaadin.data.BinderValidationStatusHandler;
+import com.vaadin.data.BindingValidationStatus;
+import com.vaadin.data.HasValue;
+import com.vaadin.data.ValidationException;
+import com.vaadin.data.validator.AbstractValidator;
+import com.vaadin.data.validator.EmailValidator;
+import com.vaadin.server.DefaultErrorHandler;
+import com.vaadin.server.ErrorEvent;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.Resource;
+import com.vaadin.server.Setter;
 import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import java.io.File;
+import java.rmi.ServerError;
 
 /**
  *
  * @author Tmejs
  */
 public class MainViewModel extends MyModel<MainView> {
+
+    public final static String PARAM_BINDED_LOGIN_DATA = "PARAM_BINDED_LOGIN_DATA";
 
     public MainViewModel(UI ui) {
         this.currentUI = ui;
@@ -66,6 +90,8 @@ public class MainViewModel extends MyModel<MainView> {
 
     public void loginButtonClick(Button.ClickEvent event) {
 
+        Notification.show("Wprowadzony login:" + ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email + "\n"
+                + "Wprowadzone hasło:" + ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password);
     }
 
     public void notifButtonClicked(Button.ClickEvent clickEvent) {
@@ -99,5 +125,42 @@ public class MainViewModel extends MyModel<MainView> {
                 + Words.IMAGE_FOLDER_PATH + "/" + Words.PJURS_LOGO_IMAGE_NAME));
 
         return resource;
+    }
+
+    public void bindLoginEmailTextField(TextField emailTextField) {
+        Binder<LoginData> binder = new Binder<>(LoginData.class);
+        if (getParam(PARAM_BINDED_LOGIN_DATA) == null) {
+            LoginData loginData = new LoginData();
+            setParam(PARAM_BINDED_LOGIN_DATA, loginData);
+            binder.setBean(loginData);
+        } else {
+            binder.setBean((LoginData) getParam(PARAM_BINDED_LOGIN_DATA));
+        }
+
+        binder.forField(emailTextField)
+                .withValidator(
+                        t -> t.contains("@"),
+                        "Email musi zawierać @"
+                ).
+                bind(LoginData::getEmail, LoginData::setEmail);
+
+    }
+
+    public void bindLoginPaswordTextField(TextField passwordTextField) {
+        Binder<LoginData> binder = new Binder<>(LoginData.class);
+        if (getParam(PARAM_BINDED_LOGIN_DATA) == null) {
+            LoginData loginData = new LoginData();
+            setParam(PARAM_BINDED_LOGIN_DATA, loginData);
+            binder.setBean(loginData);
+        } else {
+            binder.setBean((LoginData) getParam(PARAM_BINDED_LOGIN_DATA));
+        }
+
+        binder.forField(passwordTextField).withValidationStatusHandler((statusChange) -> {
+            if (statusChange.getStatus() != BindingValidationStatus.Status.OK) {
+                ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password = "";
+            }
+        }).bind(LoginData::getPassword, LoginData::setPassword);
+
     }
 }

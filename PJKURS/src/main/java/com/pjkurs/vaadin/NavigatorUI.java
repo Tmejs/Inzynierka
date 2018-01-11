@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.pjkurs.vaadin;
 
 import com.pjkurs.usables.Words;
@@ -52,9 +51,11 @@ import javax.servlet.annotation.WebServlet;
 @Theme("pjtheme")
 @SuppressWarnings("serial")
 public class NavigatorUI extends UI {
+
     /**
      * To jest jakliś nasz śmieszny opis
-     * @return 
+     *
+     * @return
      */
     public static Boolean getLoginStatus() {
         if (VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGIN_NAME) != null) {
@@ -63,7 +64,7 @@ public class NavigatorUI extends UI {
             return false;
         }
     }
-    
+
     //Nawigator aplikacji
     public Navigator navigator;
 
@@ -82,6 +83,12 @@ public class NavigatorUI extends UI {
         public String getName() {
             return name;
         }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+
     }
 
     @Override

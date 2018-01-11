@@ -1,10 +1,18 @@
 /*
- * AWS PROJECT (c) 2017 by tmejs (mateusz.rzad@gmail.com)
- * --------------------------------------------------------
- * Niniejszy program chroniony jest prawem autorskim. Jego rozpowszechnianie bez wyraźnej zgody autora
- * jest zabronione. Jakakolwiek ingerencja w oprogramowanie bez upoważnienia autora,
- * w tym w szczególności jego modyfikacja lub nieuprawnione kopiowanie jest sprzeczne z prawem.
- * Wersja opracowana dla Domax Sp. z o.o. z siedzibą w Łężycach
+ * Copyright (C) 2018 Tmejs
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.pjkurs.vaadin.views;
 
@@ -62,7 +70,7 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
 
         } else {
             Logger.getGlobal().log(Level.ALL, "login false");
-            comp = generateLoggedOutLoginComponent();
+            comp = new LoginPanel<MainViewModel>(getModel());
         }
 
         //comp style
@@ -77,22 +85,22 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
         return new TopPanel<>(getModel());
     }
 
-    private Component generateLoggedOutLoginComponent() {
-
-        HorizontalLayout retLayout = new HorizontalLayout();
-
-        Button loginButton = new Button(Words.TXT_LOGIN);
-        //TODO przykład stylowania guzika
-
-//        loginButton.setTheme("valo");
-        loginButton.addClickListener((event) -> {
-            getModel().registerButtonClicked(event);
-        });
-
-        retLayout.addComponent(loginButton);
-
-        return retLayout;
-    }
+//    private Component generateLoggedOutLoginComponent() {
+//
+//        HorizontalLayout retLayout = new HorizontalLayout();
+//
+////        Button loginButton = new Button(Words.TXT_LOGIN);
+//        //TODO przykład stylowania guzika
+//
+////        loginButton.setTheme("valo");
+//        loginButton.addClickListener((event) -> {
+//            getModel().registerButtonClicked(event);
+//        });
+//
+//        retLayout.addComponent(loginButton);
+//
+//        return retLayout;
+//    }
 
     @Override
     public Component generateMenu() {

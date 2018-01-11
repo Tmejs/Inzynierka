@@ -32,12 +32,16 @@ public class Words {
     public final static String TXT_MY_DATA = "Moje dane";
     public final static String TXT_LOGOUT = "Wyloguj";
     public final static String TXT_LOGGED_ASS = "Zalogowany jako";
-    public final static String TXT_LOGIN = "Zaloguj";
+    public final static String TXT_LOGIN_BUTTON = "Zaloguj";
     public final static String TXT_NAME = "Imie:";
     public final static String TXT_EMAIL = "Email:";
     public final static String IMAGE_FOLDER_PATH = "/WEB-INF/images";
     public final static String PJURS_LOGO_IMAGE_NAME = "PJKURSLogo.png";
     public final static String TXT_LOGO_NAME = "Logo PJKURS";
     public final static String TXT_LOGIN_TO_SERWIS = "Logowanie do serwisu";
+    public final static String TXT_FORGOT_PASSWORD = "Reset hasła?";
+    public final static String TXT_REGISTER = "Zarejestruj";
+    public static String TXT_PASSWORD="Hasło";
+    public static String WARRNING_WRONG_EMAIL="Błędny email";
 
 }

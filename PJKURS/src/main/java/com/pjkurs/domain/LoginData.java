@@ -14,26 +14,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.pjkurs.vaadin.ui.containers;
-
-import com.pjkurs.vaadin.views.system.MyModel;
-import com.pjkurs.vaadin.views.system.MyContainer;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.TextField;
+package com.pjkurs.domain;
 
 /**
  *
  * @author Tmejs
  */
-public class StudentCourseDataPanel<T extends MyModel> extends MyContainer<T> {
+public class LoginData implements java.io.Serializable {
 
-    public StudentCourseDataPanel(T model) {
-        super(model);
+    public String email;
+    public String password;
+
+    public String getEmail() {
+        return email;
     }
 
-    @Override
-    public void buildView() {
-        this.addComponent(new TextField(this.getClass().toString()));
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }
