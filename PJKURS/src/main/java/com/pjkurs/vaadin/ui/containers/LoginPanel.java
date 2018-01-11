@@ -21,6 +21,7 @@ import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
+import com.vaadin.annotations.Theme;
 import com.vaadin.data.Binder;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.VaadinSession;
@@ -37,6 +38,7 @@ import com.vaadin.ui.VerticalLayout;
  *
  * @author Tmejs
  */
+@Theme("pjtheme")
 public class LoginPanel<T extends MyModel> extends MyContainer<T> {
 
     public LoginPanel(T model) {
@@ -50,7 +52,6 @@ public class LoginPanel<T extends MyModel> extends MyContainer<T> {
         //Budowa okna w zalezności od strony na której jest wświetlane
         if (getModel() instanceof MainViewModel) {
             MainViewModel tempModel = (MainViewModel) getModel();
-            mainLayout.setWidth("100%");
 
             mainLayout.addComponent(new Label(Words.TXT_LOGIN_TO_SERWIS));
             /*

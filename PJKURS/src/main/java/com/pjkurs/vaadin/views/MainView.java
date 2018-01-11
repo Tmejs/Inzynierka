@@ -22,7 +22,9 @@ import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.ui.containers.LoggedInPanel;
 import com.pjkurs.vaadin.ui.containers.LoginPanel;
 import com.pjkurs.vaadin.ui.containers.TopPanel;
+import com.pjkurs.vaadin.ui.menu.MainMenuPanel;
 import com.pjkurs.vaadin.views.models.MainViewModel;
+import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Button;
@@ -37,6 +39,7 @@ import java.util.logging.Logger;
  *
  * @author Tmejs
  */
+@Theme("pjtheme")
 public class MainView extends MyContainer<MainViewModel> implements View, InterfacePJKURSView {
 
     Button notifButton;
@@ -82,49 +85,19 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
     @Override
     public final Component generateTopPanel() {
         //zwracamy top panel
-        return new TopPanel<>(getModel());
+        TopPanel topPanel = new TopPanel<>(getModel());
+        topPanel.setPrimaryStyleName("top-panel");
+        return topPanel;
     }
-
-//    private Component generateLoggedOutLoginComponent() {
-//
-//        HorizontalLayout retLayout = new HorizontalLayout();
-//
-////        Button loginButton = new Button(Words.TXT_LOGIN);
-//        //TODO przykład stylowania guzika
-//
-////        loginButton.setTheme("valo");
-//        loginButton.addClickListener((event) -> {
-//            getModel().registerButtonClicked(event);
-//        });
-//
-//        retLayout.addComponent(loginButton);
-//
-//        return retLayout;
-//    }
 
     @Override
     public Component generateMenu() {
-        //Generowanie menu jeśli zalogowany
-        if (NavigatorUI.getLoginStatus()) {
-            return generateMenuPanelIfLogged();
-        } else {
-            return generateMenuPanelIfLoggedOut();
-        }
+        MainMenuPanel<MainViewModel> menuPanel = new MainMenuPanel<>(getModel());
+        return menuPanel;
     }
 
     private Component generateMenuPanelIfLogged() {
-       return new LoginPanel(getModel());
-    }
-
-    private Component generateMenuPanelIfLoggedOut() {
-        Button loggedButton = new Button("NIEzalogowany", new Button.ClickListener() {
-            @Override
-            public void buttonClick(Button.ClickEvent event) {
-                getModel().niezlogowanyButtonClicked(event);
-            }
-        });
-
-        return loggedButton;
+        return new LoginPanel(getModel());
     }
 
     @Override

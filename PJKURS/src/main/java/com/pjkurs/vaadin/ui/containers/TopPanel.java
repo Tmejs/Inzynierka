@@ -21,6 +21,7 @@ import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
+import com.vaadin.annotations.Theme;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
@@ -30,6 +31,7 @@ import com.vaadin.ui.TextField;
  *
  * @author Tmejs
  */
+@Theme("pjtheme")
 public class TopPanel<T extends MyModel> extends MyContainer<T> {
 
     public TopPanel(T model) {
@@ -40,19 +42,26 @@ public class TopPanel<T extends MyModel> extends MyContainer<T> {
     @Override
     public void buildView() {
         HorizontalLayout mainLayout = new HorizontalLayout();
+        
         //
         if (getModel() instanceof MainViewModel) {
             MainViewModel currentModel = (MainViewModel) getModel();
+            mainLayout.addStyleName("top-panel");
+            
+//            mainLayout.setWidth("100%");
 
             //LOGO aplikacji
             Image logoImage = new Image();
             logoImage.setAlternateText(Words.TXT_LOGO_NAME);
             logoImage.setIcon(currentModel.getLogoResource());
-
+            
+            
+            
             mainLayout.addComponent(logoImage);
 
             //Nazwa aplikcji
             Label textField = new Label(Words.TXT_APP_NAME);
+            textField.addStyleName("app-name-label");
             mainLayout.addComponent(textField);
 
             //Panel logowania

@@ -19,6 +19,8 @@ import com.vaadin.ui.VerticalLayout;
 public abstract class MyContainer<T extends MyModel> extends VerticalLayout implements InterfaceMyView<T> {
 
     private T model;
+    private final String CLASS_NAME;
+
     @Override
     public void setModel(T model) {
         this.model = model;
@@ -29,12 +31,19 @@ public abstract class MyContainer<T extends MyModel> extends VerticalLayout impl
         return model;
     }
 
+    public String getClassNameToStyle() {
+        return CLASS_NAME;
+    }
+
     public MyContainer(T model) {
         setModel(model);
+        CLASS_NAME = getClass().toGenericString().toLowerCase();
         model.setView(this);
         buildView();
+
     }
-    
-    private MyContainer(){
+
+    private MyContainer() {
+        CLASS_NAME = getClass().toGenericString();
     }
 }

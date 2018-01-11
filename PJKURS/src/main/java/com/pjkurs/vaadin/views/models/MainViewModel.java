@@ -18,14 +18,11 @@ package com.pjkurs.vaadin.views.models;
 
 import com.pjkurs.db.DbDataProvider;
 import com.pjkurs.domain.Client;
-import com.pjkurs.domain.LoginData;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.MainView;
 import com.vaadin.data.Binder;
-import com.vaadin.data.BindingValidationStatus;
-import com.vaadin.data.Validator;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.Resource;
 import com.vaadin.server.VaadinService;
@@ -43,6 +40,29 @@ public class MainViewModel extends MyModel<MainView> {
 
     public final static String PARAM_BINDED_LOGIN_DATA = "PARAM_BINDED_LOGIN_DATA";
     public final static String PARAM_BINDER_LOGIN = "PARAM_BINDER_LOGIN";
+
+    public class LoginData implements java.io.Serializable {
+
+        public String email;
+        public String password;
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+    }
 
     public MainViewModel(UI ui) {
         this.currentUI = ui;
@@ -82,6 +102,7 @@ public class MainViewModel extends MyModel<MainView> {
 
     public void loginButtonClick(Button.ClickEvent event) {
         if (((Binder) getParam(PARAM_BINDER_LOGIN)).writeBeanIfValid(getParam(PARAM_BINDED_LOGIN_DATA))) {
+            //TODO próba zalogowania
             Notification.show("Wprowadzony login:" + ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email + "\n"
                     + "Wprowadzone hasło:" + ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password);
         } else {
@@ -129,6 +150,7 @@ public class MainViewModel extends MyModel<MainView> {
         setParam(PARAM_BINDED_LOGIN_DATA, loginData);
         setParam(PARAM_BINDER_LOGIN, loginBinder);
 
+        //TODO poprawna walidacja
         loginBinder.forField(emailTextField)
                 .withValidator(
                         t -> t.contains("@"),

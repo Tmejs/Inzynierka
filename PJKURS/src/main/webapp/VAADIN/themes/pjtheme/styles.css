@@ -15057,3 +15057,17 @@ div.v-layout.v-horizontal.v-widget {
 	background-color: red;
 	border: 1px solid black;
 }
+
+.pjtheme .top-panel {
+	background-color: blue;
+	width: 100%;
+}
+
+.pjtheme .logo-image {
+	width: 30%;
+}
+
+.pjtheme .app-name-label {
+	width: 30%;
+	background-color: red;
+}

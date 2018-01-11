@@ -18,6 +18,7 @@ package com.pjkurs.vaadin.views;
 
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.views.models.RegisterViewModel;
+import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Component;
@@ -28,7 +29,10 @@ import com.vaadin.ui.TextField;
  *
  * @author Tmejs
  */
+@Theme("pjtheme")
 public class RegisterView extends MyContainer<RegisterViewModel> implements View, InterfacePJKURSView {
+
+    
 
     public RegisterView(RegisterViewModel model) {
         super(model);
