@@ -23,6 +23,7 @@ import com.pjkurs.vaadin.views.system.MyModel;
 import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 
@@ -31,6 +32,7 @@ import com.vaadin.ui.VerticalLayout;
  * @author Tmejs
  */
 public class LoggedInPanel<T extends MyModel> extends MyContainer<T> {
+
     public LoggedInPanel(T model) {
         super(model);
     }
@@ -45,31 +47,17 @@ public class LoggedInPanel<T extends MyModel> extends MyContainer<T> {
 
         *********************************************
         *  Zalogowany jako:
-        *  Imie    Nazwisko
+        *  Email
         ***********************************************
              */
             VerticalLayout logedDataLayout = new VerticalLayout();
 
-            TextField logedAs = new TextField();
-            logedAs.setPlaceholder(Words.TXT_LOGGED_ASS);
-            logedAs.setReadOnly(true);
+            Label logedAs = new Label(Words.TXT_LOGGED_ASS);
             logedDataLayout.addComponent(logedAs);
 
-            VerticalLayout logedDataNameLayout = new VerticalLayout();
+            Label logedName = new Label((String) VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGIN_NAME));
 
-            TextField logedName = new TextField();
-            logedName.setReadOnly(true);
-            logedName.setPlaceholder((String) VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGGED_LOGIN));
-            logedName.setCaption((String) VaadinSession.getCurrent().getAttribute(Words.TXT_NAME));
-            logedDataNameLayout.addComponent(logedName);
-
-            TextField logedEmail = new TextField();
-            logedEmail.setReadOnly(true);
-            logedEmail.setPlaceholder((String) VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGGED_EMAIL));
-            logedEmail.setCaption(Words.TXT_EMAIL);
-            logedDataNameLayout.addComponent(logedEmail);
-
-            logedDataLayout.addComponent(logedDataNameLayout);
+            logedDataLayout.addComponent(logedName);
 
             mainLayout.addComponent(logedDataLayout);
             /*

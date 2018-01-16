@@ -18,7 +18,6 @@ package com.pjkurs.vaadin.views;
 
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.NavigatorUI;
-import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.ui.containers.LoggedInPanel;
 import com.pjkurs.vaadin.ui.containers.LoginPanel;
 import com.pjkurs.vaadin.ui.containers.TopPanel;
@@ -29,9 +28,9 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextArea;
+import com.vaadin.ui.UI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,15 +41,14 @@ import java.util.logging.Logger;
 @Theme("pjtheme")
 public class MainView extends MyContainer<MainViewModel> implements View, InterfacePJKURSView {
 
-    Button notifButton;
-
     public MainView(MainViewModel model) {
-        super(model);
+        super(model, true);
     }
 
     //Zbudowanie widoku głównej aplikacji
     @Override
     public void buildView() {
+        this.setStyleName("main-window");
         addComponent(generateTopPanel());
         addComponent(generateMenu());
         addComponent(generateMainAppPanel());
@@ -58,28 +56,8 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-        Notification.show("Showing view: Main!");
         removeAllComponents();
         buildView();
-    }
-
-    private Component generateLoginWindow() {
-        Component comp = null;
-
-        //W przypadku zalogowania
-        if (NavigatorUI.getLoginStatus()) {
-            Logger.getGlobal().log(Level.ALL, "login true");
-            comp = new LoggedInPanel<MainViewModel>(getModel());
-
-        } else {
-            Logger.getGlobal().log(Level.ALL, "login false");
-            comp = new LoginPanel<MainViewModel>(getModel());
-        }
-
-        //comp style
-        comp.setWidth("40%");
-        return comp;
-
     }
 
     @Override
@@ -96,22 +74,8 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
         return menuPanel;
     }
 
-    private Component generateMenuPanelIfLogged() {
-        return new LoginPanel(getModel());
-    }
-
     @Override
     public Component generateMainAppPanel() {
         return new TextArea("Main component");
     }
-
-    public void setLoginButtonClicked() {
-        Button notif = new Button("Juz kliknieto", clickEvent -> {
-            getModel().notifButtonClicked(clickEvent);
-        });
-
-        this.replaceComponent(notifButton, notif);
-        notifButton = notif;
-    }
-
 }

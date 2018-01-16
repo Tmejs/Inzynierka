@@ -22,12 +22,8 @@ import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.annotations.Theme;
-import com.vaadin.data.Binder;
 import com.vaadin.server.ExternalResource;
-import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.PasswordField;
@@ -47,6 +43,7 @@ public class LoginPanel<T extends MyModel> extends MyContainer<T> {
 
     @Override
     public void buildView() {
+        this.addStyleName("login-component");
         VerticalLayout mainLayout = this;
 
         //Budowa okna w zalezności od strony na której jest wświetlane

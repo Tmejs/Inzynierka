@@ -19,13 +19,18 @@ package com.pjkurs.vaadin.ui.containers;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.models.MainViewModel;
+import com.pjkurs.vaadin.views.models.RegisterViewModel;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.annotations.Theme;
+import com.vaadin.server.FileResource;
+import com.vaadin.server.Resource;
+import com.vaadin.server.VaadinService;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
+import java.io.File;
 
 /**
  *
@@ -39,24 +44,33 @@ public class TopPanel<T extends MyModel> extends MyContainer<T> {
 
     }
 
+    public Resource getLogoResource() {
+        // Find the application directory
+        String basepath = VaadinService.getCurrent()
+                .getBaseDirectory().getAbsolutePath();
+
+// Image as a file resource
+        FileResource resource = new FileResource(new File(basepath
+                + Words.IMAGE_FOLDER_PATH + "/" + Words.PJURS_LOGO_IMAGE_NAME));
+
+        return resource;
+    }
+
     @Override
     public void buildView() {
+        this.addStyleName("top-main-panel");
         HorizontalLayout mainLayout = new HorizontalLayout();
-        
+
         //
         if (getModel() instanceof MainViewModel) {
             MainViewModel currentModel = (MainViewModel) getModel();
             mainLayout.addStyleName("top-panel");
-            
-//            mainLayout.setWidth("100%");
-
             //LOGO aplikacji
             Image logoImage = new Image();
             logoImage.setAlternateText(Words.TXT_LOGO_NAME);
-            logoImage.setIcon(currentModel.getLogoResource());
-            
-            
-            
+            logoImage.setStyleName("logo-image");
+            logoImage.setIcon(getLogoResource());
+
             mainLayout.addComponent(logoImage);
 
             //Nazwa aplikcji
@@ -65,12 +79,31 @@ public class TopPanel<T extends MyModel> extends MyContainer<T> {
             mainLayout.addComponent(textField);
 
             //Panel logowania
+            Component loginPanel;
             if (NavigatorUI.getLoginStatus()) {
-                mainLayout.addComponent(new LoggedInPanel(currentModel));
+                loginPanel = new LoggedInPanel(currentModel);
             } else {
-                mainLayout.addComponent(new LoginPanel(currentModel));
+                loginPanel = new LoginPanel(currentModel);
             }
+            loginPanel.addStyleName("login-component");
+            mainLayout.addComponent(loginPanel);
+        } else if (getModel() instanceof RegisterViewModel) {
+            RegisterViewModel currentModel = (RegisterViewModel) getModel();
+            mainLayout.addStyleName("top-panel");
+            //LOGO aplikacji
+            Image logoImage = new Image();
+            logoImage.setStyleName("logo-image");
+            logoImage.setIcon(getLogoResource());
+
+            mainLayout.addComponent(logoImage);
+
+            //Nazwa aplikcji
+            Label textField = new Label(Words.TXT_APP_NAME);
+            textField.addStyleName("app-name-label");
+            mainLayout.addComponent(textField);
+
         }
+
         this.addComponent(mainLayout);
     }
 

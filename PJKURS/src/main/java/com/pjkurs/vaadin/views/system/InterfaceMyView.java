@@ -24,5 +24,7 @@ public interface InterfaceMyView<T extends MyModel> extends View {
         
         public void buildView();
         
+        public void refreshView();
+        
         //
     }

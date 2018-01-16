@@ -36,6 +36,8 @@ public interface InterfacePjkursDataProvider {
     public Boolean updateClient(Client client);
 
     public Boolean loginClient(String login, String password);
+    
+    public Boolean checkDoEmailOcuppied(String login);
 
     /*
     Operacje związane z przypisaniem klienta do kursu

@@ -16,6 +16,7 @@
  */
 package com.pjkurs.vaadin.views.models;
 
+import com.pjkurs.InterfacePjkursDataProvider;
 import com.pjkurs.db.DbDataProvider;
 import com.pjkurs.domain.Client;
 import com.pjkurs.usables.Words;
@@ -26,6 +27,7 @@ import com.vaadin.data.Binder;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.Resource;
 import com.vaadin.server.VaadinService;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
@@ -97,22 +99,40 @@ public class MainViewModel extends MyModel<MainView> {
     }
 
     public void logoutButtonClick(Button.ClickEvent event) {
-
+        getUi().getSession().setAttribute(Words.SESSION_LOGIN_NAME, null);
+        Notification.show(Words.TXT_CORRECTLY_LOGGED_OUT);
+        getView().refreshView();
     }
 
     public void loginButtonClick(Button.ClickEvent event) {
         if (((Binder) getParam(PARAM_BINDER_LOGIN)).writeBeanIfValid(getParam(PARAM_BINDED_LOGIN_DATA))) {
-            //TODO próba zalogowania
-            Notification.show("Wprowadzony login:" + ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email + "\n"
-                    + "Wprowadzone hasło:" + ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password);
+
+            //funkcja sprawdzająca zalogowanie
+            boolean loginStatus = NavigatorUI.getDBProvider().loginClient(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email, ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password);
+
+            if (loginStatus) {
+                Notification.show(Words.TXT_CORRECTLY_LOGGED);
+
+                //Ustawienie w sesji zalogowanego usera
+                getUi().getSession().setAttribute(Words.SESSION_LOGIN_NAME, ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email);
+                getView().refreshView();
+            } else {
+                Notification.show(Words.TXT_WRONG_LOGIN_DATA);
+                //Reset hasła
+                ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password = "";
+                //Czyszczenie inputu w widoku
+                ((Binder) getParam(PARAM_BINDER_LOGIN)).readBean(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)));
+            }
+
+            //.checkDoEmailOcuppied(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email).toString()
+//            VaadinSession.getCurrent().setAttribute(Words.SESSION_LOGIN_NAME, Boolean.TRUE);
+//            getUi().getNavigator().navigateTo(NavigatorUI.View.MAINVIEW.getName());
+//            Notification.show("Wprowadzony login:" + ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email + "\n"
+//                    + "Wprowadzone hasło:" + ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password);
         } else {
-            Notification.show("Wprowadzony poprawne dane");
+            Notification.show("Wprowadz poprawne dane");
         }
 
-    }
-
-    public void notifButtonClicked(Button.ClickEvent clickEvent) {
-        getView().setLoginButtonClicked();
     }
 
     public void niezlogowanyButtonClicked(Button.ClickEvent event) {
@@ -149,14 +169,18 @@ public class MainViewModel extends MyModel<MainView> {
         LoginData loginData = new LoginData();
         setParam(PARAM_BINDED_LOGIN_DATA, loginData);
         setParam(PARAM_BINDER_LOGIN, loginBinder);
-
+//((InterfacePjkursDataProvider) getUi().getSession().getAttribute(NavigatorUI.PARAM_DATA_PROVIDER)).checkDoEmailOcuppied(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email).toString()
         //TODO poprawna walidacja
         loginBinder.forField(emailTextField)
                 .withValidator(
                         t -> t.contains("@"),
                         "Email musi zawierać @"
-                ).
-                bind(LoginData::getEmail, LoginData::setEmail);
+                ).bind(LoginData::getEmail, LoginData::setEmail);
+        //TODO validator do rejestracji
+//                .withValidator(
+//                        t -> ((InterfacePjkursDataProvider) getUi().getSession().getAttribute(NavigatorUI.PARAM_DATA_PROVIDER)).checkDoEmailOcuppied(t),
+//                         "Email musi zawierać @"
+//                ).
 
         loginBinder.forField(passwordTextField).bind(LoginData::getPassword, LoginData::setPassword);
     }

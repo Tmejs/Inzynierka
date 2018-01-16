@@ -16,14 +16,20 @@
  */
 package com.pjkurs.vaadin.views;
 
+import com.pjkurs.domain.Client;
+import com.pjkurs.usables.Words;
+import com.pjkurs.vaadin.ui.containers.TopPanel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.views.models.RegisterViewModel;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
 
 /**
  *
@@ -32,15 +38,14 @@ import com.vaadin.ui.TextField;
 @Theme("pjtheme")
 public class RegisterView extends MyContainer<RegisterViewModel> implements View, InterfacePJKURSView {
 
-    
-
     public RegisterView(RegisterViewModel model) {
-        super(model);
+        super(model, true);
     }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-        Notification.show("Showing view: Register!");
+        removeAllComponents();
+        buildView();
     }
 
     //Zbudowanie Widoku dla panelu rejestrowania
@@ -56,19 +61,42 @@ public class RegisterView extends MyContainer<RegisterViewModel> implements View
     @Override
     public Component generateTopPanel() {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        return new TextField(this.getClass().toString() + " generateTopPanel()");
+        return new TopPanel(getModel());
     }
 
     @Override
     public Component generateMenu() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        return new TextField(this.getClass().toString() + " generateMenu()");
+        Button button = new Button(Words.TXT_BACK);
+        button.addClickListener((event) -> {
+            getModel().backButtonClicked(event);
+        });
+        return button;
     }
 
     @Override
     public Component generateMainAppPanel() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        return new TextField(this.getClass().toString() + " generateMainAppPanel()");
+        VerticalLayout verticalLayout = new VerticalLayout();
+
+        TextField email = new TextField(Words.TXT_EMAIL);
+        verticalLayout.addComponent(email);
+
+        TextField password = new PasswordField(Words.TXT_PASSWORD);
+        verticalLayout.addComponent(password);
+
+        TextField passwordConfirmation = new PasswordField(Words.TXT_PASSWORD);
+        verticalLayout.addComponent(passwordConfirmation);
+
+        getModel().bindLoginData(email, password, passwordConfirmation);
+
+        Button confirmButton = new Button(Words.TXT_REGISTER);
+        confirmButton.addClickListener((event) -> {
+            getModel().registerButtonClicked(event);
+        });
+
+        verticalLayout.addComponent(confirmButton);
+
+        return verticalLayout;
+
     }
 
 }

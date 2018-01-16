@@ -29,10 +29,27 @@ import java.util.List;
  */
 public class DbDataProvider implements InterfacePjkursDataProvider {
 
-    
+    private final DBConnector dbConnector;
+
+    public DbDataProvider() {
+        this.dbConnector = new DBConnector();
+    }
+
+    public DbDataProvider(String db, String login, String password) throws Exception {
+        this.dbConnector = new DBConnector();
+        connectToDB(db, login, password);
+    }
+
+    public final Boolean connectToDB(String db, String login, String password) throws Exception {
+        return dbConnector.connect(db, login, password);
+    }
+
     @Override
     public Boolean registerNewClient(Client client) {
-        return true;
+        String buildedFunction
+                = "pjkursdb.zarejestruj_usera('" + client.email + "', '" + client.password + "')";
+        dbConnector.commit();
+        return dbConnector.getBooleanFunctionValue(buildedFunction);
     }
 
     @Override
@@ -42,7 +59,9 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
 
     @Override
     public Boolean loginClient(String login, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String buildedFunction
+                = "pjkursdb.zaloguj_usera('" + login + "', '" + password + "')";
+        return dbConnector.getBooleanFunctionValue(buildedFunction);
     }
 
     @Override
@@ -73,6 +92,13 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     @Override
     public Boolean updateCourse(Course course) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Boolean checkDoEmailOcuppied(String login) {
+        String buildedFunction
+                = "pjkursdb.czy_zarejestrowany_email('" + login + "')";
+        return dbConnector.getBooleanFunctionValue(buildedFunction);
     }
 
 }

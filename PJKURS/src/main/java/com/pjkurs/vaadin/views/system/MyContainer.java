@@ -8,8 +8,7 @@
  */
 package com.pjkurs.vaadin.views.system;
 
-import com.pjkurs.vaadin.views.system.InterfaceMyView;
-import com.pjkurs.vaadin.views.system.MyModel;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 /**
@@ -35,15 +34,29 @@ public abstract class MyContainer<T extends MyModel> extends VerticalLayout impl
         return CLASS_NAME;
     }
 
+    public MyContainer(T model, Boolean isMainModel) {
+        setModel(model);
+        CLASS_NAME = getClass().toGenericString().toLowerCase();
+        if (isMainModel) {
+            model.setView(this);
+        }
+        buildView();
+    }
+
     public MyContainer(T model) {
         setModel(model);
         CLASS_NAME = getClass().toGenericString().toLowerCase();
-        model.setView(this);
         buildView();
-
     }
 
     private MyContainer() {
         CLASS_NAME = getClass().toGenericString();
     }
+
+    @Override
+    public void refreshView() {
+        this.removeAllComponents();
+        buildView();
+    }
+
 }

@@ -21,7 +21,9 @@ import com.pjkurs.vaadin.ui.containers.RegisterPanel;
 import com.pjkurs.vaadin.views.models.MyAccountViewModel;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 
 /**
@@ -32,7 +34,14 @@ import com.vaadin.ui.TextField;
 public class MyAccountView extends MyContainer<MyAccountViewModel> implements View, InterfacePJKURSView {
 
     public MyAccountView(MyAccountViewModel model) {
-        super(model);
+        super(model, true);
+    }
+
+    @Override
+    public void enter(ViewChangeListener.ViewChangeEvent event) {
+        Notification.show("Showing view: Main!");
+        removeAllComponents();
+        buildView();
     }
 
     @Override

@@ -16,7 +16,11 @@
  */
 package com.pjkurs.vaadin;
 
+import com.pjkurs.InterfacePjkursDataProvider;
+import com.pjkurs.db.DbDataProvider;
 import com.pjkurs.usables.Words;
+import com.pjkurs.utils.Params;
+import com.pjkurs.vaadin.views.InterfacePJKURSView;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.models.MyAccountViewModel;
 import com.pjkurs.vaadin.views.models.RegisterViewModel;
@@ -36,6 +40,8 @@ import com.vaadin.server.VaadinServlet;
 import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 
@@ -52,17 +58,30 @@ import javax.servlet.annotation.WebServlet;
 @SuppressWarnings("serial")
 public class NavigatorUI extends UI {
 
+    private final static String PARAM_DATA_PROVIDER = "PARAM_DATA_PROVIDER";
+
+    public static InterfacePjkursDataProvider getDBProvider() {
+        InterfacePjkursDataProvider dbDataProvider = (InterfacePjkursDataProvider) VaadinSession.getCurrent().getAttribute(PARAM_DATA_PROVIDER);
+        if (dbDataProvider == null) {
+            try {
+                dbDataProvider = new DbDataProvider(Words.DB_NAME, Words.LOGIN, Words.HASLO);
+                VaadinSession.getCurrent().setAttribute(PARAM_DATA_PROVIDER, dbDataProvider);
+
+            } catch (Exception exception) {
+                Logger.getLogger("NavigatorUI").log(Level.SEVERE, "Stirng", exception);
+            }
+        }
+        return dbDataProvider;
+    }
+
     /**
      * To jest jakliś nasz śmieszny opis
      *
      * @return
      */
     public static Boolean getLoginStatus() {
-        if (VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGIN_NAME) != null) {
-            return (Boolean) VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGIN_NAME);
-        } else {
-            return false;
-        }
+        return VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGIN_NAME) != null;
+
     }
 
     //Nawigator aplikacji
@@ -94,7 +113,7 @@ public class NavigatorUI extends UI {
     @Override
     protected void init(VaadinRequest request) {
         final VerticalLayout layout = new VerticalLayout();
-        layout.setMargin(true);
+        layout.setMargin(false);
         layout.setSpacing(true);
         setContent(layout);
         Navigator.ComponentContainerViewDisplay viewDisplay = new Navigator.ComponentContainerViewDisplay(layout);
@@ -103,6 +122,7 @@ public class NavigatorUI extends UI {
         navigator.addView(View.MAINVIEW.getName(), new MainView(new MainViewModel(this)));
         navigator.addView(View.REGISTER_VIEW.getName(), new RegisterView(new RegisterViewModel(this)));
         navigator.addView(View.MY_ACCOUNT_VIEW.getName(), new MyAccountView(new MyAccountViewModel(this)));
+
     }
 
     @WebServlet(urlPatterns = "/*", name = "NavigatorUI", asyncSupported = true)
@@ -110,11 +130,21 @@ public class NavigatorUI extends UI {
     public static class MainViewServlet extends VaadinServlet
             implements SessionInitListener, SessionDestroyListener {
 
+        public static Params PARAMS;
+
         @Override
         protected void servletInitialized() throws ServletException {
             super.servletInitialized();
             getService().addSessionInitListener(this);
             getService().addSessionDestroyListener(this);
+
+            if (PARAMS != null) {
+                try {
+                    PARAMS = new Params();
+                } catch (Exception exception) {
+                    Logger.getLogger(MainViewServlet.class.toString());
+                }
+            }
         }
 
         @Override

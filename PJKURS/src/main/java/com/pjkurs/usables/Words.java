@@ -16,7 +16,7 @@
  */
 package com.pjkurs.usables;
 
-import com.vaadin.ui.Component;
+import com.vaadin.server.Page;
 
 /**
  *
@@ -41,7 +41,20 @@ public class Words {
     public final static String TXT_LOGIN_TO_SERWIS = "Logowanie do serwisu";
     public final static String TXT_FORGOT_PASSWORD = "Reset hasła?";
     public final static String TXT_REGISTER = "Zarejestruj";
-    public static String TXT_PASSWORD="Hasło";
-    public static String WARRNING_WRONG_EMAIL="Błędny email";
+    public static String TXT_PASSWORD = "Hasło";
+    public static String WARRNING_WRONG_EMAIL = "Błędny email";
+    public static String CONF_FILE_ERROR = "Błąd pliku konfiguracyjnego";
+    public static String WRONG_DEFINED_PARAM = "Błędnie skonfigurowany parametr";
+    public static String NO_PARAMS_FILE = "Brak pliku z parametrami";
+    public static String TXT_CORRECTLY_LOGGED_OUT = "Poprawnie wylogowano";
 
+    public final static String DB_NAME = "pjkursdb";
+    public final static String LOGIN = "root";
+    public final static String HASLO = "root";
+    public final static String TXT_CORRECTLY_LOGGED = "Poprawnie zalogowano";
+    public static String TXT_WRONG_LOGIN_DATA = "Błędne dane";
+    public static String TXT_BACK = "Powrót";
+    public static final String TXT_USED_EMAIL = "Już używany email";
+    public static String TXT_PASSWORDS_MUST_MATCH = "Hasła muszą się zgadzać";
+    public static String TXT_CORRECTLY_REGISTERED = "Poprawnie zarejestrowano";
 }

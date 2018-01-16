@@ -15054,20 +15054,34 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .pjtheme .to-horizontalLayout {
-	background-color: red;
 	border: 1px solid black;
 }
 
+.pjtheme .top-main-panel {
+	width: 100%;
+}
+
 .pjtheme .top-panel {
-	background-color: blue;
+	margin: 0px;
 	width: 100%;
 }
 
 .pjtheme .logo-image {
 	width: 30%;
+	vertical-align: top;
 }
 
 .pjtheme .app-name-label {
 	width: 30%;
-	background-color: red;
+	vertical-align: center;
+}
+
+.pjtheme .login-component {
+	width: 40%;
+	vertical-align: top;
+}
+
+.pjtheme .main-window {
+	width: 100%;
+	height: 100%;
 }
