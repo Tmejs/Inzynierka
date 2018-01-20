@@ -24,6 +24,7 @@ import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.annotations.Theme;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.PasswordField;
@@ -42,10 +43,11 @@ public class LoginPanel<T extends MyModel> extends MyContainer<T> {
     }
 
     @Override
-    public void buildView() {
+    public Component buildView() {
+        VerticalLayout mainLayout = new VerticalLayout();
         this.addStyleName("login-component");
-        VerticalLayout mainLayout = this;
 
+        mainLayout.setSizeUndefined();
         //Budowa okna w zalezności od strony na której jest wświetlane
         if (getModel() instanceof MainViewModel) {
             MainViewModel tempModel = (MainViewModel) getModel();
@@ -61,16 +63,16 @@ public class LoginPanel<T extends MyModel> extends MyContainer<T> {
 
             // email
             TextField emailTextField = new TextField(Words.TXT_EMAIL);
-            
-            
+            emailTextField.setSizeUndefined();
+
             mainLayout.addComponent(emailTextField);
 
             //hasło
             TextField passwordTextField = new PasswordField(Words.TXT_PASSWORD);
-            
+
             mainLayout.addComponent(passwordTextField);
-            
-            tempModel.bindLoginData(emailTextField,passwordTextField);
+
+            tempModel.bindLoginData(emailTextField, passwordTextField);
             //Guzik logowania
             Button loginButton = new Button(Words.TXT_LOGIN_BUTTON, ((event) -> {
                 tempModel.loginButtonClick(event);
@@ -91,6 +93,7 @@ public class LoginPanel<T extends MyModel> extends MyContainer<T> {
             mainLayout.addComponent(linkToRegister);
 
         }
+        return mainLayout;
     }
 
 }

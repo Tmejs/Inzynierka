@@ -18,7 +18,12 @@ package com.pjkurs.vaadin.ui.menu;
 
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.TextField;
+import com.pjkurs.usables.Words;
+import com.pjkurs.vaadin.views.models.MainViewModel;
 
 /**
  *
@@ -31,8 +36,21 @@ public class MainMenuPanel<T extends MyModel> extends MyContainer<T> {
     }
 
     @Override
-    public void buildView() {
-        this.addComponent(new TextField(this.getClass().toString()));
+    public Component buildView() {
+        this.setSizeFull();
+        HorizontalLayout mainLayout = new HorizontalLayout();
+
+        Button coursesButton = new Button(Words.TXT_BUTTON_COURSES);
+        coursesButton.addClickListener((event) -> {
+            if (getModel() instanceof MainViewModel) {
+                ((MainViewModel) getModel()).showAllCoursesButtonClicked(event);
+            }
+
+        });
+
+        mainLayout.addComponent(coursesButton);
+
+        return mainLayout;
     }
 
 }

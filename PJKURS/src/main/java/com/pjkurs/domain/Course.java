@@ -20,13 +20,16 @@ package com.pjkurs.domain;
  *
  * @author Tmejs
  */
-public class Course {
-    
+public class Course extends DBObject {
+
     public Integer id;
     public String name;
     public String categoryName;
+    public Integer subcategoryId;
+    public String description;
+    public Integer paricipants;
     public String subcategoryName;
     public String lecturer;
     public Integer countOfCoursants;
-    
+
 }

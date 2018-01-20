@@ -16,16 +16,21 @@
  */
 package com.pjkurs.domain;
 
+import java.sql.Date;
+
 /**
  *
  * @author Tmejs
  */
-public class Client extends DBObject {
-
+public class Appusers extends DBObject{
+///przykładowa klasa
+    
+    
+    
+    
     public Integer id;
-    public String name;
-    public String surname;
+    public String haslo;
     public String email;
-    public String password;
-
+    public Date data_dodania;
+    
 }

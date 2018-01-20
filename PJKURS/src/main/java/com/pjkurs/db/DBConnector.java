@@ -1,9 +1,14 @@
 package com.pjkurs.db;
 
+import com.pjkurs.domain.DBObject;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -68,4 +73,20 @@ public class DBConnector {
         }
     }
 
+    public <T extends DBObject> List<T> getMappedArrayList(DBObject object, String sqlQuery) throws Exception {
+        if (checkConnection()) {
+            Statement st = connection.createStatement();
+            // execute the query, and get a java resultset
+            ResultSet rs = st.executeQuery(sqlQuery);
+            List<T> list = new ArrayList<>();
+
+            //Wykorzystanie interfejsu do stworzenia mappera
+            while (rs.next()) {
+                list.add(object.mapObject(object.getClass(), rs));
+            }
+            return list;
+        } else {
+            return null;
+        }
+    }
 }

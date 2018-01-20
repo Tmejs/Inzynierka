@@ -38,15 +38,9 @@ public class MyAccountView extends MyContainer<MyAccountViewModel> implements Vi
     }
 
     @Override
-    public void enter(ViewChangeListener.ViewChangeEvent event) {
-        Notification.show("Showing view: Main!");
-        removeAllComponents();
-        buildView();
-    }
-
-    @Override
-    public void buildView() {
-        this.addComponent(new RegisterPanel(getModel()));
+    public Component buildView() {
+        this.setStyleName("horrizontaly-full-view");
+        return new RegisterPanel(getModel());
     }
 
     @Override

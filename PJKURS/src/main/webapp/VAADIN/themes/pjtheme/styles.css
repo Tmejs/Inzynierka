@@ -15061,6 +15061,11 @@ div.v-layout.v-horizontal.v-widget {
 	width: 100%;
 }
 
+.pjtheme .horrizontaly-full-view {
+	width: 100%;
+	margin: 0px;
+}
+
 .pjtheme .top-panel {
 	margin: 0px;
 	width: 100%;

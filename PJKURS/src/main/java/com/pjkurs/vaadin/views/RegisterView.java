@@ -37,33 +37,32 @@ import com.vaadin.ui.VerticalLayout;
  */
 @Theme("pjtheme")
 public class RegisterView extends MyContainer<RegisterViewModel> implements View, InterfacePJKURSView {
-
+    
     public RegisterView(RegisterViewModel model) {
         super(model, true);
     }
 
-    @Override
-    public void enter(ViewChangeListener.ViewChangeEvent event) {
-        removeAllComponents();
-        buildView();
-    }
-
     //Zbudowanie Widoku dla panelu rejestrowania
     @Override
-    public void buildView() {
-        this.addComponent(generateTopPanel());
-
-        this.addComponent(generateMenu());
-
-        this.addComponent(generateMainAppPanel());
+    public Component buildView() {
+        this.setStyleName("horrizontaly-full-view");
+        VerticalLayout layout = new VerticalLayout();
+        layout.setMargin(false);
+        layout.setWidthUndefined();
+        layout.addComponent(generateTopPanel());
+        
+        layout.addComponent(generateMenu());
+        
+        layout.addComponent(generateMainAppPanel());
+        return layout;
     }
-
+    
     @Override
     public Component generateTopPanel() {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return new TopPanel(getModel());
     }
-
+    
     @Override
     public Component generateMenu() {
         Button button = new Button(Words.TXT_BACK);
@@ -72,31 +71,31 @@ public class RegisterView extends MyContainer<RegisterViewModel> implements View
         });
         return button;
     }
-
+    
     @Override
     public Component generateMainAppPanel() {
         VerticalLayout verticalLayout = new VerticalLayout();
-
+        
         TextField email = new TextField(Words.TXT_EMAIL);
         verticalLayout.addComponent(email);
-
+        
         TextField password = new PasswordField(Words.TXT_PASSWORD);
         verticalLayout.addComponent(password);
-
+        
         TextField passwordConfirmation = new PasswordField(Words.TXT_PASSWORD);
         verticalLayout.addComponent(passwordConfirmation);
-
+        
         getModel().bindLoginData(email, password, passwordConfirmation);
-
+        
         Button confirmButton = new Button(Words.TXT_REGISTER);
         confirmButton.addClickListener((event) -> {
             getModel().registerButtonClicked(event);
         });
-
+        
         verticalLayout.addComponent(confirmButton);
-
+        
         return verticalLayout;
-
+        
     }
-
+    
 }

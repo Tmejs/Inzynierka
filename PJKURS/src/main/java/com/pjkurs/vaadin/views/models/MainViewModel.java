@@ -19,6 +19,7 @@ package com.pjkurs.vaadin.views.models;
 import com.pjkurs.InterfacePjkursDataProvider;
 import com.pjkurs.db.DbDataProvider;
 import com.pjkurs.domain.Client;
+import com.pjkurs.domain.Course;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.system.MyModel;
@@ -184,4 +185,14 @@ public class MainViewModel extends MyModel<MainView> {
 
         loginBinder.forField(passwordTextField).bind(LoginData::getPassword, LoginData::setPassword);
     }
+
+    public void showAllCoursesButtonClicked(Button.ClickEvent event) {
+        getView().setCoursesAsMainPanel();
+
+    }
+
+    public void addToCourseButtonClicked(Button.ClickEvent event, Course course) {
+        Notification.show("Próba zarejestrowania do kursu:" + course.name);
+    }
+
 }

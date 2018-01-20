@@ -38,7 +38,8 @@ public class LoggedInPanel<T extends MyModel> extends MyContainer<T> {
     }
 
     @Override
-    public void buildView() {
+    public Component buildView() {
+        this.setSizeFull();
         VerticalLayout mainLayout = new VerticalLayout();
         if (getModel() instanceof MainViewModel) {
             MainViewModel tempModel = (MainViewModel) getModel();
@@ -89,6 +90,6 @@ public class LoggedInPanel<T extends MyModel> extends MyContainer<T> {
 
             mainLayout.addComponent(myDataLayout);
         }
-        this.addComponent(mainLayout);
+        return mainLayout;
     }
 }

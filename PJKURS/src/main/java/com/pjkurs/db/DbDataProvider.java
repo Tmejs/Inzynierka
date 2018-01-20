@@ -16,12 +16,21 @@
  */
 package com.pjkurs.db;
 
+import com.mysql.jdbc.ResultSetImpl;
 import com.pjkurs.domain.ArchiveCourse;
 import com.pjkurs.domain.Client;
 import com.pjkurs.domain.Course;
 import com.pjkurs.domain.MyCourse;
 import com.pjkurs.InterfacePjkursDataProvider;
+import com.pjkurs.domain.Appusers;
+import com.pjkurs.domain.DBObject;
+import com.pjkurs.usables.Words;
+import java.sql.ResultSet;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -53,12 +62,25 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     }
 
     @Override
+    public List<Appusers> getUsers() {
+        String buildedFunction
+                = "select * from pjkursdb.appusers";
+        try {
+            return dbConnector.getMappedArrayList(new Appusers(), buildedFunction);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu usera", exception);
+        }
+        return new ArrayList<>();
+    }
+
+    @Override
     public Boolean updateClient(Client client) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Boolean loginClient(String login, String password) {
+        ResultSet resultSet = null;
         String buildedFunction
                 = "pjkursdb.zaloguj_usera('" + login + "', '" + password + "')";
         return dbConnector.getBooleanFunctionValue(buildedFunction);
@@ -71,7 +93,14 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
 
     @Override
     public List<Course> getAvalibleCourses() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //query
+        String sqlQuery = Words.SQL_SELECT_COURSES_QUERY;
+        try {
+            return dbConnector.getMappedArrayList(new Course(), sqlQuery);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.SEVERE, "Blad przy mapowaniu Kursu", exception);
+        }
+        return new ArrayList<>();
     }
 
     @Override

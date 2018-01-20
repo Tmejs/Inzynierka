@@ -9,6 +9,7 @@
 package com.pjkurs.vaadin.views.system;
 
 import com.vaadin.navigator.View;
+import com.vaadin.ui.Component;
 
 
 /**
@@ -22,7 +23,7 @@ public interface InterfaceMyView<T extends MyModel> extends View {
 
         public T getModel();
         
-        public void buildView();
+        public Component buildView();
         
         public void refreshView();
         

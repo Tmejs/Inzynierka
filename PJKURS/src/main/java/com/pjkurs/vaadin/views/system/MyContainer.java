@@ -8,14 +8,13 @@
  */
 package com.pjkurs.vaadin.views.system;
 
-import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Panel;
 
 /**
  *
  * @author Tmejs
  */
-public abstract class MyContainer<T extends MyModel> extends VerticalLayout implements InterfaceMyView<T> {
+public abstract class MyContainer<T extends MyModel> extends Panel implements InterfaceMyView<T> {
 
     private T model;
     private final String CLASS_NAME;
@@ -40,13 +39,33 @@ public abstract class MyContainer<T extends MyModel> extends VerticalLayout impl
         if (isMainModel) {
             model.setView(this);
         }
-        buildView();
+        this.setContent(buildView());
     }
 
+    /**
+     * Konstruktor ustawiający model i generujący komponent
+     *
+     * @param model
+     */
     public MyContainer(T model) {
         setModel(model);
         CLASS_NAME = getClass().toGenericString().toLowerCase();
-        buildView();
+        this.setContent(buildView());
+
+    }
+
+    
+    /**
+     * Konstruktor
+     * @param generateView Czy automatycznie ustawiać content?
+     * @param model 
+     */
+    public MyContainer(Boolean generateView, T model) {
+        setModel(model);
+        CLASS_NAME = getClass().toGenericString().toLowerCase();
+        if (generateView) {
+            this.setContent(buildView());
+        }
     }
 
     private MyContainer() {
@@ -55,8 +74,7 @@ public abstract class MyContainer<T extends MyModel> extends VerticalLayout impl
 
     @Override
     public void refreshView() {
-        this.removeAllComponents();
-        buildView();
+        this.setContent(buildView());
     }
 
 }

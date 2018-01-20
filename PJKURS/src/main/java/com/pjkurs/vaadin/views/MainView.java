@@ -16,23 +16,21 @@
  */
 package com.pjkurs.vaadin.views;
 
-import com.pjkurs.vaadin.views.system.MyContainer;
+import com.pjkurs.domain.Appusers;
 import com.pjkurs.vaadin.NavigatorUI;
-import com.pjkurs.vaadin.ui.containers.LoggedInPanel;
-import com.pjkurs.vaadin.ui.containers.LoginPanel;
+import com.pjkurs.vaadin.ui.containers.CoursesPanel;
+import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.ui.containers.TopPanel;
 import com.pjkurs.vaadin.ui.menu.MainMenuPanel;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.Notification;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.TextArea;
-import com.vaadin.ui.UI;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.vaadin.ui.VerticalLayout;
 
 /**
  *
@@ -41,30 +39,34 @@ import java.util.logging.Logger;
 @Theme("pjtheme")
 public class MainView extends MyContainer<MainViewModel> implements View, InterfacePJKURSView {
 
+    private Component topPanel;
+    private Component menuPanel;
+    private Component mainPanel;
+
     public MainView(MainViewModel model) {
         super(model, true);
     }
 
     //Zbudowanie widoku głównej aplikacji
     @Override
-    public void buildView() {
-        this.setStyleName("main-window");
-        addComponent(generateTopPanel());
-        addComponent(generateMenu());
-        addComponent(generateMainAppPanel());
-    }
-
-    @Override
-    public void enter(ViewChangeListener.ViewChangeEvent event) {
-        removeAllComponents();
-        buildView();
+    public Component buildView() {
+        this.setSizeFull();
+        VerticalLayout mainLayout = new VerticalLayout();
+//        mainLayout.addStyleName("horrizontaly-full-view");
+        topPanel = generateTopPanel();
+        mainLayout.addComponent(topPanel);
+        menuPanel = generateMenu();
+        mainLayout.addComponent(menuPanel);
+        mainPanel = generateMainAppPanel();
+        mainLayout.addComponent(mainPanel);
+        return mainLayout;
     }
 
     @Override
     public final Component generateTopPanel() {
         //zwracamy top panel
         TopPanel topPanel = new TopPanel<>(getModel());
-        topPanel.setPrimaryStyleName("top-panel");
+
         return topPanel;
     }
 
@@ -76,6 +78,27 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
 
     @Override
     public Component generateMainAppPanel() {
-        return new TextArea("Main component");
+
+        VerticalLayout layout = new VerticalLayout();
+        layout.setSizeUndefined();
+        layout.addComponent(new HorizontalLayout(new Label("email"), new Label("haslo")));
+        for (Appusers user : NavigatorUI.getDBProvider().getUsers()) {
+            HorizontalLayout lt = new HorizontalLayout();
+            lt.setSizeUndefined();
+            lt.addComponent(new Label(user.email));
+            lt.addComponent(new Label(user.haslo));
+            try {
+                lt.addComponent(new Label(user.data_dodania.toString()));
+            } catch (Exception e) {
+            }
+            layout.addComponent(lt);
+        }
+        return layout;
+    }
+
+    public void setCoursesAsMainPanel() {
+        CoursesPanel panel = new CoursesPanel(getModel());
+        ((VerticalLayout) this.getContent()).replaceComponent(mainPanel, panel);
+        mainPanel = panel;
     }
 }

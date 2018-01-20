@@ -32,8 +32,8 @@ public class StudentCourseDataPanel<T extends MyModel> extends MyContainer<T> {
     }
 
     @Override
-    public void buildView() {
-        this.addComponent(new TextField(this.getClass().toString()));
+    public Component buildView() {
+        return new TextField(this.getClass().toString());
     }
 
 }

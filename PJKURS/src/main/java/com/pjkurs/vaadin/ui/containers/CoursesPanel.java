@@ -16,10 +16,17 @@
  */
 package com.pjkurs.vaadin.ui.containers;
 
+import com.pjkurs.domain.Course;
+import com.pjkurs.usables.Words;
+import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
+import com.vaadin.server.Sizeable;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.TextField;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.VerticalLayout;
+import java.util.List;
 
 /**
  *
@@ -32,8 +39,42 @@ public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
     }
 
     @Override
-    public void buildView() {
-        this.addComponent(new TextField(this.getClass().toString()));
+    public Component buildView() {
+        VerticalLayout mainLayout = new VerticalLayout();
+        mainLayout.setSizeUndefined();
+
+        List<Course> courses = NavigatorUI.getDBProvider().getAvalibleCourses();
+
+        //Sprawdzenie czy są dostępne kursy
+        if (courses == null || courses.isEmpty()) {
+            mainLayout.addComponent(new Label(Words.TXT_NO_AVALIBLE_COURSES));
+            return mainLayout;
+        }
+
+        //Utworzenie komponentów
+        Integer counter = 0;
+        HorizontalLayout horizontalPanel = new HorizontalLayout();
+        horizontalPanel.setWidth(1.0f, Unit.PERCENTAGE);
+
+        courses.addAll(courses);
+        courses.addAll(courses);
+        for (Course course : courses) {
+            CoursePanel coursePanel = new CoursePanel(course, getModel());
+            if (counter > 3) {
+                counter = 0;
+                mainLayout.addComponent(horizontalPanel);
+                horizontalPanel = new HorizontalLayout();
+//                horizontalPanel.setSizeUndefined();
+                horizontalPanel.setWidth(1.0f, Unit.PERCENTAGE);
+            }
+            horizontalPanel.addComponent(coursePanel);
+
+        }
+
+        mainLayout.addComponent(horizontalPanel);
+
+        return mainLayout;
+
     }
 
 }

@@ -20,7 +20,6 @@ import com.pjkurs.InterfacePjkursDataProvider;
 import com.pjkurs.db.DbDataProvider;
 import com.pjkurs.usables.Words;
 import com.pjkurs.utils.Params;
-import com.pjkurs.vaadin.views.InterfacePJKURSView;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.models.MyAccountViewModel;
 import com.pjkurs.vaadin.views.models.RegisterViewModel;

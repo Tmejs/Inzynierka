@@ -57,17 +57,18 @@ public class TopPanel<T extends MyModel> extends MyContainer<T> {
     }
 
     @Override
-    public void buildView() {
-        this.addStyleName("top-main-panel");
+    public Component buildView() {
+        //TODO
+        //to trzeba wywalić bo będzie zajmować większość ekranu w apliacji
+        this.setSizeFull();
         HorizontalLayout mainLayout = new HorizontalLayout();
-
+        mainLayout.setSizeFull();
         //
         if (getModel() instanceof MainViewModel) {
             MainViewModel currentModel = (MainViewModel) getModel();
-            mainLayout.addStyleName("top-panel");
             //LOGO aplikacji
             Image logoImage = new Image();
-            logoImage.setAlternateText(Words.TXT_LOGO_NAME);
+//            logoImage.setAlternateText(Words.TXT_LOGO_NAME);
             logoImage.setStyleName("logo-image");
             logoImage.setIcon(getLogoResource());
 
@@ -85,7 +86,6 @@ public class TopPanel<T extends MyModel> extends MyContainer<T> {
             } else {
                 loginPanel = new LoginPanel(currentModel);
             }
-            loginPanel.addStyleName("login-component");
             mainLayout.addComponent(loginPanel);
         } else if (getModel() instanceof RegisterViewModel) {
             RegisterViewModel currentModel = (RegisterViewModel) getModel();
@@ -103,8 +103,7 @@ public class TopPanel<T extends MyModel> extends MyContainer<T> {
             mainLayout.addComponent(textField);
 
         }
-
-        this.addComponent(mainLayout);
+        return mainLayout;
     }
 
 }

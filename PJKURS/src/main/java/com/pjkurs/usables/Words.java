@@ -24,11 +24,18 @@ import com.vaadin.server.Page;
  */
 public class Words {
 
+    /*SQL QUERYS
+        Selecty do bazy danych
+    
+     */
+    public static String SQL_SELECT_COURSES_QUERY = "select * from pjkursdb.DOSTEPNE_KURSY_V";
+
     public final static String SESSION_LOGIN_NAME = "SESSION_LOGIN_NAME";
     public final static String TXT_APP_NAME = "Wgl sie nie nazywa jeszcez";
-    ;
+
     public final static String SESSION_LOGGED_LOGIN = "SESSION_LOGGED_LOGIN";
     public final static String SESSION_LOGGED_EMAIL = "SESSION_LOGGED_EMAIL";
+
     public final static String TXT_MY_DATA = "Moje dane";
     public final static String TXT_LOGOUT = "Wyloguj";
     public final static String TXT_LOGGED_ASS = "Zalogowany jako";
@@ -57,4 +64,10 @@ public class Words {
     public static final String TXT_USED_EMAIL = "Już używany email";
     public static String TXT_PASSWORDS_MUST_MATCH = "Hasła muszą się zgadzać";
     public static String TXT_CORRECTLY_REGISTERED = "Poprawnie zarejestrowano";
+    public static String TXT_BUTTON_COURSES = "Dostępne kursy";
+
+    public static String TXT_NO_AVALIBLE_COURSES = "Brak dostępnych kursów";
+    public static String TXT_COURSE_NAME = "Nazwa";
+    public static String TXT_COURSE_DESCRIPTION = "Opis:";
+    public static String TXT_COURSE_ADD_TO_COURSE = "Zapisz do kursu";
 }

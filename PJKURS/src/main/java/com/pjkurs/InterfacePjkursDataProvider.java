@@ -16,6 +16,7 @@
  */
 package com.pjkurs;
 
+import com.pjkurs.domain.Appusers;
 import com.pjkurs.domain.ArchiveCourse;
 import com.pjkurs.domain.Course;
 import com.pjkurs.domain.Client;
@@ -31,29 +32,32 @@ public interface InterfacePjkursDataProvider {
     /*
     Operacje z klientem
      */
-    public Boolean registerNewClient(Client client);
+    Boolean registerNewClient(Client client);
 
-    public Boolean updateClient(Client client);
+    Boolean updateClient(Client client);
 
-    public Boolean loginClient(String login, String password);
+    Boolean loginClient(String login, String password);
     
-    public Boolean checkDoEmailOcuppied(String login);
+    Boolean checkDoEmailOcuppied(String login);
 
     /*
     Operacje związane z przypisaniem klienta do kursu
      */
-    public Boolean addClientToCourse(Client client, Course course);
+    Boolean addClientToCourse(Client client, Course course);
 
     /*
     Operacje zwiazane z kursami
      */
-    public List<Course> getAvalibleCourses();
-    public List<MyCourse> getMyCourses();
+    List<Course> getAvalibleCourses();
+    List<MyCourse> getMyCourses();
     
-    public List<ArchiveCourse> getArchiveCourses();
+    List<ArchiveCourse> getArchiveCourses();
 
-    public Boolean addnewCourse(Course newCourse);
+    Boolean addnewCourse(Course newCourse);
 
-    public Boolean updateCourse(Course course);
+    Boolean updateCourse(Course course);
 
+    
+    
+    public List<Appusers> getUsers();
 }

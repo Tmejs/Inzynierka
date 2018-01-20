@@ -28,12 +28,14 @@ import com.vaadin.ui.TextField;
 public class DetailedCoursePanel<T extends MyModel> extends MyContainer<T> {
 
     public DetailedCoursePanel(T model) {
+        
         super(model);
+        
     }
 
     @Override
-    public void buildView() {
-       this.addComponent(new TextField(this.getClass().toString()));
+    public Component buildView() {
+        return new TextField(this.getClass().toString());
     }
 
 }
