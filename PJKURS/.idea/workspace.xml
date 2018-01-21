@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="NavigatorUI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NavigatorUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/NavigatorUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+            <state relative-caret-position="765">
+              <caret line="130" column="0" lean-forward="true" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -38,8 +38,8 @@
       <file leaf-file-name="MainView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MainView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-264">
-              <caret line="181" column="33" lean-forward="false" selection-start-line="181" selection-start-column="33" selection-end-line="181" selection-end-column="33" />
+            <state relative-caret-position="1173">
+              <caret line="70" column="5" lean-forward="false" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -48,14 +48,10 @@
       <file leaf-file-name="LoggedInPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/LoggedInPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+            <state relative-caret-position="255">
+              <caret line="92" column="26" lean-forward="false" selection-start-line="92" selection-start-column="26" selection-end-line="92" selection-end-column="26" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#807#808#0" expanded="true" />
-                <element signature="e#835#836#0" expanded="true" />
-                <element signature="e#885#886#0" expanded="true" />
-                <element signature="e#935#936#0" expanded="true" />
+                <element signature="e#3050#3051#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,21 +60,10 @@
       <file leaf-file-name="LoginPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/LoginPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-12">
-              <caret line="20" column="65" lean-forward="false" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyContainer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MyContainer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state relative-caret-position="629">
+              <caret line="38" column="65" lean-forward="false" selection-start-line="38" selection-start-column="65" selection-end-line="38" selection-end-column="65" />
               <folding>
-                <marker date="1515583260879" expanded="true" signature="1036:1065" ph="{...}" />
-                <marker date="1515583260879" expanded="true" signature="1096:1103" ph="{...}" />
+                <marker date="1516489807487" expanded="true" signature="3236:3243" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -88,187 +73,8 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/MainViewModel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="660">
-              <caret line="80" column="45" lean-forward="false" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
-              <folding>
-                <element signature="e#1248#1249#0" expanded="true" />
-                <element signature="e#1281#1282#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JAVA/com.pjkurs" pinned="false" current-in-tab="false">
-        <entry file="uml://JAVA/com.pjkurs">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>JAVA</ID>
-              <OriginalElement>com.pjkurs</OriginalElement>
-              <nodes>
-                <node x="993.0" y="1504.0">com.pjkurs.vaadin.NavigatorUI.View</node>
-                <node x="1346.0" y="522.5">com.pjkurs.vaadin.ui.menu.MainMenuPanel</node>
-                <node x="2398.0" y="522.5">com.pjkurs.vaadin.ui.containers.DetailedCoursePanel</node>
-                <node x="82.0" y="1504.0">com.pjkurs.domain.Course</node>
-                <node x="887.0" y="455.0">com.pjkurs.vaadin.views.MyAccountView</node>
-                <node x="2006.0" y="0.0">com.pjkurs.vaadin.views.system.InterfaceMyView</node>
-                <node x="0.0" y="1753.0">com.pjkurs.domain.MyCourse</node>
-                <node x="1609.0" y="522.5">com.pjkurs.vaadin.ui.menu.MyMainMenuPanel</node>
-                <node x="459.5" y="767.0">com.pjkurs.vaadin.views.system.MyModel</node>
-                <node x="1251.0" y="767.0">com.pjkurs.InterfacePjkursDataProvider</node>
-                <node x="2924.0" y="522.5">com.pjkurs.vaadin.ui.containers.LoginPanel</node>
-                <node x="411.0000000000002" y="-51.999999999999744">com.pjkurs.vaadin.NavigatorUI</node>
-                <node x="0.0" y="1206.0">com.pjkurs.vaadin.views.models.MyAccountViewModel</node>
-                <node x="2135.0" y="522.5">com.pjkurs.vaadin.ui.containers.TopPanel</node>
-                <node x="368.75" y="168.5">com.pjkurs.vaadin.views.InterfacePJKURSView</node>
-                <node x="2035.0" y="168.0">com.pjkurs.vaadin.views.MyContainer</node>
-                <node x="1872.0" y="522.5">com.pjkurs.vaadin.ui.containers.StudentCourseDataPanel</node>
-                <node x="438.0" y="1098.0">com.pjkurs.vaadin.views.models.MainViewModel</node>
-                <node x="1251.0" y="1097.0">com.pjkurs.db.DbDataProvider</node>
-                <node x="1237.0" y="1504.0">com.pjkurs.domain.Client</node>
-                <node x="485.0" y="1504.0">com.pjkurs.usables.Words</node>
-                <node x="3187.0" y="522.5">com.pjkurs.vaadin.ui.containers.RegisterPanel</node>
-                <node x="203.0" y="1753.0">com.pjkurs.domain.ArchiveCourse</node>
-                <node x="1014.0" y="1260.0">com.pjkurs.vaadin.views.models.RegisterViewModel</node>
-                <node x="0.0" y="387.0">com.pjkurs.vaadin.views.MainView</node>
-                <node x="321.0" y="1862.0">com.pjkurs.utils.DbConnector</node>
-                <node x="2661.0" y="522.5">com.pjkurs.vaadin.ui.containers.LoggedInPanel</node>
-                <node x="3450.0" y="522.5">com.pjkurs.vaadin.ui.containers.CoursesPanel</node>
-                <node x="428.0" y="441.5">com.pjkurs.vaadin.views.RegisterView</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="com.pjkurs.vaadin.views.RegisterView" target="com.pjkurs.vaadin.views.MyContainer">
-                  <point x="109.75" y="-113.0" />
-                  <point x="757.25" y="327.0" />
-                  <point x="2057.5" y="327.0" />
-                  <point x="-67.5" y="59.5" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.views.RegisterView" target="com.pjkurs.vaadin.views.InterfacePJKURSView">
-                  <point x="-109.75" y="-113.0" />
-                  <point x="0.0" y="59.0" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.ui.menu.MainMenuPanel" target="com.pjkurs.vaadin.views.MyContainer">
-                  <point x="0.0" y="-32.0" />
-                  <point x="1467.5" y="347.0" />
-                  <point x="2087.5" y="347.0" />
-                  <point x="-37.5" y="59.5" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.ui.containers.LoginPanel" target="com.pjkurs.vaadin.views.MyContainer">
-                  <point x="0.0" y="-32.0" />
-                  <point x="3045.5" y="337.0" />
-                  <point x="2177.5" y="337.0" />
-                  <point x="52.5" y="59.5" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.ui.containers.CoursesPanel" target="com.pjkurs.vaadin.views.MyContainer">
-                  <point x="0.0" y="-32.0" />
-                  <point x="3571.5" y="317.0" />
-                  <point x="2207.5" y="317.0" />
-                  <point x="82.5" y="59.5" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.views.models.MyAccountViewModel" target="com.pjkurs.vaadin.views.system.MyModel">
-                  <point x="0.0" y="-72.5" />
-                  <point x="209.0" y="1073.0" />
-                  <point x="545.0" y="1073.0" />
-                  <point x="-171.0" y="140.5" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.ui.containers.DetailedCoursePanel" target="com.pjkurs.vaadin.views.MyContainer">
-                  <point x="0.0" y="-32.0" />
-                  <point x="2519.5" y="357.0" />
-                  <point x="2147.5" y="357.0" />
-                  <point x="22.5" y="59.5" />
-                </edge>
-                <edge source="com.pjkurs.db.DbDataProvider" target="com.pjkurs.InterfacePjkursDataProvider">
-                  <point x="0.0" y="-140.0" />
-                  <point x="0.0" y="140.0" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.ui.menu.MyMainMenuPanel" target="com.pjkurs.vaadin.views.MyContainer">
-                  <point x="0.0" y="-32.0" />
-                  <point x="1730.5" y="357.0" />
-                  <point x="2102.5" y="357.0" />
-                  <point x="-22.5" y="59.5" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.ui.containers.RegisterPanel" target="com.pjkurs.vaadin.views.MyContainer">
-                  <point x="0.0" y="-32.0" />
-                  <point x="3308.5" y="327.0" />
-                  <point x="2192.5" y="327.0" />
-                  <point x="67.5" y="59.5" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.views.MainView" target="com.pjkurs.vaadin.views.InterfacePJKURSView">
-                  <point x="-102.0" y="-167.5" />
-                  <point x="102.0" y="307.0" />
-                  <point x="425.08333333333326" y="307.0" />
-                  <point x="-112.66666666666669" y="59.0" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.ui.containers.TopPanel" target="com.pjkurs.vaadin.views.MyContainer">
-                  <point x="0.0" y="-32.0" />
-                  <point x="2256.5" y="367.0" />
-                  <point x="2132.5" y="367.0" />
-                  <point x="7.5" y="59.5" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.views.MyContainer" target="com.pjkurs.vaadin.views.system.InterfaceMyView">
-                  <point x="0.0" y="-59.5" />
-                  <point x="0.0" y="59.0" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.views.models.MainViewModel" target="com.pjkurs.vaadin.views.system.MyModel">
-                  <point x="0.0" y="-180.5" />
-                  <point x="0.0" y="140.5" />
-                </edge>
-                <edge source="com.pjkurs.domain.ArchiveCourse" target="com.pjkurs.domain.Course">
-                  <point x="0.0" y="-32.0" />
-                  <point x="321.5" y="1728.0" />
-                  <point x="268.75" y="1728.0" />
-                  <point x="62.25" y="99.5" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.ui.containers.StudentCourseDataPanel" target="com.pjkurs.vaadin.views.MyContainer">
-                  <point x="0.0" y="-32.0" />
-                  <point x="1993.5" y="367.0" />
-                  <point x="2117.5" y="367.0" />
-                  <point x="-7.5" y="59.5" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.views.models.RegisterViewModel" target="com.pjkurs.vaadin.views.system.MyModel">
-                  <point x="0.0" y="-18.5" />
-                  <point x="1110.0" y="1073.0" />
-                  <point x="887.0" y="1073.0" />
-                  <point x="171.0" y="140.5" />
-                </edge>
-                <edge source="com.pjkurs.domain.MyCourse" target="com.pjkurs.domain.Course">
-                  <point x="0.0" y="-32.0" />
-                  <point x="91.5" y="1728.0" />
-                  <point x="144.25" y="1728.0" />
-                  <point x="-62.25" y="99.5" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.views.MyAccountView" target="com.pjkurs.vaadin.views.MyContainer">
-                  <point x="109.75" y="-99.5" />
-                  <point x="1216.25" y="337.0" />
-                  <point x="2072.5" y="337.0" />
-                  <point x="-52.5" y="59.5" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.ui.containers.LoggedInPanel" target="com.pjkurs.vaadin.views.MyContainer">
-                  <point x="0.0" y="-32.0" />
-                  <point x="2782.5" y="347.0" />
-                  <point x="2162.5" y="347.0" />
-                  <point x="37.5" y="59.5" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.views.MainView" target="com.pjkurs.vaadin.views.MyContainer">
-                  <point x="102.0" y="-167.5" />
-                  <point x="306.0" y="317.0" />
-                  <point x="2042.5" y="317.0" />
-                  <point x="-82.5" y="59.5" />
-                </edge>
-                <edge source="com.pjkurs.vaadin.views.MyAccountView" target="com.pjkurs.vaadin.views.InterfacePJKURSView">
-                  <point x="-109.75" y="-99.5" />
-                  <point x="996.75" y="307.0" />
-                  <point x="650.4166666666667" y="307.0" />
-                  <point x="112.66666666666674" y="59.0" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="308.99999999999994" y="1208.0" />
-              <SelectedNodes />
-              <Categories>
-                <Category>Fields</Category>
-                <Category>Methods</Category>
-              </Categories>
-              <SCOPE>All</SCOPE>
-              <VISIBILITY>private</VISIBILITY>
+              <caret line="147" column="45" lean-forward="false" selection-start-line="147" selection-start-column="45" selection-end-line="147" selection-end-column="45" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -277,11 +83,232 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="388">
-              <caret line="31" column="35" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="31" selection-end-column="35" />
-              <folding>
-                <element signature="e#878#879#0" expanded="true" />
-                <element signature="e#905#906#0" expanded="true" />
-              </folding>
+              <caret line="77" column="35" lean-forward="false" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JAVA/com.pjkurs" pinned="false" current-in-tab="true">
+        <entry file="uml://JAVA/com.pjkurs">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JAVA</ID>
+              <OriginalElement>com.pjkurs</OriginalElement>
+              <nodes>
+                <node x="1877.0833333333333" y="1971.3333333333333">com.pjkurs.vaadin.NavigatorUI.View</node>
+                <node x="2251.75" y="2848.6666666666665">com.pjkurs.db.DBConnector</node>
+                <node x="218.0" y="2427.5">com.pjkurs.vaadin.ui.menu.MainMenuPanel</node>
+                <node x="904.0" y="2427.5">com.pjkurs.vaadin.ui.containers.DetailedCoursePanel</node>
+                <node x="860.75" y="2840.6666666666665">com.pjkurs.domain.Course</node>
+                <node x="1331.5" y="2087.0">com.pjkurs.vaadin.views.system.MyContainer</node>
+                <node x="2835.0" y="2394.5">com.pjkurs.vaadin.views.MyAccountView</node>
+                <node x="1022.0" y="3118.6666666666665">com.pjkurs.domain.MyCourse</node>
+                <node x="1328.5" y="1919.0">com.pjkurs.vaadin.views.system.InterfaceMyView</node>
+                <node x="1558.0" y="2427.5">com.pjkurs.vaadin.ui.menu.MyMainMenuPanel</node>
+                <node x="1751.166666666667" y="2630.0">com.pjkurs.InterfacePjkursDataProvider</node>
+                <node x="597.9999999999999" y="-128.33333333333337">com.pjkurs.vaadin.views.system.MyModel</node>
+                <node x="1340.0" y="2427.5">com.pjkurs.vaadin.ui.containers.LoginPanel</node>
+                <node x="1930.0833333333333" y="1780.3333333333333">com.pjkurs.vaadin.NavigatorUI</node>
+                <node x="1003.9999999999999" y="305.16666666666663">com.pjkurs.vaadin.views.models.MyAccountViewModel</node>
+                <node x="1147.75" y="2738.6666666666665">com.pjkurs.domain.DBObject</node>
+                <node x="436.0" y="2416.5">com.pjkurs.vaadin.ui.containers.TopPanel</node>
+                <node x="2592.75" y="2120.5">com.pjkurs.vaadin.views.InterfacePJKURSView</node>
+                <node x="2095.083333333333" y="1993.3333333333333">com.pjkurs.vaadin.NavigatorUI.MainViewServlet</node>
+                <node x="1122.0" y="2427.5">com.pjkurs.vaadin.ui.containers.StudentCourseDataPanel</node>
+                <node x="674.9999999999999" y="627.6666666666666">com.pjkurs.vaadin.views.models.RegisterViewModel.RegisterData</node>
+                <node x="698.0" y="2405.0">com.pjkurs.vaadin.ui.containers.CoursePanel</node>
+                <node x="29.999999999999886" y="150.66666666666663">com.pjkurs.vaadin.views.models.MainViewModel</node>
+                <node x="1382.75" y="2895.6666666666665">com.pjkurs.domain.Appusers</node>
+                <node x="1748.666666666667" y="2952.0">com.pjkurs.db.DbDataProvider</node>
+                <node x="1161.75" y="2884.6666666666665">com.pjkurs.domain.Client</node>
+                <node x="0.0" y="1030.0">com.pjkurs.usables.Words</node>
+                <node x="216.99999999999994" y="660.6666666666666">com.pjkurs.vaadin.views.models.MainViewModel.LoginData</node>
+                <node x="0.0" y="2427.5">com.pjkurs.vaadin.ui.containers.RegisterPanel</node>
+                <node x="811.0" y="3118.6666666666665">com.pjkurs.domain.ArchiveCourse</node>
+                <node x="657.9999999999999" y="293.66666666666663">com.pjkurs.vaadin.views.models.RegisterViewModel</node>
+                <node x="2490.0" y="2350.0">com.pjkurs.vaadin.views.MainView</node>
+                <node x="1776.0" y="2427.5">com.pjkurs.vaadin.ui.containers.LoggedInPanel</node>
+                <node x="1994.0" y="2427.5">com.pjkurs.vaadin.ui.containers.CoursesPanel</node>
+                <node x="2212.0" y="2394.5">com.pjkurs.vaadin.views.RegisterView</node>
+                <node x="1090.0" y="1265.3333333333337">com.pjkurs.utils.Params</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="com.pjkurs.vaadin.views.RegisterView" target="com.pjkurs.vaadin.views.InterfacePJKURSView">
+                  <point x="64.5" y="-59.0" />
+                  <point x="2405.5" y="2330.0" />
+                  <point x="2639.75" y="2330.0" />
+                  <point x="-94.0" y="48.0" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.views.models.MyAccountViewModel" target="com.pjkurs.vaadin.views.system.MyModel">
+                  <point x="0.0" y="-59.0" />
+                  <point x="1181.0" y="125.66666666666663" />
+                  <point x="969.6666666666666" y="125.66666666666663" />
+                  <point x="148.66666666666663" y="114.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.NavigatorUI.View" target="com.pjkurs.vaadin.NavigatorUI">
+                  <point x="0.0" y="-81.5" />
+                  <point x="1976.0833333333333" y="1946.3333333333333" />
+                  <point x="2010.3333333333333" y="1946.3333333333333" />
+                  <point x="-80.25" y="70.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.ui.containers.StudentCourseDataPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+                  <point x="0.0" y="-26.0" />
+                  <point x="1221.0" y="2330.0" />
+                  <point x="1422.4615384615383" y="2330.0" />
+                  <point x="-16.53846153846166" y="81.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.views.MyAccountView" target="com.pjkurs.vaadin.views.system.MyContainer">
+                  <point x="-64.5" y="-59.0" />
+                  <point x="2899.5" y="2280.0" />
+                  <point x="1538.2307692307693" y="2280.0" />
+                  <point x="99.23076923076928" y="81.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.ui.containers.LoggedInPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+                  <point x="0.0" y="-26.0" />
+                  <point x="1875.0" y="2320.0" />
+                  <point x="1472.076923076923" y="2320.0" />
+                  <point x="33.076923076923094" y="81.5" />
+                </edge>
+                <edge source="com.pjkurs.domain.Course" target="com.pjkurs.domain.DBObject">
+                  <point x="0.0" y="-114.0" />
+                  <point x="1001.25" y="2815.6666666666665" />
+                  <point x="1185.9166666666667" y="2815.6666666666665" />
+                  <point x="-76.33333333333326" y="26.0" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.ui.containers.RegisterPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+                  <point x="0.0" y="-26.0" />
+                  <point x="99.0" y="2280.0" />
+                  <point x="1339.7692307692307" y="2280.0" />
+                  <point x="-99.23076923076928" y="81.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.views.RegisterView" target="com.pjkurs.vaadin.views.system.MyContainer">
+                  <point x="-64.5" y="-59.0" />
+                  <point x="2276.5" y="2300.0" />
+                  <point x="1505.1538461538462" y="2300.0" />
+                  <point x="66.15384615384619" y="81.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.views.MainView" target="com.pjkurs.vaadin.views.system.MyContainer">
+                  <point x="-81.25" y="-103.5" />
+                  <point x="2571.25" y="2290.0" />
+                  <point x="1521.6923076923076" y="2290.0" />
+                  <point x="82.69230769230762" y="81.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.views.MainView" target="com.pjkurs.vaadin.views.InterfacePJKURSView">
+                  <point x="81.25" y="-103.5" />
+                  <point x="0.0" y="48.0" />
+                </edge>
+                <edge source="com.pjkurs.domain.Client" target="com.pjkurs.domain.DBObject">
+                  <point x="0.0" y="-70.0" />
+                  <point x="0.0" y="26.0" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.views.models.RegisterViewModel.RegisterData" target="com.pjkurs.vaadin.views.models.RegisterViewModel">
+                  <point x="0.0" y="-114.5" />
+                  <point x="0.0" y="70.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.views.models.MainViewModel.LoginData" target="com.pjkurs.vaadin.views.models.MainViewModel">
+                  <point x="0.0" y="-81.5" />
+                  <point x="0.0" y="213.5" />
+                </edge>
+                <edge source="com.pjkurs.domain.MyCourse" target="com.pjkurs.domain.Course">
+                  <point x="0.0" y="-26.0" />
+                  <point x="1096.0" y="3093.6666666666665" />
+                  <point x="1071.5" y="3093.6666666666665" />
+                  <point x="70.25" y="114.0" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.ui.menu.MyMainMenuPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+                  <point x="0.0" y="-26.0" />
+                  <point x="1657.0" y="2330.0" />
+                  <point x="1455.5384615384614" y="2330.0" />
+                  <point x="16.538461538461434" y="81.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.views.system.MyContainer" target="com.pjkurs.vaadin.views.system.InterfaceMyView">
+                  <point x="0.0" y="-81.5" />
+                  <point x="0.0" y="59.0" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.ui.containers.TopPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+                  <point x="0.0" y="-37.0" />
+                  <point x="557.0" y="2300.0" />
+                  <point x="1372.8461538461538" y="2300.0" />
+                  <point x="-66.15384615384619" y="81.5" />
+                </edge>
+                <edge source="com.pjkurs.db.DbDataProvider" target="com.pjkurs.InterfacePjkursDataProvider">
+                  <point x="0.0" y="-158.5" />
+                  <point x="0.0" y="136.0" />
+                </edge>
+                <edge source="com.pjkurs.domain.Appusers" target="com.pjkurs.domain.DBObject">
+                  <point x="0.0" y="-59.0" />
+                  <point x="1473.25" y="2815.6666666666665" />
+                  <point x="1338.5833333333333" y="2815.6666666666665" />
+                  <point x="76.33333333333326" y="26.0" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.ui.menu.MainMenuPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+                  <point x="0.0" y="-26.0" />
+                  <point x="317.0" y="2290.0" />
+                  <point x="1356.3076923076924" y="2290.0" />
+                  <point x="-82.69230769230762" y="81.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.ui.containers.CoursesPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+                  <point x="0.0" y="-26.0" />
+                  <point x="2093.0" y="2310.0" />
+                  <point x="1488.6153846153845" y="2310.0" />
+                  <point x="49.61538461538453" y="81.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.ui.containers.LoginPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+                  <point x="0.0" y="-26.0" />
+                  <point x="0.0" y="81.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.NavigatorUI.MainViewServlet" target="com.pjkurs.vaadin.NavigatorUI">
+                  <point x="0.0" y="-59.5" />
+                  <point x="2205.083333333333" y="1946.3333333333333" />
+                  <point x="2170.833333333333" y="1946.3333333333333" />
+                  <point x="80.25" y="70.5" />
+                </edge>
+                <edge source="com.pjkurs.domain.ArchiveCourse" target="com.pjkurs.domain.Course">
+                  <point x="0.0" y="-26.0" />
+                  <point x="906.5" y="3093.6666666666665" />
+                  <point x="931.0" y="3093.6666666666665" />
+                  <point x="-70.25" y="114.0" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.views.models.MainViewModel" target="com.pjkurs.vaadin.views.system.MyModel">
+                  <point x="0.0" y="-213.5" />
+                  <point x="333.9999999999999" y="125.66666666666663" />
+                  <point x="672.3333333333334" y="125.66666666666663" />
+                  <point x="-148.66666666666663" y="114.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.views.models.RegisterViewModel" target="com.pjkurs.vaadin.views.system.MyModel">
+                  <point x="0.0" y="-70.5" />
+                  <point x="0.0" y="114.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.ui.containers.DetailedCoursePanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+                  <point x="0.0" y="-26.0" />
+                  <point x="1003.0" y="2320.0" />
+                  <point x="1405.923076923077" y="2320.0" />
+                  <point x="-33.076923076923094" y="81.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.ui.containers.CoursePanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+                  <point x="0.0" y="-48.5" />
+                  <point x="791.0" y="2310.0" />
+                  <point x="1389.3846153846155" y="2310.0" />
+                  <point x="-49.61538461538453" y="81.5" />
+                </edge>
+                <edge source="com.pjkurs.vaadin.views.MyAccountView" target="com.pjkurs.vaadin.views.InterfacePJKURSView">
+                  <point x="64.5" y="-59.0" />
+                  <point x="3028.5" y="2270.0" />
+                  <point x="2827.75" y="2270.0" />
+                  <point x="94.0" y="48.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="1102.4999999999998" y="2091.6666666666665" />
+              <SelectedNodes />
+              <Categories>
+                <Category>Fields</Category>
+                <Category>Methods</Category>
+                <Category>Inner Classes</Category>
+              </Categories>
+              <SCOPE>All</SCOPE>
+              <VISIBILITY>private</VISIBILITY>
             </state>
           </provider>
         </entry>
@@ -315,10 +342,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -336,6 +363,8 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -406,134 +435,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PJKURS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PJKURS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pjkurs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PJKURS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PJKURS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pjkurs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PJKURS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PJKURS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pjkurs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PJKURS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PJKURS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pjkurs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -541,7 +444,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Mati/Dokumenty z kodu/classDiagram.png" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DoSprawdzenia" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
   </component>
@@ -958,11 +861,12 @@
       <updated>1515580044917</updated>
       <workItem from="1515580048755" duration="2183000" />
       <workItem from="1515593721220" duration="2235000" />
+      <workItem from="1516528165056" duration="551000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4418000" />
+    <option name="totallyTimeSpent" value="4969000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -974,38 +878,38 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25349087" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2563966" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1048,11 +952,99 @@
     <option name="serverIp" value="localhost" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/NavigatorUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MainView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3077">
+          <caret line="181" column="33" lean-forward="false" selection-start-line="181" selection-start-column="33" selection-end-line="181" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/LoggedInPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+          <folding>
+            <element signature="e#3050#3051#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/LoginPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="65" lean-forward="false" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="65" />
+          <folding>
+            <marker date="1516489807487" expanded="true" signature="3236:3243" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MyContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/MainViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="80" column="45" lean-forward="false" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.pjkurs">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.pjkurs</OriginalElement>
+          <nodes>
+            <node x="" y="">com.pjkurs.domain.Course</node>
+            <node x="" y="">com.pjkurs.domain.MyCourse</node>
+            <node x="" y="">com.pjkurs.vaadin.views.system.InterfaceMyView</node>
+            <node x="" y="">com.pjkurs.vaadin.views.system.MyModel</node>
+            <node x="" y="">com.pjkurs.InterfacePjkursDataProvider</node>
+            <node x="" y="">com.pjkurs.vaadin.views.models.MyAccountViewModel</node>
+            <node x="" y="">com.pjkurs.vaadin.views.InterfacePJKURSView</node>
+            <node x="" y="">com.pjkurs.domain.Client</node>
+            <node x="" y="">com.pjkurs.domain.ArchiveCourse</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="1071.4999999999998" y="1509.6666666666665" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="31" column="35" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="31" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/utils/DbConnector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1069,11 +1061,7 @@
         <state relative-caret-position="405">
           <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#807#808#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
-            <element signature="e#885#886#0" expanded="true" />
-            <element signature="e#935#936#0" expanded="true" />
+            <element signature="e#3050#3051#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1090,7 +1078,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="20" column="65" lean-forward="true" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="65" />
-          <folding />
+          <folding>
+            <marker date="1516489807487" expanded="true" signature="3236:3243" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1098,10 +1088,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
           <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <marker date="1515583260879" expanded="true" signature="1036:1065" ph="{...}" />
-            <marker date="1515583260879" expanded="true" signature="1096:1103" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1109,10 +1096,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1431">
           <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding>
-            <element signature="e#1248#1249#0" expanded="true" />
-            <element signature="e#1281#1282#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1120,20 +1104,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-          <folding>
-            <marker date="1515583844060" expanded="true" signature="540:567" ph="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/InterfaceMyView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/InterfaceMyView.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MainView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1458">
@@ -1201,7 +1176,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="27" column="4" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1216,25 +1190,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/InterfaceMyView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/InterfaceMyView.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/InterfacePJKURSView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="16" column="17" lean-forward="false" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-          <folding>
-            <marker date="1515583844060" expanded="true" signature="540:567" ph="/**...*/" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1248,34 +1212,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MyContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="459">
           <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding>
-            <marker date="1515583260879" expanded="true" signature="1036:1065" ph="{...}" />
-            <marker date="1515583260879" expanded="true" signature="1096:1103" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/LoggedInPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+        <state relative-caret-position="255">
+          <caret line="92" column="26" lean-forward="false" selection-start-line="92" selection-start-column="26" selection-end-line="92" selection-end-column="26" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#807#808#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
-            <element signature="e#885#886#0" expanded="true" />
-            <element signature="e#935#936#0" expanded="true" />
+            <element signature="e#3050#3051#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/LoginPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="20" column="65" lean-forward="false" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="65" />
-          <folding />
+        <state relative-caret-position="629">
+          <caret line="38" column="65" lean-forward="false" selection-start-line="38" selection-start-column="65" selection-end-line="38" selection-end-column="65" />
+          <folding>
+            <marker date="1516489807487" expanded="true" signature="3236:3243" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1292,7 +1251,24 @@
           <Categories>
             <Category>All</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
           <VISIBILITY>Details</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MainView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="70" column="5" lean-forward="false" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/NavigatorUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="130" column="0" lean-forward="true" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1302,35 +1278,25 @@
           <ID>JAVA</ID>
           <OriginalElement />
           <nodes>
-            <node x="181.0" y="442.0">com</node>
-            <node x="206.0" y="278.0">VAADIN</node>
-            <node x="0.0" y="278.0">netscape</node>
-            <node x="197.0" y="360.0">oracle</node>
-            <node x="0.0" y="524.0">org</node>
-            <node x="339.0" y="524.0">jdk.jfr</node>
-            <node x="408.0" y="278.0">jdk.nashorn</node>
-            <node x="170.0" y="524.0">sun</node>
-            <node x="0.0" y="196.0">META-INF</node>
-            <node x="214.0" y="196.0">elemental</node>
-            <node x="234.0" y="0.0">jdk.management</node>
-            <node x="33.0" y="114.0">jdk.net</node>
-            <node x="357.0" y="442.0">java</node>
-            <node x="0.0" y="442.0">javax</node>
-            <node x="0.0" y="360.0">jdk.internal</node>
-            <node x="385.0" y="360.0">javafx</node>
-            <node x="427.0" y="196.0">OSGI-INF</node>
-            <node x="0.0" y="0.0">jdk.Exported</node>
+            <node x="308.0" y="225.0">com</node>
+            <node x="0.0" y="150.0">VAADIN</node>
+            <node x="175.0" y="75.0">netscape</node>
+            <node x="169.0" y="150.0">oracle</node>
+            <node x="292.0" y="300.0">org</node>
+            <node x="147.0" y="300.0">sun</node>
+            <node x="0.0" y="0.0">META-INF</node>
+            <node x="0.0" y="375.0">jdk</node>
+            <node x="181.0" y="0.0">elemental</node>
+            <node x="0.0" y="300.0">java</node>
+            <node x="156.0" y="225.0">javax</node>
+            <node x="0.0" y="225.0">javafx</node>
+            <node x="0.0" y="75.0">OSGI-INF</node>
           </nodes>
           <notes />
-          <edges>
-            <edge source="jdk.net" target="jdk.Exported">
-              <point x="0.0" y="-18.5" />
-              <point x="0.0" y="32.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="-224.5" y="71.5" />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-251.0" y="21.5" />
           <SelectedNodes>
-            <node>java</node>
+            <node>META-INF</node>
           </SelectedNodes>
           <Categories>
             <Category>Fields</Category>
@@ -1341,25 +1307,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="31" column="35" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="31" selection-end-column="35" />
-          <folding>
-            <element signature="e#878#879#0" expanded="true" />
-            <element signature="e#905#906#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/MainViewModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
-          <caret line="80" column="45" lean-forward="false" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
-          <folding>
-            <element signature="e#1248#1249#0" expanded="true" />
-            <element signature="e#1281#1282#0" expanded="true" />
-          </folding>
+          <caret line="147" column="45" lean-forward="false" selection-start-line="147" selection-start-column="45" selection-end-line="147" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="77" column="35" lean-forward="false" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1369,187 +1329,219 @@
           <ID>JAVA</ID>
           <OriginalElement>com.pjkurs</OriginalElement>
           <nodes>
-            <node x="993.0" y="1504.0">com.pjkurs.vaadin.NavigatorUI.View</node>
-            <node x="1346.0" y="522.5">com.pjkurs.vaadin.ui.menu.MainMenuPanel</node>
-            <node x="2398.0" y="522.5">com.pjkurs.vaadin.ui.containers.DetailedCoursePanel</node>
-            <node x="82.0" y="1504.0">com.pjkurs.domain.Course</node>
-            <node x="887.0" y="455.0">com.pjkurs.vaadin.views.MyAccountView</node>
-            <node x="2006.0" y="0.0">com.pjkurs.vaadin.views.system.InterfaceMyView</node>
-            <node x="0.0" y="1753.0">com.pjkurs.domain.MyCourse</node>
-            <node x="1609.0" y="522.5">com.pjkurs.vaadin.ui.menu.MyMainMenuPanel</node>
-            <node x="459.5" y="767.0">com.pjkurs.vaadin.views.system.MyModel</node>
-            <node x="1251.0" y="767.0">com.pjkurs.InterfacePjkursDataProvider</node>
-            <node x="2924.0" y="522.5">com.pjkurs.vaadin.ui.containers.LoginPanel</node>
-            <node x="411.0000000000002" y="-51.999999999999744">com.pjkurs.vaadin.NavigatorUI</node>
-            <node x="0.0" y="1206.0">com.pjkurs.vaadin.views.models.MyAccountViewModel</node>
-            <node x="2135.0" y="522.5">com.pjkurs.vaadin.ui.containers.TopPanel</node>
-            <node x="368.75" y="168.5">com.pjkurs.vaadin.views.InterfacePJKURSView</node>
-            <node x="2035.0" y="168.0">com.pjkurs.vaadin.views.MyContainer</node>
-            <node x="1872.0" y="522.5">com.pjkurs.vaadin.ui.containers.StudentCourseDataPanel</node>
-            <node x="438.0" y="1098.0">com.pjkurs.vaadin.views.models.MainViewModel</node>
-            <node x="1251.0" y="1097.0">com.pjkurs.db.DbDataProvider</node>
-            <node x="1237.0" y="1504.0">com.pjkurs.domain.Client</node>
-            <node x="485.0" y="1504.0">com.pjkurs.usables.Words</node>
-            <node x="3187.0" y="522.5">com.pjkurs.vaadin.ui.containers.RegisterPanel</node>
-            <node x="203.0" y="1753.0">com.pjkurs.domain.ArchiveCourse</node>
-            <node x="1014.0" y="1260.0">com.pjkurs.vaadin.views.models.RegisterViewModel</node>
-            <node x="0.0" y="387.0">com.pjkurs.vaadin.views.MainView</node>
-            <node x="321.0" y="1862.0">com.pjkurs.utils.DbConnector</node>
-            <node x="2661.0" y="522.5">com.pjkurs.vaadin.ui.containers.LoggedInPanel</node>
-            <node x="3450.0" y="522.5">com.pjkurs.vaadin.ui.containers.CoursesPanel</node>
-            <node x="428.0" y="441.5">com.pjkurs.vaadin.views.RegisterView</node>
+            <node x="1877.0833333333333" y="1971.3333333333333">com.pjkurs.vaadin.NavigatorUI.View</node>
+            <node x="2251.75" y="2848.6666666666665">com.pjkurs.db.DBConnector</node>
+            <node x="218.0" y="2427.5">com.pjkurs.vaadin.ui.menu.MainMenuPanel</node>
+            <node x="904.0" y="2427.5">com.pjkurs.vaadin.ui.containers.DetailedCoursePanel</node>
+            <node x="860.75" y="2840.6666666666665">com.pjkurs.domain.Course</node>
+            <node x="1331.5" y="2087.0">com.pjkurs.vaadin.views.system.MyContainer</node>
+            <node x="2835.0" y="2394.5">com.pjkurs.vaadin.views.MyAccountView</node>
+            <node x="1022.0" y="3118.6666666666665">com.pjkurs.domain.MyCourse</node>
+            <node x="1328.5" y="1919.0">com.pjkurs.vaadin.views.system.InterfaceMyView</node>
+            <node x="1558.0" y="2427.5">com.pjkurs.vaadin.ui.menu.MyMainMenuPanel</node>
+            <node x="1751.166666666667" y="2630.0">com.pjkurs.InterfacePjkursDataProvider</node>
+            <node x="597.9999999999999" y="-128.33333333333337">com.pjkurs.vaadin.views.system.MyModel</node>
+            <node x="1340.0" y="2427.5">com.pjkurs.vaadin.ui.containers.LoginPanel</node>
+            <node x="1930.0833333333333" y="1780.3333333333333">com.pjkurs.vaadin.NavigatorUI</node>
+            <node x="1003.9999999999999" y="305.16666666666663">com.pjkurs.vaadin.views.models.MyAccountViewModel</node>
+            <node x="1147.75" y="2738.6666666666665">com.pjkurs.domain.DBObject</node>
+            <node x="436.0" y="2416.5">com.pjkurs.vaadin.ui.containers.TopPanel</node>
+            <node x="2592.75" y="2120.5">com.pjkurs.vaadin.views.InterfacePJKURSView</node>
+            <node x="2095.083333333333" y="1993.3333333333333">com.pjkurs.vaadin.NavigatorUI.MainViewServlet</node>
+            <node x="1122.0" y="2427.5">com.pjkurs.vaadin.ui.containers.StudentCourseDataPanel</node>
+            <node x="674.9999999999999" y="627.6666666666666">com.pjkurs.vaadin.views.models.RegisterViewModel.RegisterData</node>
+            <node x="698.0" y="2405.0">com.pjkurs.vaadin.ui.containers.CoursePanel</node>
+            <node x="29.999999999999886" y="150.66666666666663">com.pjkurs.vaadin.views.models.MainViewModel</node>
+            <node x="1382.75" y="2895.6666666666665">com.pjkurs.domain.Appusers</node>
+            <node x="1748.666666666667" y="2952.0">com.pjkurs.db.DbDataProvider</node>
+            <node x="1161.75" y="2884.6666666666665">com.pjkurs.domain.Client</node>
+            <node x="0.0" y="1030.0">com.pjkurs.usables.Words</node>
+            <node x="216.99999999999994" y="660.6666666666666">com.pjkurs.vaadin.views.models.MainViewModel.LoginData</node>
+            <node x="0.0" y="2427.5">com.pjkurs.vaadin.ui.containers.RegisterPanel</node>
+            <node x="811.0" y="3118.6666666666665">com.pjkurs.domain.ArchiveCourse</node>
+            <node x="657.9999999999999" y="293.66666666666663">com.pjkurs.vaadin.views.models.RegisterViewModel</node>
+            <node x="2490.0" y="2350.0">com.pjkurs.vaadin.views.MainView</node>
+            <node x="1776.0" y="2427.5">com.pjkurs.vaadin.ui.containers.LoggedInPanel</node>
+            <node x="1994.0" y="2427.5">com.pjkurs.vaadin.ui.containers.CoursesPanel</node>
+            <node x="2212.0" y="2394.5">com.pjkurs.vaadin.views.RegisterView</node>
+            <node x="1090.0" y="1265.3333333333337">com.pjkurs.utils.Params</node>
           </nodes>
           <notes />
           <edges>
-            <edge source="com.pjkurs.vaadin.views.RegisterView" target="com.pjkurs.vaadin.views.MyContainer">
-              <point x="109.75" y="-113.0" />
-              <point x="757.25" y="327.0" />
-              <point x="2057.5" y="327.0" />
-              <point x="-67.5" y="59.5" />
-            </edge>
             <edge source="com.pjkurs.vaadin.views.RegisterView" target="com.pjkurs.vaadin.views.InterfacePJKURSView">
-              <point x="-109.75" y="-113.0" />
-              <point x="0.0" y="59.0" />
-            </edge>
-            <edge source="com.pjkurs.vaadin.ui.menu.MainMenuPanel" target="com.pjkurs.vaadin.views.MyContainer">
-              <point x="0.0" y="-32.0" />
-              <point x="1467.5" y="347.0" />
-              <point x="2087.5" y="347.0" />
-              <point x="-37.5" y="59.5" />
-            </edge>
-            <edge source="com.pjkurs.vaadin.ui.containers.LoginPanel" target="com.pjkurs.vaadin.views.MyContainer">
-              <point x="0.0" y="-32.0" />
-              <point x="3045.5" y="337.0" />
-              <point x="2177.5" y="337.0" />
-              <point x="52.5" y="59.5" />
-            </edge>
-            <edge source="com.pjkurs.vaadin.ui.containers.CoursesPanel" target="com.pjkurs.vaadin.views.MyContainer">
-              <point x="0.0" y="-32.0" />
-              <point x="3571.5" y="317.0" />
-              <point x="2207.5" y="317.0" />
-              <point x="82.5" y="59.5" />
+              <point x="64.5" y="-59.0" />
+              <point x="2405.5" y="2330.0" />
+              <point x="2639.75" y="2330.0" />
+              <point x="-94.0" y="48.0" />
             </edge>
             <edge source="com.pjkurs.vaadin.views.models.MyAccountViewModel" target="com.pjkurs.vaadin.views.system.MyModel">
-              <point x="0.0" y="-72.5" />
-              <point x="209.0" y="1073.0" />
-              <point x="545.0" y="1073.0" />
-              <point x="-171.0" y="140.5" />
+              <point x="0.0" y="-59.0" />
+              <point x="1181.0" y="125.66666666666663" />
+              <point x="969.6666666666666" y="125.66666666666663" />
+              <point x="148.66666666666663" y="114.5" />
             </edge>
-            <edge source="com.pjkurs.vaadin.ui.containers.DetailedCoursePanel" target="com.pjkurs.vaadin.views.MyContainer">
-              <point x="0.0" y="-32.0" />
-              <point x="2519.5" y="357.0" />
-              <point x="2147.5" y="357.0" />
-              <point x="22.5" y="59.5" />
+            <edge source="com.pjkurs.vaadin.NavigatorUI.View" target="com.pjkurs.vaadin.NavigatorUI">
+              <point x="0.0" y="-81.5" />
+              <point x="1976.0833333333333" y="1946.3333333333333" />
+              <point x="2010.3333333333333" y="1946.3333333333333" />
+              <point x="-80.25" y="70.5" />
             </edge>
-            <edge source="com.pjkurs.db.DbDataProvider" target="com.pjkurs.InterfacePjkursDataProvider">
-              <point x="0.0" y="-140.0" />
-              <point x="0.0" y="140.0" />
+            <edge source="com.pjkurs.vaadin.ui.containers.StudentCourseDataPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+              <point x="0.0" y="-26.0" />
+              <point x="1221.0" y="2330.0" />
+              <point x="1422.4615384615383" y="2330.0" />
+              <point x="-16.53846153846166" y="81.5" />
             </edge>
-            <edge source="com.pjkurs.vaadin.ui.menu.MyMainMenuPanel" target="com.pjkurs.vaadin.views.MyContainer">
-              <point x="0.0" y="-32.0" />
-              <point x="1730.5" y="357.0" />
-              <point x="2102.5" y="357.0" />
-              <point x="-22.5" y="59.5" />
+            <edge source="com.pjkurs.vaadin.views.MyAccountView" target="com.pjkurs.vaadin.views.system.MyContainer">
+              <point x="-64.5" y="-59.0" />
+              <point x="2899.5" y="2280.0" />
+              <point x="1538.2307692307693" y="2280.0" />
+              <point x="99.23076923076928" y="81.5" />
             </edge>
-            <edge source="com.pjkurs.vaadin.ui.containers.RegisterPanel" target="com.pjkurs.vaadin.views.MyContainer">
-              <point x="0.0" y="-32.0" />
-              <point x="3308.5" y="327.0" />
-              <point x="2192.5" y="327.0" />
-              <point x="67.5" y="59.5" />
+            <edge source="com.pjkurs.vaadin.ui.containers.LoggedInPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+              <point x="0.0" y="-26.0" />
+              <point x="1875.0" y="2320.0" />
+              <point x="1472.076923076923" y="2320.0" />
+              <point x="33.076923076923094" y="81.5" />
+            </edge>
+            <edge source="com.pjkurs.domain.Course" target="com.pjkurs.domain.DBObject">
+              <point x="0.0" y="-114.0" />
+              <point x="1001.25" y="2815.6666666666665" />
+              <point x="1185.9166666666667" y="2815.6666666666665" />
+              <point x="-76.33333333333326" y="26.0" />
+            </edge>
+            <edge source="com.pjkurs.vaadin.ui.containers.RegisterPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+              <point x="0.0" y="-26.0" />
+              <point x="99.0" y="2280.0" />
+              <point x="1339.7692307692307" y="2280.0" />
+              <point x="-99.23076923076928" y="81.5" />
+            </edge>
+            <edge source="com.pjkurs.vaadin.views.RegisterView" target="com.pjkurs.vaadin.views.system.MyContainer">
+              <point x="-64.5" y="-59.0" />
+              <point x="2276.5" y="2300.0" />
+              <point x="1505.1538461538462" y="2300.0" />
+              <point x="66.15384615384619" y="81.5" />
+            </edge>
+            <edge source="com.pjkurs.vaadin.views.MainView" target="com.pjkurs.vaadin.views.system.MyContainer">
+              <point x="-81.25" y="-103.5" />
+              <point x="2571.25" y="2290.0" />
+              <point x="1521.6923076923076" y="2290.0" />
+              <point x="82.69230769230762" y="81.5" />
             </edge>
             <edge source="com.pjkurs.vaadin.views.MainView" target="com.pjkurs.vaadin.views.InterfacePJKURSView">
-              <point x="-102.0" y="-167.5" />
-              <point x="102.0" y="307.0" />
-              <point x="425.08333333333326" y="307.0" />
-              <point x="-112.66666666666669" y="59.0" />
+              <point x="81.25" y="-103.5" />
+              <point x="0.0" y="48.0" />
             </edge>
-            <edge source="com.pjkurs.vaadin.ui.containers.TopPanel" target="com.pjkurs.vaadin.views.MyContainer">
-              <point x="0.0" y="-32.0" />
-              <point x="2256.5" y="367.0" />
-              <point x="2132.5" y="367.0" />
-              <point x="7.5" y="59.5" />
+            <edge source="com.pjkurs.domain.Client" target="com.pjkurs.domain.DBObject">
+              <point x="0.0" y="-70.0" />
+              <point x="0.0" y="26.0" />
             </edge>
-            <edge source="com.pjkurs.vaadin.views.MyContainer" target="com.pjkurs.vaadin.views.system.InterfaceMyView">
-              <point x="0.0" y="-59.5" />
-              <point x="0.0" y="59.0" />
+            <edge source="com.pjkurs.vaadin.views.models.RegisterViewModel.RegisterData" target="com.pjkurs.vaadin.views.models.RegisterViewModel">
+              <point x="0.0" y="-114.5" />
+              <point x="0.0" y="70.5" />
             </edge>
-            <edge source="com.pjkurs.vaadin.views.models.MainViewModel" target="com.pjkurs.vaadin.views.system.MyModel">
-              <point x="0.0" y="-180.5" />
-              <point x="0.0" y="140.5" />
-            </edge>
-            <edge source="com.pjkurs.domain.ArchiveCourse" target="com.pjkurs.domain.Course">
-              <point x="0.0" y="-32.0" />
-              <point x="321.5" y="1728.0" />
-              <point x="268.75" y="1728.0" />
-              <point x="62.25" y="99.5" />
-            </edge>
-            <edge source="com.pjkurs.vaadin.ui.containers.StudentCourseDataPanel" target="com.pjkurs.vaadin.views.MyContainer">
-              <point x="0.0" y="-32.0" />
-              <point x="1993.5" y="367.0" />
-              <point x="2117.5" y="367.0" />
-              <point x="-7.5" y="59.5" />
-            </edge>
-            <edge source="com.pjkurs.vaadin.views.models.RegisterViewModel" target="com.pjkurs.vaadin.views.system.MyModel">
-              <point x="0.0" y="-18.5" />
-              <point x="1110.0" y="1073.0" />
-              <point x="887.0" y="1073.0" />
-              <point x="171.0" y="140.5" />
+            <edge source="com.pjkurs.vaadin.views.models.MainViewModel.LoginData" target="com.pjkurs.vaadin.views.models.MainViewModel">
+              <point x="0.0" y="-81.5" />
+              <point x="0.0" y="213.5" />
             </edge>
             <edge source="com.pjkurs.domain.MyCourse" target="com.pjkurs.domain.Course">
-              <point x="0.0" y="-32.0" />
-              <point x="91.5" y="1728.0" />
-              <point x="144.25" y="1728.0" />
-              <point x="-62.25" y="99.5" />
+              <point x="0.0" y="-26.0" />
+              <point x="1096.0" y="3093.6666666666665" />
+              <point x="1071.5" y="3093.6666666666665" />
+              <point x="70.25" y="114.0" />
             </edge>
-            <edge source="com.pjkurs.vaadin.views.MyAccountView" target="com.pjkurs.vaadin.views.MyContainer">
-              <point x="109.75" y="-99.5" />
-              <point x="1216.25" y="337.0" />
-              <point x="2072.5" y="337.0" />
-              <point x="-52.5" y="59.5" />
+            <edge source="com.pjkurs.vaadin.ui.menu.MyMainMenuPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+              <point x="0.0" y="-26.0" />
+              <point x="1657.0" y="2330.0" />
+              <point x="1455.5384615384614" y="2330.0" />
+              <point x="16.538461538461434" y="81.5" />
             </edge>
-            <edge source="com.pjkurs.vaadin.ui.containers.LoggedInPanel" target="com.pjkurs.vaadin.views.MyContainer">
-              <point x="0.0" y="-32.0" />
-              <point x="2782.5" y="347.0" />
-              <point x="2162.5" y="347.0" />
-              <point x="37.5" y="59.5" />
+            <edge source="com.pjkurs.vaadin.views.system.MyContainer" target="com.pjkurs.vaadin.views.system.InterfaceMyView">
+              <point x="0.0" y="-81.5" />
+              <point x="0.0" y="59.0" />
             </edge>
-            <edge source="com.pjkurs.vaadin.views.MainView" target="com.pjkurs.vaadin.views.MyContainer">
-              <point x="102.0" y="-167.5" />
-              <point x="306.0" y="317.0" />
-              <point x="2042.5" y="317.0" />
-              <point x="-82.5" y="59.5" />
+            <edge source="com.pjkurs.vaadin.ui.containers.TopPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+              <point x="0.0" y="-37.0" />
+              <point x="557.0" y="2300.0" />
+              <point x="1372.8461538461538" y="2300.0" />
+              <point x="-66.15384615384619" y="81.5" />
+            </edge>
+            <edge source="com.pjkurs.db.DbDataProvider" target="com.pjkurs.InterfacePjkursDataProvider">
+              <point x="0.0" y="-158.5" />
+              <point x="0.0" y="136.0" />
+            </edge>
+            <edge source="com.pjkurs.domain.Appusers" target="com.pjkurs.domain.DBObject">
+              <point x="0.0" y="-59.0" />
+              <point x="1473.25" y="2815.6666666666665" />
+              <point x="1338.5833333333333" y="2815.6666666666665" />
+              <point x="76.33333333333326" y="26.0" />
+            </edge>
+            <edge source="com.pjkurs.vaadin.ui.menu.MainMenuPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+              <point x="0.0" y="-26.0" />
+              <point x="317.0" y="2290.0" />
+              <point x="1356.3076923076924" y="2290.0" />
+              <point x="-82.69230769230762" y="81.5" />
+            </edge>
+            <edge source="com.pjkurs.vaadin.ui.containers.CoursesPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+              <point x="0.0" y="-26.0" />
+              <point x="2093.0" y="2310.0" />
+              <point x="1488.6153846153845" y="2310.0" />
+              <point x="49.61538461538453" y="81.5" />
+            </edge>
+            <edge source="com.pjkurs.vaadin.ui.containers.LoginPanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+              <point x="0.0" y="-26.0" />
+              <point x="0.0" y="81.5" />
+            </edge>
+            <edge source="com.pjkurs.vaadin.NavigatorUI.MainViewServlet" target="com.pjkurs.vaadin.NavigatorUI">
+              <point x="0.0" y="-59.5" />
+              <point x="2205.083333333333" y="1946.3333333333333" />
+              <point x="2170.833333333333" y="1946.3333333333333" />
+              <point x="80.25" y="70.5" />
+            </edge>
+            <edge source="com.pjkurs.domain.ArchiveCourse" target="com.pjkurs.domain.Course">
+              <point x="0.0" y="-26.0" />
+              <point x="906.5" y="3093.6666666666665" />
+              <point x="931.0" y="3093.6666666666665" />
+              <point x="-70.25" y="114.0" />
+            </edge>
+            <edge source="com.pjkurs.vaadin.views.models.MainViewModel" target="com.pjkurs.vaadin.views.system.MyModel">
+              <point x="0.0" y="-213.5" />
+              <point x="333.9999999999999" y="125.66666666666663" />
+              <point x="672.3333333333334" y="125.66666666666663" />
+              <point x="-148.66666666666663" y="114.5" />
+            </edge>
+            <edge source="com.pjkurs.vaadin.views.models.RegisterViewModel" target="com.pjkurs.vaadin.views.system.MyModel">
+              <point x="0.0" y="-70.5" />
+              <point x="0.0" y="114.5" />
+            </edge>
+            <edge source="com.pjkurs.vaadin.ui.containers.DetailedCoursePanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+              <point x="0.0" y="-26.0" />
+              <point x="1003.0" y="2320.0" />
+              <point x="1405.923076923077" y="2320.0" />
+              <point x="-33.076923076923094" y="81.5" />
+            </edge>
+            <edge source="com.pjkurs.vaadin.ui.containers.CoursePanel" target="com.pjkurs.vaadin.views.system.MyContainer">
+              <point x="0.0" y="-48.5" />
+              <point x="791.0" y="2310.0" />
+              <point x="1389.3846153846155" y="2310.0" />
+              <point x="-49.61538461538453" y="81.5" />
             </edge>
             <edge source="com.pjkurs.vaadin.views.MyAccountView" target="com.pjkurs.vaadin.views.InterfacePJKURSView">
-              <point x="-109.75" y="-99.5" />
-              <point x="996.75" y="307.0" />
-              <point x="650.4166666666667" y="307.0" />
-              <point x="112.66666666666674" y="59.0" />
+              <point x="64.5" y="-59.0" />
+              <point x="3028.5" y="2270.0" />
+              <point x="2827.75" y="2270.0" />
+              <point x="94.0" y="48.0" />
             </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="308.99999999999994" y="1208.0" />
+          <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="1102.4999999999998" y="2091.6666666666665" />
           <SelectedNodes />
           <Categories>
             <Category>Fields</Category>
             <Category>Methods</Category>
+            <Category>Inner Classes</Category>
           </Categories>
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MainView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264">
-          <caret line="181" column="33" lean-forward="false" selection-start-line="181" selection-start-column="33" selection-end-line="181" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/NavigatorUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
