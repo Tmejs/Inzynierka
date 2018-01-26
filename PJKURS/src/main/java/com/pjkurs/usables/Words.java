@@ -58,6 +58,7 @@ public class Words {
     public final static String DB_NAME = "pjkursdb";
     public final static String LOGIN = "root";
     public final static String HASLO = "root";
+    
     public final static String TXT_CORRECTLY_LOGGED = "Poprawnie zalogowano";
     public static String TXT_WRONG_LOGIN_DATA = "Błędne dane";
     public static String TXT_BACK = "Powrót";

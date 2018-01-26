@@ -21,7 +21,6 @@ import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
-import com.vaadin.server.Sizeable;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;

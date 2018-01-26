@@ -16,7 +16,6 @@
  */
 package com.pjkurs.vaadin.views.models;
 
-import com.pjkurs.InterfacePjkursDataProvider;
 import com.pjkurs.db.DbDataProvider;
 import com.pjkurs.domain.Client;
 import com.pjkurs.domain.Course;
@@ -28,7 +27,6 @@ import com.vaadin.data.Binder;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.Resource;
 import com.vaadin.server.VaadinService;
-import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;

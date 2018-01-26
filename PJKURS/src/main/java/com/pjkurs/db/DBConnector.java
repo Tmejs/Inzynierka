@@ -20,7 +20,7 @@ public class DBConnector {
 
     Connection connection;
 
-    public DBConnector() {
+    public DBConnector(){
     }
 
     public Boolean connect(String db, String login, String password) throws Exception {

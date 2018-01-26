@@ -66,7 +66,6 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
     public final Component generateTopPanel() {
         //zwracamy top panel
         TopPanel topPanel = new TopPanel<>(getModel());
-
         return topPanel;
     }
 

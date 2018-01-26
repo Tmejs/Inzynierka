@@ -21,7 +21,6 @@ import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.TextField;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 
