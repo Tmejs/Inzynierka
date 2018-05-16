@@ -17,8 +17,14 @@
 package com.pjkurs.vaadin.views;
 
 import com.pjkurs.domain.Appusers;
+import com.pjkurs.domain.Course;
 import com.pjkurs.vaadin.NavigatorUI;
+import com.pjkurs.vaadin.ui.containers.ArchiveCoursesPanel;
+import com.pjkurs.vaadin.ui.containers.ContactDataPanel;
 import com.pjkurs.vaadin.ui.containers.CoursesPanel;
+import com.pjkurs.vaadin.ui.containers.DetailedCoursePanel;
+import com.pjkurs.vaadin.ui.containers.MyCoursesPanel;
+import com.pjkurs.vaadin.ui.containers.PersonalDataPanel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.ui.containers.TopPanel;
 import com.pjkurs.vaadin.ui.menu.MainMenuPanel;
@@ -29,8 +35,11 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -59,6 +68,7 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
         mainLayout.addComponent(menuPanel);
         mainPanel = generateMainAppPanel();
         mainLayout.addComponent(mainPanel);
+//        setCoursesAsMainPanel();
         return mainLayout;
     }
 
@@ -77,27 +87,65 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
 
     @Override
     public Component generateMainAppPanel() {
-
         VerticalLayout layout = new VerticalLayout();
-        layout.setSizeUndefined();
-        layout.addComponent(new HorizontalLayout(new Label("email"), new Label("haslo")));
-        for (Appusers user : NavigatorUI.getDBProvider().getUsers()) {
-            HorizontalLayout lt = new HorizontalLayout();
-            lt.setSizeUndefined();
-            lt.addComponent(new Label(user.email));
-            lt.addComponent(new Label(user.haslo));
-            try {
-                lt.addComponent(new Label(user.data_dodania.toString()));
-            } catch (Exception e) {
-            }
-            layout.addComponent(lt);
-        }
+//        layout.setSizeUndefined();
+//        layout.addComponent(new HorizontalLayout(new Label("email"), new Label("haslo")));
+//        for (Appusers user : NavigatorUI.getDBProvider().getUsers()) {
+//            HorizontalLayout lt = new HorizontalLayout();
+//            lt.setSizeUndefined();
+//            lt.addComponent(new Label(user.email));
+//            lt.addComponent(new Label(user.haslo));
+//            try {
+//                lt.addComponent(new Label(user.data_dodania.toString()));
+//            } catch (Exception e) {
+//            }
+//            layout.addComponent(lt);
+//        }
         return layout;
     }
 
-    public void setCoursesAsMainPanel() {
-        CoursesPanel panel = new CoursesPanel(getModel());
+    public void setCoursesAsMainPanel(Long categoryId, MenuBar.MenuItem selectedItem) {
+        CoursesPanel panel = new CoursesPanel(categoryId,getModel());
         ((VerticalLayout) this.getContent()).replaceComponent(mainPanel, panel);
         mainPanel = panel;
     }
+
+    public void setDetailedCoursePanel(Course course) {
+        DetailedCoursePanel panel = new DetailedCoursePanel(getModel(), course);
+    }
+
+    public void setMyCoursesAsMainPanel(MenuBar.MenuItem item) {
+        MyCoursesPanel panel = new MyCoursesPanel(getModel());
+        ((VerticalLayout) this.getContent()).replaceComponent(mainPanel, panel);
+        mainPanel = panel;
+    }
+
+    public void setMyDataAsPanel() {
+        PersonalDataPanel panel = new PersonalDataPanel(getModel());
+        ((VerticalLayout) this.getContent()).replaceComponent(mainPanel, panel);
+        mainPanel = panel;
+    }
+
+    public void setDetailedCourseAsMainPanel(Integer id) {
+        Logger.getGlobal().log(Level.SEVERE, "setDetailedCourseAsMainPanel:" + id);
+
+        Course course = NavigatorUI.getDBProvider().getCourse(id);
+        Logger.getGlobal().log(Level.SEVERE, course.name);
+        DetailedCoursePanel panel = new DetailedCoursePanel(getModel(), course);
+        ((VerticalLayout) this.getContent()).replaceComponent(mainPanel, panel);
+        mainPanel = panel;
+    }
+
+    public void setContactPanelAsMainPanel(MenuBar.MenuItem selectedItem) {
+        ContactDataPanel panel = new ContactDataPanel(getModel());
+        ((VerticalLayout) this.getContent()).replaceComponent(mainPanel, panel);
+        mainPanel = panel;
+    }
+
+    public void setArchiveCoursesPanelAsMainPanel(MenuBar.MenuItem selectedItem) {
+        ArchiveCoursesPanel panel = new ArchiveCoursesPanel(getModel());
+        ((VerticalLayout) this.getContent()).replaceComponent(mainPanel, panel);
+        mainPanel = panel;
+    }
+
 }

@@ -16,31 +16,35 @@
  */
 package com.pjkurs.vaadin.views.models;
 
-import com.pjkurs.db.DbDataProvider;
-import com.pjkurs.domain.Client;
 import com.pjkurs.domain.Course;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.MainView;
+import com.pjkurs.vaadin.views.controllers.InterfaceMainViewController;
+import com.pjkurs.vaadin.views.controllers.MainViewControllerImpl;
 import com.vaadin.data.Binder;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.Resource;
 import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Tmejs
  */
-public class MainViewModel extends MyModel<MainView> {
+public class MainViewModel extends MyModel<MainView> implements InterfaceMainViewController {
 
     public final static String PARAM_BINDED_LOGIN_DATA = "PARAM_BINDED_LOGIN_DATA";
     public final static String PARAM_BINDER_LOGIN = "PARAM_BINDER_LOGIN";
+    private InterfaceMainViewController controller;
 
     public class LoginData implements java.io.Serializable {
 
@@ -65,44 +69,63 @@ public class MainViewModel extends MyModel<MainView> {
 
     }
 
+    private InterfaceMainViewController getController() {
+        return controller;
+    }
+
     public MainViewModel(UI ui) {
         this.currentUI = ui;
+        this.controller = new MainViewControllerImpl(this);
     }
 
-    public void coursesButtonClicked(Button.ClickEvent event) {
-
+    @Override
+    public void contactDataButtonClicked(MenuBar.MenuItem selectedItem) {
+        getController().contactDataButtonClicked(selectedItem);
     }
 
-    public void archiveButtonClicked(Button.ClickEvent event) {
-
+    @Override
+    public void coursesButtonClicked(Long categoryId, MenuBar.MenuItem event) {
+        getController().coursesButtonClicked(categoryId, event);
     }
 
-    public void detailCourseButtonClickd(Button.ClickEvent event) {
-
+    @Override
+    public void archiveCoursesButtonClicked(MenuBar.MenuItem selectedItem) {
+        getController().archiveCoursesButtonClicked(selectedItem);
     }
 
-    public void registerButtonClicked(Button.ClickEvent event) {
-        registerNewUser();
+    @Override
+    public void detailCourseButtonClickd(Button.ClickEvent event, Integer id) {
+        Logger.getGlobal().log(Level.SEVERE, "detailCourseButtonClickd:");
+        getController().detailCourseButtonClickd(event, id);
     }
 
-    public void myCoursesButtonClicked(Button.ClickEvent event) {
-
+    @Override
+    public void myCoursesButtonClicked(MenuBar.MenuItem item) {
+        getController().myCoursesButtonClicked(item);
     }
 
+    @Override
     public void personalDataButtonClicked(Button.ClickEvent event) {
-
+        getController().personalDataButtonClicked(event);
     }
 
+    @Override
     public void registerToCourseButtonClicked(Button.ClickEvent event) {
+        getController().registerToCourseButtonClicked(event);
+    }
+
+    @Override
+    public void registerButtonClicked(Button.ClickEvent event) {
+        getController().registerButtonClicked(event);
 
     }
 
+    @Override
     public void logoutButtonClick(Button.ClickEvent event) {
-        getUi().getSession().setAttribute(Words.SESSION_LOGIN_NAME, null);
-        Notification.show(Words.TXT_CORRECTLY_LOGGED_OUT);
-        getView().refreshView();
+        getController().logoutButtonClick(event);
     }
 
+    @Override
     public void loginButtonClick(Button.ClickEvent event) {
         if (((Binder) getParam(PARAM_BINDER_LOGIN)).writeBeanIfValid(getParam(PARAM_BINDED_LOGIN_DATA))) {
 
@@ -114,6 +137,7 @@ public class MainViewModel extends MyModel<MainView> {
 
                 //Ustawienie w sesji zalogowanego usera
                 getUi().getSession().setAttribute(Words.SESSION_LOGIN_NAME, ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email);
+
                 getView().refreshView();
             } else {
                 Notification.show(Words.TXT_WRONG_LOGIN_DATA);
@@ -131,24 +155,16 @@ public class MainViewModel extends MyModel<MainView> {
         } else {
             Notification.show("Wprowadz poprawne dane");
         }
-
     }
 
+    @Override
     public void niezlogowanyButtonClicked(Button.ClickEvent event) {
         getUi().getNavigator().navigateTo(NavigatorUI.View.REGISTER_VIEW.getName());
     }
 
-    private void registerNewUser() {
-        DbDataProvider dataProvider = new DbDataProvider();
-        if (dataProvider.registerNewClient(new Client())) {
-            Notification.show("Poprawnie zalogowano");
-        } else {
-            Notification.show("Zle zalogowano");
-        }
-    }
-
-    public void myDataButtonClicked(Button.ClickEvent event) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public void myDataButtonClicked() {
+        getController().myDataButtonClicked();
     }
 
     public Resource getLogoResource() {
@@ -184,11 +200,7 @@ public class MainViewModel extends MyModel<MainView> {
         loginBinder.forField(passwordTextField).bind(LoginData::getPassword, LoginData::setPassword);
     }
 
-    public void showAllCoursesButtonClicked(Button.ClickEvent event) {
-        getView().setCoursesAsMainPanel();
-
-    }
-
+    @Override
     public void addToCourseButtonClicked(Button.ClickEvent event, Course course) {
         Notification.show("Próba zarejestrowania do kursu:" + course.name);
     }

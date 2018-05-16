@@ -15090,3 +15090,20 @@ div.v-layout.v-horizontal.v-widget {
 	width: 100%;
 	height: 100%;
 }
+
+.pjtheme .wrapLine {
+	word-wrap: break-word;
+	white-space: -moz-pre-wrap;
+}
+
+.pjtheme .new-course {
+	background: #66ff66;
+}
+
+.pjtheme .starting-course {
+	background: #ffff00;
+}
+
+.pjtheme .end-course {
+	background: #FF0000;
+}

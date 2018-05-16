@@ -29,12 +29,14 @@ public class Words {
     
      */
     public static String SQL_SELECT_COURSES_QUERY = "select * from pjkursdb.DOSTEPNE_KURSY_V";
-
+    public static String SQL_SELECT_MY_COURSES_QUERY = "select * from pjkursdb.MOJE_KURSY_V";
+    public static String SQL_SELECT_ARCHIVE_COURSES_QUERY = "select * from pjkursdb.KURSY_ARCH_V";
     public final static String SESSION_LOGIN_NAME = "SESSION_LOGIN_NAME";
     public final static String TXT_APP_NAME = "Wgl sie nie nazywa jeszcez";
 
     public final static String SESSION_LOGGED_LOGIN = "SESSION_LOGGED_LOGIN";
     public final static String SESSION_LOGGED_EMAIL = "SESSION_LOGGED_EMAIL";
+    public static String SESSION_LOGGED_USER = "SESSION_LOGGED_USER";
 
     public final static String TXT_MY_DATA = "Moje dane";
     public final static String TXT_LOGOUT = "Wyloguj";
@@ -58,7 +60,7 @@ public class Words {
     public final static String DB_NAME = "pjkursdb";
     public final static String LOGIN = "root";
     public final static String HASLO = "root";
-    
+
     public final static String TXT_CORRECTLY_LOGGED = "Poprawnie zalogowano";
     public static String TXT_WRONG_LOGIN_DATA = "Błędne dane";
     public static String TXT_BACK = "Powrót";
@@ -71,4 +73,37 @@ public class Words {
     public static String TXT_COURSE_NAME = "Nazwa";
     public static String TXT_COURSE_DESCRIPTION = "Opis:";
     public static String TXT_COURSE_ADD_TO_COURSE = "Zapisz do kursu";
+    public static String TXT_COURSE_DETAILS = "Szczegóły";
+    public static String TXT_ADMINISTRATION = "Administracja";
+    public static String TXT_COURSES = "Kursy";
+    public static String TXT_OVERVIEW = "Przegląd";
+    public static String TXT_ADD_NEW = "Dodaj nowy";
+    public static String TXT_TEACHERS = "Wykładowcy";
+    public static String TXT_USERS = "Użytkownicy";
+    public static String TXT_FIND = "Szukaj";
+    public static String TXT_INSERT_NEW_COURSE_DATA = "Wprowadz dane nowego kursu";
+    public static String TXT_DESCRIPTION = "Opis:";
+    public static String TXT_ADD_NEW_COURSE = "Dodaj";
+    public static String TXT_MIN_PERSON_NUMBER = "Minimalna ilość uczestników";
+    public static String TXT_INSERT_NEW_TEACHER_DATA = "Wprowadz dane nowego wykładowcy";
+    public static String TXT_SURRNAME = "Nazwisko";
+    public static String CANT_OPEN_LOG_FILE = "Nie mozna otworzyć pliku do logowania";
+    public static String TXT_MY_COURSES = "Moje kursy";
+    public static String TXT_COURSE_LECTURER = "Wykładowca";
+    public static String TXT_COURSE_PARTICIPANTS = "Ilość członków";
+    public static String TXT_SIGN_TO_COURSE = "Zapisz do kursu";
+    public static String TXT_SEND_QUESTION = "Wyslij wiadomość";
+    public static String TXT_MESSAGE = "Wiadomość: (minimum 20 znaków)";
+    public static String TXT_CONTACT = "Kontakt";
+    public static String TXT_ARCHIVE_COURSES = "Archiwum Kursów";
+    public static String TXT_CONTACT_NAME = "Polsko-Japońska Akademia Technik Komputerowych";
+    public static String TXT_CONTACT_DESCRIPTION = "Zamiejscowy Wydział Informatyki i Wydział Sztuki Nowych Mediów w Gdańsku";
+    public static String TXT_CONTACT_ADDRESS = "80-045 Gdańsk, ul. Brzegi 55";
+    public static String TXT_NEW_COURSES = "Nowe kursy";
+    public static String TXT_ALL = "Wszystkie";
+    public static String TXT_ONGOING_COURSES = "Trwające";
+    public static String TXT_ID = "ID";
+    public static String TXT_COURSE_CATEGORY_NAME = "Kategoria";
+    public static String TXT_COURSE_SUB_CATEGORY_NAME = "Podkategoria";
+    public static String TXT_COURSE_STATUS = "Status kursu";
 }

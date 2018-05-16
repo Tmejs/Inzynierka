@@ -16,10 +16,20 @@
  */
 package com.pjkurs.vaadin.ui.containers;
 
+import com.pjkurs.domain.Course;
+import com.pjkurs.usables.Words;
+import com.pjkurs.vaadin.NavigatorUI;
+import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.TextField;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.TextArea;
+import com.vaadin.ui.VerticalLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,15 +37,53 @@ import com.vaadin.ui.TextField;
  */
 public class DetailedCoursePanel<T extends MyModel> extends MyContainer<T> {
 
-    public DetailedCoursePanel(T model) {
-        
+    Course course;
+
+    public DetailedCoursePanel(T model, Course course) {
         super(model);
-        
+        this.course = course;
+        this.setContent(buildView());
     }
 
     @Override
     public Component buildView() {
-        return new TextField(this.getClass().toString());
+        VerticalLayout layout = new VerticalLayout();
+//        layout.setSizeUndefined();
+        if (course != null) {
+            TextArea courseName = new TextArea(Words.TXT_COURSE_NAME, this.course.name);
+            courseName.setReadOnly(true);
+            layout.addComponent(courseName);
+            
+            TextArea courseDesc = new TextArea(Words.TXT_COURSE_DESCRIPTION, this.course.description);
+            courseDesc.setReadOnly(true);
+            layout.addComponent(courseDesc);
+            
+            layout.addComponent(new Label(Words.TXT_COURSE_PARTICIPANTS));
+            layout.addComponent(new Label(course.paricipants.toString()));
+
+            //Sprawdzenie czy już zapisany
+            if (NavigatorUI.getLoggedUser() != null) {
+                if (!NavigatorUI.getDBProvider().isUserSignedToCourse(NavigatorUI.getLoggedUser(), course.id)) {
+                    layout.addComponent(new Button(Words.TXT_SIGN_TO_COURSE, (event) -> {
+                        Logger.getGlobal().log(Level.SEVERE, "TXT_SIGN_TO_COURSE:");
+
+                        if (NavigatorUI.getDBProvider().addClientToCourse(NavigatorUI.getLoggedUser(), course)) {
+                            Notification.show("Poprawnie zapisano do kursu");
+                            ((MainViewModel) getModel()).getView().setDetailedCourseAsMainPanel(course.id);
+                        } else {
+                            Notification.show("Nie można zapisać do kursu");
+                        }
+
+                    }));
+                }
+            } else {
+                layout.addComponent(new Label("Zaloguj aby zapisać się do kursu"));
+            }
+
+        }
+
+        return layout;
+
     }
 
 }

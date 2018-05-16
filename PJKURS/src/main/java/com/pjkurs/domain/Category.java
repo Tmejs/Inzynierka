@@ -16,20 +16,16 @@
  */
 package com.pjkurs.domain;
 
-import java.sql.Date;
-
 /**
  *
  * @author Tmejs
  */
-public class ArchiveCourse extends DBObject {
-
-    public Integer id;
+public class Category extends DBObject{
+    
+    public Long id;
     public String name;
-    public String categoryName;
-    public Long subcategoryId;
     public String description;
-    public String subcategoryName;
-    public Integer statusId;
-    public String statusName;
+    
+    
+    
 }

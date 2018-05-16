@@ -16,17 +16,15 @@
  */
 package com.pjkurs.db;
 
-import com.mysql.jdbc.ResultSetImpl;
 import com.pjkurs.domain.ArchiveCourse;
 import com.pjkurs.domain.Client;
 import com.pjkurs.domain.Course;
 import com.pjkurs.domain.MyCourse;
 import com.pjkurs.InterfacePjkursDataProvider;
 import com.pjkurs.domain.Appusers;
-import com.pjkurs.domain.DBObject;
+import com.pjkurs.domain.Category;
 import com.pjkurs.usables.Words;
 import java.sql.ResultSet;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -40,6 +38,18 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
 
     private final DBConnector dbConnector;
 
+    @Override
+    public List<Course> getAllCourses() {
+        String buildedFunction
+                = "SELECT * FROM pjkursdb.kursy_v";
+        try {
+            return dbConnector.getMappedArrayList(new Course(), buildedFunction);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu usera", exception);
+        }
+        return new ArrayList<>();
+    }
+
     public DbDataProvider() {
         this.dbConnector = new DBConnector();
     }
@@ -51,6 +61,19 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
 
     public final Boolean connectToDB(String db, String login, String password) throws Exception {
         return dbConnector.connect(db, login, password);
+    }
+
+    @Override
+    public List<Category> getCategories() {
+        String buildedFunction
+                = "select * from pjkursdb.categorries";
+        try {
+            return dbConnector.getMappedArrayList(new Category(), buildedFunction);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu usera", exception);
+        }
+        return new ArrayList<>();
+
     }
 
     @Override
@@ -74,6 +97,37 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     }
 
     @Override
+    public Appusers getUser(String email) {
+        String buildedFunction
+                = "select * from pjkursdb.appusers where email='" + email + "'";
+        try {
+            return (Appusers) dbConnector.getMappedArrayList(new Appusers(), buildedFunction).get(0);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu usera", exception);
+        }
+        return null;
+    }
+
+    @Override
+    public Course getCourse(Integer courseId) {
+        String buildedFunction
+                = "SELECT * FROM pjkursdb.dostepne_kursy_v where id=" + courseId;
+        try {
+            return (Course) dbConnector.getMappedArrayList(new Course(), buildedFunction).get(0);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu usera", exception);
+        }
+        return null;
+    }
+
+    @Override
+    public Boolean isUserSignedToCourse(String email, Integer courseId) {
+        String buildedFunction
+                = "pjkursdb.czy_zapisany('" + email + "', " + courseId + ")";
+        return dbConnector.getBooleanFunctionValue(buildedFunction);
+    }
+
+    @Override
     public Boolean updateClient(Client client) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -87,8 +141,11 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     }
 
     @Override
-    public Boolean addClientToCourse(Client client, Course course) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Boolean addClientToCourse(String clientName, Course course) {
+        ResultSet resultSet = null;
+        String buildedFunction
+                = "pjkursdb.zapisz_do_kursu('" + clientName + "', '" + course.id + "')";
+        return dbConnector.getBooleanFunctionValue(buildedFunction);
     }
 
     @Override
@@ -104,13 +161,27 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     }
 
     @Override
-    public List<MyCourse> getMyCourses() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<MyCourse> getMyCourses(String userEmail) {
+        String sqlQuery = Words.SQL_SELECT_MY_COURSES_QUERY + " where username='" + userEmail + "'";
+        Logger.getGlobal().log(Level.SEVERE, sqlQuery);
+        try {
+            return dbConnector.getMappedArrayList(new Course(), sqlQuery);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.SEVERE, "Blad przy mapowaniu Kursu", exception);
+        }
+        return new ArrayList<>();
     }
 
     @Override
     public List<ArchiveCourse> getArchiveCourses() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //query
+        String sqlQuery = Words.SQL_SELECT_ARCHIVE_COURSES_QUERY;
+        try {
+            return dbConnector.getMappedArrayList(new ArchiveCourse(), sqlQuery);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.SEVERE, "Blad przy mapowaniu Kursu", exception);
+        }
+        return new ArrayList<>();
     }
 
     @Override

@@ -34,6 +34,7 @@
 @mixin pjtheme {
     @include valo;
 
+
     // Insert your own theme rules here
     .to-horizontalLayout {
         border: 1px solid black;
@@ -43,7 +44,7 @@
         width: 100%;
     }
 
-    
+
     .horrizontaly-full-view{
         width: 100%;
         margin: 0px;
@@ -72,6 +73,24 @@
     .main-window{
         width: 100%;
         height: 100%;
+    }
+
+    .wrapLine{
+        word-wrap: break-word; /* IE  */
+        white-space: -moz-pre-wrap; /* Firefox */
+    }
+
+    .new-course{
+        background: #66ff66;
+    }
+
+    .starting-course{
+        background: #ffff00;
+    }
+
+    .end-course{
+        background: #FF0000;
+
     }
 
 }

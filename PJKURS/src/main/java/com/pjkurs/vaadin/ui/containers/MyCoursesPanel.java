@@ -16,62 +16,42 @@
  */
 package com.pjkurs.vaadin.ui.containers;
 
+import com.pjkurs.domain.Appusers;
 import com.pjkurs.domain.Course;
+import com.pjkurs.domain.MyCourse;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
-import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
-import com.vaadin.annotations.Theme;
+import com.pjkurs.vaadin.views.system.MyModel;
 import com.vaadin.data.HasValue;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 /**
  *
  * @author Tmejs
  */
-@Theme("pjtheme")
-public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
-
-    public CoursesPanel(Long categoryId, T model) {
+public class MyCoursesPanel <T extends MyModel> extends MyContainer<T> {
+    
+    public MyCoursesPanel(T model) {
         super(model);
-        this.categoryId = categoryId;
-        Logger.getGlobal().log(Level.SEVERE, "category ID:" + categoryId);
-        this.setContent(buildView());
+
     }
 
     String filter;
     Component coursesComponent;
     VerticalLayout mainViewComponent;
-    Long categoryId;
 
     private Component buildFiltersMenu() {
-        VerticalLayout mainLayout = new VerticalLayout();
 
-        if (this.categoryId != null) {
-            String[] categoryName = new String[2];
-            NavigatorUI.getDBProvider().getCategories().forEach((t) -> {
-                if (t.id.equals(this.categoryId)) {
-                    categoryName[0] = t.name;
-                    categoryName[1] = t.description;
-
-                }
-            });
-            Label label = new Label(categoryName[0] + ": " + categoryName[1]);
-            mainLayout.addComponent(label);
-        }
-        HorizontalLayout horLay = new HorizontalLayout();
+        HorizontalLayout mainLayout = new HorizontalLayout();
 
         Label filterName = new Label(Words.TXT_FIND);
-        horLay.addComponent(filterName);
+        mainLayout.addComponent(filterName);
 
         TextField filteredText = new TextField(new HasValue.ValueChangeListener<String>() {
             @Override
@@ -87,21 +67,19 @@ public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
             }
         });
 
-        horLay.addComponent(filteredText);
-        mainLayout.addComponent(horLay);
+        mainLayout.addComponent(filteredText);
 
         return mainLayout;
     }
 
     private Component buildCourses() {
-        Logger.getGlobal().log(Level.SEVERE, "buildCourses()" + categoryId);
+
         VerticalLayout mainLayout = new VerticalLayout();
         mainLayout.setWidth("100%");
-        List<Course> tempCourses = NavigatorUI.getDBProvider().getAvalibleCourses();
-        List<Course> courses = tempCourses.stream().filter((t) -> {
-            return checkFilter(t);
-        }).collect(Collectors.toList());
+        String userEmail = NavigatorUI.getLoggedUser();
+        List<MyCourse> courses = NavigatorUI.getDBProvider().getMyCourses(userEmail);
 
+        //Sprawdzenie czy są dostępne kursy
         if (courses == null || courses.isEmpty()) {
             mainLayout.addComponent(new Label(Words.TXT_NO_AVALIBLE_COURSES));
             return mainLayout;
@@ -113,8 +91,12 @@ public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
         horizontalPanel.setWidth("100%");
 
         for (Course course : courses) {
+            if (!checkFilter(course)) {
+                continue;
+            }
+
             CoursePanel coursePanel = new CoursePanel(course, getModel());
-            paintCoursePanel(coursePanel, course);
+//            coursePanel.setSizeUndefined();
             if (counter >= 3) {
                 counter = 0;
                 mainLayout.addComponent(horizontalPanel);
@@ -134,23 +116,8 @@ public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
         coursesComponent = newCourses;
     }
 
-    private void paintCoursePanel(CoursePanel panel, Course course) {
-
-        if (course.statusId==2) {
-            panel.addStyleName("new-course");
-        }
-        if (course.statusId==1) {
-            panel.addStyleName("end-course");
-        }
-        if (course.statusId==3) {
-            panel.addStyleName("starting-course");
-        }
-
-    }
-
     @Override
     public Component buildView() {
-        Logger.getGlobal().log(Level.SEVERE, "buildView()");
         this.setWidth("100%");
 
         VerticalLayout mainView = new VerticalLayout();
@@ -167,14 +134,6 @@ public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
     }
 
     private boolean checkFilter(Course course) {
-        Logger.getGlobal().log(Level.SEVERE, "checkFilter()");
-
-        if (this.categoryId != null) {
-            Logger.getGlobal().log(Level.SEVERE, "category ID w check:" + categoryId);
-            if (!categoryId.equals(course.categoryId)) {
-                return false;
-            }
-        }
 
         if (filter != null) {
             return (course.description.contains(filter)
@@ -187,4 +146,5 @@ public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
         }
     }
 
+    
 }

@@ -74,7 +74,7 @@ public class LoggedInPanel<T extends MyModel> extends MyContainer<T> {
 
             //Dodanie eventu przejścia 
             myDataButton.addClickListener((event) -> {
-                tempModel.myDataButtonClicked(event);
+                tempModel.myDataButtonClicked();
             });
 
             myDataLayout.addComponent(myDataButton);

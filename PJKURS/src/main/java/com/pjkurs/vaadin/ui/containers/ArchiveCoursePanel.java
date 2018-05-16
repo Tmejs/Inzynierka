@@ -16,20 +16,16 @@
  */
 package com.pjkurs.vaadin.ui.containers;
 
+import com.pjkurs.domain.ArchiveCourse;
 import com.pjkurs.domain.Course;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.views.system.MyModel;
-import com.vaadin.annotations.Theme;
 import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.CustomLayout;
-import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.Layout;
-import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
 import java.util.logging.Level;
@@ -39,12 +35,11 @@ import java.util.logging.Logger;
  *
  * @author Tmejs
  */
-@Theme("pjtheme")
-class CoursePanel<T extends MyModel> extends MyContainer<T> {
+public class ArchiveCoursePanel<T extends MyModel> extends MyContainer<T> {
 
-    private final Course course;
+    private final ArchiveCourse course;
 
-    public CoursePanel(Course course, T model) {
+    public ArchiveCoursePanel(ArchiveCourse course, T model) {
         super(false, model);
         this.course = course;
         //Zbudoawnie widoku
@@ -56,7 +51,7 @@ class CoursePanel<T extends MyModel> extends MyContainer<T> {
         return buildView(course);
     }
 
-    private Component buildView(Course course) {
+    private Component buildView(ArchiveCourse course) {
         this.setWidth("100%");
         VerticalLayout mainLayout = new VerticalLayout();
 
@@ -65,15 +60,14 @@ class CoursePanel<T extends MyModel> extends MyContainer<T> {
 
         Label courseName = new Label(course.name);
         courseName.setSizeFull();
-
+//        courseName.setWidth(100.0f, Unit.PERCENTAGE);
         mainLayout.addComponent(courseName);
 
         TextArea desc = new TextArea(Words.TXT_COURSE_DESCRIPTION);
         desc.setValue(course.description);
-        desc.setReadOnly(true);
+        desc.setEnabled(false);
         desc.setWidth("100%");
         desc.setWordWrap(true);
-
         mainLayout.addComponent(desc);
         mainLayout.setExpandRatio(desc, 1);
 

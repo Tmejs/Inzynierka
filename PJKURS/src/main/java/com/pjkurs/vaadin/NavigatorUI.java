@@ -18,14 +18,17 @@ package com.pjkurs.vaadin;
 
 import com.pjkurs.InterfacePjkursDataProvider;
 import com.pjkurs.db.DbDataProvider;
+import com.pjkurs.domain.Appusers;
 import com.pjkurs.usables.Words;
 import com.pjkurs.utils.Params;
+import com.pjkurs.vaadin.views.AdminView;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.models.MyAccountViewModel;
 import com.pjkurs.vaadin.views.models.RegisterViewModel;
 import com.pjkurs.vaadin.views.MainView;
 import com.pjkurs.vaadin.views.MyAccountView;
 import com.pjkurs.vaadin.views.RegisterView;
+import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
@@ -83,6 +86,10 @@ public class NavigatorUI extends UI {
 
     }
 
+    public static String getLoggedUser() {
+        return (String)VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGIN_NAME);
+    }
+
     //Nawigator aplikacji
     public Navigator navigator;
 
@@ -90,7 +97,8 @@ public class NavigatorUI extends UI {
     public enum View {
         MAINVIEW(""),
         REGISTER_VIEW("register"),
-        MY_ACCOUNT_VIEW("my");
+        MY_ACCOUNT_VIEW("my"),
+        ADMIN_VIEW("admin");
 
         private String name;
 
@@ -121,6 +129,7 @@ public class NavigatorUI extends UI {
         navigator.addView(View.MAINVIEW.getName(), new MainView(new MainViewModel(this)));
         navigator.addView(View.REGISTER_VIEW.getName(), new RegisterView(new RegisterViewModel(this)));
         navigator.addView(View.MY_ACCOUNT_VIEW.getName(), new MyAccountView(new MyAccountViewModel(this)));
+        navigator.addView(View.ADMIN_VIEW.getName(), new AdminView(new AdminViewModel(this)));
 
     }
 
@@ -130,6 +139,7 @@ public class NavigatorUI extends UI {
             implements SessionInitListener, SessionDestroyListener {
 
         public static Params PARAMS;
+        public static com.pjkurs.utils.Logger LOGGER;
 
         @Override
         protected void servletInitialized() throws ServletException {
@@ -142,6 +152,13 @@ public class NavigatorUI extends UI {
                     PARAMS = new Params();
                 } catch (Exception exception) {
                     Logger.getLogger(MainViewServlet.class.toString());
+                }
+            }
+            if(LOGGER !=null){
+                try{
+                    LOGGER = new com.pjkurs.utils.Logger("Log.txt", Boolean.TRUE, Boolean.TRUE);
+                }catch(Exception e){
+                    Logger.getLogger(MainViewServlet.class.toString()).log(Level.SEVERE,e.getMessage());
                 }
             }
         }

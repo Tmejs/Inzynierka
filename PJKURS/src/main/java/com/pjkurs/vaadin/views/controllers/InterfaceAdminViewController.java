@@ -14,22 +14,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.pjkurs.domain;
+package com.pjkurs.vaadin.views.controllers;
 
-import java.sql.Date;
+import com.pjkurs.domain.Course;
 
 /**
  *
  * @author Tmejs
  */
-public class ArchiveCourse extends DBObject {
+public interface InterfaceAdminViewController {
 
-    public Integer id;
-    public String name;
-    public String categoryName;
-    public Long subcategoryId;
-    public String description;
-    public String subcategoryName;
-    public Integer statusId;
-    public String statusName;
+    void menuCoursesOverviewClicked();
+
+    void menuCoursesAddNewClicked();
+
+    void menuTeachersOvervievClicked();
+
+    void menuTeachersAddNewClicked();
+
+    void menuUsersClicked();
+
+    void editCourseDataButtonClicked(Course item);
+
 }

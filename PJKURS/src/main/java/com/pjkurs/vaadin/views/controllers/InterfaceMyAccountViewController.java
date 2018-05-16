@@ -14,22 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.pjkurs.domain;
-
-import java.sql.Date;
+package com.pjkurs.vaadin.views.controllers;
 
 /**
  *
  * @author Tmejs
  */
-public class ArchiveCourse extends DBObject {
-
-    public Integer id;
-    public String name;
-    public String categoryName;
-    public Long subcategoryId;
-    public String description;
-    public String subcategoryName;
-    public Integer statusId;
-    public String statusName;
+public interface InterfaceMyAccountViewController {
+    
 }

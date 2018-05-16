@@ -18,14 +18,17 @@ package com.pjkurs.vaadin.ui.containers;
 
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
+import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.models.RegisterViewModel;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.annotations.Theme;
+import com.vaadin.event.MouseEvents;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.Resource;
 import com.vaadin.server.VaadinService;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
@@ -88,10 +91,16 @@ public class TopPanel<T extends MyModel> extends MyContainer<T> {
             }
             mainLayout.addComponent(loginPanel);
         } else if (getModel() instanceof RegisterViewModel) {
-            RegisterViewModel currentModel = (RegisterViewModel) getModel();
             mainLayout.addStyleName("top-panel");
             //LOGO aplikacji
             Image logoImage = new Image();
+            logoImage.addClickListener(new MouseEvents.ClickListener() {
+                @Override
+                public void click(MouseEvents.ClickEvent event) {
+                    getUI().getNavigator().navigateTo(NavigatorUI.View.MAINVIEW.getName());
+                }
+            });
+
             logoImage.setStyleName("logo-image");
             logoImage.setIcon(getLogoResource());
 
@@ -102,7 +111,33 @@ public class TopPanel<T extends MyModel> extends MyContainer<T> {
             textField.addStyleName("app-name-label");
             mainLayout.addComponent(textField);
 
+        } else if (getModel() instanceof AdminViewModel) {
+            mainLayout.addStyleName("top-panel");
+
+            //LOGO aplikacji
+            Image logoImage = new Image();
+            logoImage.addClickListener((event) -> {
+                getUI().getNavigator().navigateTo(NavigatorUI.View.MAINVIEW.getName());
+            });
+
+            logoImage.setStyleName("logo-image");
+            logoImage.setIcon(getLogoResource());
+            mainLayout.addComponent(logoImage);
+
+            //Informacja że w oknie admina
+            Label textField = new Label(Words.TXT_ADMINISTRATION);
+            textField.addStyleName("app-name-label");
+            mainLayout.addComponent(textField);
+
+            Button exitButton = new Button(Words.TXT_BACK);
+
+            exitButton.addClickListener((event) -> {
+                getUI().getNavigator().navigateTo(NavigatorUI.View.MAINVIEW.getName());
+            });
+            mainLayout.addComponent(exitButton);
+
         }
+
         return mainLayout;
     }
 

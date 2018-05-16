@@ -51,14 +51,13 @@ public abstract class MyContainer<T extends MyModel> extends Panel implements In
         setModel(model);
         CLASS_NAME = getClass().toGenericString().toLowerCase();
         this.setContent(buildView());
-
     }
 
-    
     /**
      * Konstruktor
+     *
      * @param generateView Czy automatycznie ustawiać content?
-     * @param model 
+     * @param model
      */
     public MyContainer(Boolean generateView, T model) {
         setModel(model);

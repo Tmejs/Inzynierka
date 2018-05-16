@@ -14,22 +14,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.pjkurs.domain;
+package com.pjkurs.vaadin.ui.containers;
 
-import java.sql.Date;
+import com.pjkurs.domain.Course;
+import com.pjkurs.vaadin.views.models.AdminViewModel;
+import com.pjkurs.vaadin.views.system.MyContainer;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.Label;
 
 /**
  *
  * @author Tmejs
  */
-public class ArchiveCourse extends DBObject {
+public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<T> {
 
-    public Integer id;
-    public String name;
-    public String categoryName;
-    public Long subcategoryId;
-    public String description;
-    public String subcategoryName;
-    public Integer statusId;
-    public String statusName;
+    Course course;
+
+    public AdminEditCoursePanel(Course course, T model) {
+        super(false, model);
+        this.course = course;
+        this.setContent(buildView());
+    }
+
+    @Override
+    public Component buildView() {
+        return new Label(course.name);
+    }
+
 }
