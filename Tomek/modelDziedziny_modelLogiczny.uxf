@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>640</x>
+      <y>520</y>
+      <w>160</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Pracownik Dziekanatu</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>440</y>
+      <w>210</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>Strona WWW
+PJKURS
+--
++Zaloguj
++Wyszukaj kursy Kursy
++Zarejestruj się
++Zarządzaj kontem użytkownika
++Sprawdź listę chętnych
+--
+
+
+
+
++Dodaj kurs
++Usuń kurs
++Zarządzaj kursem</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>160</x>
+      <y>500</y>
+      <w>190</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>170.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>230</y>
+      <w>210</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Panel klienta
+--
++Wyświetl liste kursów
++Filtruj kursy
++Zapisz na kurs
++Moje kursy</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>340</y>
+      <w>30</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>620</x>
+      <y>230</y>
+      <w>210</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Formularz zapisu na kurs
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>280</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>670</x>
+      <y>600</y>
+      <w>100</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Wykładowca</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>550</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>340</x>
+      <y>680</y>
+      <w>190</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Funkcjonalności dostępne 
+w kolejnym etapie</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>1000</x>
+      <y>360</y>
+      <w>100</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>DB Interface
+--
+(CRUD)
++Wyslij dane
++Pobierz dane</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>370</y>
+      <w>530</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>510.0;10.0;70.0;10.0;70.0;120.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>60</x>
+      <y>230</y>
+      <w>180</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Lista moich kursów
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>270</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1160</x>
+      <y>220</y>
+      <w>210</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Panel zarządzającego
+--
++Wyświetl liste kursów
++Filtruj kursy
++Dodaj kurs
++Usuń kurs
++Modyfikuj kurs
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>710</x>
+      <y>270</y>
+      <w>470</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>450.0;10.0;170.0;10.0;170.0;280.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1170</x>
+      <y>490</y>
+      <w>210</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Szkolenie
+--
++Dodaj wykładowce
++Edytuj szkolenie
++Ankieta
++Zmień status
+
+
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1250</x>
+      <y>330</y>
+      <w>30</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>160</x>
+      <y>490</y>
+      <w>60</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Klient</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>630</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
+  </element>
+</diagram>
