@@ -136,13 +136,13 @@ public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
 
     private void paintCoursePanel(CoursePanel panel, Course course) {
 
-        if (course.statusId==2) {
+        if (course.statusId == 2) {
             panel.addStyleName("new-course");
         }
-        if (course.statusId==1) {
+        if (course.statusId == 1) {
             panel.addStyleName("end-course");
         }
-        if (course.statusId==3) {
+        if (course.statusId == 3) {
             panel.addStyleName("starting-course");
         }
 
@@ -171,17 +171,21 @@ public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
 
         if (this.categoryId != null) {
             Logger.getGlobal().log(Level.SEVERE, "category ID w check:" + categoryId);
-            if (!categoryId.equals(course.categoryId)) {
+            if (!course.getSubcategoryList().stream().anyMatch((t) -> {
+                return t.getCategory().id.equals(categoryId); //To change body of generated lambdas, choose Tools | Templates.
+            })) {
                 return false;
             }
         }
-
         if (filter != null) {
             return (course.description.contains(filter)
                     || course.name.contains(filter)
-                    || course.lecturer.contains(filter)
-                    || course.subcategoryName.contains(filter)
-                    || course.categoryName.contains(filter));
+                    || course.getLecturer().contains(filter)
+                    || course.getSubcategoryList().stream().anyMatch((t) -> {
+                        return t.description.contains(filter)
+                                || t.name.contains(filter)
+                                || t.getCategory().equals(categoryId);
+                    }));
         } else {
             return true;
         }

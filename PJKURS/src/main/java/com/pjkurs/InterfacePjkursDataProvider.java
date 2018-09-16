@@ -21,7 +21,9 @@ import com.pjkurs.domain.ArchiveCourse;
 import com.pjkurs.domain.Category;
 import com.pjkurs.domain.Course;
 import com.pjkurs.domain.Client;
+import com.pjkurs.domain.CourseSubCategory;
 import com.pjkurs.domain.MyCourse;
+import com.pjkurs.domain.SubCategory;
 import java.util.List;
 
 /**
@@ -70,4 +72,20 @@ public interface InterfacePjkursDataProvider {
     public Boolean isUserSignedToCourse(String email, Integer courseId);
 
     public List<Course> getAllCourses();
+
+    public List<SubCategory> getSubCategories();
+
+    public void addNewCategory(String string, String string0);
+
+    public void deleteCategory(Category selectedCategory);
+
+    public void deleteSubCategory(SubCategory selectedSubCategory);
+
+    public void addNewSubCategory(String string, String string0, Long categoryId);
+
+    public void deleteSubCategoryFromCourse(Integer courseId, Long category_id);
+    
+     public List<CourseSubCategory> getSubCategorysByCourseId(Integer courseId);
+
+    public Boolean addSubCategoryToCourse(Integer id, Long id0);
 }

@@ -4,10 +4,12 @@ import com.pjkurs.domain.DBObject;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +22,7 @@ public class DBConnector {
 
     Connection connection;
 
-    public DBConnector(){
+    public DBConnector() {
     }
 
     public Boolean connect(String db, String login, String password) throws Exception {
@@ -86,7 +88,18 @@ public class DBConnector {
             }
             return list;
         } else {
-            return null;
+            return Collections.emptyList();
         }
+    }
+
+    void executeUpdate(String statement) throws SQLException {
+        PreparedStatement prep = connection.prepareStatement(statement);
+        prep.executeUpdate();
+    }
+
+    void executeStatement(String query) throws SQLException {
+        PreparedStatement prep = connection.prepareStatement(query);
+        prep.execute();
+        connection.commit();
     }
 }

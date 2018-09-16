@@ -16,7 +16,6 @@
  */
 package com.pjkurs.vaadin.ui.containers;
 
-import com.pjkurs.domain.Appusers;
 import com.pjkurs.domain.Course;
 import com.pjkurs.domain.MyCourse;
 import com.pjkurs.usables.Words;
@@ -35,8 +34,8 @@ import java.util.List;
  *
  * @author Tmejs
  */
-public class MyCoursesPanel <T extends MyModel> extends MyContainer<T> {
-    
+public class MyCoursesPanel<T extends MyModel> extends MyContainer<T> {
+
     public MyCoursesPanel(T model) {
         super(model);
 
@@ -130,21 +129,22 @@ public class MyCoursesPanel <T extends MyModel> extends MyContainer<T> {
         mainView.addComponent(coursesComponent);
 
         return mainView;
-
     }
 
     private boolean checkFilter(Course course) {
-
         if (filter != null) {
             return (course.description.contains(filter)
                     || course.name.contains(filter)
-                    || course.lecturer.contains(filter)
-                    || course.subcategoryName.contains(filter)
-                    || course.categoryName.contains(filter));
+                    || course.getLecturer().contains(filter)
+                    || course.getSubcategoryList().stream().anyMatch((t) -> {
+                        return t.description.contains(filter)
+                                || t.name.contains(filter)
+                                || t.getCategory().name.contains(filter)
+                                || t.getCategory().description.contains(filter);
+                    }));
         } else {
             return true;
         }
     }
 
-    
 }

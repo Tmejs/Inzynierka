@@ -16,6 +16,9 @@
  */
 package com.pjkurs.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Tmejs
@@ -54,15 +57,21 @@ public class Course extends DBObject {
     
     public Integer id;
     public String name;
-    public String categoryName;
-    public Long categoryId;
-    public Long subcategoryId;
     public String description;
-    public String subcategoryName;
-    public String lecturer;
+    private String lecturer;
     public Long paricipants;
     public Integer statusId;
+    private List<CourseSubCategory> subcategoryList = new ArrayList<>();
     private CourseStatus courseStatus;
+
+    public void setSubcategoryList(List<CourseSubCategory> subcategoryList) {
+        this.subcategoryList = subcategoryList;
+    }
+
+    public List<CourseSubCategory> getSubcategoryList() {
+        return subcategoryList;
+    }
+    
     
     public CourseStatus getCourseStatus() {
         return CourseStatus.getCourseById(statusId);
@@ -76,25 +85,12 @@ public class Course extends DBObject {
         return name;
     }
     
-    public String getCategoryName() {
-        return categoryName;
-    }
     
-    public Long getCategoryId() {
-        return categoryId;
-    }
-    
-    public Long getSubcategoryId() {
-        return subcategoryId;
-    }
     
     public String getDescription() {
         return description;
     }
     
-    public String getSubcategoryName() {
-        return subcategoryName;
-    }
     
     public String getLecturer() {
         return lecturer;

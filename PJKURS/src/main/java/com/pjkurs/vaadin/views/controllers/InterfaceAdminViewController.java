@@ -35,5 +35,7 @@ public interface InterfaceAdminViewController {
     void menuUsersClicked();
 
     void editCourseDataButtonClicked(Course item);
+    
+    void menuCategoriesClicked();
 
 }

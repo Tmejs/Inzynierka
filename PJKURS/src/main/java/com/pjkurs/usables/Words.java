@@ -106,4 +106,27 @@ public class Words {
     public static String TXT_COURSE_CATEGORY_NAME = "Kategoria";
     public static String TXT_COURSE_SUB_CATEGORY_NAME = "Podkategoria";
     public static String TXT_COURSE_STATUS = "Status kursu";
+    public static String TXT_EDIT = "Edytuj";
+    public static String TXT_CHANGED_DATA_SAVED = "Zapisano zmiany";
+    public static String TXT_DURING_MODIFICATION = "Edytuj dane";
+    public static String TXT_SAVE_DATA = "ZAPISZ";
+    public static String TXT_WORDS_SELECT_CATEGORY = "Wybierz kategorię";
+    public static String TXT_WORDS_SELECT_SUB_CATEGORY = "Wybierz podkategorię";
+    public static String TXT_CATEGORIES = "Kategorie";
+    public static String TXT_SUB_CATEGORIES = "Podkategorie";
+    public static String TXT_NO_SUBCATEGORIES = "Brak subkategorii";
+    public static String TXT_INSERT_NEW_CATEGORY_DATA = "Wprowadz dane nowej kategorii";
+    public static String TXT_CATEGORY_NAME = "Nazwa kategorii";
+    public static String TXT_CATEGORY_DESCRIPTION = "Opis";
+    public static String TXT_ADD = "Dodaj";
+    public static String TXT_CORRECTRLY_SAVED="Poprawnie zapisano";
+    public static String TXT_DELETE="Usuń";
+    public static String TXT_NO_CATEGORIES="Brak kategori";
+    public static String TXT_SELECT_CATEGORY="Wybierz kategorię";
+    public static String TXT_SUBCATEGORYNAME = "Podkategoria";
+    public static String TXT_ADD_CATEGORY="Dodaj kategorie";
+      public static String  TXT_SELECT_SUB_CATEGORY="Wybierz podkategorie";
+    public static String TXT_ERROR="Błąd";
+    
+    
 }

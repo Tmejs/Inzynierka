@@ -17,6 +17,7 @@
 package com.pjkurs.domain;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  *
@@ -26,10 +27,17 @@ public class ArchiveCourse extends DBObject {
 
     public Integer id;
     public String name;
-    public String categoryName;
-    public Long subcategoryId;
     public String description;
-    public String subcategoryName;
     public Integer statusId;
     public String statusName;
+    public List<CourseSubCategory> subcategoryList;
+
+    public void setSubcategoryList(List<CourseSubCategory> subcategoryList) {
+        this.subcategoryList = subcategoryList;
+    }
+ 
+   
+    
+    
+    
 }

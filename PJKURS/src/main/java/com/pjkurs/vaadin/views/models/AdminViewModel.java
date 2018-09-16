@@ -64,10 +64,15 @@ public class AdminViewModel extends MyModel<AdminView> implements InterfaceAdmin
     public void menuUsersClicked() {
         controller.menuUsersClicked();
     }
-    
+
     @Override
     public void editCourseDataButtonClicked(Course item) {
         controller.editCourseDataButtonClicked(item);
+    }
+
+    @Override
+    public void menuCategoriesClicked() {
+        controller.menuCategoriesClicked();
     }
 
 }

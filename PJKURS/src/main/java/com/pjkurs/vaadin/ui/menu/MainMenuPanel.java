@@ -79,9 +79,9 @@ public class MainMenuPanel<T extends MyModel> extends MyContainer<T> {
         });
 
         //ARchiwum
-        MenuBar.MenuItem archiveCourses = menu.addItem(Words.TXT_ARCHIVE_COURSES, (selectedItem) -> {
-            ((MainViewModel) getModel()).archiveCoursesButtonClicked(selectedItem);
-        });
+//        MenuBar.MenuItem archiveCourses = menu.addItem(Words.TXT_ARCHIVE_COURSES, (selectedItem) -> {
+//            ((MainViewModel) getModel()).archiveCoursesButtonClicked(selectedItem);
+//        });
 
 //        
 //        

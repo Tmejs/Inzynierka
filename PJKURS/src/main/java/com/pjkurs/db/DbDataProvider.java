@@ -23,12 +23,17 @@ import com.pjkurs.domain.MyCourse;
 import com.pjkurs.InterfacePjkursDataProvider;
 import com.pjkurs.domain.Appusers;
 import com.pjkurs.domain.Category;
+import com.pjkurs.domain.CourseSubCategory;
+import com.pjkurs.domain.SubCategory;
 import com.pjkurs.usables.Words;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -39,11 +44,41 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     private final DBConnector dbConnector;
 
     @Override
+    public void deleteSubCategoryFromCourse(Integer courseId, Long category_id) {
+        String function = "delete from pjkursdb.courses_sub_categories where course_id="
+                + courseId
+                + " and sub_category_id=" + category_id;
+        try {
+            dbConnector.executeUpdate(function);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy deleteSubCategoryFromCourse", exception);
+        }
+    }
+
+    @Override
+    public Boolean addSubCategoryToCourse(Integer id, Long id0) {
+        String query = "insert into pjkursdb.courses_sub_categories(course_id,sub_category_id) values (" + id + "," + id0 + ")";
+        try {
+            dbConnector.executeUpdate(query);
+        } catch (SQLException e) {
+            Logger.getGlobal().log(Level.SEVERE, "Błąd przy insert kategori", e);
+            return false;
+        }
+        return true;
+    }
+
+    
+    
+    @Override
     public List<Course> getAllCourses() {
         String buildedFunction
                 = "SELECT * FROM pjkursdb.kursy_v";
         try {
-            return dbConnector.getMappedArrayList(new Course(), buildedFunction);
+            List<Course> list = dbConnector.getMappedArrayList(new Course(), buildedFunction);
+            list.stream().forEach((t) -> {
+                t.setSubcategoryList(getSubCategorysByCourseId(t.id));
+            });
+            return list;
         } catch (Exception exception) {
             Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu usera", exception);
         }
@@ -113,7 +148,10 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         String buildedFunction
                 = "SELECT * FROM pjkursdb.dostepne_kursy_v where id=" + courseId;
         try {
-            return (Course) dbConnector.getMappedArrayList(new Course(), buildedFunction).get(0);
+            Course course = (Course) dbConnector.getMappedArrayList(new Course(), buildedFunction).get(0);
+
+            course.setSubcategoryList(getSubCategorysByCourseId(courseId));
+            return course;
         } catch (Exception exception) {
             Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu usera", exception);
         }
@@ -153,7 +191,11 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         //query
         String sqlQuery = Words.SQL_SELECT_COURSES_QUERY;
         try {
-            return dbConnector.getMappedArrayList(new Course(), sqlQuery);
+            List<Course> list = dbConnector.getMappedArrayList(new Course(), sqlQuery);
+            list.stream().forEach((course) -> {
+                course.setSubcategoryList(getSubCategorysByCourseId(course.id));
+            });
+            return list;
         } catch (Exception exception) {
             Logger.getLogger(this.getClass().getCanonicalName()).log(Level.SEVERE, "Blad przy mapowaniu Kursu", exception);
         }
@@ -165,7 +207,12 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         String sqlQuery = Words.SQL_SELECT_MY_COURSES_QUERY + " where username='" + userEmail + "'";
         Logger.getGlobal().log(Level.SEVERE, sqlQuery);
         try {
-            return dbConnector.getMappedArrayList(new Course(), sqlQuery);
+            List<MyCourse> cousres = dbConnector.getMappedArrayList(new Course(), sqlQuery);
+            cousres.stream().forEach(((t) -> {
+                t.setSubcategoryList(getSubCategorysByCourseId(t.id));
+            }));
+            return cousres;
+
         } catch (Exception exception) {
             Logger.getLogger(this.getClass().getCanonicalName()).log(Level.SEVERE, "Blad przy mapowaniu Kursu", exception);
         }
@@ -199,6 +246,100 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         String buildedFunction
                 = "pjkursdb.czy_zarejestrowany_email('" + login + "')";
         return dbConnector.getBooleanFunctionValue(buildedFunction);
+    }
+
+    @Override
+    public List<SubCategory> getSubCategories() {
+        String buildedFunction
+                = "select * from pjkursdb.sub_categorries";
+        try {
+            List<SubCategory> list = dbConnector.getMappedArrayList(new SubCategory(), buildedFunction);
+            list.stream().forEach((t) -> {
+                if (t.getCategory_id() != null) {
+                    Category cat = getCategoryById(t.getCategory_id());
+                    t.setCategoriesId(cat);
+                }
+            });
+            return list;
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu kategorii", exception);
+        }
+        return new ArrayList<>();
+    }
+
+    @Override
+    public List<CourseSubCategory> getSubCategorysByCourseId(Integer courseId) {
+        String buildedFunction
+                = "select * from pjkursdb.course_sub_categorries where course_id=" + courseId;
+        try {
+            List<CourseSubCategory> lsit = dbConnector.getMappedArrayList(new CourseSubCategory(), buildedFunction);
+            lsit.stream().forEach((t) -> {
+                t.setCategoriesId(getCategories().stream().filter((x) -> {
+                    return x.id.equals(t.category_id);
+                }).collect(Collectors.toList()).get(0));
+            });
+            return lsit;
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu kategorii", exception);
+        }
+        return new ArrayList<>();
+    }
+
+    @Override
+    public void addNewCategory(String string, String string0) {
+        String query = "insert into pjkursdb.categorries(name,description) values ('" + string + "','" + string0 + "')";
+        try {
+            dbConnector.executeUpdate(query);
+        } catch (SQLException e) {
+            Logger.getGlobal().log(Level.SEVERE, "Błąd przy insert kategori", e);
+        }
+
+    }
+
+    @Override
+    public void addNewSubCategory(String string, String string0, Long categoryId) {
+        String query = "insert into pjkursdb.sub_categorries(name,description,category_id) values ('" + string + "','" + string0 + "',+" + categoryId + ")";
+        try {
+            dbConnector.executeUpdate(query);
+        } catch (SQLException e) {
+            Logger.getGlobal().log(Level.SEVERE, "Błąd przy insert kategori", e);
+        }
+
+    }
+
+    @Override
+    public void deleteCategory(Category selectedCategory) {
+        String query = "delete from pjkursdb.categorries where id =" + selectedCategory.id;
+        try {
+            dbConnector.executeStatement(query);
+        } catch (Exception e) {
+            Logger.getGlobal().log(Level.SEVERE, "Błąd przy deleteCategory", e);
+        }
+
+    }
+
+    @Override
+    public void deleteSubCategory(SubCategory selectedSubCategory) {
+        String query = "delete from pjkursdb.sub_categorries where id =" + selectedSubCategory.id;
+        try {
+            dbConnector.executeStatement(query);
+        } catch (Exception e) {
+            Logger.getGlobal().log(Level.SEVERE, "Błąd przy deleteSubCategory", e);
+        }
+    }
+
+    private Category getCategoryById(Long id) {
+        String buildedFunction
+                = "select * from pjkursdb.categorries where id=" + id;
+        try {
+            List<Category> list = dbConnector.getMappedArrayList(new Category(), buildedFunction);
+            if (!list.isEmpty()) {
+                return list.get(0);
+            }
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu usera", exception);
+        }
+        return null;
     }
 
 }

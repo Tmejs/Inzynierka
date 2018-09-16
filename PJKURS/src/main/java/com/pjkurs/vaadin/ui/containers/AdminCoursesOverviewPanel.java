@@ -140,8 +140,8 @@ public class AdminCoursesOverviewPanel<T extends AdminViewModel> extends MyConta
         //Kolumny
 
         grid.addColumn(Course::getName).setCaption(Words.TXT_COURSE_NAME);
-        grid.addColumn(Course::getCategoryName).setCaption(Words.TXT_COURSE_CATEGORY_NAME);
-        grid.addColumn(Course::getSubcategoryName).setCaption(Words.TXT_COURSE_SUB_CATEGORY_NAME);
+//        grid.addColumn(Course::getCategoryName).setCaption(Words.TXT_COURSE_CATEGORY_NAME);
+//        grid.addColumn(Course::getSubcategoryName).setCaption(Words.TXT_COURSE_SUB_CATEGORY_NAME);
         grid.addColumn(Course::getCurseStatusAsString).setCaption(Words.TXT_COURSE_STATUS);
         grid.setColumnResizeMode(ColumnResizeMode.SIMPLE);
         grid.addComponentColumn(this::getEditButton).setHidden(true);
