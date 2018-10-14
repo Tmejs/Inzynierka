@@ -56,8 +56,13 @@ public class AdminMenuPanel<T extends MyModel> extends MyContainer<T> {
         });
         
         //Kategorie
+        //Podkategorie
         MenuItem categoriesMenuItem = menu.addItem(Words.TXT_CATEGORIES, (selectedItem) -> {
             ((AdminViewModel) getModel()).menuCategoriesClicked();
+        });
+
+        categoriesMenuItem.addItem(Words.TXT_SUB_CATEGORIES, (selectedItem) -> {
+            ((AdminViewModel) getModel()).menuSubcategoriesClicked();
         });
 
         //Wykładowcy

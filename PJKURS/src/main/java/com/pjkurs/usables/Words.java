@@ -24,10 +24,13 @@ import com.vaadin.server.Page;
  */
 public class Words {
 
+    public static final Integer INTEGER_MINIMUM_USER_NUMBBER_AVALIBLE = 20;
+    public static final String TXT_COURSES_OF_SUBCOURSE = "Podkategoria jest przypisana do:";
     /*SQL QUERYS
-        Selecty do bazy danych
-    
-     */
+
+            Selecty do bazy danych
+
+         */
     public static String SQL_SELECT_COURSES_QUERY = "select * from pjkursdb.DOSTEPNE_KURSY_V";
     public static String SQL_SELECT_MY_COURSES_QUERY = "select * from pjkursdb.MOJE_KURSY_V";
     public static String SQL_SELECT_ARCHIVE_COURSES_QUERY = "select * from pjkursdb.KURSY_ARCH_V";

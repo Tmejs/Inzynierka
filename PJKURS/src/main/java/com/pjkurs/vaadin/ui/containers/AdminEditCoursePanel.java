@@ -163,11 +163,7 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
                 selectedCategoryName[0] = event.getValue();
                 List<SubCategory> subList = NavigatorUI.getDBProvider().getSubCategories();
                 subList = subList.stream().filter((t) -> {
-                    if (t.getCategory() != null) {
-                        return t.getCategory().name.equals(selectedCategoryName[0]); //To change body of generated lambdas, choose Tools | Templates.
-                    } else {
-                        return false;
-                    }
+                    return t.getCategories().stream().anyMatch(category -> category.id.equals(selectedCategoryName[0]));
                 }).collect(Collectors.toList());
 
                 subCategorySelect.setItems(subList.stream().map((t) -> {
@@ -220,8 +216,6 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
 
         course.getSubcategoryList().stream().forEach((t) -> {
             HorizontalLayout temp = new HorizontalLayout();
-            Label categoryNameLabel = new Label(t.getCategory().name);
-            categoryNameLabel.setDescription(t.getCategory().description);
 
             Label subCategoryNameLabel = new Label(t.name);
             subCategoryNameLabel.setDescription(t.description);
@@ -233,7 +227,6 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
                 course.setSubcategoryList(dataProvider.getSubCategorysByCourseId(course.getId()));
                 setContent(generateOverwievVew(true));
             });
-            temp.addComponent(categoryNameLabel);
             temp.addComponent(subCategoryNameLabel);
             temp.addComponent(deleteCategoryButton);
             categoriesLayout.addComponent(temp);

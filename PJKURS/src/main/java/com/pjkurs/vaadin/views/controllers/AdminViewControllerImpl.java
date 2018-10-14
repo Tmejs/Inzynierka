@@ -17,11 +17,8 @@
 package com.pjkurs.vaadin.views.controllers;
 
 import com.pjkurs.domain.Course;
-import com.pjkurs.vaadin.ui.containers.AddCoursePanel;
-import com.pjkurs.vaadin.ui.containers.AdminCoursesOverviewPanel;
-import com.pjkurs.vaadin.ui.containers.AdminEditCoursePanel;
-import com.pjkurs.vaadin.ui.containers.EditCategoriesPanel;
-import com.pjkurs.vaadin.ui.containers.EditableUsersListPanel;
+import com.pjkurs.vaadin.NavigatorUI;
+import com.pjkurs.vaadin.ui.containers.*;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.vaadin.ui.Label;
 
@@ -74,8 +71,15 @@ public class AdminViewControllerImpl implements InterfaceAdminViewController {
     @Override
     public void menuCategoriesClicked() {
         getModel().getView().setMainPanel(new EditCategoriesPanel(model));
-        
     }
-    
-    
+
+    @Override
+    public void addNewCouurse(Course newCourse) {
+        NavigatorUI.getDBProvider().addnewCourse(newCourse);
+    }
+
+    @Override
+    public void menuSubcategoriesClicked() {
+        getModel().getView().setMainPanel(new EditSubcategoriesPanel(model));
+    }
 }

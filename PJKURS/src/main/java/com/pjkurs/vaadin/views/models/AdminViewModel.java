@@ -75,4 +75,13 @@ public class AdminViewModel extends MyModel<AdminView> implements InterfaceAdmin
         controller.menuCategoriesClicked();
     }
 
+    @Override
+    public void addNewCouurse(Course newCourse) {
+        controller.addNewCouurse(newCourse);
+    }
+
+    @Override
+    public void menuSubcategoriesClicked() {
+        controller.menuSubcategoriesClicked();
+    }
 }

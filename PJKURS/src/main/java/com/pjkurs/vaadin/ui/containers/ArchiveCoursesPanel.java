@@ -115,8 +115,8 @@ public class ArchiveCoursesPanel<T extends MainViewModel> extends MyContainer<T>
                     || course.subcategoryList.stream().anyMatch((t) -> {
                         return t.description.contains(filter)
                                 || t.name.contains(filter)
-                                || t.getCategory().name.contains(filter) 
-                                || t.getCategory().description.contains(filter);
+                                || t.getCategories().stream().anyMatch(category -> category.name.contains(filter))
+                                || t.getCategories().stream().anyMatch(category -> category.description.contains(filter));
                     }));
         } else {
             return true;

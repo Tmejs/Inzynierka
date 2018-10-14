@@ -172,7 +172,7 @@ public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
         if (this.categoryId != null) {
             Logger.getGlobal().log(Level.SEVERE, "category ID w check:" + categoryId);
             if (!course.getSubcategoryList().stream().anyMatch((t) -> {
-                return t.getCategory().id.equals(categoryId); //To change body of generated lambdas, choose Tools | Templates.
+                return t.getCategories().stream().anyMatch(category -> category.id.equals(categoryId)); //To change body of generated lambdas, choose Tools | Templates.
             })) {
                 return false;
             }
@@ -184,7 +184,7 @@ public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
                     || course.getSubcategoryList().stream().anyMatch((t) -> {
                         return t.description.contains(filter)
                                 || t.name.contains(filter)
-                                || t.getCategory().equals(categoryId);
+                                || t.getCategories().stream().anyMatch(category -> category.id.equals(categoryId));
                     }));
         } else {
             return true;

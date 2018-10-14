@@ -16,16 +16,19 @@
  */
 package com.pjkurs.domain;
 
+import java.awt.datatransfer.StringSelection;
+import java.util.StringJoiner;
+import java.util.stream.Collectors;
+
 /**
- *
  * @author Tmejs
  */
-public class CourseSubCategory extends SubCategory{
-    
-    public Integer course_Id; 
-    
-    public String getCategoryName(){
-        return getCategory().name;
+public class CourseSubCategory extends SubCategory {
+
+    public Integer course_Id;
+
+    public String getCategoryName() {
+        return getCategories().stream().map(category -> category.name).collect(Collectors.joining(","));
     }
-    
+
 }

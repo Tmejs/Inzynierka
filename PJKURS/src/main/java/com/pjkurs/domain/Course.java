@@ -63,6 +63,7 @@ public class Course extends DBObject {
     public Integer statusId;
     private List<CourseSubCategory> subcategoryList = new ArrayList<>();
     private CourseStatus courseStatus;
+    public Integer minimumParticipants;
 
     public void setSubcategoryList(List<CourseSubCategory> subcategoryList) {
         this.subcategoryList = subcategoryList;
@@ -84,14 +85,11 @@ public class Course extends DBObject {
     public String getName() {
         return name;
     }
-    
-    
-    
+
     public String getDescription() {
         return description;
     }
-    
-    
+
     public String getLecturer() {
         return lecturer;
     }

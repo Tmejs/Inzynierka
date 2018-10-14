@@ -26,8 +26,7 @@ public class SubCategory extends DBObject {
     public Long id;
     public String name;
     public String description;
-    public Long category_id;
-    private Category category;
+    private List<Category> categories;
 
     public Long getId() {
         return id;
@@ -41,13 +40,6 @@ public class SubCategory extends DBObject {
         return description;
     }
 
-    public Long getCategory_id() {
-        return category_id;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
 
     public void setId(Long id) {
         this.id = id;
@@ -61,13 +53,11 @@ public class SubCategory extends DBObject {
         this.description = description;
     }
 
-    public void setCategory_id(Long category_id) {
-        this.category_id = category_id;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
-    public void setCategoriesId(Category category) {
-        this.category = category;
+    public List<Category> getCategories() {
+        return categories;
     }
-    
-    
 }

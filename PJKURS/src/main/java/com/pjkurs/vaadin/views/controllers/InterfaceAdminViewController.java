@@ -38,4 +38,7 @@ public interface InterfaceAdminViewController {
     
     void menuCategoriesClicked();
 
+    void addNewCouurse(Course newCourse);
+
+    void menuSubcategoriesClicked();
 }

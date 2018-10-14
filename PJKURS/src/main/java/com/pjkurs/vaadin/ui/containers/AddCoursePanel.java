@@ -16,19 +16,19 @@
  */
 package com.pjkurs.vaadin.ui.containers;
 
+import com.mysql.fabric.RangeShardMapping;
+import com.pjkurs.domain.Course;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.server.ExternalResource;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.Link;
-import com.vaadin.ui.PasswordField;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.*;
+import org.w3c.dom.ranges.Range;
+
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  *
@@ -46,19 +46,9 @@ public class AddCoursePanel<T extends AdminViewModel> extends MyContainer<T> {
         this.addStyleName("login-component");
 
         mainLayout.setSizeUndefined();
-        //Budowa okna w zalezności od strony na której jest wświetlane
-        AdminViewModel tempModel = getModel();
 
         mainLayout.addComponent(new Label(Words.TXT_INSERT_NEW_COURSE_DATA));
-        /*
-            Email : []
-            Hasało: []
-            [Zarejestruj]       [Zaloguj]
-            Zapomniałeś hasła(url do storny z przypomniajka)
-            
-         */
 
-        // email
         TextField nameTextField = new TextField(Words.TXT_COURSE_NAME);
         nameTextField.setSizeUndefined();
 
@@ -69,14 +59,17 @@ public class AddCoursePanel<T extends AdminViewModel> extends MyContainer<T> {
 
         mainLayout.addComponent(descriptionTextField);
 
-        TextField minPersonNumber = new TextField(Words.TXT_MIN_PERSON_NUMBER);
+        ComboBox<Integer> select = new ComboBox(Words.TXT_MIN_PERSON_NUMBER, IntStream.rangeClosed(1, Words.INTEGER_MINIMUM_USER_NUMBBER_AVALIBLE)
+                .boxed().collect(Collectors.toList()));
 
-        mainLayout.addComponent(minPersonNumber);
-
-//            tempModel.bindLoginData(emailTextField, passwordTextField);
+        mainLayout.addComponent(select);
         //Guzik logowania
         Button loginButton = new Button(Words.TXT_ADD_NEW_COURSE, ((event) -> {
-//                tempModel.loginButtonClick(event);
+            Course newCourse = new Course();
+            newCourse.name = nameTextField.getValue();
+            newCourse.description = descriptionTextField.getValue();
+            newCourse.minimumParticipants = select.getValue();
+            getModel().addNewCouurse(newCourse);
         }));
 
         mainLayout.addComponent(loginButton);

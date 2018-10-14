@@ -81,7 +81,7 @@ public interface InterfacePjkursDataProvider {
 
     public void deleteSubCategory(SubCategory selectedSubCategory);
 
-    public void addNewSubCategory(String string, String string0, Long categoryId);
+    public void addNewSubCategory(String string, String string0);
 
     public void deleteSubCategoryFromCourse(Integer courseId, Long category_id);
     
