@@ -16,6 +16,7 @@
  */
 package com.pjkurs.vaadin.views.models;
 
+import com.pjkurs.domain.Category;
 import com.pjkurs.domain.Course;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
@@ -84,8 +85,8 @@ public class MainViewModel extends MyModel<MainView> implements InterfaceMainVie
     }
 
     @Override
-    public void coursesButtonClicked(Long categoryId, MenuBar.MenuItem event) {
-        getController().coursesButtonClicked(categoryId, event);
+    public void coursesButtonClicked(Category category, MenuBar.MenuItem event) {
+        getController().coursesButtonClicked(category, event);
     }
 
     @Override

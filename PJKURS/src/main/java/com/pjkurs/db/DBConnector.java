@@ -100,6 +100,5 @@ public class DBConnector {
     void executeStatement(String query) throws SQLException {
         PreparedStatement prep = connection.prepareStatement(query);
         prep.execute();
-        connection.commit();
     }
 }

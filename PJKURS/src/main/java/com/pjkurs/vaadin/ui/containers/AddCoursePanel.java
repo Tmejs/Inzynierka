@@ -70,6 +70,8 @@ public class AddCoursePanel<T extends AdminViewModel> extends MyContainer<T> {
             newCourse.description = descriptionTextField.getValue();
             newCourse.minimumParticipants = select.getValue();
             getModel().addNewCouurse(newCourse);
+            getModel().menuCoursesOverviewClicked();
+            Notification.show(Words.TXT_COURSE_ADDED, Notification.Type.TRAY_NOTIFICATION);
         }));
 
         mainLayout.addComponent(loginButton);

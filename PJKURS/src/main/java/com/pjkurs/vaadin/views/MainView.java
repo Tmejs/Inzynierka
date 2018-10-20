@@ -17,6 +17,7 @@
 package com.pjkurs.vaadin.views;
 
 import com.pjkurs.domain.Appusers;
+import com.pjkurs.domain.Category;
 import com.pjkurs.domain.Course;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.ui.containers.ArchiveCoursesPanel;
@@ -104,8 +105,8 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
         return layout;
     }
 
-    public void setCoursesAsMainPanel(Long categoryId, MenuBar.MenuItem selectedItem) {
-        CoursesPanel panel = new CoursesPanel(categoryId,getModel());
+    public void setCoursesAsMainPanel(Category category, MenuBar.MenuItem selectedItem) {
+        CoursesPanel panel = new CoursesPanel(category,getModel());
         ((VerticalLayout) this.getContent()).replaceComponent(mainPanel, panel);
         mainPanel = panel;
     }

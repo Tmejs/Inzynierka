@@ -32,13 +32,13 @@ import com.vaadin.ui.Grid;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.PopupView;
 import com.vaadin.ui.components.grid.ItemClickListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import java.util.stream.Collectors;
 
 /**
- *
  * @author Tmejs
  */
 public class AdminCoursesOverviewPanel<T extends AdminViewModel> extends MyContainer<T> {
@@ -60,7 +60,8 @@ public class AdminCoursesOverviewPanel<T extends AdminViewModel> extends MyConta
 
         if (!isArchiveCourses) {
             shownList.removeAll((List) shownList.stream().filter((t) -> {
-                return ((Course) t).getCourseStatus().equals(Course.CourseStatus.ARCHIWALNY);
+                return ((Course) t).getCourseStatus() != null && ((Course) t).getCourseStatus()
+                        .equals(Course.CourseStatus.ARCHIWALNY);
             }).collect(Collectors.toList()));
         }
 
@@ -119,7 +120,8 @@ public class AdminCoursesOverviewPanel<T extends AdminViewModel> extends MyConta
             }
         });
 
-        lay.addComponents(newCoursesFilter, ongoingCoursesFilter, archiveCoursesFilter, setAllButton);
+        lay.addComponents(newCoursesFilter, ongoingCoursesFilter, archiveCoursesFilter,
+                setAllButton);
         return lay;
     }
 

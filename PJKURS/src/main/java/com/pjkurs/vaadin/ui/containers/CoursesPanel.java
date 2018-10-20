@@ -16,6 +16,7 @@
  */
 package com.pjkurs.vaadin.ui.containers;
 
+import com.pjkurs.domain.Category;
 import com.pjkurs.domain.Course;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
@@ -41,31 +42,23 @@ import java.util.stream.Collectors;
 @Theme("pjtheme")
 public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
 
-    public CoursesPanel(Long categoryId, T model) {
+    public CoursesPanel(Category category, T model) {
         super(model);
-        this.categoryId = categoryId;
-        Logger.getGlobal().log(Level.SEVERE, "category ID:" + categoryId);
+        this.category = category;
+      Logger.getGlobal().log(Level.SEVERE, "category :" + category);
         this.setContent(buildView());
     }
 
     String filter;
     Component coursesComponent;
     VerticalLayout mainViewComponent;
-    Long categoryId;
+    Category category;
 
     private Component buildFiltersMenu() {
         VerticalLayout mainLayout = new VerticalLayout();
 
-        if (this.categoryId != null) {
-            String[] categoryName = new String[2];
-            NavigatorUI.getDBProvider().getCategories().forEach((t) -> {
-                if (t.id.equals(this.categoryId)) {
-                    categoryName[0] = t.name;
-                    categoryName[1] = t.description;
-
-                }
-            });
-            Label label = new Label(categoryName[0] + ": " + categoryName[1]);
+        if (category != null) {
+            Label label = new Label(category.name + ": " + category.description);
             mainLayout.addComponent(label);
         }
         HorizontalLayout horLay = new HorizontalLayout();
@@ -94,7 +87,7 @@ public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
     }
 
     private Component buildCourses() {
-        Logger.getGlobal().log(Level.SEVERE, "buildCourses()" + categoryId);
+        if(category!=null ) Logger.getGlobal().log(Level.SEVERE, "buildCourses()" + category.name);
         VerticalLayout mainLayout = new VerticalLayout();
         mainLayout.setWidth("100%");
         List<Course> tempCourses = NavigatorUI.getDBProvider().getAvalibleCourses();
@@ -169,10 +162,11 @@ public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
     private boolean checkFilter(Course course) {
         Logger.getGlobal().log(Level.SEVERE, "checkFilter()");
 
-        if (this.categoryId != null) {
-            Logger.getGlobal().log(Level.SEVERE, "category ID w check:" + categoryId);
+        if (category != null) {
+            Logger.getGlobal().log(Level.SEVERE, "category w check:" + category.name);
             if (!course.getSubcategoryList().stream().anyMatch((t) -> {
-                return t.getCategories().stream().anyMatch(category -> category.id.equals(categoryId)); //To change body of generated lambdas, choose Tools | Templates.
+                return t.getCategories().stream().anyMatch(category -> category.id.equals(this.category.id));
+
             })) {
                 return false;
             }
@@ -180,11 +174,9 @@ public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
         if (filter != null) {
             return (course.description.contains(filter)
                     || course.name.contains(filter)
-                    || course.getLecturer().contains(filter)
                     || course.getSubcategoryList().stream().anyMatch((t) -> {
                         return t.description.contains(filter)
-                                || t.name.contains(filter)
-                                || t.getCategories().stream().anyMatch(category -> category.id.equals(categoryId));
+                                || t.name.contains(filter);
                     }));
         } else {
             return true;

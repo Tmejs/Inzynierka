@@ -23,9 +23,9 @@ import com.pjkurs.domain.MyCourse;
 import com.pjkurs.InterfacePjkursDataProvider;
 import com.pjkurs.domain.Appusers;
 import com.pjkurs.domain.Category;
-import com.pjkurs.domain.CourseSubCategory;
 import com.pjkurs.domain.SubCategory;
 import com.pjkurs.usables.Words;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,7 +36,6 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
- *
  * @author Tmejs
  */
 public class DbDataProvider implements InterfacePjkursDataProvider {
@@ -51,7 +50,8 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         try {
             dbConnector.executeUpdate(function);
         } catch (Exception exception) {
-            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy deleteSubCategoryFromCourse", exception);
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad przy deleteSubCategoryFromCourse", exception);
         }
     }
 
@@ -67,8 +67,7 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         return true;
     }
 
-    
-    
+
     @Override
     public List<Course> getAllCourses() {
         String buildedFunction
@@ -76,11 +75,12 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         try {
             List<Course> list = dbConnector.getMappedArrayList(new Course(), buildedFunction);
             list.stream().forEach((t) -> {
-                t.setSubcategoryList(   getSubCategorysByCourseId(t.id));
+                t.setSubcategoryList(getSubCategorysByCourseId(t.id));
             });
             return list;
         } catch (Exception exception) {
-            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu usera", exception);
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad przy mapowaniu usera", exception);
         }
         return new ArrayList<>();
     }
@@ -105,7 +105,8 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         try {
             return dbConnector.getMappedArrayList(new Category(), buildedFunction);
         } catch (Exception exception) {
-            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu usera", exception);
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad przy mapowaniu usera", exception);
         }
         return new ArrayList<>();
 
@@ -114,9 +115,16 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     @Override
     public Boolean registerNewClient(Client client) {
         String buildedFunction
-                = "pjkursdb.zarejestruj_usera('" + client.email + "', '" + client.password + "')";
-        dbConnector.commit();
-        return dbConnector.getBooleanFunctionValue(buildedFunction);
+                =
+                "insert into `pjkursdb`.`appusers` (email,password) values  ('" + client.email + "','" + client.password + "')";
+        try {
+            dbConnector.executeUpdate(buildedFunction);
+            return true;
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad registerNewClient", exception);
+        }
+        return false;
     }
 
     @Override
@@ -126,7 +134,8 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         try {
             return dbConnector.getMappedArrayList(new Appusers(), buildedFunction);
         } catch (Exception exception) {
-            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu usera", exception);
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad przy mapowaniu usera", exception);
         }
         return new ArrayList<>();
     }
@@ -136,9 +145,11 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         String buildedFunction
                 = "select * from pjkursdb.appusers where email='" + email + "'";
         try {
-            return (Appusers) dbConnector.getMappedArrayList(new Appusers(), buildedFunction).get(0);
+            return (Appusers) dbConnector.getMappedArrayList(new Appusers(), buildedFunction)
+                    .get(0);
         } catch (Exception exception) {
-            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu usera", exception);
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad przy mapowaniu usera", exception);
         }
         return null;
     }
@@ -148,12 +159,14 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         String buildedFunction
                 = "SELECT * FROM pjkursdb.dostepne_kursy_v where id=" + courseId;
         try {
-            Course course = (Course) dbConnector.getMappedArrayList(new Course(), buildedFunction).get(0);
+            Course course = (Course) dbConnector.getMappedArrayList(new Course(), buildedFunction)
+                    .get(0);
 
             course.setSubcategoryList(getSubCategorysByCourseId(courseId));
             return course;
         } catch (Exception exception) {
-            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu usera", exception);
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad przy mapowaniu usera", exception);
         }
         return null;
     }
@@ -167,7 +180,8 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
 
     @Override
     public Boolean updateClient(Client client) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException(
+                "Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -197,7 +211,8 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
             });
             return list;
         } catch (Exception exception) {
-            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.SEVERE, "Blad przy mapowaniu Kursu", exception);
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.SEVERE, "Blad przy mapowaniu Kursu", exception);
         }
         return new ArrayList<>();
     }
@@ -207,14 +222,15 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         String sqlQuery = Words.SQL_SELECT_MY_COURSES_QUERY + " where username='" + userEmail + "'";
         Logger.getGlobal().log(Level.SEVERE, sqlQuery);
         try {
-            List<MyCourse> cousres = dbConnector.getMappedArrayList(new Course(), sqlQuery);
+            List<MyCourse> cousres = dbConnector.getMappedArrayList(new MyCourse(), sqlQuery);
             cousres.stream().forEach(((t) -> {
                 t.setSubcategoryList(getSubCategorysByCourseId(t.id));
             }));
             return cousres;
 
         } catch (Exception exception) {
-            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.SEVERE, "Blad przy mapowaniu Kursu", exception);
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.SEVERE, "Blad przy mapowaniu Kursu", exception);
         }
         return new ArrayList<>();
     }
@@ -226,7 +242,8 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         try {
             return dbConnector.getMappedArrayList(new ArchiveCourse(), sqlQuery);
         } catch (Exception exception) {
-            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.SEVERE, "Blad przy mapowaniu Kursu", exception);
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.SEVERE, "Blad przy mapowaniu Kursu", exception);
         }
         return new ArrayList<>();
     }
@@ -236,7 +253,7 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         String query = "insert into pjkursdb.courses(name,description,minimumParticipants) " +
                 "values ('" + newCourse.name + "','" + newCourse.description + "'," + newCourse.minimumParticipants + ")";
         try {
-             dbConnector.executeUpdate(query);
+            dbConnector.executeUpdate(query);
         } catch (SQLException e) {
             Logger.getGlobal().log(Level.SEVERE, "Błąd przy addnewCourse", e);
         }
@@ -245,7 +262,8 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
 
     @Override
     public Boolean updateCourse(Course course) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException(
+                "Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -260,14 +278,16 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         String buildedFunction
                 = "select * from pjkursdb.sub_categorries";
         try {
-            List<SubCategory> list = dbConnector.getMappedArrayList(new SubCategory(), buildedFunction);
+            List<SubCategory> list = dbConnector
+                    .getMappedArrayList(new SubCategory(), buildedFunction);
 
             list.stream().forEach((t) -> {
                 t.setCategories(getCategoryListBySubcategoryId(t.id));
             });
             return list;
         } catch (Exception exception) {
-            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu kategorii", exception);
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad przy mapowaniu kategorii", exception);
         }
         return new ArrayList<>();
     }
@@ -275,28 +295,32 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     private List<Category> getCategoryListBySubcategoryId(Long id) {
         String buildedFunction
                 = "select ct.* from pjkursdb.categorries ct" +
-                " join pjkursdb.subcategories_categories sb where sb.category_id = ct.id and sb.subcategory_id="+id;
+                " join pjkursdb.subcategories_categories sb where sb.category_id = ct.id and sb.subcategory_id=" + id;
         try {
             List<Category> list = dbConnector.getMappedArrayList(new Category(), buildedFunction);
             return list;
         } catch (Exception exception) {
-            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu kategorii", exception);
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad przy mapowaniu kategorii", exception);
         }
         return new ArrayList<>();
     }
 
     @Override
-    public List<CourseSubCategory> getSubCategorysByCourseId(Integer courseId) {
+    public List<SubCategory> getSubCategorysByCourseId(Integer courseId) {
         String buildedFunction
-                = "select * from pjkursdb.course_sub_categorries where course_id=" + courseId;
+                = "select sb.* from pjkursdb.sub_categorries sb join " +
+                "pjkursdb.courses_sub_categories sbc on sb.id = sbc.sub_category_id where sbc.course_id =" + courseId;
         try {
-            List<CourseSubCategory> lsit = dbConnector.getMappedArrayList(new CourseSubCategory(), buildedFunction);
+            List<SubCategory> lsit = dbConnector
+                    .getMappedArrayList(new SubCategory(), buildedFunction);
             lsit.stream().forEach((t) -> {
                 t.setCategories(getCategoryListBySubcategoryId(t.id));
             });
             return lsit;
         } catch (Exception exception) {
-            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu kategorii", exception);
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad przy mapowaniu kategorii", exception);
         }
         return new ArrayList<>();
     }
@@ -344,7 +368,8 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         }
     }
 
-    private Category getCategoryById(Long id) {
+    @Override
+    public Category getCategoryById(Long id) {
         String buildedFunction
                 = "select * from pjkursdb.categorries where id=" + id;
         try {
@@ -353,9 +378,53 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
                 return list.get(0);
             }
         } catch (Exception exception) {
-            Logger.getLogger(this.getClass().getCanonicalName()).log(Level.ALL, "Blad przy mapowaniu usera", exception);
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad przy mapowaniu usera", exception);
         }
         return null;
+    }
+
+    @Override
+    public SubCategory getSubCategory(Long id) {
+        String buildedFunction
+                = "select * from pjkursdb.sub_categorries where id=" + id;
+        try {
+            List<SubCategory> list = dbConnector
+                    .getMappedArrayList(new SubCategory(), buildedFunction);
+            if (!list.isEmpty()) {
+                list.get(0).setCategories(getCategoryListBySubcategoryId(id));
+                return list.get(0);
+            }
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad przy mapowaniu usera", exception);
+        }
+        return null;
+    }
+
+    @Override
+    public void deleteSubcategoryFromCategory(SubCategory subCategory, Category category) {
+        String buildedFunction = "delete from pjkursdb.subcategories_categories where subcategory_id=" +
+                subCategory.id + " and category_id=" + category.id;
+        try {
+            dbConnector.executeStatement(buildedFunction);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad przy addSubCategoryToCategory", exception);
+        }
+    }
+
+    @Override
+    public void addSubCategoryToCategory(SubCategory subCategory, Category category) {
+        String buildedFunction = "insert into pjkursdb.subcategories_categories(subcategory_id," +
+                "category_id) values ( " + subCategory.id + "," + category.id + ")";
+        try {
+            dbConnector.executeStatement(buildedFunction);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad przy deleteSubcategoryFromCategory", exception);
+        }
+
     }
 
 }

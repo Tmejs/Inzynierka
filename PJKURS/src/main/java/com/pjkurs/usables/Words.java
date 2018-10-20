@@ -19,13 +19,15 @@ package com.pjkurs.usables;
 import com.vaadin.server.Page;
 
 /**
- *
  * @author Tmejs
  */
 public class Words {
 
     public static final Integer INTEGER_MINIMUM_USER_NUMBBER_AVALIBLE = 20;
     public static final String TXT_COURSES_OF_SUBCOURSE = "Podkategoria jest przypisana do:";
+    public static final String TXT_NO_SELECTED_CATEGORIES = "Podkategoria nie jest przypisana do żadnej kategori";
+    public static final String TXT_COURSE_ADDED =
+            "Dodano kurs";
     /*SQL QUERYS
 
             Selecty do bazy danych
@@ -122,14 +124,14 @@ public class Words {
     public static String TXT_CATEGORY_NAME = "Nazwa kategorii";
     public static String TXT_CATEGORY_DESCRIPTION = "Opis";
     public static String TXT_ADD = "Dodaj";
-    public static String TXT_CORRECTRLY_SAVED="Poprawnie zapisano";
-    public static String TXT_DELETE="Usuń";
-    public static String TXT_NO_CATEGORIES="Brak kategori";
-    public static String TXT_SELECT_CATEGORY="Wybierz kategorię";
+    public static String TXT_CORRECTRLY_SAVED = "Poprawnie zapisano";
+    public static String TXT_DELETE = "Usuń";
+    public static String TXT_NO_CATEGORIES = "Brak kategori";
+    public static String TXT_SELECT_CATEGORY = "Wybierz kategorię";
     public static String TXT_SUBCATEGORYNAME = "Podkategoria";
-    public static String TXT_ADD_CATEGORY="Dodaj kategorie";
-      public static String  TXT_SELECT_SUB_CATEGORY="Wybierz podkategorie";
-    public static String TXT_ERROR="Błąd";
-    
-    
+    public static String TXT_ADD_CATEGORY = "Dodaj kategorie";
+    public static String TXT_SELECT_SUB_CATEGORY = "Wybierz podkategorie";
+    public static String TXT_ERROR = "Błąd";
+
+
 }

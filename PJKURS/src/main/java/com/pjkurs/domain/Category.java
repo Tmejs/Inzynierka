@@ -29,7 +29,8 @@ public class Category extends DBObject{
     public Long getId() {
         return id;
     }
-    
-    
-    
+
+    public String getName() {
+        return name;
+    }
 }

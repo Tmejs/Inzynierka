@@ -16,6 +16,7 @@
  */
 package com.pjkurs.vaadin.views.controllers;
 
+import com.pjkurs.domain.Category;
 import com.pjkurs.domain.Course;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.MenuBar;
@@ -26,7 +27,7 @@ import com.vaadin.ui.MenuBar;
  */
 public interface InterfaceMainViewController {
 
-    public void coursesButtonClicked(Long categoryId, MenuBar.MenuItem Item);
+    public void coursesButtonClicked(Category category, MenuBar.MenuItem Item);
 
 
     public void detailCourseButtonClickd(Button.ClickEvent event, Integer courseId);

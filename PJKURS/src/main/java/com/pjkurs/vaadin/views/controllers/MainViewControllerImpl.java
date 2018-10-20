@@ -17,6 +17,7 @@
 package com.pjkurs.vaadin.views.controllers;
 
 import com.pjkurs.db.DbDataProvider;
+import com.pjkurs.domain.Category;
 import com.pjkurs.domain.Client;
 import com.pjkurs.domain.Course;
 import com.pjkurs.usables.Words;
@@ -44,8 +45,8 @@ public class MainViewControllerImpl implements InterfaceMainViewController {
     }
 
     @Override
-    public void coursesButtonClicked(Long categoryId, MenuBar.MenuItem event) {
-        getModel().getView().setCoursesAsMainPanel(categoryId,event);
+    public void coursesButtonClicked(Category category, MenuBar.MenuItem event) {
+        getModel().getView().setCoursesAsMainPanel(category,event);
     }
 
    

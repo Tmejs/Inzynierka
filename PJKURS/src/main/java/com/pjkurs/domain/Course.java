@@ -61,15 +61,15 @@ public class Course extends DBObject {
     private String lecturer;
     public Long paricipants;
     public Integer statusId;
-    private List<CourseSubCategory> subcategoryList = new ArrayList<>();
+    private List<SubCategory> subcategoryList = new ArrayList<>();
     private CourseStatus courseStatus;
     public Integer minimumParticipants;
 
-    public void setSubcategoryList(List<CourseSubCategory> subcategoryList) {
+    public void setSubcategoryList(List<SubCategory> subcategoryList) {
         this.subcategoryList = subcategoryList;
     }
 
-    public List<CourseSubCategory> getSubcategoryList() {
+    public List<SubCategory> getSubcategoryList() {
         return subcategoryList;
     }
     

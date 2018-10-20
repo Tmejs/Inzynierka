@@ -52,11 +52,12 @@ public class MainMenuPanel<T extends MyModel> extends MyContainer<T> {
             ((MainViewModel) getModel()).coursesButtonClicked(null, selectedItem);
         });
 
+
         List<Category> categories = NavigatorUI.getDBProvider().getCategories();
 
         categories.forEach((category) -> {
             kursyMenuItem.addItem(category.name, (selectedItem) -> {
-                ((MainViewModel) getModel()).coursesButtonClicked(category.id, selectedItem);
+                ((MainViewModel) getModel()).coursesButtonClicked(category, selectedItem);
             });
 
         });

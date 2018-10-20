@@ -16,14 +16,8 @@
  */
 package com.pjkurs;
 
-import com.pjkurs.domain.Appusers;
-import com.pjkurs.domain.ArchiveCourse;
-import com.pjkurs.domain.Category;
-import com.pjkurs.domain.Course;
-import com.pjkurs.domain.Client;
-import com.pjkurs.domain.CourseSubCategory;
-import com.pjkurs.domain.MyCourse;
-import com.pjkurs.domain.SubCategory;
+import com.pjkurs.domain.*;
+
 import java.util.List;
 
 /**
@@ -85,7 +79,15 @@ public interface InterfacePjkursDataProvider {
 
     public void deleteSubCategoryFromCourse(Integer courseId, Long category_id);
     
-     public List<CourseSubCategory> getSubCategorysByCourseId(Integer courseId);
+     public List<SubCategory> getSubCategorysByCourseId(Integer courseId);
 
     public Boolean addSubCategoryToCourse(Integer id, Long id0);
+
+    void addSubCategoryToCategory(SubCategory subCategory, Category category);
+
+    Category getCategoryById(Long id);
+
+    void deleteSubcategoryFromCategory(SubCategory subCategory, Category category);
+
+    SubCategory getSubCategory(Long id);
 }

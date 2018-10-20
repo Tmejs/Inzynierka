@@ -30,9 +30,9 @@ public class ArchiveCourse extends DBObject {
     public String description;
     public Integer statusId;
     public String statusName;
-    public List<CourseSubCategory> subcategoryList;
+    public List<SubCategory> subcategoryList;
 
-    public void setSubcategoryList(List<CourseSubCategory> subcategoryList) {
+    public void setSubcategoryList(List<SubCategory> subcategoryList) {
         this.subcategoryList = subcategoryList;
     }
  

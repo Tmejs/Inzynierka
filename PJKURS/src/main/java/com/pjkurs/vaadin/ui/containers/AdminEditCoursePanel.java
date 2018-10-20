@@ -17,33 +17,15 @@
 package com.pjkurs.vaadin.ui.containers;
 
 import com.pjkurs.InterfacePjkursDataProvider;
-import com.pjkurs.db.DbDataProvider;
 import com.pjkurs.domain.Category;
 import com.pjkurs.domain.Course;
-import com.pjkurs.domain.CourseSubCategory;
 import com.pjkurs.domain.SubCategory;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
-import com.vaadin.event.selection.SingleSelectionEvent;
-import com.vaadin.event.selection.SingleSelectionListener;
-import com.vaadin.shared.ui.grid.ColumnResizeMode;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.Grid;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.ListSelect;
-import com.vaadin.ui.MultiSelect;
-import com.vaadin.ui.NativeSelect;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.TextArea;
-import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Window;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.vaadin.ui.*;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  *
@@ -52,10 +34,11 @@ import java.util.stream.Collectors;
 public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<T> {
 
     Course course;
-
+    SubCategory selectedSubcategoryToAddToCourse;
     public AdminEditCoursePanel(Course course, T model) {
         super(false, model);
         this.course = course;
+        this.course.setSubcategoryList(NavigatorUI.getDBProvider().getSubCategorysByCourseId(course.id));
         this.setContent(buildView());
     }
 
@@ -82,22 +65,27 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
 //        layout.addComponent(new Label(Words.TXT_COURSE_PARTICIPANTS));
 //        layout.addComponent(new Label(course.paricipants.toString()));
         if (!isEditable) {
-
+            VerticalLayout lay = new VerticalLayout();
             Label label = new Label(Words.TXT_CATEGORIES);
-            layout.addComponent(label);
+            lay.addComponent(label);
+            lay.addComponent(new
+                    HorizontalLayout(new Label(Words.TXT_SUBCATEGORYNAME),
+                    new Label(Words.TXT_CATEGORIES)));
 
-            Grid<CourseSubCategory> grid = new Grid<>();
-            grid.setItems(course.getSubcategoryList());
-            grid.setSelectionMode(Grid.SelectionMode.SINGLE);
-            grid.setColumnReorderingAllowed(true);
-            grid.setSizeFull();
-            grid.setResponsive(true);
-            //Kolumny
-            grid.addColumn(CourseSubCategory::getCategoryName).setCaption(Words.TXT_CATEGORY_NAME);
-            grid.addColumn(CourseSubCategory::getName).setCaption(Words.TXT_SUBCATEGORYNAME);
-            grid.setColumnResizeMode(ColumnResizeMode.SIMPLE);
-            layout.addComponent(grid);
+            course.getSubcategoryList().forEach(subCategory ->{
+                    HorizontalLayout horizontalLayout = new
+                            HorizontalLayout();
+                    Label subCategoryLabel = new Label();
+                    subCategoryLabel.setCaption(subCategory.name);
 
+                    Label categoriesLabel = new Label();
+                    categoriesLabel.setCaption(StringUtils.join(subCategory.getCategories().stream().map(category -> category.name).iterator(), ", "));
+
+                    horizontalLayout.addComponent(subCategoryLabel);
+                    horizontalLayout.addComponent(categoriesLabel);
+                    lay.addComponent(horizontalLayout);
+            });
+            layout.addComponent(lay);
             Button editButton = new Button(Words.TXT_EDIT);
 
             editButton.addClickListener(new Button.ClickListener() {
@@ -141,55 +129,33 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
     private void showSetCategoryPanel() {
         com.vaadin.ui.Window subWindow = new Window(Words.TXT_INSERT_NEW_CATEGORY_DATA);
         VerticalLayout subContent = new VerticalLayout();
-        final String[] selectedCategoryName = new String[1];
-        final String[] selectedSubCategoryName = new String[1];
-        NativeSelect<String> categorySelect;
-        NativeSelect<String> subCategorySelect = new NativeSelect<>(Words.TXT_SELECT_SUB_CATEGORY);
+        TextArea categoryLabel = new TextArea("Kategorie: ");
+        categoryLabel.setReadOnly(true);
+        categoryLabel.setVisible(false);
+        NativeSelect<SubCategory> subCategorySelect = new NativeSelect<>(Words.TXT_SELECT_SUB_CATEGORY);
+        subCategorySelect.setItemCaptionGenerator(new ItemCaptionGenerator<SubCategory>() {
+            @Override
+            public String apply(SubCategory item) {
+                return item.getName();
+            }
+        });
 
         subCategorySelect.setEmptySelectionAllowed(false);
         subCategorySelect.addSelectionListener((eventT) -> {
-            selectedSubCategoryName[0] = eventT.getValue();
+            selectedSubcategoryToAddToCourse = eventT.getSelectedItem().get();
+            categoryLabel.setValue(StringUtils.join(selectedSubcategoryToAddToCourse.getCategories().stream().map(
+                    Category::getName).iterator(),", "));
+            categoryLabel.setVisible(true);
         });
 
-        categorySelect = new NativeSelect<>(Words.TXT_SELECT_CATEGORY, NavigatorUI.getDBProvider().getCategories().stream().map((t) -> {
-            return t.name;
-        }).collect(Collectors.toList()));
-
-        categorySelect.setEmptySelectionAllowed(false);
-
-        categorySelect.addSelectionListener(new SingleSelectionListener<String>() {
-            @Override
-            public void selectionChange(SingleSelectionEvent<String> event) {
-                selectedCategoryName[0] = event.getValue();
-                List<SubCategory> subList = NavigatorUI.getDBProvider().getSubCategories();
-                subList = subList.stream().filter((t) -> {
-                    return t.getCategories().stream().anyMatch(category -> category.id.equals(selectedCategoryName[0]));
-                }).collect(Collectors.toList());
-
-                subCategorySelect.setItems(subList.stream().map((t) -> {
-                    return t.getName();
-                }).collect(Collectors.toList()));
-
-            }
-        });
+        subCategorySelect.setItems(NavigatorUI.getDBProvider().getSubCategories().stream().filter(sb -> !course.getSubcategoryList().contains(sb)));
 
         Button addButton = new Button(Words.TXT_ADD, (newEvent) -> {
-
-            List<SubCategory> subList = NavigatorUI.getDBProvider().getSubCategories();
-            subList = subList.stream().filter((tsubCat) -> {
-                return tsubCat.getName().equals(selectedSubCategoryName[0]);
-            }).collect(Collectors.toList());
-
-            Boolean isAdded = false;
-            if (subList.size() > 0) {
-                isAdded = NavigatorUI.getDBProvider().addSubCategoryToCourse(course.id, subList.get(0).id);
-                Notification.show(Words.TXT_CORRECTRLY_SAVED, Notification.Type.TRAY_NOTIFICATION);
-                setContent(generateOverwievVew(true));
-            }
-            
+            Boolean isAdded = NavigatorUI.getDBProvider().addSubCategoryToCourse(course.id,
+                    selectedSubcategoryToAddToCourse.id);
             if(isAdded){
                  Notification.show(Words.TXT_CORRECTRLY_SAVED, Notification.Type.TRAY_NOTIFICATION);
-                 course.setSubcategoryList(NavigatorUI.getDBProvider().getSubCategorysByCourseId(course.id));
+                 course = NavigatorUI.getDBProvider().getCourse(course.id);
                  setContent(generateOverwievVew(true));
             }else{
                 Notification.show(Words.TXT_ERROR, Notification.Type.TRAY_NOTIFICATION);
@@ -197,7 +163,7 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
             subWindow.close();
         });
 
-        subContent.addComponent(categorySelect);
+        subContent.addComponent(categoryLabel);
         subContent.addComponent(subCategorySelect);
         subContent.addComponent(addButton);
         subWindow.setContent(subContent);
