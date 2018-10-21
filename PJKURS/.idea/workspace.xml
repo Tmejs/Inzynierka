@@ -2,40 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a35d2427-71c4-49d8-9030-2c59565e1a0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/CourseStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/dump_20_10.2018/moje_kursy_v" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/dump_20_10.2018/pjkursdb_appusers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/dump_20_10.2018/pjkursdb_appusers.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/dump_20_10.2018/pjkursdb_appusers_courses.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/dump_20_10.2018/pjkursdb_appusers_courses.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/dump_20_10.2018/pjkursdb_appusers_discounts.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/dump_20_10.2018/pjkursdb_appusers_discounts.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/dump_20_10.2018/pjkursdb_categorries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/dump_20_10.2018/pjkursdb_categorries.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/dump_20_10.2018/pjkursdb_courses.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/dump_20_10.2018/pjkursdb_courses.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/dump_20_10.2018/pjkursdb_sub_categorries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/dump_20_10.2018/pjkursdb_sub_categorries.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/dump_20_10.2018/pjkursdb_subcategories_categories.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/dump_20_10.2018/pjkursdb_subcategories_categories.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/InterfacePjkursDataProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/InterfacePjkursDataProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Appusers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Appusers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/usables/Words.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/usables/Words.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/NavigatorUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/NavigatorUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/AdminCoursesOverviewPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/AdminCoursesOverviewPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/AdminEditCoursePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/AdminEditCoursePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/ContactDataPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/ContactDataPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/CoursePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/CoursePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/CoursesPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/CoursesPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/DetailedCoursePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/DetailedCoursePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/EditCategoriesPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/EditCategoriesPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/EditableUsersListPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/EditableUsersListPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/LoggedInPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/LoggedInPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/MyCoursesPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/MyCoursesPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/PersonalDataPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/PersonalDataPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/menu/AdminMenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/menu/AdminMenuPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MainView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/MainViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/MainViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/RegisterViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/RegisterViewModel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -115,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/EditCategoriesPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="123" column="15" lean-forward="true" selection-start-line="123" selection-start-column="15" selection-end-line="123" selection-end-column="15" />
+            <state relative-caret-position="249">
+              <caret line="118" column="42" selection-start-line="118" selection-start-column="42" selection-end-line="118" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -157,11 +124,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Course.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="104" selection-start-line="104" selection-end-line="104" />
+            <state relative-caret-position="1139">
+              <caret line="102" selection-start-line="102" selection-end-line="102" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -276,10 +246,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/CoursesPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/AdminCoursesOverviewPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Course.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/AdminEditCoursePanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/EditCategoriesPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/usables/Words.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Course.java" />
       </list>
     </option>
   </component>
@@ -465,7 +435,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="termin&#9;ACTION&#9;ActivateTerminalToolWindow&#10;ter&#9;null&#9;null" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540148136512" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540149219660" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RunDashboard">
@@ -995,13 +965,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Course.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/JDK/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1050,8 +1013,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/EditCategoriesPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="123" column="15" lean-forward="true" selection-start-line="123" selection-start-column="15" selection-end-line="123" selection-end-column="15" />
+        <state relative-caret-position="249">
+          <caret line="118" column="42" selection-start-line="118" selection-start-column="42" selection-end-line="118" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Course.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

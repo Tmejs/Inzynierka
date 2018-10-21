@@ -16,8 +16,6 @@
  */
 package com.pjkurs.domain;
 
-import javafx.util.Pair;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,4 +100,4 @@ public class Course extends DBObject {
     public Double getPrice() {
         return price;
     }
-}
+    }
