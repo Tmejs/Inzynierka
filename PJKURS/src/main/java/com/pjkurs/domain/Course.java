@@ -16,45 +16,16 @@
  */
 package com.pjkurs.domain;
 
+import javafx.util.Pair;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Tmejs
  */
 public class Course extends DBObject {
-    
-    public enum CourseStatus {
-        NOWY(2),
-        TRWAJACY(3),
-        ARCHIWALNY(1);
-        
-        Integer value;
-        
-        private CourseStatus(Integer value) {
-            this.value = value;
-        }
-        
-        public static String getNameById(Integer id) {
-            for (CourseStatus status : CourseStatus.values()) {
-                if (status.value.equals(id)) {
-                    return status.name();
-                }
-            }
-            return null;
-        }
-        
-        public static CourseStatus getCourseById(Integer id) {
-            for (CourseStatus status : CourseStatus.values()) {
-                if (status.value.equals(id)) {
-                    return status;
-                }
-            }
-            return null;
-        }
-    }
-    
+
     public Integer id;
     public String name;
     public String description;
@@ -64,6 +35,24 @@ public class Course extends DBObject {
     private List<SubCategory> subcategoryList = new ArrayList<>();
     private CourseStatus courseStatus;
     public Integer minimumParticipants;
+    public Double price;
+
+
+    public Course() {
+    }
+
+    public Course(Course newCourse) {
+        this.id=newCourse.id;
+        this.name=newCourse.name;
+        this.description=newCourse.description;
+        this.lecturer=newCourse.lecturer;
+        this.paricipants=newCourse.paricipants;
+        this.statusId=newCourse.statusId;
+        this.subcategoryList=newCourse.subcategoryList;
+        this.courseStatus=newCourse.courseStatus;
+        this.minimumParticipants=newCourse.minimumParticipants;
+        this.price=newCourse.price;
+    }
 
     public void setSubcategoryList(List<SubCategory> subcategoryList) {
         this.subcategoryList = subcategoryList;
@@ -72,16 +61,12 @@ public class Course extends DBObject {
     public List<SubCategory> getSubcategoryList() {
         return subcategoryList;
     }
-    
-    
-    public CourseStatus getCourseStatus() {
-        return CourseStatus.getCourseById(statusId);
-    }
-    
+
+
     public Integer getId() {
         return id;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -93,17 +78,28 @@ public class Course extends DBObject {
     public String getLecturer() {
         return lecturer;
     }
-    
+
     public Long getParicipants() {
         return paricipants;
     }
-    
+
     public Integer getStatusId() {
         return statusId;
     }
-    
-    public String getCurseStatusAsString() {
-        return CourseStatus.getNameById(getStatusId());
+
+    public String getCourseStatusAsString() {
+        return courseStatus != null ? courseStatus.name : "";
     }
-    
+
+    public CourseStatus getCourseStatus(){
+        return courseStatus;
+    }
+
+    public void setCourseStatus(CourseStatus statusById) {
+        courseStatus=statusById;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
 }

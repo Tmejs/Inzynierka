@@ -16,22 +16,17 @@
  */
 package com.pjkurs.vaadin.ui.containers;
 
+import com.pjkurs.domain.Appusers;
 import com.pjkurs.domain.Course;
 import com.pjkurs.usables.Words;
+import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.vaadin.annotations.Theme;
 import com.vaadin.shared.ui.ContentMode;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.CustomLayout;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.Layout;
-import com.vaadin.ui.Panel;
-import com.vaadin.ui.TextArea;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.*;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,10 +38,12 @@ import java.util.logging.Logger;
 class CoursePanel<T extends MyModel> extends MyContainer<T> {
 
     private final Course course;
+    private final Appusers appUser;
 
     public CoursePanel(Course course, T model) {
         super(false, model);
         this.course = course;
+        this.appUser = NavigatorUI.getLoggedUser();
         //Zbudoawnie widoku
         setContent(buildView());
     }
@@ -80,8 +77,8 @@ class CoursePanel<T extends MyModel> extends MyContainer<T> {
         Button details = new Button(Words.TXT_COURSE_DETAILS, (event) -> {
             Logger.getGlobal().log(Level.SEVERE, "TXT_COURSE_DETAILS:");
             ((MainViewModel) getModel()).detailCourseButtonClickd(event, course.id);
-
         });
+
 
         mainLayout.addComponent(details);
         return mainLayout;

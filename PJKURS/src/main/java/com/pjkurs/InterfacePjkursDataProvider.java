@@ -61,6 +61,8 @@ public interface InterfacePjkursDataProvider {
 
     public Appusers getUser(String email);
 
+    CourseStatus getStatusById(Integer statusId);
+
     public List<Category> getCategories();
 
     public Boolean isUserSignedToCourse(String email, Integer courseId);
@@ -90,4 +92,10 @@ public interface InterfacePjkursDataProvider {
     void deleteSubcategoryFromCategory(SubCategory subCategory, Category category);
 
     SubCategory getSubCategory(Long id);
+
+    void updateAppuser(Appusers editedUser);
+
+    void deleteCientFromCourse(Appusers appUser, Course course);
+
+    List<CourseStatus> getCourseStatuses();
 }

@@ -16,24 +16,16 @@
  */
 package com.pjkurs.db;
 
-import com.pjkurs.domain.ArchiveCourse;
-import com.pjkurs.domain.Client;
-import com.pjkurs.domain.Course;
-import com.pjkurs.domain.MyCourse;
 import com.pjkurs.InterfacePjkursDataProvider;
-import com.pjkurs.domain.Appusers;
-import com.pjkurs.domain.Category;
-import com.pjkurs.domain.SubCategory;
+import com.pjkurs.domain.*;
 import com.pjkurs.usables.Words;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 /**
  * @author Tmejs
@@ -76,6 +68,10 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
             List<Course> list = dbConnector.getMappedArrayList(new Course(), buildedFunction);
             list.stream().forEach((t) -> {
                 t.setSubcategoryList(getSubCategorysByCourseId(t.id));
+                if(t.statusId!=null){
+                    t.setCourseStatus(getStatusById(t.statusId));
+                }
+
             });
             return list;
         } catch (Exception exception) {
@@ -83,6 +79,20 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
                     .log(Level.ALL, "Blad przy mapowaniu usera", exception);
         }
         return new ArrayList<>();
+    }
+
+    @Override
+    public CourseStatus getStatusById(Integer statusId) {
+        String buildedFunction
+                = "SELECT * FROM pjkursdb.courses_statuses where id =" +statusId;
+        try {
+            List<CourseStatus> list = dbConnector.getMappedArrayList(new CourseStatus(), buildedFunction);
+            return list.get(0);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "getCourseStatuses", exception);
+        }
+        return null;
     }
 
     public DbDataProvider() {
@@ -157,12 +167,13 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     @Override
     public Course getCourse(Integer courseId) {
         String buildedFunction
-                = "SELECT * FROM pjkursdb.dostepne_kursy_v where id=" + courseId;
+                = "SELECT * FROM pjkursdb.kursy_v where id=" + courseId;
         try {
             Course course = (Course) dbConnector.getMappedArrayList(new Course(), buildedFunction)
                     .get(0);
 
             course.setSubcategoryList(getSubCategorysByCourseId(courseId));
+            if(course.getStatusId()!=null) course.setCourseStatus(getStatusById(course.getStatusId()));
             return course;
         } catch (Exception exception) {
             Logger.getLogger(this.getClass().getCanonicalName())
@@ -208,6 +219,7 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
             List<Course> list = dbConnector.getMappedArrayList(new Course(), sqlQuery);
             list.stream().forEach((course) -> {
                 course.setSubcategoryList(getSubCategorysByCourseId(course.id));
+                if(course.getStatusId()!=null) course.setCourseStatus(getStatusById(course.getStatusId()));
             });
             return list;
         } catch (Exception exception) {
@@ -225,6 +237,7 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
             List<MyCourse> cousres = dbConnector.getMappedArrayList(new MyCourse(), sqlQuery);
             cousres.stream().forEach(((t) -> {
                 t.setSubcategoryList(getSubCategorysByCourseId(t.id));
+                if(t.getStatusId()!=null) t.setCourseStatus(getStatusById(t.getStatusId()));
             }));
             return cousres;
 
@@ -262,8 +275,21 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
 
     @Override
     public Boolean updateCourse(Course course) {
-        throw new UnsupportedOperationException(
-                "Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String func = "UPDATE pjkursdb.courses " +
+                "SET " +
+                "name = '"+course.name+"', " +
+                "description = '"+course.description+"'," +
+                "statusId = "+course.statusId+", " +
+                "minimumParticipants = "+course.minimumParticipants+", " +
+                "price ="+course.getPrice()+
+                " WHERE id = " +course.getId();
+        try {
+            dbConnector.executeUpdate(func);
+        } catch (SQLException e) {
+            Logger.getGlobal().log(Level.SEVERE, "updateCourse", e);
+        }
+        return true;
+
     }
 
     @Override
@@ -427,4 +453,46 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
 
     }
 
+    @Override
+    public void updateAppuser(Appusers editedUser) {
+        String buildedFunction = "UPDATE pjkursdb.appusers SET  id =" + editedUser.id + ",  email  " +
+                "='" + editedUser.email + "',  password  ='" + editedUser.password + "',  create_date= '" +
+                editedUser.create_date + "',  name  = '" + editedUser.name + "',  surname  ='" +
+                editedUser.surname + "',  birth_date  = '" + editedUser.birth_date + "',  " +
+                "contact_number  = '" + editedUser.contact_number + "'  WHERE  id  =" +
+                editedUser.id;
+        try {
+            dbConnector.executeStatement(buildedFunction);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "Blad przy updateAppuser", exception);
+        }
+    }
+
+    @Override
+    public void deleteCientFromCourse(Appusers appUser, Course course) {
+        String buildedFunction =
+                "delete FROM pjkursdb.appusers_courses where user_id ="+appUser.id+" and " +
+                "course_id="+course.id;
+        try {
+            dbConnector.executeStatement(buildedFunction);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "deleteCientFromCourse", exception);
+        }
+    }
+
+    @Override
+    public List<CourseStatus> getCourseStatuses() {
+        String buildedFunction
+                = "SELECT * FROM pjkursdb.courses_statuses";
+        try {
+            List<CourseStatus> list = dbConnector.getMappedArrayList(new CourseStatus(), buildedFunction);
+            return list;
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "getCourseStatuses", exception);
+        }
+        return new ArrayList<>();
+    }
 }

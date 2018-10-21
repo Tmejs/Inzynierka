@@ -16,6 +16,7 @@
  */
 package com.pjkurs.vaadin.views.models;
 
+import com.pjkurs.domain.Appusers;
 import com.pjkurs.domain.Category;
 import com.pjkurs.domain.Course;
 import com.pjkurs.usables.Words;
@@ -33,6 +34,8 @@ import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
+import org.omg.CORBA.NamedValue;
+
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -133,11 +136,15 @@ public class MainViewModel extends MyModel<MainView> implements InterfaceMainVie
             //funkcja sprawdzająca zalogowanie
             boolean loginStatus = NavigatorUI.getDBProvider().loginClient(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email, ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password);
 
+            Appusers user =
+                    NavigatorUI.getDBProvider().getUser(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email);
+
             if (loginStatus) {
                 Notification.show(Words.TXT_CORRECTLY_LOGGED);
 
                 //Ustawienie w sesji zalogowanego usera
-                getUi().getSession().setAttribute(Words.SESSION_LOGIN_NAME, ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email);
+                getUi().getSession().setAttribute(Words.SESSION_LOGIN_NAME, user);
+
 
                 getView().refreshView();
             } else {
@@ -147,12 +154,6 @@ public class MainViewModel extends MyModel<MainView> implements InterfaceMainVie
                 //Czyszczenie inputu w widoku
                 ((Binder) getParam(PARAM_BINDER_LOGIN)).readBean(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)));
             }
-
-            //.checkDoEmailOcuppied(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email).toString()
-//            VaadinSession.getCurrent().setAttribute(Words.SESSION_LOGIN_NAME, Boolean.TRUE);
-//            getUi().getNavigator().navigateTo(NavigatorUI.View.MAINVIEW.getName());
-//            Notification.show("Wprowadzony login:" + ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email + "\n"
-//                    + "Wprowadzone hasło:" + ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password);
         } else {
             Notification.show("Wprowadz poprawne dane");
         }

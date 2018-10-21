@@ -65,17 +65,17 @@ public class AdminMenuPanel<T extends MyModel> extends MyContainer<T> {
             ((AdminViewModel) getModel()).menuSubcategoriesClicked();
         });
 
-        //Wykładowcy
-        //Przegląd
-        //Dodaj nowego
-        MenuItem teachersMenuItem = menu.addItem(Words.TXT_TEACHERS, null);
-
-        teachersMenuItem.addItem(Words.TXT_OVERVIEW, (selectedItem) -> {
-            ((AdminViewModel) getModel()).menuTeachersOvervievClicked();
-        });
-        teachersMenuItem.addItem(Words.TXT_ADD_NEW, (selectedItem) -> {
-            ((AdminViewModel) getModel()).menuTeachersAddNewClicked();
-        });
+//        //Wykładowcy
+//        //Przegląd
+//        //Dodaj nowego
+//        MenuItem teachersMenuItem = menu.addItem(Words.TXT_TEACHERS, null);
+//
+//        teachersMenuItem.addItem(Words.TXT_OVERVIEW, (selectedItem) -> {
+//            ((AdminViewModel) getModel()).menuTeachersOvervievClicked();
+//        });
+//        teachersMenuItem.addItem(Words.TXT_ADD_NEW, (selectedItem) -> {
+//            ((AdminViewModel) getModel()).menuTeachersAddNewClicked();
+//        });
 
         //Użytkownicy
         MenuItem users = menu.addItem(Words.TXT_USERS, (selectedItem) -> {

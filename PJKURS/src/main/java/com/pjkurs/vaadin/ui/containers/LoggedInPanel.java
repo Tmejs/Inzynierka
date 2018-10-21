@@ -16,6 +16,7 @@
  */
 package com.pjkurs.vaadin.ui.containers;
 
+import com.pjkurs.domain.Appusers;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.views.models.MainViewModel;
@@ -56,7 +57,8 @@ public class LoggedInPanel<T extends MyModel> extends MyContainer<T> {
             Label logedAs = new Label(Words.TXT_LOGGED_ASS);
             logedDataLayout.addComponent(logedAs);
 
-            Label logedName = new Label((String) VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGIN_NAME));
+            Label logedName =
+                    new Label(((Appusers) VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGIN_NAME)).email);
 
             logedDataLayout.addComponent(logedName);
 

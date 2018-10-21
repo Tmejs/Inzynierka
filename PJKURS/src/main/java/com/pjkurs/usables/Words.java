@@ -28,6 +28,15 @@ public class Words {
     public static final String TXT_NO_SELECTED_CATEGORIES = "Podkategoria nie jest przypisana do żadnej kategori";
     public static final String TXT_COURSE_ADDED =
             "Dodano kurs";
+    public static final String TXT_BIRTH_DATE = "Data urodzenia:";
+    public static final String TXT_DISCARD_CHANGES = "Anuluj zmiany";
+    public static final String TXT_NOT_SAVED_CHECK_DATA = "Nie udało się zapisać zmian. Sprawdz " +
+            "poprawność wpisanych pól";
+    public static final String TXT_UNDO_SIGN_TO_COURS = "Wypisz się z kursu";
+    public static final String TXT_CORRECTLY_UNSGNED = "Poprawnie wypisano";
+    public static final String TXT_NOONES = "Żaden";
+    public static final String TXT_NO_STATUS = "Bez statusu";
+    public static final String TXT_PRICE = "Cena";
     /*SQL QUERYS
 
             Selecty do bazy danych
@@ -36,7 +45,7 @@ public class Words {
     public static String SQL_SELECT_COURSES_QUERY = "select * from pjkursdb.DOSTEPNE_KURSY_V";
     public static String SQL_SELECT_MY_COURSES_QUERY = "select * from pjkursdb.MOJE_KURSY_V";
     public static String SQL_SELECT_ARCHIVE_COURSES_QUERY = "select * from pjkursdb.KURSY_ARCH_V";
-    public final static String SESSION_LOGIN_NAME = "SESSION_LOGIN_NAME";
+    public final static String SESSION_LOGIN_NAME = "SESSION_LOGED_USER";
     public final static String TXT_APP_NAME = "Wgl sie nie nazywa jeszcez";
 
     public final static String SESSION_LOGGED_LOGIN = "SESSION_LOGGED_LOGIN";
@@ -63,7 +72,7 @@ public class Words {
     public static String TXT_CORRECTLY_LOGGED_OUT = "Poprawnie wylogowano";
 
     public final static String DB_NAME = "pjkursdb";
-    public final static String LOGIN = "pjkurs";
+        public final static String LOGIN = "pjkurs";
     public final static String HASLO = "pjkurs";
 
     public final static String TXT_CORRECTLY_LOGGED = "Poprawnie zalogowano";
@@ -100,6 +109,7 @@ public class Words {
     public static String TXT_SEND_QUESTION = "Wyslij wiadomość";
     public static String TXT_MESSAGE = "Wiadomość: (minimum 20 znaków)";
     public static String TXT_CONTACT = "Kontakt";
+    public static String TXT_PHONE_CONTACT = "Kontakt";
     public static String TXT_ARCHIVE_COURSES = "Archiwum Kursów";
     public static String TXT_CONTACT_NAME = "Polsko-Japońska Akademia Technik Komputerowych";
     public static String TXT_CONTACT_DESCRIPTION = "Zamiejscowy Wydział Informatyki i Wydział Sztuki Nowych Mediów w Gdańsku";
@@ -115,8 +125,6 @@ public class Words {
     public static String TXT_CHANGED_DATA_SAVED = "Zapisano zmiany";
     public static String TXT_DURING_MODIFICATION = "Edytuj dane";
     public static String TXT_SAVE_DATA = "ZAPISZ";
-    public static String TXT_WORDS_SELECT_CATEGORY = "Wybierz kategorię";
-    public static String TXT_WORDS_SELECT_SUB_CATEGORY = "Wybierz podkategorię";
     public static String TXT_CATEGORIES = "Kategorie";
     public static String TXT_SUB_CATEGORIES = "Podkategorie";
     public static String TXT_NO_SUBCATEGORIES = "Brak subkategorii";
@@ -129,7 +137,7 @@ public class Words {
     public static String TXT_NO_CATEGORIES = "Brak kategori";
     public static String TXT_SELECT_CATEGORY = "Wybierz kategorię";
     public static String TXT_SUBCATEGORYNAME = "Podkategoria";
-    public static String TXT_ADD_CATEGORY = "Dodaj kategorie";
+    public static String TXT_ADD_CATEGORY = "Przypisz do podkategorii";
     public static String TXT_SELECT_SUB_CATEGORY = "Wybierz podkategorie";
     public static String TXT_ERROR = "Błąd";
 

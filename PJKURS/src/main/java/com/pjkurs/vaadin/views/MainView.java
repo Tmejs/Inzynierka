@@ -88,21 +88,7 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
 
     @Override
     public Component generateMainAppPanel() {
-        VerticalLayout layout = new VerticalLayout();
-//        layout.setSizeUndefined();
-//        layout.addComponent(new HorizontalLayout(new Label("email"), new Label("haslo")));
-//        for (Appusers user : NavigatorUI.getDBProvider().getUsers()) {
-//            HorizontalLayout lt = new HorizontalLayout();
-//            lt.setSizeUndefined();
-//            lt.addComponent(new Label(user.email));
-//            lt.addComponent(new Label(user.haslo));
-//            try {
-//                lt.addComponent(new Label(user.data_dodania.toString()));
-//            } catch (Exception e) {
-//            }
-//            layout.addComponent(lt);
-//        }
-        return layout;
+        return new CoursesPanel<>(null,getModel());
     }
 
     public void setCoursesAsMainPanel(Category category, MenuBar.MenuItem selectedItem) {

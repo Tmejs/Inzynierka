@@ -86,7 +86,7 @@ public class ContactDataPanel<T extends MainViewModel> extends MyContainer<T> {
             }
         });
         if (NavigatorUI.getLoggedUser() != null) {
-            nameField.setValue(NavigatorUI.getLoggedUser());
+            nameField.setValue(NavigatorUI.getLoggedUser().getEmail());
             nameField.setEnabled(false);
         }
 

@@ -23,14 +23,60 @@ import java.sql.Date;
  * @author Tmejs
  */
 public class Appusers extends DBObject{
-///przykładowa klasa
-    
-    
-    
-    
+
     public Integer id;
-    public String haslo;
+    public String password ;
     public String email;
-    public Date data_dodania;
-    
+    public Date create_date;
+    public String name;
+    public String surname;
+    public Date birth_date;
+    public String contact_number;
+
+
+    public Appusers() {
+    }
+
+    public Appusers(Appusers user) {
+        this.id = user.id;
+        this.password  = user.password;
+        this.email = user.email;
+        this.create_date = user.create_date;
+        this.name = user.name;
+        this.surname = user.surname;
+        this.birth_date = user.birth_date;
+        this.contact_number = user.contact_number;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Date getCreate_date() {
+        return create_date;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public Date getBirth_date() {
+        return birth_date;
+    }
+
+    public String getContact_number() {
+        return contact_number;
+    }
 }

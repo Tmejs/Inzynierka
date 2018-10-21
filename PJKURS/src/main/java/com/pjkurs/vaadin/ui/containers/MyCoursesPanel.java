@@ -16,6 +16,7 @@
  */
 package com.pjkurs.vaadin.ui.containers;
 
+import com.pjkurs.domain.Appusers;
 import com.pjkurs.domain.Course;
 import com.pjkurs.domain.MyCourse;
 import com.pjkurs.usables.Words;
@@ -75,8 +76,8 @@ public class MyCoursesPanel<T extends MyModel> extends MyContainer<T> {
 
         VerticalLayout mainLayout = new VerticalLayout();
         mainLayout.setWidth("100%");
-        String userEmail = NavigatorUI.getLoggedUser();
-        List<MyCourse> courses = NavigatorUI.getDBProvider().getMyCourses(userEmail);
+        Appusers appUser = NavigatorUI.getLoggedUser();
+        List<MyCourse> courses = NavigatorUI.getDBProvider().getMyCourses(appUser.getEmail());
 
         //Sprawdzenie czy są dostępne kursy
         if (courses == null || courses.isEmpty()) {

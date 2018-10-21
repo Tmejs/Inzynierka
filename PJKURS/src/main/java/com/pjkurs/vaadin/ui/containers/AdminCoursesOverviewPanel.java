@@ -17,25 +17,17 @@
 package com.pjkurs.vaadin.ui.containers;
 
 import com.pjkurs.domain.Course;
+import com.pjkurs.domain.CourseStatus;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
-import com.vaadin.data.HasValue;
 import com.vaadin.shared.ui.grid.ColumnResizeMode;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.CheckBox;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Grid;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.PopupView;
+import com.vaadin.ui.*;
 import com.vaadin.ui.components.grid.ItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.stream.Collectors;
 
 /**
@@ -44,84 +36,70 @@ import java.util.stream.Collectors;
 public class AdminCoursesOverviewPanel<T extends AdminViewModel> extends MyContainer<T> {
 
     Grid<Course> grid;
-    List courses;
-    List shownList = new ArrayList<Course>();
-    Boolean isNewCourses = true;
-    Boolean isOngoingCourses = true;
-    Boolean isArchiveCourses = true;
+    List<Course> courses;
+    List<CourseStatus> filteredStatuses;
+    boolean showNotStatused = true;
+
+    private List<CourseStatus> getFilteredStatuses() {
+        if (filteredStatuses == null) {
+            filteredStatuses = new ArrayList<>();
+        }
+        return filteredStatuses;
+    }
 
     public AdminCoursesOverviewPanel(T model) {
         super(model);
     }
 
     private void updateGrid() {
-        shownList.clear();
-        shownList.addAll(courses);
-
-        if (!isArchiveCourses) {
-            shownList.removeAll((List) shownList.stream().filter((t) -> {
-                return ((Course) t).getCourseStatus() != null && ((Course) t).getCourseStatus()
-                        .equals(Course.CourseStatus.ARCHIWALNY);
-            }).collect(Collectors.toList()));
+        List<Course> shownList = new ArrayList<>(courses);
+        if (!getFilteredStatuses().isEmpty()) {
+            shownList = shownList.stream().filter(o ->
+                    getFilteredStatuses().stream()
+                            .anyMatch(courseStatus -> courseStatus.id == o.getStatusId())
+            ).collect(Collectors.toList());
         }
-
-        if (!isNewCourses) {
-            shownList.removeAll((List) shownList.stream().filter((t) -> {
-                return ((Course) t).getCourseStatus().equals(Course.CourseStatus.NOWY);
-            }).collect(Collectors.toList()));
+        if (showNotStatused) {
+            shownList.addAll(courses.stream().filter(o -> o.getCourseStatus() == null)
+                    .collect(Collectors.toList()));
         }
-
-        if (!isOngoingCourses) {
-            shownList.removeAll((List) shownList.stream().filter((t) -> {
-                return ((Course) t).getCourseStatus().equals(Course.CourseStatus.TRWAJACY);
-            }).collect(Collectors.toList()));
-        }
-
         grid.setItems(shownList);
-
     }
 
     private Component buildFiltersLayout() {
         HorizontalLayout lay = new HorizontalLayout();
-
-        CheckBox newCoursesFilter = new CheckBox(Words.TXT_NEW_COURSES, true);
-        newCoursesFilter.addValueChangeListener(new HasValue.ValueChangeListener<Boolean>() {
-            @Override
-            public void valueChange(HasValue.ValueChangeEvent<Boolean> event) {
-                isNewCourses = event.getValue();
+        List<CourseStatus> statuses = NavigatorUI.getDBProvider().getCourseStatuses();
+        List<CheckBox> checkboxes = new ArrayList<>();
+        CheckBox cb = new CheckBox(Words.TXT_NO_STATUS, true);
+        showNotStatused=true;
+        cb.addValueChangeListener(event -> {
+            showNotStatused = event.getValue();
+        });
+        checkboxes.add(cb);
+        statuses.forEach(courseStatus -> {
+            CheckBox checkBox = new CheckBox(courseStatus.name, true);
+            getFilteredStatuses().add(courseStatus);
+            checkBox.addValueChangeListener(event -> {
+                if (event.getValue()) {
+                    getFilteredStatuses().add(courseStatus);
+                } else {
+                    getFilteredStatuses().remove(courseStatus);
+                }
                 updateGrid();
-            }
+            });
+            checkboxes.add(checkBox);
         });
 
-        CheckBox archiveCoursesFilter = new CheckBox(Words.TXT_ARCHIVE_COURSES, true);
-        archiveCoursesFilter.addValueChangeListener(new HasValue.ValueChangeListener<Boolean>() {
-            @Override
-            public void valueChange(HasValue.ValueChangeEvent<Boolean> event) {
-                isArchiveCourses = event.getValue();
-                updateGrid();
-            }
-        });
-        CheckBox ongoingCoursesFilter = new CheckBox(Words.TXT_ONGOING_COURSES, true);
-        ongoingCoursesFilter.addValueChangeListener(new HasValue.ValueChangeListener<Boolean>() {
-            @Override
-            public void valueChange(HasValue.ValueChangeEvent<Boolean> event) {
-                isOngoingCourses = event.getValue();
-                updateGrid();
-            }
-        });
 
         Button setAllButton = new Button(Words.TXT_ALL, new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
-                newCoursesFilter.setValue(Boolean.TRUE);
-                archiveCoursesFilter.setValue(Boolean.TRUE);
-                ongoingCoursesFilter.setValue(Boolean.TRUE);
+                checkboxes.forEach(checkBox -> checkBox.setValue(true));
                 updateGrid();
             }
         });
-
-        lay.addComponents(newCoursesFilter, ongoingCoursesFilter, archiveCoursesFilter,
-                setAllButton);
+        checkboxes.forEach(lay::addComponent);
+        lay.addComponent(setAllButton);
         return lay;
     }
 
@@ -142,11 +120,8 @@ public class AdminCoursesOverviewPanel<T extends AdminViewModel> extends MyConta
         //Kolumny
 
         grid.addColumn(Course::getName).setCaption(Words.TXT_COURSE_NAME);
-//        grid.addColumn(Course::getCategoryName).setCaption(Words.TXT_COURSE_CATEGORY_NAME);
-//        grid.addColumn(Course::getSubcategoryName).setCaption(Words.TXT_COURSE_SUB_CATEGORY_NAME);
-        grid.addColumn(Course::getCurseStatusAsString).setCaption(Words.TXT_COURSE_STATUS);
+        grid.addColumn(Course::getCourseStatusAsString).setCaption(Words.TXT_COURSE_STATUS);
         grid.setColumnResizeMode(ColumnResizeMode.SIMPLE);
-        grid.addComponentColumn(this::getEditButton).setHidden(true);
 
         grid.setFrozenColumnCount(2);
         grid.addItemClickListener(new ItemClickListener<Course>() {
@@ -158,14 +133,8 @@ public class AdminCoursesOverviewPanel<T extends AdminViewModel> extends MyConta
             }
         });
         layout.addComponent(grid);
-
+        updateGrid();
         return layout;
-    }
-
-    private Button getEditButton(Course course) {
-        Button but = new Button();
-
-        return but;
     }
 
     private PopupView.Content buildPopupContent() {
@@ -185,7 +154,6 @@ public class AdminCoursesOverviewPanel<T extends AdminViewModel> extends MyConta
             }
         };
         return content;
-
     }
 
 }

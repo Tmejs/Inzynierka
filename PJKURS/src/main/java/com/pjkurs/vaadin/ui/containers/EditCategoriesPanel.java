@@ -116,7 +116,7 @@ public class EditCategoriesPanel<T extends MyModel> extends MyContainer<T> {
                 categoryDescription[0] = newEvent.getValue();
             });
 
-            Button addButton = new Button(Words.TXT_ADD, (newEvent) -> {
+            Button addButton = new Button("Dodaj nową", (newEvent) -> {
                 NavigatorUI.getDBProvider().addNewCategory(categoryName[0], categoryDescription[0]);
                 Notification.show(Words.TXT_CORRECTRLY_SAVED, Notification.Type.TRAY_NOTIFICATION);
                 refreshCategoriesPanel();

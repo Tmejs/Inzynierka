@@ -45,7 +45,7 @@ public class CoursesPanel<T extends MyModel> extends MyContainer<T> {
     public CoursesPanel(Category category, T model) {
         super(model);
         this.category = category;
-      Logger.getGlobal().log(Level.SEVERE, "category :" + category);
+            Logger.getGlobal().log(Level.SEVERE, "category :" + category);
         this.setContent(buildView());
     }
 

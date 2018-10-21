@@ -19,6 +19,7 @@ package com.pjkurs.vaadin.ui.containers;
 import com.pjkurs.InterfacePjkursDataProvider;
 import com.pjkurs.domain.Category;
 import com.pjkurs.domain.Course;
+import com.pjkurs.domain.CourseStatus;
 import com.pjkurs.domain.SubCategory;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
@@ -27,103 +28,120 @@ import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.ui.*;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
+
 /**
- *
  * @author Tmejs
  */
 public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<T> {
 
     Course course;
     SubCategory selectedSubcategoryToAddToCourse;
+
+    Component mainPanel;
+    private boolean inEditMode = false;
+
     public AdminEditCoursePanel(Course course, T model) {
         super(false, model);
         this.course = course;
-        this.course.setSubcategoryList(NavigatorUI.getDBProvider().getSubCategorysByCourseId(course.id));
+        this.course.setSubcategoryList(
+                NavigatorUI.getDBProvider().getSubCategorysByCourseId(course.id));
         this.setContent(buildView());
     }
 
     @Override
     public Component buildView() {
-        return generateOverwievVew(false);
-    }
-
-    private Component generateOverwievVew(Boolean isEditable) {
         VerticalLayout layout = new VerticalLayout();
 
-        if (isEditable) {
-            layout.addComponent(new Label(Words.TXT_DURING_MODIFICATION));
-        }
-        TextArea courseName = new TextArea(Words.TXT_COURSE_NAME, this.course.name);
-        courseName.setReadOnly(!isEditable);
-        layout.addComponent(courseName);
-
-        TextArea courseDesc = new TextArea(Words.TXT_COURSE_DESCRIPTION, this.course.description);
-        courseDesc.setReadOnly(!isEditable);
-        layout.addComponent(courseDesc);
-
-//        Informacje o ilości zapiasnych ludzi
-//        layout.addComponent(new Label(Words.TXT_COURSE_PARTICIPANTS));
-//        layout.addComponent(new Label(course.paricipants.toString()));
-        if (!isEditable) {
-            VerticalLayout lay = new VerticalLayout();
-            Label label = new Label(Words.TXT_CATEGORIES);
-            lay.addComponent(label);
-            lay.addComponent(new
-                    HorizontalLayout(new Label(Words.TXT_SUBCATEGORYNAME),
-                    new Label(Words.TXT_CATEGORIES)));
-
-            course.getSubcategoryList().forEach(subCategory ->{
-                    HorizontalLayout horizontalLayout = new
-                            HorizontalLayout();
-                    Label subCategoryLabel = new Label();
-                    subCategoryLabel.setCaption(subCategory.name);
-
-                    Label categoriesLabel = new Label();
-                    categoriesLabel.setCaption(StringUtils.join(subCategory.getCategories().stream().map(category -> category.name).iterator(), ", "));
-
-                    horizontalLayout.addComponent(subCategoryLabel);
-                    horizontalLayout.addComponent(categoriesLabel);
-                    lay.addComponent(horizontalLayout);
-            });
-            layout.addComponent(lay);
-            Button editButton = new Button(Words.TXT_EDIT);
-
-            editButton.addClickListener(new Button.ClickListener() {
-                @Override
-                public void buttonClick(Button.ClickEvent event) {
-                    setContent(generateOverwievVew(true));
-                }
-            });
-            layout.addComponent(editButton);
-        } else {
-            Label label = new Label(Words.TXT_CATEGORIES);
-            layout.addComponent(label);
-
-            Component categoriesEditableComponent = generateCategoriesEditableComponent();
-            layout.addComponent(categoriesEditableComponent);
-
-            Button addCategoriesButton = new Button(Words.TXT_ADD_CATEGORY);
-
-            addCategoriesButton.addClickListener((event) -> {
-                showSetCategoryPanel();
-            });
-
-            layout.addComponent(addCategoriesButton);
-            Button editButton = new Button(Words.TXT_SAVE_DATA);
-
-            editButton.addClickListener(new Button.ClickListener() {
-                @Override
-                public void buttonClick(Button.ClickEvent event) {
-                    //TODO update danych
-                    setContent(generateOverwievVew(false));
-                    Notification.show(Words.TXT_CHANGED_DATA_SAVED, Notification.Type.TRAY_NOTIFICATION);
-
-                }
-            });
-            layout.addComponent(editButton);
-        }
-
+        mainPanel = generateMainPanel();
+        layout.addComponent(mainPanel);
         return layout;
+    }
+
+    private Component generateMainPanel() {
+        if (inEditMode) {
+            return generateEditablePanel();
+        } else {
+            return generateOverwievVew();
+        }
+    }
+
+    private Component generateOverwievVew() {
+        VerticalLayout layout = new VerticalLayout();
+
+        TextArea courseName = new TextArea(Words.TXT_COURSE_NAME);
+        courseName.setReadOnly(true);
+        courseName.setValue(course.getName());
+        if(course.getName()!=null) courseName.setValue(course.getName());
+        TextArea courseDesc = new TextArea(Words.TXT_COURSE_DESCRIPTION);
+        courseDesc.setReadOnly(true);
+        if(course.getDescription()!=null)courseDesc.setValue(course.getDescription());
+
+        TextArea coursePrice = new TextArea(Words.TXT_PRICE);
+        coursePrice.setReadOnly(true);
+        if(course.price!=null)coursePrice.setValue(course.getPrice().toString());
+
+        TextArea participants = new TextArea(Words.TXT_COURSE_PARTICIPANTS);
+        participants.setReadOnly(true);
+        if(course.paricipants!=null) participants.setValue(course.paricipants.toString());
+
+        TextArea status = new TextArea(Words.TXT_COURSE_STATUS);
+        status.setReadOnly(true);
+        status.setValue(course.getCourseStatusAsString());
+
+        Component categories = generateCategoriesView();
+
+        Button editButton = new Button(Words.TXT_EDIT);
+
+        editButton.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent event) {
+                inEditMode=true;
+                refreshView();
+            }
+        });
+
+
+        layout.addComponent(courseName);
+        layout.addComponent(courseDesc);
+        layout.addComponent(participants);
+        layout.addComponent(coursePrice);
+        layout.addComponent(status);
+        layout.addComponent(categories);
+        layout.addComponent(editButton);
+        return layout;
+    }
+
+
+    private Component generateCategoriesView() {
+        VerticalLayout lay = new VerticalLayout();
+        Label label = new Label(Words.TXT_CATEGORIES);
+        lay.addComponent(label);
+        lay.addComponent(new
+                HorizontalLayout(new Label(Words.TXT_SUBCATEGORYNAME),
+                new Label(Words.TXT_CATEGORIES)));
+
+        course.getSubcategoryList().forEach(subCategory -> {
+            HorizontalLayout horizontalLayout = new
+                    HorizontalLayout();
+            Label subCategoryLabel = new Label();
+            subCategoryLabel.setCaption(subCategory.name);
+
+            Label categoriesLabel = new Label();
+            categoriesLabel.setCaption(StringUtils
+                    .join(subCategory.getCategories().stream().map(category -> category.name)
+                            .iterator(), ", "));
+
+            horizontalLayout.addComponent(subCategoryLabel);
+            horizontalLayout.addComponent(categoriesLabel);
+            lay.addComponent(horizontalLayout);
+        });
+        return lay;
+
+
     }
 
     private void showSetCategoryPanel() {
@@ -132,7 +150,8 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
         TextArea categoryLabel = new TextArea("Kategorie: ");
         categoryLabel.setReadOnly(true);
         categoryLabel.setVisible(false);
-        NativeSelect<SubCategory> subCategorySelect = new NativeSelect<>(Words.TXT_SELECT_SUB_CATEGORY);
+        NativeSelect<SubCategory> subCategorySelect = new NativeSelect<>(
+                Words.TXT_SELECT_SUB_CATEGORY);
         subCategorySelect.setItemCaptionGenerator(new ItemCaptionGenerator<SubCategory>() {
             @Override
             public String apply(SubCategory item) {
@@ -143,24 +162,35 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
         subCategorySelect.setEmptySelectionAllowed(false);
         subCategorySelect.addSelectionListener((eventT) -> {
             selectedSubcategoryToAddToCourse = eventT.getSelectedItem().get();
-            categoryLabel.setValue(StringUtils.join(selectedSubcategoryToAddToCourse.getCategories().stream().map(
-                    Category::getName).iterator(),", "));
+            categoryLabel.setValue(
+                    StringUtils.join(selectedSubcategoryToAddToCourse.getCategories().stream().map(
+                            Category::getName).iterator(), ", "));
             categoryLabel.setVisible(true);
         });
 
-        subCategorySelect.setItems(NavigatorUI.getDBProvider().getSubCategories().stream().filter(sb -> !course.getSubcategoryList().contains(sb)));
-
+        List<SubCategory> filteredSubcatgory = NavigatorUI.getDBProvider().getSubCategories();
+        if (course.getSubcategoryList() != null) {
+            filteredSubcatgory = filteredSubcatgory.stream().filter(subCategory -> {
+                return !course.getSubcategoryList().stream()
+                        .anyMatch(subCategory1 -> subCategory.id == subCategory1.id);
+            }).collect(Collectors.toList());
+        }
+        subCategorySelect.setItems(filteredSubcatgory);
         Button addButton = new Button(Words.TXT_ADD, (newEvent) -> {
-            Boolean isAdded = NavigatorUI.getDBProvider().addSubCategoryToCourse(course.id,
-                    selectedSubcategoryToAddToCourse.id);
-            if(isAdded){
-                 Notification.show(Words.TXT_CORRECTRLY_SAVED, Notification.Type.TRAY_NOTIFICATION);
-                 course = NavigatorUI.getDBProvider().getCourse(course.id);
-                 setContent(generateOverwievVew(true));
-            }else{
-                Notification.show(Words.TXT_ERROR, Notification.Type.TRAY_NOTIFICATION);
+            if (selectedSubcategoryToAddToCourse != null) {
+                Boolean isAdded = NavigatorUI.getDBProvider().addSubCategoryToCourse(course.id,
+                        selectedSubcategoryToAddToCourse.id);
+                if (isAdded) {
+                    this.course = NavigatorUI.getDBProvider().getCourse(course.id);
+                    Notification
+                            .show(Words.TXT_CORRECTRLY_SAVED, Notification.Type.TRAY_NOTIFICATION);
+                    refreshView();
+                } else {
+                    Notification.show(Words.TXT_ERROR, Notification.Type.TRAY_NOTIFICATION);
+                }
+                selectedSubcategoryToAddToCourse = null;
+                subWindow.close();
             }
-            subWindow.close();
         });
 
         subContent.addComponent(categoryLabel);
@@ -191,7 +221,7 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
                 InterfacePjkursDataProvider dataProvider = NavigatorUI.getDBProvider();
                 dataProvider.deleteSubCategoryFromCourse(course.getId(), t.id);
                 course.setSubcategoryList(dataProvider.getSubCategorysByCourseId(course.getId()));
-                setContent(generateOverwievVew(true));
+                refreshView();
             });
             temp.addComponent(subCategoryNameLabel);
             temp.addComponent(deleteCategoryButton);
@@ -199,6 +229,89 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
         });
 
         return categoriesLayout;
+    }
+
+    private Component generateEditablePanel() {
+        VerticalLayout layout = new VerticalLayout();
+
+        Course editedCourse = new Course(course);
+
+        TextArea courseName = new TextArea(Words.TXT_COURSE_NAME);
+        courseName.setValue(course.getName());
+        if(course.getName()!=null) courseName.setValue(course.getName());
+        TextArea courseDesc = new TextArea(Words.TXT_COURSE_DESCRIPTION);
+        if(course.getDescription()!=null)courseDesc.setValue(course.getDescription());
+
+        TextArea coursePrice = new TextArea(Words.TXT_PRICE);
+        if(course.price!=null)coursePrice.setValue(course.getPrice().toString());
+
+        Label label = new Label(Words.TXT_CATEGORIES);
+        layout.addComponent(label);
+
+        NativeSelect<CourseStatus> statuses = new NativeSelect<>();
+        statuses.setCaption(Words.TXT_COURSE_STATUS);
+        statuses.setEmptySelectionAllowed(true);
+        statuses.setItems(NavigatorUI.getDBProvider().getCourseStatuses());
+        if (course.getCourseStatus() != null)
+            statuses.setSelectedItem(course.getCourseStatus());
+        statuses.setItemCaptionGenerator(item -> item.name);
+        statuses.addValueChangeListener(event -> {
+            if (event.getValue() != null) {
+                editedCourse.statusId = event.getValue().id;
+            }
+        });
+
+        Component categoriesEditableComponent = generateCategoriesEditableComponent();
+
+        Button addCategoriesButton = new Button(Words.TXT_ADD_CATEGORY);
+
+        addCategoriesButton.addClickListener((event) -> {
+            showSetCategoryPanel();
+        });
+
+
+        Button editButton = new Button(Words.TXT_SAVE_DATA);
+
+        editButton.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent event) {
+                try {
+                    editedCourse.name = courseName.getValue();
+                    editedCourse.description = courseDesc.getValue();
+                    if(coursePrice.getValue()!=null || !coursePrice.getValue().isEmpty())
+                        editedCourse.price = Double.valueOf(coursePrice.getValue());
+                    else
+                        editedCourse.price=0d;
+                    inEditMode = false;
+                    NavigatorUI.getDBProvider().updateCourse(editedCourse);
+                    Notification.show(Words.TXT_CHANGED_DATA_SAVED,
+                            Notification.Type.TRAY_NOTIFICATION);
+                    course = NavigatorUI.getDBProvider().getCourse(course.id);
+                    refreshView();
+                } catch (Exception e) {
+                    Notification.show(Words.TXT_NOT_SAVED_CHECK_DATA,
+                            Notification.Type.TRAY_NOTIFICATION);
+                    Logger.getLogger(getClass().toString()).log(Level.WARNING,"SAVE data", e);
+                }
+            }
+        });
+
+        Button undoButton = new Button(Words.TXT_DISCARD_CHANGES);
+        undoButton.addClickListener(event -> {
+            inEditMode =false;
+            refreshView();
+        });
+
+        layout.addComponent(courseName);
+        layout.addComponent(courseDesc);
+        layout.addComponent(coursePrice);
+        layout.addComponent(statuses);
+        layout.addComponent(categoriesEditableComponent);
+        layout.addComponent(addCategoriesButton);
+        layout.addComponent(editButton);
+        layout.addComponent(undoButton);
+
+        return  layout;
     }
 
 }

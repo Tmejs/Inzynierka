@@ -61,7 +61,7 @@ public class RegisterViewModel extends MyModel<RegisterView> {
             client.password = data.getPassword();
             if (NavigatorUI.getDBProvider().registerNewClient(client)) {
                 //Poprawnie zarejestrowano
-                getUi().getSession().setAttribute(Words.SESSION_LOGIN_NAME, client.email);
+                getUi().getSession().setAttribute(Words.SESSION_LOGIN_NAME, client);
                 getUi().getNavigator().navigateTo(NavigatorUI.View.MAINVIEW.getName());
                 Notification.show(Words.TXT_CORRECTLY_REGISTERED);
             } else {

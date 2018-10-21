@@ -86,12 +86,17 @@ public class NavigatorUI extends UI {
 
     }
 
-    public static String getLoggedUser() {
-        return (String)VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGIN_NAME);
+    public static Appusers getLoggedUser() {
+        return (Appusers)VaadinSession.getCurrent().getAttribute(Words.SESSION_LOGIN_NAME);
     }
 
     //Nawigator aplikacji
     public Navigator navigator;
+
+    public static void setLoggedUser(String email) {
+        VaadinSession.getCurrent().setAttribute(Words.SESSION_LOGIN_NAME,
+                getDBProvider().getUser(email));
+    }
 
     //Widoki w aplikacji
     public enum View {

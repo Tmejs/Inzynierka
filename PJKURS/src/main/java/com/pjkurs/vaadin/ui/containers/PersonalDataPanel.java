@@ -17,12 +17,16 @@
 package com.pjkurs.vaadin.ui.containers;
 
 import com.pjkurs.domain.Appusers;
+import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.views.system.MyModel;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.VerticalLayout;
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.vaadin.ui.*;
+
+import java.sql.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,33 +38,142 @@ public class PersonalDataPanel<T extends MyModel> extends MyContainer<T> {
         super(model);
     }
 
+    private Appusers selectedUser;
+    private Boolean isEditable = false;
+    private Component myDataPanel;
+
     @Override
     public Component buildView() {
-        this.setWidth("100%");
-
         VerticalLayout mainView = new VerticalLayout();
-
+        selectedUser = NavigatorUI.getDBProvider().getUser(NavigatorUI.getLoggedUser().email);
         mainView.setSizeFull();
-
-        mainView.addComponent(buildMyDataPanel());
+        myDataPanel = buildMyDataPanel();
+        mainView.addComponent(myDataPanel);
 
         return mainView;
+    }
 
+    private void refreshPanel(){
+        Component newPanel;
+        if(isEditable){
+            newPanel = generateEditablePanel();
+        }else{
+            newPanel = buildMyDataPanel();
+        }
+
+        ((VerticalLayout) this.getContent()).replaceComponent(myDataPanel, newPanel);
+        myDataPanel =newPanel;
     }
 
     private Component buildMyDataPanel() {
         VerticalLayout layout=new VerticalLayout();
-        
-        Appusers user = NavigatorUI.getDBProvider().getUser(NavigatorUI.getLoggedUser());
-        
-        layout.addComponent(new Label("Login:"));
-        
-        layout.addComponent(new Label(user.email));
-        
-//        layout.addComponent(new Label("Data dodania:"));
-        
-//        layout.addComponent(new Label(user.data_dodania.toString()));
-        
+        selectedUser = NavigatorUI.getDBProvider().getUser(selectedUser.email);
+        TextArea emailArea = new TextArea(Words.TXT_EMAIL, selectedUser.getEmail());
+        TextArea nameArea = new TextArea(Words.TXT_NAME);
+        if (selectedUser.getName() != null) {
+            nameArea.setValue(selectedUser.getName());
+        }
+        TextArea surnameArea = new TextArea(Words.TXT_SURRNAME);
+        if (selectedUser.getSurname() != null) {
+            surnameArea.setValue(selectedUser.getSurname());
+        }
+        com.vaadin.ui.DateField birth_dateDatePicker =
+                new DateField(Words.TXT_BIRTH_DATE);
+        if (selectedUser.getBirth_date() != null) {
+            birth_dateDatePicker.setValue(selectedUser.getBirth_date().toLocalDate());
+        }
+        TextArea contactNumberArea = new TextArea(Words.TXT_PHONE_CONTACT);
+        if (selectedUser.getContact_number() != null) {
+            contactNumberArea.setValue(selectedUser.getContact_number());
+        }
+
+        Button editDataButton= new Button(Words.TXT_EDIT);
+        editDataButton.addClickListener(event -> {
+            isEditable=true;
+            refreshPanel();
+        });
+
+        emailArea.setReadOnly(true);
+        nameArea.setReadOnly(true);
+        surnameArea.setReadOnly(true);
+        contactNumberArea.setReadOnly(true);
+        birth_dateDatePicker.setReadOnly(true);
+
+        layout.addComponent(emailArea);
+        layout.addComponent(nameArea);
+        layout.addComponent(surnameArea);
+        layout.addComponent(birth_dateDatePicker);
+        layout.addComponent(contactNumberArea);
+        layout.addComponent(editDataButton);
+        return layout;
+    }
+
+    private Component generateEditablePanel() {
+        VerticalLayout layout = new VerticalLayout();
+        Appusers editedUser = new Appusers(selectedUser);
+
+        TextArea emailArea = new TextArea(Words.TXT_EMAIL, selectedUser.getEmail());
+        emailArea.setReadOnly(true);
+        TextArea nameArea = new TextArea(Words.TXT_NAME);
+        if (selectedUser.getName() != null) {
+            nameArea.setValue(selectedUser.getName());
+        }
+        TextArea surnameArea = new TextArea(Words.TXT_SURRNAME);
+        if (selectedUser.getSurname() != null) {
+            surnameArea.setValue(selectedUser.getSurname());
+        }
+        com.vaadin.ui.DateField birth_dateDatePicker =
+                new DateField(Words.TXT_BIRTH_DATE);
+        if (selectedUser.getBirth_date() != null) {
+            birth_dateDatePicker.setValue(selectedUser.getBirth_date().toLocalDate());
+        }
+        TextArea contactNumberArea = new TextArea(Words.TXT_PHONE_CONTACT);
+        if (selectedUser.getContact_number() != null) {
+            contactNumberArea.setValue(selectedUser.getContact_number());
+        }
+
+        TextArea passwordArea = new TextArea(Words.TXT_PASSWORD);
+        if (selectedUser.getPassword() != null) {
+            passwordArea.setValue(selectedUser.getPassword());
+        }
+
+        HorizontalLayout newL = new HorizontalLayout();
+        Button saveButton = new Button(Words.TXT_SAVE_DATA);
+        saveButton.addClickListener(event -> {
+            try{
+                editedUser.name = nameArea.getValue();
+                editedUser.surname = surnameArea.getValue();
+                editedUser.birth_date =
+                        Date.valueOf(birth_dateDatePicker.getValue());
+                editedUser.contact_number = contactNumberArea.getValue();
+                editedUser.password = passwordArea.getValue();
+                NavigatorUI.getDBProvider().updateAppuser(editedUser);
+                selectedUser = null;
+                isEditable =false;
+                refreshPanel();
+            }catch (Exception e){
+                Notification.show(Words.TXT_NOT_SAVED_CHECK_DATA);
+                Logger.getGlobal().log(Level.SEVERE, "Błąd przy updateAppuser", e);
+            }
+        });
+        Button undoButton = new Button(Words.TXT_DISCARD_CHANGES);
+        undoButton.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent event) {
+                isEditable=false;
+                refreshPanel();
+            }
+        });
+        newL.addComponent(saveButton);
+        newL.addComponent(undoButton);
+
+        layout.addComponent(emailArea);
+        layout.addComponent(nameArea);
+        layout.addComponent(surnameArea);
+        layout.addComponent(birth_dateDatePicker);
+        layout.addComponent(contactNumberArea);
+        layout.addComponent(passwordArea);
+        layout.addComponent(newL);
         return layout;
     }
 }

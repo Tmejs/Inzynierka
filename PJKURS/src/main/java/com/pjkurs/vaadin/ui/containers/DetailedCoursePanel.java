@@ -28,11 +28,11 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Tmejs
  */
 public class DetailedCoursePanel<T extends MyModel> extends MyContainer<T> {
@@ -53,37 +53,47 @@ public class DetailedCoursePanel<T extends MyModel> extends MyContainer<T> {
             TextArea courseName = new TextArea(Words.TXT_COURSE_NAME, this.course.name);
             courseName.setReadOnly(true);
             layout.addComponent(courseName);
-            
-            TextArea courseDesc = new TextArea(Words.TXT_COURSE_DESCRIPTION, this.course.description);
+
+            TextArea courseDesc = new TextArea(Words.TXT_COURSE_DESCRIPTION,
+                    this.course.description);
             courseDesc.setReadOnly(true);
             layout.addComponent(courseDesc);
-            
+
             layout.addComponent(new Label(Words.TXT_COURSE_PARTICIPANTS));
             layout.addComponent(new Label(course.paricipants.toString()));
 
             //Sprawdzenie czy już zapisany
             if (NavigatorUI.getLoggedUser() != null) {
-                if (!NavigatorUI.getDBProvider().isUserSignedToCourse(NavigatorUI.getLoggedUser(), course.id)) {
+                if (!NavigatorUI.getDBProvider()
+                        .isUserSignedToCourse(NavigatorUI.getLoggedUser().email, course.id)) {
                     layout.addComponent(new Button(Words.TXT_SIGN_TO_COURSE, (event) -> {
                         Logger.getGlobal().log(Level.SEVERE, "TXT_SIGN_TO_COURSE:");
 
-                        if (NavigatorUI.getDBProvider().addClientToCourse(NavigatorUI.getLoggedUser(), course)) {
+                        if (NavigatorUI.getDBProvider()
+                                .addClientToCourse(NavigatorUI.getLoggedUser().email, course)) {
                             Notification.show("Poprawnie zapisano do kursu");
-                            ((MainViewModel) getModel()).getView().setDetailedCourseAsMainPanel(course.id);
+                            ((MainViewModel) getModel()).getView()
+                                    .setDetailedCourseAsMainPanel(course.id);
                         } else {
                             Notification.show("Nie można zapisać do kursu");
                         }
-
                     }));
+                } else {
+                    Button undoCoursSign = new Button(Words.TXT_UNDO_SIGN_TO_COURS);
+
+                    undoCoursSign.addClickListener(event -> {
+                        NavigatorUI.getDBProvider()
+                                .deleteCientFromCourse(NavigatorUI.getLoggedUser(), course);
+                        ((MainViewModel) getModel()).myCoursesButtonClicked(null);
+                        Notification.show(Words.TXT_CORRECTLY_UNSGNED);
+                    });
+                    layout.addComponent(undoCoursSign);
                 }
             } else {
                 layout.addComponent(new Label("Zaloguj aby zapisać się do kursu"));
             }
 
         }
-
         return layout;
-
     }
-
 }
