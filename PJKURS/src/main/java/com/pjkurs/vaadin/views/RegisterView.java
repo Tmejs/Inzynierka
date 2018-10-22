@@ -59,7 +59,6 @@ public class RegisterView extends MyContainer<RegisterViewModel> implements View
     
     @Override
     public Component generateTopPanel() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return new TopPanel(getModel());
     }
     
@@ -95,7 +94,5 @@ public class RegisterView extends MyContainer<RegisterViewModel> implements View
         verticalLayout.addComponent(confirmButton);
         
         return verticalLayout;
-        
     }
-    
 }

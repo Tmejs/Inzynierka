@@ -52,7 +52,6 @@ public class MainMenuPanel<T extends MyModel> extends MyContainer<T> {
             ((MainViewModel) getModel()).coursesButtonClicked(null, selectedItem);
         });
 
-
         List<Category> categories = NavigatorUI.getDBProvider().getCategories();
 
         categories.forEach((category) -> {
@@ -84,8 +83,8 @@ public class MainMenuPanel<T extends MyModel> extends MyContainer<T> {
 //            ((MainViewModel) getModel()).archiveCoursesButtonClicked(selectedItem);
 //        });
 
-//        
-//        
+//
+//
 //        kursyMenuItem.addItem(Words.TXT_ADD_NEW, (selectedItem) -> {
 //            ((AdminViewModel) getModel()).menuCoursesAddNewClicked();
 //        });

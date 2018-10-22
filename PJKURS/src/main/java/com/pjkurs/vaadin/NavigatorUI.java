@@ -93,9 +93,8 @@ public class NavigatorUI extends UI {
     //Nawigator aplikacji
     public Navigator navigator;
 
-    public static void setLoggedUser(String email) {
-        VaadinSession.getCurrent().setAttribute(Words.SESSION_LOGIN_NAME,
-                getDBProvider().getUser(email));
+    public static void setLoggeddUser(Appusers user) {
+        VaadinSession.getCurrent().setAttribute(Words.SESSION_LOGIN_NAME, user);
     }
 
     //Widoki w aplikacji

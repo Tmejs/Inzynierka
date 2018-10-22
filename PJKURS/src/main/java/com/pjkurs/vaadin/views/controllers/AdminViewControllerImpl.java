@@ -82,4 +82,9 @@ public class AdminViewControllerImpl implements InterfaceAdminViewController {
     public void menuSubcategoriesClicked() {
         getModel().getView().setMainPanel(new EditSubcategoriesPanel(model));
     }
+
+    @Override
+    public void menuDiscountsClicked() {
+        getModel().getView().setMainPanel(new DiscountsPanel(model));
+    }
 }

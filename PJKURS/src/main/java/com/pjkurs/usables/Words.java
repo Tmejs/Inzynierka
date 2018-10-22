@@ -37,6 +37,11 @@ public class Words {
     public static final String TXT_NOONES = "Żaden";
     public static final String TXT_NO_STATUS = "Bez statusu";
     public static final String TXT_PRICE = "Cena";
+    public static final String TXT_DISCOUNTS = "Zniżki";
+    public static final String TXT_DISCOUNT_NAME = "Nazwa zniżki";
+    public static final String TXT_DISCOUNT = "Wartość zniżki";
+    public static final String TXT_NOT_SET = "Nie ustawiono";
+    public static final String TXT_IS_MONEY_DISCOUNT = "Zniżka pienieżna";
     /*SQL QUERYS
 
             Selecty do bazy danych

@@ -98,4 +98,11 @@ public interface InterfacePjkursDataProvider {
     void deleteCientFromCourse(Appusers appUser, Course course);
 
     List<CourseStatus> getCourseStatuses();
+
+    List<Discount> getDicsounts();
+
+    void updateDiscount(Discount editedDiscount);
+
+    void addDiscount(Discount discount);
+
 }

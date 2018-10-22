@@ -81,10 +81,10 @@ public class LoginPanel<T extends MyModel> extends MyContainer<T> {
             mainLayout.addComponent(loginButton);
 
             //Link do przypominajki
-            Link linkToForgotPassword = new Link(Words.TXT_FORGOT_PASSWORD,
-                    new ExternalResource("#!"));
-
-            mainLayout.addComponent(linkToForgotPassword);
+//            Link linkToForgotPassword = new Link(Words.TXT_FORGOT_PASSWORD,
+//                    new ExternalResource("#!"));
+//
+//            mainLayout.addComponent(linkToForgotPassword);
 
             //Link do rejestracji
             Link linkToRegister = new Link(Words.TXT_REGISTER,

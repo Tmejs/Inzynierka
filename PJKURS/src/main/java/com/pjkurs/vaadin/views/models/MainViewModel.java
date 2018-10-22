@@ -82,6 +82,7 @@ public class MainViewModel extends MyModel<MainView> implements InterfaceMainVie
         this.controller = new MainViewControllerImpl(this);
     }
 
+
     @Override
     public void contactDataButtonClicked(MenuBar.MenuItem selectedItem) {
         getController().contactDataButtonClicked(selectedItem);

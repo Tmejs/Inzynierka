@@ -49,7 +49,9 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
 
     @Override
     public Boolean addSubCategoryToCourse(Integer id, Long id0) {
-        String query = "insert into pjkursdb.courses_sub_categories(course_id,sub_category_id) values (" + id + "," + id0 + ")";
+        String query =
+                "insert into pjkursdb.courses_sub_categories(course_id,sub_category_id) values ("
+                        + id + "," + id0 + ")";
         try {
             dbConnector.executeUpdate(query);
         } catch (SQLException e) {
@@ -59,7 +61,6 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         return true;
     }
 
-
     @Override
     public List<Course> getAllCourses() {
         String buildedFunction
@@ -68,7 +69,7 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
             List<Course> list = dbConnector.getMappedArrayList(new Course(), buildedFunction);
             list.stream().forEach((t) -> {
                 t.setSubcategoryList(getSubCategorysByCourseId(t.id));
-                if(t.statusId!=null){
+                if (t.statusId != null) {
                     t.setCourseStatus(getStatusById(t.statusId));
                 }
 
@@ -84,9 +85,10 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     @Override
     public CourseStatus getStatusById(Integer statusId) {
         String buildedFunction
-                = "SELECT * FROM pjkursdb.courses_statuses where id =" +statusId;
+                = "SELECT * FROM pjkursdb.courses_statuses where id =" + statusId;
         try {
-            List<CourseStatus> list = dbConnector.getMappedArrayList(new CourseStatus(), buildedFunction);
+            List<CourseStatus> list = dbConnector
+                    .getMappedArrayList(new CourseStatus(), buildedFunction);
             return list.get(0);
         } catch (Exception exception) {
             Logger.getLogger(this.getClass().getCanonicalName())
@@ -126,7 +128,8 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     public Boolean registerNewClient(Client client) {
         String buildedFunction
                 =
-                "insert into `pjkursdb`.`appusers` (email,password) values  ('" + client.email + "','" + client.password + "')";
+                "insert into `pjkursdb`.`appusers` (email,password) values  ('" + client.email
+                        + "','" + client.password + "')";
         try {
             dbConnector.executeUpdate(buildedFunction);
             return true;
@@ -173,7 +176,9 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
                     .get(0);
 
             course.setSubcategoryList(getSubCategorysByCourseId(courseId));
-            if(course.getStatusId()!=null) course.setCourseStatus(getStatusById(course.getStatusId()));
+            if (course.getStatusId() != null) {
+                course.setCourseStatus(getStatusById(course.getStatusId()));
+            }
             return course;
         } catch (Exception exception) {
             Logger.getLogger(this.getClass().getCanonicalName())
@@ -192,7 +197,8 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     @Override
     public Boolean updateClient(Client client) {
         throw new UnsupportedOperationException(
-                "Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                "Not supported yet."); //To change body of generated methods, choose Tools |
+        // Templates.
     }
 
     @Override
@@ -219,7 +225,9 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
             List<Course> list = dbConnector.getMappedArrayList(new Course(), sqlQuery);
             list.stream().forEach((course) -> {
                 course.setSubcategoryList(getSubCategorysByCourseId(course.id));
-                if(course.getStatusId()!=null) course.setCourseStatus(getStatusById(course.getStatusId()));
+                if (course.getStatusId() != null) {
+                    course.setCourseStatus(getStatusById(course.getStatusId()));
+                }
             });
             return list;
         } catch (Exception exception) {
@@ -237,7 +245,9 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
             List<MyCourse> cousres = dbConnector.getMappedArrayList(new MyCourse(), sqlQuery);
             cousres.stream().forEach(((t) -> {
                 t.setSubcategoryList(getSubCategorysByCourseId(t.id));
-                if(t.getStatusId()!=null) t.setCourseStatus(getStatusById(t.getStatusId()));
+                if (t.getStatusId() != null) {
+                    t.setCourseStatus(getStatusById(t.getStatusId()));
+                }
             }));
             return cousres;
 
@@ -264,7 +274,8 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     @Override
     public Boolean addnewCourse(Course newCourse) {
         String query = "insert into pjkursdb.courses(name,description,minimumParticipants) " +
-                "values ('" + newCourse.name + "','" + newCourse.description + "'," + newCourse.minimumParticipants + ")";
+                "values ('" + newCourse.name + "','" + newCourse.description + "',"
+                + newCourse.minimumParticipants + ")";
         try {
             dbConnector.executeUpdate(query);
         } catch (SQLException e) {
@@ -277,12 +288,12 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     public Boolean updateCourse(Course course) {
         String func = "UPDATE pjkursdb.courses " +
                 "SET " +
-                "name = '"+course.name+"', " +
-                "description = '"+course.description+"'," +
-                "statusId = "+course.statusId+", " +
-                "minimumParticipants = "+course.minimumParticipants+", " +
-                "price ="+course.getPrice()+
-                " WHERE id = " +course.getId();
+                "name = '" + course.name + "', " +
+                "description = '" + course.description + "'," +
+                "statusId = " + course.statusId + ", " +
+                "minimumParticipants = " + course.minimumParticipants + ", " +
+                "price =" + course.getPrice() +
+                " WHERE id = " + course.getId();
         try {
             dbConnector.executeUpdate(func);
         } catch (SQLException e) {
@@ -321,7 +332,9 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     private List<Category> getCategoryListBySubcategoryId(Long id) {
         String buildedFunction
                 = "select ct.* from pjkursdb.categorries ct" +
-                " join pjkursdb.subcategories_categories sb where sb.category_id = ct.id and sb.subcategory_id=" + id;
+                " join pjkursdb.subcategories_categories sb where sb.category_id = ct.id and sb"
+                + ".subcategory_id="
+                + id;
         try {
             List<Category> list = dbConnector.getMappedArrayList(new Category(), buildedFunction);
             return list;
@@ -336,7 +349,9 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     public List<SubCategory> getSubCategorysByCourseId(Integer courseId) {
         String buildedFunction
                 = "select sb.* from pjkursdb.sub_categorries sb join " +
-                "pjkursdb.courses_sub_categories sbc on sb.id = sbc.sub_category_id where sbc.course_id =" + courseId;
+                "pjkursdb.courses_sub_categories sbc on sb.id = sbc.sub_category_id where sbc"
+                + ".course_id ="
+                + courseId;
         try {
             List<SubCategory> lsit = dbConnector
                     .getMappedArrayList(new SubCategory(), buildedFunction);
@@ -353,7 +368,9 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
 
     @Override
     public void addNewCategory(String string, String string0) {
-        String query = "insert into pjkursdb.categorries(name,description) values ('" + string + "','" + string0 + "')";
+        String query =
+                "insert into pjkursdb.categorries(name,description) values ('" + string + "','"
+                        + string0 + "')";
         try {
             dbConnector.executeUpdate(query);
         } catch (SQLException e) {
@@ -364,7 +381,9 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
 
     @Override
     public void addNewSubCategory(String string, String string0) {
-        String query = "insert into pjkursdb.sub_categorries(name,description) values ('" + string + "','" + string0 + "')";
+        String query =
+                "insert into pjkursdb.sub_categorries(name,description) values ('" + string + "','"
+                        + string0 + "')";
         try {
             dbConnector.executeUpdate(query);
         } catch (SQLException e) {
@@ -430,8 +449,9 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
 
     @Override
     public void deleteSubcategoryFromCategory(SubCategory subCategory, Category category) {
-        String buildedFunction = "delete from pjkursdb.subcategories_categories where subcategory_id=" +
-                subCategory.id + " and category_id=" + category.id;
+        String buildedFunction =
+                "delete from pjkursdb.subcategories_categories where subcategory_id=" +
+                        subCategory.id + " and category_id=" + category.id;
         try {
             dbConnector.executeStatement(buildedFunction);
         } catch (Exception exception) {
@@ -455,12 +475,14 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
 
     @Override
     public void updateAppuser(Appusers editedUser) {
-        String buildedFunction = "UPDATE pjkursdb.appusers SET  id =" + editedUser.id + ",  email  " +
-                "='" + editedUser.email + "',  password  ='" + editedUser.password + "',  create_date= '" +
-                editedUser.create_date + "',  name  = '" + editedUser.name + "',  surname  ='" +
-                editedUser.surname + "',  birth_date  = '" + editedUser.birth_date + "',  " +
-                "contact_number  = '" + editedUser.contact_number + "'  WHERE  id  =" +
-                editedUser.id;
+        String buildedFunction =
+                "UPDATE pjkursdb.appusers SET  id =" + editedUser.id + ",  email  " +
+                        "='" + editedUser.email + "',  password  ='" + editedUser.password
+                        + "', name  = '" + editedUser.name + "',  surname  ='" +
+                        editedUser.surname + "',  birth_date  = '" + editedUser.birth_date + "',  "
+                        +
+                        "contact_number  = '" + editedUser.contact_number + "'  WHERE  id  =" +
+                        editedUser.id;
         try {
             dbConnector.executeStatement(buildedFunction);
         } catch (Exception exception) {
@@ -472,8 +494,8 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     @Override
     public void deleteCientFromCourse(Appusers appUser, Course course) {
         String buildedFunction =
-                "delete FROM pjkursdb.appusers_courses where user_id ="+appUser.id+" and " +
-                "course_id="+course.id;
+                "delete FROM pjkursdb.appusers_courses where user_id =" + appUser.id + " and " +
+                        "course_id=" + course.id;
         try {
             dbConnector.executeStatement(buildedFunction);
         } catch (Exception exception) {
@@ -487,12 +509,71 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         String buildedFunction
                 = "SELECT * FROM pjkursdb.courses_statuses";
         try {
-            List<CourseStatus> list = dbConnector.getMappedArrayList(new CourseStatus(), buildedFunction);
+            List<CourseStatus> list = dbConnector
+                    .getMappedArrayList(new CourseStatus(), buildedFunction);
             return list;
         } catch (Exception exception) {
             Logger.getLogger(this.getClass().getCanonicalName())
                     .log(Level.ALL, "getCourseStatuses", exception);
         }
         return new ArrayList<>();
+    }
+
+    @Override
+    public List<Discount> getDicsounts() {
+        String buildedFunction
+                = "SELECT * FROM pjkursdb.discounts";
+        try {
+            List<Discount> list = dbConnector
+                    .getMappedArrayList(new Discount(), buildedFunction);
+            return list;
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "getCourseStatuses", exception);
+        }
+        return new ArrayList<>();
+    }
+
+    @Override
+    public void updateDiscount(Discount editedDiscount) {
+        String moneyString = editedDiscount.money != null ? editedDiscount.money.toString() :
+                "null";
+        String percentageString = editedDiscount.discount_precentage != null ?
+                editedDiscount.discount_precentage.toString() :
+                "null";
+
+        String buildedFunction =
+                "update pjkursdb.discounts set name ='" + editedDiscount.name + "', "
+                        + "description ='" + editedDiscount.description + "', money =" + moneyString
+                        + ", discount_precentage= " + percentageString + " where id="
+                        + editedDiscount.id;
+        try {
+            dbConnector.executeStatement(buildedFunction);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "updateDiscount", exception);
+        }
+    }
+
+    @Override
+    public void addDiscount(Discount discount) {
+        String moneyString = discount.money != null ? discount.money.toString() :
+                "null";
+        String percentageString = discount.discount_precentage != null ?
+                discount.discount_precentage.toString() :
+                "null";
+
+        String buildedFunction =
+                "insert into pjkursdb.discounts(name,description,discount_precentage,money ) "
+                        + "values( "
+                        + "'" + discount.name + "', "
+                        + "'" + discount.description + "'," + percentageString
+                        + ",    " + moneyString + ")";
+        try {
+            dbConnector.executeStatement(buildedFunction);
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "updateDiscount", exception);
+        }
     }
 }

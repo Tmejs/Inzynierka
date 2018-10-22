@@ -62,14 +62,12 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
     public Component buildView() {
         this.setSizeFull();
         VerticalLayout mainLayout = new VerticalLayout();
-//        mainLayout.addStyleName("horrizontaly-full-view");
         topPanel = generateTopPanel();
         mainLayout.addComponent(topPanel);
         menuPanel = generateMenu();
         mainLayout.addComponent(menuPanel);
         mainPanel = generateMainAppPanel();
         mainLayout.addComponent(mainPanel);
-//        setCoursesAsMainPanel();
         return mainLayout;
     }
 

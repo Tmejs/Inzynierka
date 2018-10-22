@@ -148,7 +148,7 @@ public class PersonalDataPanel<T extends MyModel> extends MyContainer<T> {
                 editedUser.contact_number = contactNumberArea.getValue();
                 editedUser.password = passwordArea.getValue();
                 NavigatorUI.getDBProvider().updateAppuser(editedUser);
-                selectedUser = null;
+                selectedUser = NavigatorUI.getDBProvider().getUser(editedUser.email);
                 isEditable =false;
                 refreshPanel();
             }catch (Exception e){
@@ -156,6 +156,7 @@ public class PersonalDataPanel<T extends MyModel> extends MyContainer<T> {
                 Logger.getGlobal().log(Level.SEVERE, "Błąd przy updateAppuser", e);
             }
         });
+
         Button undoButton = new Button(Words.TXT_DISCARD_CHANGES);
         undoButton.addClickListener(new Button.ClickListener() {
             @Override

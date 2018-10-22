@@ -84,4 +84,8 @@ public class AdminViewModel extends MyModel<AdminView> implements InterfaceAdmin
     public void menuSubcategoriesClicked() {
         controller.menuSubcategoriesClicked();
     }
+
+    public void menuDiscountsClicked() {
+        controller.menuDiscountsClicked();
+    }
 }

@@ -65,6 +65,12 @@ public class AdminMenuPanel<T extends MyModel> extends MyContainer<T> {
             ((AdminViewModel) getModel()).menuSubcategoriesClicked();
         });
 
+        MenuItem discountsMenu = menu.addItem(Words.TXT_DISCOUNTS, (selectedItem) -> {
+            ((AdminViewModel) getModel()).menuDiscountsClicked();
+        });
+
+
+
 //        //Wykładowcy
 //        //Przegląd
 //        //Dodaj nowego
