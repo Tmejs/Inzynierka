@@ -43,4 +43,6 @@ public interface InterfaceAdminViewController {
     void menuSubcategoriesClicked();
 
     void menuDiscountsClicked();
+
+    void menuAwaitingDicountsClicked();
 }

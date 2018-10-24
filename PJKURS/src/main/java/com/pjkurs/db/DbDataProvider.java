@@ -535,6 +535,23 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     }
 
     @Override
+    public Discount getDiscountById(Integer id) {
+        String buildedFunction
+                = "SELECT * FROM pjkursdb.discounts where id=" + id;
+        try {
+            List<Discount> list = dbConnector
+                    .getMappedArrayList(new Discount(), buildedFunction);
+            if (!list.isEmpty()) {
+                return list.get(0);
+            }
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "getCourseStatuses", exception);
+        }
+        return null;
+    }
+
+    @Override
     public void updateDiscount(Discount editedDiscount) {
         String moneyString = editedDiscount.money != null ? editedDiscount.money.toString() :
                 "null";
@@ -574,6 +591,108 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
         } catch (Exception exception) {
             Logger.getLogger(this.getClass().getCanonicalName())
                     .log(Level.ALL, "updateDiscount", exception);
+        }
+    }
+
+    @Override
+    public Discount getUserDiscount(Appusers appuser) {
+        String buildedFunction
+                = "SELECT \t* FROM pjkursdb.discounts d join pjkurdb.appusers_discounts ad on d"
+                + ".id = ad.discount_id where ad.appusers_id = " + appuser.getId();
+        try {
+            List<Discount> list = dbConnector
+                    .getMappedArrayList(new Discount(), buildedFunction);
+            if (!list.isEmpty()) {
+                return list.get(0);
+            }
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "getCourseStatuses", exception);
+        }
+        return null;
+    }
+
+    @Override
+    public GrantedDiscount getUserGrantedDiscount(Appusers selectedUser) {
+        String buildedFunction
+                =
+                "SELECT d.*, ad.appusers_id, ad.grantedDescription, ad.isConfirmed, ad"
+                        + ".userDescription, ap.email FROM pjkursdb.discounts d join pjkursdb"
+                        + ".appusers_discounts ad on d.id = ad.discount_id join pjkursdb.appusers ap on ad"
+                        + ".appusers_id = ap.id where ad.appusers_id ="
+                        + selectedUser.id;
+        try {
+            List<GrantedDiscount> list = dbConnector
+                    .getMappedArrayList(new GrantedDiscount(), buildedFunction);
+            if (!list.isEmpty()) {
+                return list.get(0);
+            }
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "getCourseStatuses", exception);
+        }
+        return null;
+    }
+
+    @Override
+    public Boolean addAplicationForDiscount(GrantedDiscount discount) {
+        String buidledFunction = "INSERT INTO `pjkursdb`.`appusers_discounts`"
+                + "(`appusers_id`,"
+                + "`discount_id`,"
+                + "`isConfirmed`,"
+                + "`userDescription`)"
+                + "VALUES "
+                + "( " + discount.appusers_id + ","
+                + discount.id + ","
+                + "null,"
+                + "'" + discount.userDescription + "')";
+
+        try {
+            dbConnector.executeStatement(buidledFunction);
+            return true;
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "addAplicationForDiscount", exception);
+            return false;
+        }
+    }
+
+    @Override
+    public List<GrantedDiscount> getAwaitingDiscounts() {
+        String buildedFunction
+                =
+                "SELECT d.*, ad.appusers_id, ad.grantedDescription, ad.isConfirmed, ad"
+                        + ".userDescription, ap.email FROM pjkursdb.discounts d join pjkursdb"
+                        + ".appusers_discounts ad on d.id = ad.discount_id join pjkursdb. "
+                        + "appusers ap on ad"
+                        + ".appusers_id = ap.id where ad.isConfirmed is null";
+        try {
+            List<GrantedDiscount> list = dbConnector
+                    .getMappedArrayList(new GrantedDiscount(), buildedFunction);
+            return list;
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "getCourseStatuses", exception);
+        }
+        return new ArrayList<>();
+    }
+
+    @Override
+    public Boolean updateUserDiscount(GrantedDiscount grantedDisc) {
+        String buidledFunction =
+                "UPDATE `pjkursdb`.`appusers_discounts` SET `isConfirmed` = "
+                        + grantedDisc.isConfirmed +
+                        ", `grantedDescription` ='" + grantedDisc.grantedDescription + "'   WHERE "
+                        + "`appusers_id` = " + grantedDisc.appusers_id + " AND "
+                        + "`discount_id` "
+                        + "=" + grantedDisc.id;
+        try {
+            dbConnector.executeStatement(buidledFunction);
+            return true;
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "updateUserDiscount", exception);
+            return false;
         }
     }
 }

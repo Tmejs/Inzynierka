@@ -17,10 +17,9 @@
 package com.pjkurs.vaadin.ui.containers;
 
 import com.pjkurs.domain.ArchiveCourse;
-import com.pjkurs.domain.Course;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
-import com.pjkurs.vaadin.views.models.AdminViewModel;
+import com.pjkurs.vaadin.ui.containers.admin.ArchiveCoursePanel;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.data.HasValue;

@@ -47,7 +47,13 @@ public abstract class DBObject {
         T object = (T) clazz.newInstance();
         for (Field field : object.getClass().getFields()) {
             try {
-                field.set(object, resultSet.getObject(field.getName()));
+                if(field.getType().equals(boolean.class) || field.getType().equals(Boolean.class)){
+                    Integer value=(Integer) resultSet.getObject(field.getName());
+                    if(value!=null)
+                        field.set(object, (value>0));
+                }else {
+                    field.set(object, resultSet.getObject(field.getName()));
+                }
             } catch (Exception e) {
                 Logger.getLogger(this.getClass().toString()).log(Level.SEVERE, "Błąd mapowania pola w resultsecie", e);
             }

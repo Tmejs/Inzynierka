@@ -16,15 +16,13 @@
  */
 package com.pjkurs.vaadin.views;
 
-import com.pjkurs.vaadin.ui.containers.AdminCoursesOverviewPanel;
+import com.pjkurs.vaadin.ui.containers.admin.AdminCoursesOverviewPanel;
 import com.pjkurs.vaadin.ui.containers.TopPanel;
 import com.pjkurs.vaadin.ui.menu.AdminMenuPanel;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
-import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 
 /**

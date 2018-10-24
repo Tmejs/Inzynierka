@@ -8,6 +8,26 @@ public class Discount extends DBObject {
     public String description;
     public Double money;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public Double getDiscount_precentage() {
+        return discount_precentage;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Double getMoney() {
+        return money;
+    }
+
     public Discount() {
     }
 

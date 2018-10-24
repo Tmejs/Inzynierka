@@ -39,9 +39,30 @@ public class Words {
     public static final String TXT_PRICE = "Cena";
     public static final String TXT_DISCOUNTS = "Zniżki";
     public static final String TXT_DISCOUNT_NAME = "Nazwa zniżki";
-    public static final String TXT_DISCOUNT = "Wartość zniżki";
+    public static final String TXT_DISCOUNT_DISCOUNT_VALUE = "Wartość zniżki";
+    public static final String TXT_DISCOUNT="Zniżka";
     public static final String TXT_NOT_SET = "Nie ustawiono";
     public static final String TXT_IS_MONEY_DISCOUNT = "Zniżka pienieżna";
+    public static final String TXT_AWARDED_DISCOUNT = "Przyznana zniżka:";
+    public static final String TXT_AWAITING_FOR_CONFIRMATION = "Oczekuje na akceptacje";
+    public static final String TXT_APPLY_FOR_DISCOUNT = "Aplikuj o zniżkę";
+    public static final String TXT_APPLY = "Aplikuj";
+    public static final String TXT_REASON = "Powód";
+    public static final String TXT_REASON_CANT_BE_EMPTY = "Wpisz powód przyznania zniżki";
+    public static final String TXT_SELECT_DISCOUNT = "Wybierz zniżkę o którą aplikujesz";
+    public static final String TXT_CORRECTLY_SEND = "Poprawnie wysłano";
+    public static final String TXT_SOMETHIN_WENT_WRONG = "Coś poszło nie tak";
+    public static final String TXT_ADMIN_AWAITING_FOR_CONF = "Oczekujące na akceptację";
+    public static final String TXT_CLIETN_EMAIL = "Email klienta";
+    public static final String TXT_DISCOUNT_CONFIRMATION = "Zatwierdzenie zniżki";
+    public static final String TXT_USER = "Użytkownik";
+    public static final String TXT_DISCOUNT_DESCRIPITON = "Opis zniżki";
+    public static final String TXT_USER_DESCRIPTION = "Powód użytkownika";
+    public static final String TXT_CONF_DEC_DESCRIPTION = "Powód zatwierdzenia/odrzucenia";
+    public static final String TXT_CONFIRM = "Zatwierdz";
+    public static final String TXT_SET_GRANT_DESCRIPTION = "Wpisz powód";
+    public static final String TXT_DECLINE = "Odrzuć";
+
     /*SQL QUERYS
 
             Selecty do bazy danych

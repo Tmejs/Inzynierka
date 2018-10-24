@@ -17,13 +17,11 @@
 package com.pjkurs.vaadin.views;
 
 import com.pjkurs.vaadin.views.system.MyContainer;
-import com.pjkurs.vaadin.ui.containers.RegisterPanel;
+import com.pjkurs.vaadin.ui.containers.client.RegisterPanel;
 import com.pjkurs.vaadin.views.models.MyAccountViewModel;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 
 /**

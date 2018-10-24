@@ -16,28 +16,23 @@
  */
 package com.pjkurs.vaadin.views;
 
-import com.pjkurs.domain.Appusers;
 import com.pjkurs.domain.Category;
 import com.pjkurs.domain.Course;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.ui.containers.ArchiveCoursesPanel;
-import com.pjkurs.vaadin.ui.containers.ContactDataPanel;
+import com.pjkurs.vaadin.ui.containers.client.ContactDataPanel;
 import com.pjkurs.vaadin.ui.containers.CoursesPanel;
-import com.pjkurs.vaadin.ui.containers.DetailedCoursePanel;
+import com.pjkurs.vaadin.ui.containers.client.DetailedCoursePanel;
 import com.pjkurs.vaadin.ui.containers.MyCoursesPanel;
-import com.pjkurs.vaadin.ui.containers.PersonalDataPanel;
+import com.pjkurs.vaadin.ui.containers.client.PersonalDataPanel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.ui.containers.TopPanel;
 import com.pjkurs.vaadin.ui.menu.MainMenuPanel;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
-import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;

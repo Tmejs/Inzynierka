@@ -88,4 +88,9 @@ public class AdminViewModel extends MyModel<AdminView> implements InterfaceAdmin
     public void menuDiscountsClicked() {
         controller.menuDiscountsClicked();
     }
+
+    @Override
+    public void menuAwaitingDicountsClicked() {
+        controller.menuAwaitingDicountsClicked();
+    }
 }

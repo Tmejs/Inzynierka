@@ -1,4 +1,4 @@
-package com.pjkurs.vaadin.ui.containers;
+package com.pjkurs.vaadin.ui.containers.admin;
 
 import com.pjkurs.domain.Category;
 import com.pjkurs.domain.SubCategory;

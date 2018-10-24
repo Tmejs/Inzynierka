@@ -1,4 +1,5 @@
-package com.pjkurs.vaadin.ui.containers;
+
+package com.pjkurs.vaadin.ui.containers.admin;
 
 import com.pjkurs.domain.Discount;
 import com.pjkurs.usables.Words;
@@ -99,6 +100,7 @@ public class DiscountsPanel<T extends AdminViewModel> extends MyContainer<T> {
                 }
 
                 NavigatorUI.getDBProvider().updateDiscount(editedDiscount);
+                selectedDiscount = NavigatorUI.getDBProvider().getDiscountById(selectedDiscount.id);
                 isInEditionMode = false;
                 refreshDiscountInfoPanel();
                 Notification.show(Words.TXT_CORRECTRLY_SAVED);
@@ -118,12 +120,12 @@ public class DiscountsPanel<T extends AdminViewModel> extends MyContainer<T> {
     private TextArea generateDiscountComponent(Discount discount, Boolean value) {
         TextArea editableArea = new TextArea();
         if (value) {
-            editableArea.setCaption(Words.TXT_DISCOUNT + " (PLN)");
+            editableArea.setCaption(Words.TXT_DISCOUNT_DISCOUNT_VALUE + " (PLN)");
             if (discount.money != null) {
                 editableArea.setValue(discount.money.toString());
             }
         } else {
-            editableArea.setCaption(Words.TXT_DISCOUNT + " (%)");
+            editableArea.setCaption(Words.TXT_DISCOUNT_DISCOUNT_VALUE + " (%)");
             if (discount.discount_precentage != null) {
                 editableArea.setValue(discount.discount_precentage.toString());
             }
@@ -148,16 +150,16 @@ public class DiscountsPanel<T extends AdminViewModel> extends MyContainer<T> {
         }
 
         Label discountLabel = new Label();
-        discountLabel.setCaption(Words.TXT_DISCOUNT);
+        discountLabel.setCaption(Words.TXT_DISCOUNT_DISCOUNT_VALUE);
         if (selectedDiscount.discount_precentage == null) {
             if (selectedDiscount.money == null) {
                 discountLabel.setValue(Words.TXT_NOT_SET);
             } else {
-                discountLabel.setCaption(Words.TXT_DISCOUNT + " (PLN)");
+                discountLabel.setCaption(Words.TXT_DISCOUNT_DISCOUNT_VALUE + " (PLN)");
                 discountLabel.setValue(selectedDiscount.money.toString());
             }
         } else {
-            discountLabel.setCaption(Words.TXT_DISCOUNT + " (%)");
+            discountLabel.setCaption(Words.TXT_DISCOUNT_DISCOUNT_VALUE + " (%)");
             discountLabel.setValue(selectedDiscount.discount_precentage.toString());
         }
 

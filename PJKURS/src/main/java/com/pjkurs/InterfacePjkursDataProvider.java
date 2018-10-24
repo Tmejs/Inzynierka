@@ -105,4 +105,15 @@ public interface InterfacePjkursDataProvider {
 
     void addDiscount(Discount discount);
 
+    Discount getUserDiscount(Appusers appuser);
+
+    Discount getDiscountById(Integer id);
+
+    GrantedDiscount getUserGrantedDiscount(Appusers selectedUser);
+
+    Boolean addAplicationForDiscount(GrantedDiscount discount);
+
+    List<GrantedDiscount> getAwaitingDiscounts();
+
+    Boolean updateUserDiscount(GrantedDiscount grantedDisc);
 }

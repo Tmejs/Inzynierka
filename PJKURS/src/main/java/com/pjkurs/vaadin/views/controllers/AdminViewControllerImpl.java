@@ -18,9 +18,15 @@ package com.pjkurs.vaadin.views.controllers;
 
 import com.pjkurs.domain.Course;
 import com.pjkurs.vaadin.NavigatorUI;
-import com.pjkurs.vaadin.ui.containers.*;
+import com.pjkurs.vaadin.ui.containers.admin.AwaitingDiscounstsPanel;
+import com.pjkurs.vaadin.ui.containers.admin.AddCoursePanel;
+import com.pjkurs.vaadin.ui.containers.admin.AdminCoursesOverviewPanel;
+import com.pjkurs.vaadin.ui.containers.admin.AdminEditCoursePanel;
+import com.pjkurs.vaadin.ui.containers.admin.DiscountsPanel;
+import com.pjkurs.vaadin.ui.containers.admin.EditCategoriesPanel;
+import com.pjkurs.vaadin.ui.containers.admin.EditSubcategoriesPanel;
+import com.pjkurs.vaadin.ui.containers.admin.EditableUsersListPanel;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
-import com.vaadin.ui.Label;
 
 /**
  *
@@ -86,5 +92,10 @@ public class AdminViewControllerImpl implements InterfaceAdminViewController {
     @Override
     public void menuDiscountsClicked() {
         getModel().getView().setMainPanel(new DiscountsPanel(model));
+    }
+
+    @Override
+    public void menuAwaitingDicountsClicked() {
+        getModel().getView().setMainPanel(new AwaitingDiscounstsPanel(model));
     }
 }

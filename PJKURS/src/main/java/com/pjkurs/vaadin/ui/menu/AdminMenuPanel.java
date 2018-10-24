@@ -69,6 +69,10 @@ public class AdminMenuPanel<T extends MyModel> extends MyContainer<T> {
             ((AdminViewModel) getModel()).menuDiscountsClicked();
         });
 
+        discountsMenu.addItem(Words.TXT_ADMIN_AWAITING_FOR_CONF, (selectedItem) -> {
+            ((AdminViewModel) getModel()).menuAwaitingDicountsClicked();
+        });
+
 
 
 //        //Wykładowcy

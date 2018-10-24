@@ -18,6 +18,8 @@ package com.pjkurs.vaadin.ui.containers;
 
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
+import com.pjkurs.vaadin.ui.containers.client.LoginPanel;
+import com.pjkurs.vaadin.ui.containers.client.LoggedInPanel;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.models.RegisterViewModel;
