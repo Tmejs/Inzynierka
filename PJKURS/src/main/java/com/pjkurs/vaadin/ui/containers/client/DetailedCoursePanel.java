@@ -183,7 +183,7 @@ public class DetailedCoursePanel<T extends MyModel> extends MyContainer<T> {
         }, "");
         resource.setMIMEType("application/pdf");
 
-        BrowserFrame e = new BrowserFrame(Words.TXT_COURSE_DESCRIPTION, resource);
+        BrowserFrame e = new BrowserFrame(Words.TXT_COURSE_DETAILED_DESCRIPTION, resource);
         e.setWidth("100%");
         e.setHeight(800, Unit.PIXELS);
         lay.addComponentsAndExpand(e);

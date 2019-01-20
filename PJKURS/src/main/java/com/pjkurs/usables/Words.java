@@ -208,6 +208,7 @@ public class Words {
             + "szkolenie?";
     public static final String TXT_DELTE_DETAILED_DESC = "Czy na pewno chcesz usunąć plik ze "
             + "szczegółowym opisem kursu?";
+    public static final String TXT_COURSE_DETAILED_DESCRIPTION = "Szczegółowy opis";
 
     /*SQL QUERYS
 
