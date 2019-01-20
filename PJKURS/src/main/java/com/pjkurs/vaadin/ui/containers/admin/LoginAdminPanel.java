@@ -37,7 +37,7 @@ public class LoginAdminPanel<T extends AdminViewModel> extends MyContainer<T> {
                     deaneryUser.password = password.getValue().trim();
                 } else  {
                     deaneryUser = NavigatorUI.getDBProvider().getDeaneryUser(email.getValue());
-                    if(deaneryUser.password != password.getValue()){
+                    if(!deaneryUser.password.equals(password.getValue())){
                         deaneryUser=null;
                     }
                 }
