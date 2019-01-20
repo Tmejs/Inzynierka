@@ -629,6 +629,7 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         HorizontalLayout startDateLay = new HorizontalLayout();
         DateField startDate =
                 new DateField(Words.TXT_START_DATE);
+        startDate.setDescription("format dd.MM.rr");
         ComboBox startTimeCombo = new ComboBox(Words.TXT_START_TIME);
         startTimeCombo.setItems(generateTimeSet());
         startTimeCombo.setEmptySelectionAllowed(false);
@@ -794,7 +795,7 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
                 description.addColumn(m -> new Double(m.getValue()/60)).setCaption(Words.TXT_TIME_IN_HOURS);
         FooterRow footerRow = description.prependFooterRow();
         footerRow.getCell(one).setText(Words.TXT_SUM);
-        Long summed = buildTimeMap.values().stream().mapToLong(f->f.longValue()).sum();
+        Double summed = buildTimeMap.values().stream().mapToDouble(f->f).sum();
         footerRow.getCell(two).setText(
                 String.valueOf(new Double(summed/60)));
         subContent.addComponent(description);

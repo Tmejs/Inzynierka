@@ -49,6 +49,7 @@ com\pjkurs\vaadin\ui\containers\admin\AdminCoursesOverviewPanel$2.class
 com\pjkurs\vaadin\ui\containers\menu\MyMainMenuPanel.class
 com\pjkurs\vaadin\ui\containers\client\DetailedCoursePanel.class
 com\pjkurs\vaadin\ui\containers\admin\AwaitingDiscounstsPanel$1.class
+com\pjkurs\vaadin\ui\containers\admin\EditableUsersListPanel$4.class
 com\pjkurs\vaadin\views\controllers\InterfaceMainViewController.class
 com\pjkurs\vaadin\ui\containers\client\ArchiveCoursesPanel$1.class
 com\pjkurs\usables\EmailsGenerator.class
@@ -61,6 +62,7 @@ com\pjkurs\vaadin\ui\containers\client\PersonalDataPanel.class
 com\pjkurs\vaadin\ui\containers\admin\DetailedTrainingPanel$3.class
 com\pjkurs\vaadin\ui\containers\admin\DetailedTrainingPanel$6.class
 com\pjkurs\domain\TrainingStatus.class
+com\pjkurs\vaadin\ui\containers\admin\EditableUsersListPanel$5.class
 com\pjkurs\vaadin\ui\containers\admin\LoginAdminPanel.class
 com\pjkurs\vaadin\ui\containers\menu\LoggedInPanel.class
 com\pjkurs\vaadin\views\controllers\AdminViewControllerImpl.class

@@ -40,14 +40,12 @@ import com.pjkurs.usables.EmailsGenerator;
 import com.pjkurs.usables.MailObject;
 import com.pjkurs.usables.Words;
 import com.pjkurs.utils.FilesUitl;
-import com.pjkurs.utils.MailSenderUtil;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.ConfirmationPopup;
 import com.pjkurs.vaadin.views.PopupWithMessage;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.annotations.Theme;
-import com.vaadin.flow.component.html.Nav;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.FileDownloader;
 import com.vaadin.server.FileResource;
@@ -344,7 +342,8 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
                         public void run() {
                             NavigatorUI.getDBProvider().createNewTrainingFromCourse(course);
                             NavigatorUI.getDBProvider().getTrainingsForCourse(course).stream()
-                                    .sorted(Comparator.comparing(Training::getStart_date)).findFirst()
+                                    .sorted(Comparator.comparing(Training::getStart_date))
+                                    .findFirst()
                                     .ifPresent(o -> getModel().detailedTrainingPanelClicked(o));
                         }
                     });
@@ -360,6 +359,7 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
         VerticalLayout subContent = new VerticalLayout();
         DateField startDate =
                 new DateField(Words.TXT_TERM);
+        startDate.setDescription("format dd.MM.rr");
         ComboBox<String> startTimeCombo = new ComboBox(Words.TXT_START_TIME);
         startTimeCombo.setItems(generateTimeSet());
         Button inform = new Button(Words.TXT_SEND);
@@ -445,15 +445,17 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
 
             Button deleteButton = new Button(Words.TXT_DELETE_FILE,
                     e -> {
-                    ConfirmationPopup.showPopup(getModel().getUi(), Words.TXT_DELTE_DETAILED_DESC
-                            , new Runnable() {
-                                @Override
-                                public void run() {
-                                    NavigatorUI.getDBProvider().setFileInCourse(null, course);
-                                    course.description_file = null;
-                                    refreshView();
-                                }
-                            });
+                        ConfirmationPopup
+                                .showPopup(getModel().getUi(), Words.TXT_DELTE_DETAILED_DESC
+                                        , new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                NavigatorUI.getDBProvider()
+                                                        .setFileInCourse(null, course);
+                                                course.description_file = null;
+                                                refreshView();
+                                            }
+                                        });
                     });
 
             descriptionFileLayout.addComponent(label);

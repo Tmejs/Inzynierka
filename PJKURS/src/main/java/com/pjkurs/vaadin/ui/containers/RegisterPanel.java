@@ -26,7 +26,7 @@ import com.vaadin.ui.TextField;
  *
  * @author Tmejs
  */
-@Theme("pjtheme")
+@Theme("lumo")
 public class RegisterPanel<T extends MyModel> extends MyContainer<T> {
 
     public RegisterPanel(T model) {

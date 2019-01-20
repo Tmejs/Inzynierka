@@ -60,12 +60,10 @@ public class AdminCoursesOverviewPanel<T extends AdminViewModel> extends MyConta
         List<Course> shownList = new ArrayList<>(courses);
         List<CourseStatus> statuses = getFilteredStatuses();
         if (!statuses.isEmpty() ) {
-            if(!statuses.stream().allMatch(c->c.isVisibleForUsers==null)) {
-                shownList = shownList.stream().filter(o ->
-                        getFilteredStatuses().stream()
-                                .anyMatch(courseStatus -> courseStatus.id == o.getStatusId())
-                ).collect(Collectors.toList());
-            }
+            shownList = shownList.stream()
+                    .filter(o -> statuses.stream().anyMatch(s -> s.id == o.getStatusId())
+                            || o.getStatusId() == null)
+                    .collect(Collectors.toList());
         }else {
             shownList = shownList.stream().filter(o ->
                     getFilteredStatuses().stream()

@@ -19,6 +19,7 @@ package com.pjkurs.vaadin.ui.containers.admin;
 import com.pjkurs.domain.Appusers;
 import com.pjkurs.domain.GraduatedCourse;
 import com.pjkurs.usables.Words;
+import com.pjkurs.utils.FilesUitl;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.ConfirmationPopup;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
@@ -27,6 +28,9 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.vaadin.annotations.Theme;
 import com.vaadin.data.HasValue;
 import com.vaadin.data.ValueProvider;
+import com.vaadin.icons.VaadinIcons;
+import com.vaadin.server.FileDownloader;
+import com.vaadin.server.FileResource;
 import com.vaadin.shared.ui.grid.ColumnResizeMode;
 import com.vaadin.ui.*;
 import com.vaadin.ui.components.grid.ItemClickListener;
@@ -86,7 +90,7 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
         Appusers editedUser = new Appusers(selectedUser);
 
         CheckBox isActive = new CheckBox(Words.TXT_IS_ACTIVE);
-        if(selectedUser.isActive!=null){
+        if (selectedUser.isActive != null) {
             isActive.setValue(selectedUser.isActive);
         }
         TextArea emailArea = new TextArea(Words.TXT_EMAIL, selectedUser.getEmail());
@@ -184,9 +188,10 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
                     public void valueChange(HasValue.ValueChangeEvent<String> event) {
                         filter = event.getValue();
                         Boolean val = inActive.getValue();
-                        if(val != null && val){
-                            filteredUserList = usersList.stream().filter(u-> (u.isActive==null || !u.isActive)).collect(
-                                    Collectors.toList());
+                        if (val != null && val) {
+                            filteredUserList = usersList.stream()
+                                    .filter(u -> (u.isActive == null || !u.isActive)).collect(
+                                            Collectors.toList());
                         }
                         if (filter != null && !filter.isEmpty()) {
                             filteredUserList = filteredUserList.stream()
@@ -200,14 +205,14 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
             filterArea.setValue(filter);
         }
 
-
-        inActive.addValueChangeListener(v->{
+        inActive.addValueChangeListener(v -> {
             Boolean val = v.getValue();
-            if(val != null && val){
-                filteredUserList = filteredUserList.stream().filter(u-> (u.isActive==null || !u.isActive)).collect(
+            if (val != null && val) {
+                filteredUserList = filteredUserList.stream()
+                        .filter(u -> (u.isActive == null || !u.isActive)).collect(
                                 Collectors.toList());
                 userGrid.setItems(filteredUserList);
-            }else{
+            } else {
                 filteredUserList = usersList;
                 filter = filterArea.getValue();
                 if (filter != null && !filter.isEmpty()) {
@@ -219,7 +224,7 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
 
             }
         });
-        VerticalLayout filterLay =new VerticalLayout();
+        VerticalLayout filterLay = new VerticalLayout();
         filterLay.addComponents(filterArea, inActive);
         lay.addComponent(filterLay);
         filteredUserList = usersList;
@@ -242,18 +247,19 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
                 new SimpleDateFormat("YYYY-MM-dd").format(t.create_date) : "")
                 .setCaption(Words.TXT_CREATE_DATE);
         userGrid.setColumnResizeMode(ColumnResizeMode.SIMPLE);
+        userGrid.addColumn(p -> {
+            List<GraduatedCourse> graduatedCourses =
+                    NavigatorUI.getDBProvider().getGraduatedCourses(p);
+            if (graduatedCourses.size() > 0) {
+                return new Button(Words.TXT_ENDED_COURSES, e -> generateEndedCoursesPopup(p));
+            }else {
+                return new Label(Words.TXT_NO_GRADUATED_COURSES);
+            }
+        }, new ComponentRenderer());
         userGrid.addColumn(p -> new Button(Words.TXT_EDIT, event -> {
             selectedUser = p;
             refreshPanel();
         }), new ComponentRenderer());
-        // userGrid.addColumn(p -> {
-        //     List<GraduatedCourse> graduatedCourses =
-        //             NavigatorUI.getDBProvider().getGraduatedCourses(NavigatorUI.getLoggedUser());
-        //     if(graduatedCourses.size()>0){
-        //         return new Button(Words.TXT_ENDED_COURSES, e -> generateEndedCoursesPopup());
-        //     }
-        //     return new Label();
-        // }), new ComponentRenderer());
         userGrid.addColumn(p -> new Button(Words.TXT_DELETE, event -> {
             ConfirmationPopup.showPopup(getModel().getUi(), Words.TXT_DELETE_USER_TXT + p.email,
                     new Runnable() {
@@ -269,8 +275,47 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
         return lay;
     }
 
-    private void generateEndedCoursesPopup() {
+    private void generateEndedCoursesPopup(Appusers user) {
+        Window subWindow = new Window(Words.TXT_GRADUATED_COURSES +"użytkownika "+ user.email);
+        VerticalLayout lay = new VerticalLayout();
+        Grid<GraduatedCourse> grid = new Grid();
+        List<GraduatedCourse> graduatedCourses =
+                NavigatorUI.getDBProvider().getGraduatedCourses(user);
+        grid.setItems(graduatedCourses);
+        grid.addColumn(GraduatedCourse::getName).setCaption(Words.TXT_COURSE_NAME);
+        grid.addColumn(GraduatedCourse::getEndDate).setCaption(Words.TXT_END_DATE);
+        grid.addColumn(new ValueProvider<GraduatedCourse, Button>() {
+            @Override
+            public Button apply(GraduatedCourse course) {
+                Button fileDownlaod = new Button(VaadinIcons.DOWNLOAD);
+                if(course.description_file==null){
+                    fileDownlaod.setEnabled(false);
+                }
+                FileResource resource =
+                        new FileResource(FilesUitl.getFile(course.id+course.description_file));
+                FileDownloader download = new FileDownloader(resource);
+                download.extend(fileDownlaod);
+                return fileDownlaod;
+            }
+        }, new ComponentRenderer()).setCaption(Words.TXT_COURSE_DETAILS);
 
+        grid.addColumn(new ValueProvider<GraduatedCourse, Button>() {
+            @Override
+            public Button apply(GraduatedCourse course) {
+                Button fileDownlaod = new Button(VaadinIcons.DOWNLOAD);
+                if(course.certificateFile==null){
+                    fileDownlaod.setEnabled(false);
+                }
+                FileResource resource = new FileResource(FilesUitl.getFile(course.certificateFile));
+                FileDownloader download = new FileDownloader(resource);
+                download.extend(fileDownlaod);
+                return fileDownlaod;
+            }
+        }, new ComponentRenderer()).setCaption(Words.TXT_GET_CERTIFICATE);
+        lay.addComponent(grid);
+        subWindow.setContent(lay);
+        subWindow.center();
+        getModel().currentUI.addWindow(subWindow);
     }
 
     private boolean checkFilter(Appusers appusers, String filter) {

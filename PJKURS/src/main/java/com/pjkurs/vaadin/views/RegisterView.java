@@ -35,12 +35,17 @@ import com.vaadin.ui.VerticalLayout;
  *
  * @author Tmejs
  */
-@Theme("pjtheme")
+@Theme("lumo")
 public class RegisterView extends MyContainer<RegisterViewModel> implements View, InterfacePJKURSView {
     
     public RegisterView(RegisterViewModel model) {
         super(model, true);
         setSizeFull();
+    }
+
+    @Override
+    public void enter(ViewChangeListener.ViewChangeEvent event) {
+        setContent(buildView());
     }
 
     //Zbudowanie Widoku dla panelu rejestrowania
