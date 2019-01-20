@@ -12,6 +12,7 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
+
 @Theme("pjtheme")
 public class LoginAdminPanel<T extends AdminViewModel> extends MyContainer<T> {
 
@@ -35,16 +36,18 @@ public class LoginAdminPanel<T extends AdminViewModel> extends MyContainer<T> {
                     deaneryUser.admin_grant = true;
                     deaneryUser.email = email.getValue();
                     deaneryUser.password = password.getValue().trim();
-                } else  {
+                } else {
                     deaneryUser = NavigatorUI.getDBProvider().getDeaneryUser(email.getValue());
-                    if(!deaneryUser.password.equals(password.getValue())){
-                        deaneryUser=null;
+                    if (deaneryUser != null) {
+                        if (!deaneryUser.password.equals(password.getValue())) {
+                            deaneryUser = null;
+                        }
                     }
                 }
                 if (deaneryUser != null) {
                     NavigatorUI.setLogedAdmin(deaneryUser);
                     getModel().correctlyLoged();
-                }else {
+                } else {
                     Notification.show(Words.TXT_INCORECT_DATA);
                 }
             } else {

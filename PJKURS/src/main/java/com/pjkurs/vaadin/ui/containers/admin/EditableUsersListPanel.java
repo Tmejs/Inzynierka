@@ -276,7 +276,7 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
     }
 
     private void generateEndedCoursesPopup(Appusers user) {
-        Window subWindow = new Window(Words.TXT_GRADUATED_COURSES +"użytkownika "+ user.email);
+        Window subWindow = new Window(Words.TXT_GRADUATED_COURSES +" użytkownika "+ user.email);
         VerticalLayout lay = new VerticalLayout();
         Grid<GraduatedCourse> grid = new Grid();
         List<GraduatedCourse> graduatedCourses =

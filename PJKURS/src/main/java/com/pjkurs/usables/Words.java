@@ -209,6 +209,8 @@ public class Words {
     public static final String TXT_DELTE_DETAILED_DESC = "Czy na pewno chcesz usunąć plik ze "
             + "szczegółowym opisem kursu?";
     public static final String TXT_COURSE_DETAILED_DESCRIPTION = "Szczegółowy opis";
+    public static final String TXT_TERM_NAME = "Nazwa spotkania";
+    public static final String TXT_END_TRAINING_TEXT = "Czy na pewno chcesz zakończyć szkolenie?";
 
     /*SQL QUERYS
 

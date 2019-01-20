@@ -108,16 +108,22 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         Map<Integer, String> fileMap = new HashMap<>();
 
         endTrainignButton.addClickListener(e -> {
-            if (isGraduated.entrySet().size() > 0 &&
-                    !isGraduated.entrySet().stream()
-                            .filter(p -> p.getValue())
-                            .allMatch(p -> fileMap.get(p.getKey()) != null)) {
-                Notification.show(Words.TXT_ADD_CERTIFICATE_FOR_ALL_GRADUATED_USERS);
-                return;
-            }
-            endTraining(clients, isGraduated, fileMap);
-            subWindow.close();
-            ((AdminViewModel)getModel()).statistickMenuClicked();
+            ConfirmationPopup.showPopup(getModel().getUi(), Words.TXT_END_TRAINING_TEXT,
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            if (isGraduated.entrySet().size() > 0 &&
+                                    !isGraduated.entrySet().stream()
+                                            .filter(p -> p.getValue())
+                                            .allMatch(p -> fileMap.get(p.getKey()) != null)) {
+                                Notification.show(Words.TXT_ADD_CERTIFICATE_FOR_ALL_GRADUATED_USERS);
+                                return;
+                            }
+                            endTraining(clients, isGraduated, fileMap);
+                            subWindow.close();
+                            ((AdminViewModel)getModel()).statistickMenuClicked();
+                        }
+                    });
         });
 
         clientsGrid.addColumn(Client::getName).setCaption(Words.TXT_NAME);
@@ -591,7 +597,7 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         Grid<CalendarEvent> calendarEventGrid = new Grid<>();
         calendarEventGrid.setSizeFull();
         calendarEventGrid.setItems(NavigatorUI.getDBProvider().getCalendarTermsFor(training));
-        calendarEventGrid.addColumn(CalendarEvent::getName).setCaption(Words.TXT_TRAINING_NAME);
+        calendarEventGrid.addColumn(CalendarEvent::getName).setCaption(Words.TXT_TERM_NAME);
         calendarEventGrid.addColumn(d ->
                 new SimpleDateFormat("YYYY-MM-dd HH:mm").format(new Date(d.start_date.getTime()))
         ).setCaption(Words.TXT_START_DATE);
@@ -638,6 +644,7 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
 
         HorizontalLayout endDateLay = new HorizontalLayout();
         ComboBox endTimeCombo = new ComboBox(Words.TXT_END_TIME);
+        endDateLay.addComponentsAndExpand(new Label());
         endTimeCombo.setItems(generateTimeSet());
         endTimeCombo.setEmptySelectionAllowed(false);
         endDateLay.addComponentsAndExpand(endTimeCombo);
