@@ -51,6 +51,7 @@ public class DeansEmployesPanel<T extends AdminViewModel> extends MyContainer<T>
                     deaneryUser.setPassword(password.getValue());
                     deaneryUser.setAdmin_grant(adminGrant.getValue());
                     NavigatorUI.getDBProvider().updateDeaneryUser(deaneryUser);
+                    subWindow.close();
                 } else {
                     if(nameArea.getValue()!=null && nameArea.getValue().trim().length()>0 && password.getValue()!=null && password.getValue().trim().length()>0){
                         NavigatorUI.getDBProvider().addNewDeaneryEployee(nameArea.getValue(),

@@ -1,10 +1,8 @@
 package com.pjkurs.vaadin.views;
 
-import com.pjkurs.usables.MailObject;
 import com.pjkurs.usables.Words;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;

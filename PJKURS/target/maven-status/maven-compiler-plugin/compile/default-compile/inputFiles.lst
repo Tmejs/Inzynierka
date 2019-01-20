@@ -52,6 +52,7 @@ D:\Inżynierka\PJKURS\src\main\java\com\pjkurs\domain\ArchiveCourse.java
 D:\Inżynierka\PJKURS\src\main\java\com\pjkurs\utils\Logger.java
 D:\Inżynierka\PJKURS\src\main\java\com\pjkurs\vaadin\views\MainView.java
 D:\Inżynierka\PJKURS\src\main\java\com\pjkurs\vaadin\ui\containers\admin\AddCoursePanel.java
+D:\Inżynierka\PJKURS\src\main\java\com\pjkurs\vaadin\views\ConfirmationPopup.java
 D:\Inżynierka\PJKURS\src\main\java\com\pjkurs\db\DBConnector.java
 D:\Inżynierka\PJKURS\src\main\java\com\pjkurs\vaadin\ui\containers\admin\TeachersPanel.java
 D:\Inżynierka\PJKURS\src\main\java\com\pjkurs\domain\CalendarEvent.java

@@ -34,9 +34,12 @@ public class LoginAdminPanel<T extends AdminViewModel> extends MyContainer<T> {
                     deaneryUser = new DeaneryUser();
                     deaneryUser.admin_grant = true;
                     deaneryUser.email = email.getValue();
-                    deaneryUser.password = password.getValue();
+                    deaneryUser.password = password.getValue().trim();
                 } else  {
                     deaneryUser = NavigatorUI.getDBProvider().getDeaneryUser(email.getValue());
+                    if(deaneryUser.password != password.getValue()){
+                        deaneryUser=null;
+                    }
                 }
                 if (deaneryUser != null) {
                     NavigatorUI.setLogedAdmin(deaneryUser);

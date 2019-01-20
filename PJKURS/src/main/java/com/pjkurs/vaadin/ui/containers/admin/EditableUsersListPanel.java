@@ -17,6 +17,7 @@
 package com.pjkurs.vaadin.ui.containers.admin;
 
 import com.pjkurs.domain.Appusers;
+import com.pjkurs.domain.GraduatedCourse;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.ConfirmationPopup;
@@ -245,6 +246,14 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
             selectedUser = p;
             refreshPanel();
         }), new ComponentRenderer());
+        // userGrid.addColumn(p -> {
+        //     List<GraduatedCourse> graduatedCourses =
+        //             NavigatorUI.getDBProvider().getGraduatedCourses(NavigatorUI.getLoggedUser());
+        //     if(graduatedCourses.size()>0){
+        //         return new Button(Words.TXT_ENDED_COURSES, e -> generateEndedCoursesPopup());
+        //     }
+        //     return new Label();
+        // }), new ComponentRenderer());
         userGrid.addColumn(p -> new Button(Words.TXT_DELETE, event -> {
             ConfirmationPopup.showPopup(getModel().getUi(), Words.TXT_DELETE_USER_TXT + p.email,
                     new Runnable() {
@@ -258,6 +267,10 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
 
         lay.addComponentsAndExpand(userGrid);
         return lay;
+    }
+
+    private void generateEndedCoursesPopup() {
+
     }
 
     private boolean checkFilter(Appusers appusers, String filter) {

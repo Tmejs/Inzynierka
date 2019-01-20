@@ -88,6 +88,7 @@ com\pjkurs\vaadin\ui\containers\admin\EditCategoriesPanel.class
 com\pjkurs\domain\Training.class
 com\pjkurs\vaadin\ui\containers\admin\EditableUsersListPanel$2.class
 com\pjkurs\vaadin\views\system\MyModel.class
+com\pjkurs\vaadin\ui\containers\admin\AdminEditCoursePanel$8.class
 com\pjkurs\vaadin\views\system\MyContainer.class
 com\pjkurs\domain\Value.class
 com\pjkurs\vaadin\ui\containers\client\PersonalDataPanel$1.class

@@ -45,8 +45,8 @@ public class DBConnector {
         Class.forName("com.mysql.jdbc.Driver");
         // Setup the connection with the DB
         return DriverManager
-                .getConnection("jdbc:mysql://localhost/" + database + "?"
-                        + "user=" + login + "&password=" + password);
+                .getConnection("jdbc:mysql://localhost/" + database + "?useUnicode=true&characterEncoding=utf-8"
+                        + "&user=" + login + "&password=" + password);
     }
 
     public Boolean getBooleanFunctionValue(String function) {

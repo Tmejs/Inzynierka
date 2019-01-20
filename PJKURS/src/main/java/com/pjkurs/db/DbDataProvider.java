@@ -538,14 +538,14 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
                 );
                 return list;
             } else {
-                return null;
+                return new ArrayList<>();
             }
 
         } catch (Exception exception) {
             Logger.getLogger(this.getClass().getCanonicalName())
                     .log(Level.ALL, "getCourseStatuses", exception);
         }
-        return null;
+        return new ArrayList<>();
     }
 
     @Override
@@ -1090,7 +1090,7 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
     public void updateDeaneryUser(DeaneryUser deaneryUser) {
         String buildedFunction
                 = "update pjkursdb.deanery_users set email = '" + deaneryUser.email + "', "
-                + "password = '" + deaneryUser.getPassword() + " ', admin_grant= " + deaneryUser
+                + "password = '" + deaneryUser.getPassword() + "', admin_grant= " + deaneryUser
                 .getAdmin_grant() + " where "
                 + "id"
                 + " =" + deaneryUser.getId();

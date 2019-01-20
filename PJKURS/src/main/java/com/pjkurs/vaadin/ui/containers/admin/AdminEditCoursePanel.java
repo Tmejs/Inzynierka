@@ -353,7 +353,6 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
         lay.addComponentsAndExpand(informAboutStartCourse);
         lay.addComponentsAndExpand(startCourse);
         return lay;
-
     }
 
     private void generateStartingDatePopup() {
@@ -446,9 +445,15 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
 
             Button deleteButton = new Button(Words.TXT_DELETE_FILE,
                     e -> {
-                        NavigatorUI.getDBProvider().setFileInCourse(null, course);
-                        course.description_file = null;
-                        refreshView();
+                    ConfirmationPopup.showPopup(getModel().getUi(), Words.TXT_DELTE_DETAILED_DESC
+                            , new Runnable() {
+                                @Override
+                                public void run() {
+                                    NavigatorUI.getDBProvider().setFileInCourse(null, course);
+                                    course.description_file = null;
+                                    refreshView();
+                                }
+                            });
                     });
 
             descriptionFileLayout.addComponent(label);

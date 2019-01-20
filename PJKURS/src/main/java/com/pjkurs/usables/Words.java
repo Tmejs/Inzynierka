@@ -206,6 +206,8 @@ public class Words {
     public static final String TXT_CONFIRM_DELETE_DATE = "Czy na pewno chcesz usunąć termin?";
     public static final String TXT_CONFIRM_START_TRAINING = "Czy na pewno chcesz rozpocząć "
             + "szkolenie?";
+    public static final String TXT_DELTE_DETAILED_DESC = "Czy na pewno chcesz usunąć plik ze "
+            + "szczegółowym opisem kursu?";
 
     /*SQL QUERYS
 
