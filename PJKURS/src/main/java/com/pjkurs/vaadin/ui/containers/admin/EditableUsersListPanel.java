@@ -22,12 +22,16 @@ import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.vaadin.annotations.Theme;
 import com.vaadin.data.HasValue;
+import com.vaadin.data.ValueProvider;
 import com.vaadin.shared.ui.grid.ColumnResizeMode;
 import com.vaadin.ui.*;
 import com.vaadin.ui.components.grid.ItemClickListener;
+import com.vaadin.ui.renderers.ComponentRenderer;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,6 +40,7 @@ import java.util.stream.Collectors;
 /**
  * @author Tmejs
  */
+@Theme("pjtheme")
 public class EditableUsersListPanel<T extends AdminViewModel> extends MyContainer<T> {
 
     public EditableUsersListPanel(T model) {
@@ -45,16 +50,18 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
     private Component usersPanel;
     private Appusers selectedUser;
     private String filter;
+    private List<Appusers> usersList;
+    List<Appusers> filteredUserList;
 
     @Override
     public Component buildView() {
         VerticalLayout layout = new VerticalLayout();
-        layout.setSizeUndefined();
-
+        layout.setSizeFull();
+        usersList = NavigatorUI.getDBProvider().getUsers();
         if (selectedUser == null) {
             usersPanel = generateOverwieComponent();
         } else {
-            usersPanel = generateEditablePanel(selectedUser);
+            usersPanel = generateEditablePanel();
         }
         layout.addComponent(usersPanel);
         return layout;
@@ -62,20 +69,24 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
 
     private void refreshPanel() {
         Component newPanel;
+        usersList = NavigatorUI.getDBProvider().getUsers();
         if (selectedUser == null) {
             newPanel = generateOverwieComponent();
         } else {
-            newPanel = generateEditablePanel(selectedUser);
+            newPanel = generateEditablePanel();
         }
         ((VerticalLayout) this.getContent()).replaceComponent(usersPanel, newPanel);
         usersPanel = newPanel;
     }
 
-
-    private Component generateEditablePanel(Appusers user) {
+    private Component generateEditablePanel() {
         VerticalLayout layout = new VerticalLayout();
         Appusers editedUser = new Appusers(selectedUser);
 
+        CheckBox isActive = new CheckBox(Words.TXT_IS_ACTIVE);
+        if(selectedUser.isActive!=null){
+            isActive.setValue(selectedUser.isActive);
+        }
         TextArea emailArea = new TextArea(Words.TXT_EMAIL, selectedUser.getEmail());
         emailArea.setReadOnly(true);
         TextArea nameArea = new TextArea(Words.TXT_NAME);
@@ -96,19 +107,42 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
             contactNumberArea.setValue(selectedUser.getContact_number());
         }
 
+        TextArea placeOfBirth = new TextArea(Words.TXT_PLACE_OF_BIRTH);
+        if (selectedUser.getPlace_of_birth() != null) {
+            placeOfBirth.setValue(selectedUser.getPlace_of_birth());
+        }
+
+        NativeSelect<String> typeOfWork = new NativeSelect<>(Words.TXT_CONTRACT_BASE);
+        String[] types = {"Etat", "Umowa", "Faktura"};
+
+        typeOfWork.setItems(types);
+        typeOfWork.setEmptySelectionAllowed(false);
+
+        CheckBox isTeacher = new CheckBox(Words.TXT_TEACHER_STATUS);
+        isTeacher.addValueChangeListener(event -> {
+            typeOfWork.setVisible(event.getValue());
+            typeOfWork.setSelectedItem(
+                    NavigatorUI.getDBProvider().getTeacherBaseContrat(selectedUser));
+        });
+        isTeacher.setValue(NavigatorUI.getDBProvider().isUserTeacher(selectedUser));
+        typeOfWork.setVisible(isTeacher.getValue());
         HorizontalLayout newL = new HorizontalLayout();
         Button saveButton = new Button(Words.TXT_SAVE_DATA);
         saveButton.addClickListener(event -> {
-            try{
-            editedUser.name = nameArea.getValue();
-            editedUser.surname = surnameArea.getValue();
-            editedUser.birth_date =
-                    Date.valueOf(birth_dateDatePicker.getValue());
-            editedUser.contact_number = contactNumberArea.getValue();
-            NavigatorUI.getDBProvider().updateAppuser(editedUser);
-            selectedUser = null;
-            refreshPanel();
-            }catch (Exception e){
+            try {
+                editedUser.name = nameArea.getValue();
+                editedUser.surname = surnameArea.getValue();
+                editedUser.birth_date = birth_dateDatePicker.getValue() == null ? null :
+                        Date.valueOf(birth_dateDatePicker.getValue());
+                editedUser.contact_number = contactNumberArea.getValue();
+                editedUser.place_of_birth = placeOfBirth.getValue();
+                editedUser.isActive = isActive.getValue();
+                NavigatorUI.getDBProvider().updateAppuser(editedUser);
+                NavigatorUI.getDBProvider().setTeacherStatus(editedUser, isTeacher.getValue(),
+                        typeOfWork.getValue());
+                selectedUser = null;
+                refreshPanel();
+            } catch (Exception e) {
                 Notification.show(Words.TXT_NOT_SAVED_CHECK_DATA);
                 Logger.getGlobal().log(Level.SEVERE, "Błąd przy updateAppuser", e);
             }
@@ -124,39 +158,69 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
         newL.addComponent(saveButton);
         newL.addComponent(undoButton);
 
+        layout.addComponent(isActive);
         layout.addComponent(emailArea);
         layout.addComponent(nameArea);
         layout.addComponent(surnameArea);
         layout.addComponent(birth_dateDatePicker);
+        layout.addComponent(placeOfBirth);
         layout.addComponent(contactNumberArea);
+        layout.addComponent(isTeacher);
+        layout.addComponent(typeOfWork);
         layout.addComponent(newL);
         return layout;
     }
 
     private Component generateOverwieComponent() {
         VerticalLayout lay = new VerticalLayout();
+        lay.setSizeFull();
         Grid<Appusers> userGrid = new Grid<>();
+        CheckBox inActive = new CheckBox(Words.TXT_INACTIVE);
         TextArea filterArea = new TextArea(Words.TXT_FIND,
                 new HasValue.ValueChangeListener<String>() {
                     @Override
                     public void valueChange(HasValue.ValueChangeEvent<String> event) {
                         filter = event.getValue();
-                        List<Appusers> filteredUserList = NavigatorUI.getDBProvider().getUsers();
+                        Boolean val = inActive.getValue();
+                        if(val != null && val){
+                            filteredUserList = usersList.stream().filter(u-> (u.isActive==null || !u.isActive)).collect(
+                                    Collectors.toList());
+                        }
                         if (filter != null && !filter.isEmpty()) {
-                            filteredUserList =
-                                    filteredUserList.stream()
-                                            .filter(appusers -> checkFilter(appusers,
-                                                    filter)).collect(Collectors.toList());
+                            filteredUserList = filteredUserList.stream()
+                                    .filter(appusers -> checkFilter(appusers,
+                                            filter)).collect(Collectors.toList());
                         }
                         userGrid.setItems(filteredUserList);
                     }
                 });
-        if (filter != null)
+        if (filter != null) {
             filterArea.setValue(filter);
+        }
 
-        lay.addComponent(filterArea);
-        List<Appusers> filteredUserList = NavigatorUI.getDBProvider().getUsers();
 
+        inActive.addValueChangeListener(v->{
+            Boolean val = v.getValue();
+            if(val != null && val){
+                filteredUserList = filteredUserList.stream().filter(u-> (u.isActive==null || !u.isActive)).collect(
+                                Collectors.toList());
+                userGrid.setItems(filteredUserList);
+            }else{
+                filteredUserList = usersList;
+                filter = filterArea.getValue();
+                if (filter != null && !filter.isEmpty()) {
+                    filteredUserList = filteredUserList.stream()
+                            .filter(appusers -> checkFilter(appusers,
+                                    filter)).collect(Collectors.toList());
+                }
+                userGrid.setItems(filteredUserList);
+
+            }
+        });
+        VerticalLayout filterLay =new VerticalLayout();
+        filterLay.addComponents(filterArea, inActive);
+        lay.addComponent(filterLay);
+        filteredUserList = usersList;
         userGrid.setItems(filteredUserList);
         userGrid.setSelectionMode(Grid.SelectionMode.SINGLE);
         userGrid.setColumnReorderingAllowed(true);
@@ -166,18 +230,26 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
         //Kolumny
 
         userGrid.addColumn(Appusers::getEmail).setCaption(Words.TXT_COURSE_NAME);
+        userGrid.addColumn(
+                c -> c.isActive != null && c.isActive ?
+                        Words.TXT_YES :
+                        Words.TXT_NO).setCaption(Words.TXT_IS_ACTIVE);
         userGrid.addColumn(Appusers::getName).setCaption(Words.TXT_NAME);
         userGrid.addColumn(Appusers::getSurname).setCaption(Words.TXT_SURRNAME);
+        userGrid.addColumn(t -> t.create_date != null ?
+                new SimpleDateFormat("YYYY-MM-dd").format(t.create_date) : "")
+                .setCaption(Words.TXT_CREATE_DATE);
         userGrid.setColumnResizeMode(ColumnResizeMode.SIMPLE);
-        userGrid.addItemClickListener(new ItemClickListener<Appusers>() {
-            @Override
-            public void itemClick(Grid.ItemClick<Appusers> event) {
-                selectedUser = event.getItem();
-                refreshPanel();
-            }
-        });
+        userGrid.addColumn(p -> new Button(Words.TXT_EDIT, event -> {
+            selectedUser = p;
+            refreshPanel();
+        }), new ComponentRenderer());
+        userGrid.addColumn(p -> new Button(Words.TXT_DELETE, event -> {
+            NavigatorUI.getDBProvider().deleteUser(p);
+            refreshPanel();
+        }), new ComponentRenderer());
 
-        lay.addComponent(userGrid);
+        lay.addComponentsAndExpand(userGrid);
         return lay;
     }
 

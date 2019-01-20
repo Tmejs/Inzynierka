@@ -18,6 +18,7 @@ package com.pjkurs.vaadin.views.controllers;
 
 import com.pjkurs.domain.Category;
 import com.pjkurs.domain.Course;
+import com.pjkurs.domain.Training;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.MenuBar;
 
@@ -38,6 +39,8 @@ public interface InterfaceMainViewController {
 
     public void personalDataButtonClicked(Button.ClickEvent event);
 
+    void myTrainingsButtonClicked(MenuBar.MenuItem selectedItem);
+
     public void registerToCourseButtonClicked(Button.ClickEvent event);
 
     public void logoutButtonClick(Button.ClickEvent event);
@@ -53,4 +56,8 @@ public interface InterfaceMainViewController {
     public void contactDataButtonClicked(MenuBar.MenuItem selectedItem);
 
     public void archiveCoursesButtonClicked(MenuBar.MenuItem selectedItem);
+    public void detailedTrainingPanelClicked(Training training, Boolean inEditMode,
+            Boolean openedByTeacher);
+
+    void graduatedCourses();
 }

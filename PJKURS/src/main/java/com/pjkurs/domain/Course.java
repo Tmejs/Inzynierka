@@ -30,10 +30,11 @@ public class Course extends DBObject {
     private String lecturer;
     public Long paricipants;
     public Integer statusId;
-    private List<SubCategory> subcategoryList = new ArrayList<>();
+    private List<Category> categoryList = new ArrayList<>();
     private CourseStatus courseStatus;
-    public Integer minimumParticipants;
     public Double price;
+    public String description_file;
+    public Double discountPrice;
 
 
     public Course() {
@@ -46,18 +47,9 @@ public class Course extends DBObject {
         this.lecturer=newCourse.lecturer;
         this.paricipants=newCourse.paricipants;
         this.statusId=newCourse.statusId;
-        this.subcategoryList=newCourse.subcategoryList;
+        this.categoryList=newCourse.categoryList;
         this.courseStatus=newCourse.courseStatus;
-        this.minimumParticipants=newCourse.minimumParticipants;
         this.price=newCourse.price;
-    }
-
-    public void setSubcategoryList(List<SubCategory> subcategoryList) {
-        this.subcategoryList = subcategoryList;
-    }
-
-    public List<SubCategory> getSubcategoryList() {
-        return subcategoryList;
     }
 
 
@@ -100,4 +92,12 @@ public class Course extends DBObject {
     public Double getPrice() {
         return price;
     }
+
+    public List<Category> getCategoryList() {
+        return categoryList;
     }
+
+    public void setCategories(List<Category> categoires) {
+        this.categoryList = categoires;
+    }
+}

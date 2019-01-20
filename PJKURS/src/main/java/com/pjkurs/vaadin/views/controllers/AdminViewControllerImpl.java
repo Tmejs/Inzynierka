@@ -17,15 +17,19 @@
 package com.pjkurs.vaadin.views.controllers;
 
 import com.pjkurs.domain.Course;
+import com.pjkurs.domain.Training;
 import com.pjkurs.vaadin.NavigatorUI;
-import com.pjkurs.vaadin.ui.containers.admin.AwaitingDiscounstsPanel;
 import com.pjkurs.vaadin.ui.containers.admin.AddCoursePanel;
 import com.pjkurs.vaadin.ui.containers.admin.AdminCoursesOverviewPanel;
 import com.pjkurs.vaadin.ui.containers.admin.AdminEditCoursePanel;
-import com.pjkurs.vaadin.ui.containers.admin.DiscountsPanel;
+import com.pjkurs.vaadin.ui.containers.admin.AwaitingDiscounstsPanel;
+import com.pjkurs.vaadin.ui.containers.admin.DeansEmployesPanel;
+import com.pjkurs.vaadin.ui.containers.admin.DetailedTrainingPanel;
 import com.pjkurs.vaadin.ui.containers.admin.EditCategoriesPanel;
-import com.pjkurs.vaadin.ui.containers.admin.EditSubcategoriesPanel;
 import com.pjkurs.vaadin.ui.containers.admin.EditableUsersListPanel;
+import com.pjkurs.vaadin.ui.containers.admin.StatisticsPanel;
+import com.pjkurs.vaadin.ui.containers.admin.TeachersPanel;
+import com.pjkurs.vaadin.ui.containers.admin.TrainingsOverviewPanel;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 
 /**
@@ -56,7 +60,7 @@ public class AdminViewControllerImpl implements InterfaceAdminViewController {
 
     @Override
     public void menuTeachersOvervievClicked() {
-//        getModel().getView().setMainPanel(model.getTeachersOverviewPanel());
+        getModel().getView().setMainPanel(new TeachersPanel(model));
     }
 
     @Override
@@ -85,17 +89,32 @@ public class AdminViewControllerImpl implements InterfaceAdminViewController {
     }
 
     @Override
-    public void menuSubcategoriesClicked() {
-        getModel().getView().setMainPanel(new EditSubcategoriesPanel(model));
-    }
-
-    @Override
-    public void menuDiscountsClicked() {
-        getModel().getView().setMainPanel(new DiscountsPanel(model));
-    }
-
-    @Override
     public void menuAwaitingDicountsClicked() {
         getModel().getView().setMainPanel(new AwaitingDiscounstsPanel(model));
+    }
+
+    @Override
+    public void detailedTrainingPanelClicked(Training training) {
+        getModel().getView().setMainPanel(new DetailedTrainingPanel(model, training,true, false));
+    }
+
+    @Override
+    public void correctlyLoged() {
+        getModel().getView().refreshView();
+    }
+
+    @Override
+    public void deaneryUsersClicked() {
+        getModel().getView().setMainPanel(new DeansEmployesPanel(model));
+    }
+
+    @Override
+    public void statistickMenuClicked() {
+        getModel().getView().setMainPanel(new StatisticsPanel(model));
+    }
+
+    @Override
+    public void menuTrainigsClicked() {
+        getModel().getView().setMainPanel(new TrainingsOverviewPanel(model));
     }
 }

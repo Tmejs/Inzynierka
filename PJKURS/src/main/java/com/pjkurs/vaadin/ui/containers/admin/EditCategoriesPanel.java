@@ -16,42 +16,37 @@
  */
 package com.pjkurs.vaadin.ui.containers.admin;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.pjkurs.domain.Category;
-import com.pjkurs.domain.SubCategory;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.views.system.MyModel;
-import com.vaadin.event.selection.SelectionListener;
-import com.vaadin.event.selection.SingleSelectionEvent;
-import com.vaadin.event.selection.SingleSelectionListener;
+import com.vaadin.annotations.Theme;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.ListSelect;
 import com.vaadin.ui.NativeSelect;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  *
  * @author Tmejs
  */
+@Theme("pjtheme")
 public class EditCategoriesPanel<T extends MyModel> extends MyContainer<T> {
 
     Category selectedCategory;
-    SubCategory selectedSubCategory;
 
     List<Category> categoryList;
 
     Component categoriesPanel;
-    Component subCategoriesPanel;
 
     public EditCategoriesPanel(T model) {
         super(model);
@@ -62,9 +57,7 @@ public class EditCategoriesPanel<T extends MyModel> extends MyContainer<T> {
         HorizontalLayout lay = new HorizontalLayout();
 
         categoriesPanel = generateCategoriesPanel();
-        subCategoriesPanel = generateSubCategoriesPanel();
         lay.addComponent(categoriesPanel);
-        lay.addComponent(subCategoriesPanel);
 
         return lay;
     }
@@ -93,7 +86,6 @@ public class EditCategoriesPanel<T extends MyModel> extends MyContainer<T> {
                 selectedCategory = e.stream().filter((t) -> {
                     return t.name.equals(event.getValue());
                 }).collect(Collectors.toList()).get(0);
-                refreshSubCategoriesPanel();
             });
             lay.addComponent(categoriesSelect);
         } else {
@@ -139,51 +131,9 @@ public class EditCategoriesPanel<T extends MyModel> extends MyContainer<T> {
         return lay;
     }
 
-    private Component generateSubCategoriesPanel() {
-        VerticalLayout lay = new VerticalLayout();
-        lay.setSizeFull();
-
-        List<SubCategory> categories = NavigatorUI.getDBProvider().getSubCategories();
-
-        if (selectedCategory != null) {
-            Collection e = categories.stream().filter((t) -> {
-                return t.getCategories().stream().anyMatch(category -> category.id.equals(selectedCategory.id));
-            }).map((t) -> {
-                return t.name;
-            }).collect(Collectors.toList());
-            if (e.isEmpty()) {
-                lay.addComponent(new Label(Words.TXT_NO_SUBCATEGORIES));
-            } else {
-                NativeSelect<String> categoriesSelect = new NativeSelect(Words.TXT_SUB_CATEGORIES, e);
-
-                categoriesSelect.setVisibleItemCount(e.size() != 1 ? e.size() : e.size() + 1);
-                categoriesSelect.setEmptySelectionAllowed(false);
-
-                categoriesSelect.addSelectionListener((event) -> {
-                    selectedSubCategory = categories.stream().filter((t) -> {
-                        return t.name.equals(event.getValue());
-                    }).collect(Collectors.toList()).get(0);
-                });
-                lay.addComponent(categoriesSelect);
-            }
-        } else {
-            lay.addComponent(new Label(Words.TXT_NO_SUBCATEGORIES));
-        }
-
-        return lay;
-    }
-
-    private void refreshSubCategoriesPanel() {
-        Component newPanel = generateSubCategoriesPanel();
-        ((HorizontalLayout) this.getContent()).replaceComponent(subCategoriesPanel, newPanel);
-        subCategoriesPanel = newPanel;
-    }
-
     private void refreshCategoriesPanel() {
         Component newPanel = generateCategoriesPanel();
         ((HorizontalLayout) this.getContent()).replaceComponent(categoriesPanel, newPanel);
         categoriesPanel = newPanel;
-        refreshSubCategoriesPanel();
     }
-
 }

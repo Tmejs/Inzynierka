@@ -17,8 +17,11 @@
 package com.pjkurs.domain;
 
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

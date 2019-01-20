@@ -33,4 +33,13 @@ public class Category extends DBObject{
     public String getName() {
         return name;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Category)) {
+            return false;
+        }
+
+        return this.id.equals((((Category) obj).id));
+    }
 }

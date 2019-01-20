@@ -16,6 +16,10 @@
  */
 package com.pjkurs.usables;
 
+import com.pjkurs.domain.Appusers;
+import com.pjkurs.domain.Client;
+import com.pjkurs.domain.Training;
+import com.pjkurs.domain.TrainingFile;
 import com.vaadin.server.Page;
 
 /**
@@ -23,7 +27,6 @@ import com.vaadin.server.Page;
  */
 public class Words {
 
-    public static final Integer INTEGER_MINIMUM_USER_NUMBBER_AVALIBLE = 20;
     public static final String TXT_COURSES_OF_SUBCOURSE = "Podkategoria jest przypisana do:";
     public static final String TXT_NO_SELECTED_CATEGORIES = "Podkategoria nie jest przypisana do żadnej kategori";
     public static final String TXT_COURSE_ADDED =
@@ -40,7 +43,7 @@ public class Words {
     public static final String TXT_DISCOUNTS = "Zniżki";
     public static final String TXT_DISCOUNT_NAME = "Nazwa zniżki";
     public static final String TXT_DISCOUNT_DISCOUNT_VALUE = "Wartość zniżki";
-    public static final String TXT_DISCOUNT="Zniżka";
+    public static final String TXT_DISCOUNT="Przyznana zniżka";
     public static final String TXT_NOT_SET = "Nie ustawiono";
     public static final String TXT_IS_MONEY_DISCOUNT = "Zniżka pienieżna";
     public static final String TXT_AWARDED_DISCOUNT = "Przyznana zniżka:";
@@ -52,7 +55,7 @@ public class Words {
     public static final String TXT_SELECT_DISCOUNT = "Wybierz zniżkę o którą aplikujesz";
     public static final String TXT_CORRECTLY_SEND = "Poprawnie wysłano";
     public static final String TXT_SOMETHIN_WENT_WRONG = "Coś poszło nie tak";
-    public static final String TXT_ADMIN_AWAITING_FOR_CONF = "Oczekujące na akceptację";
+    public static final String TXT_ADMIN_AWAITING_FOR_CONF = "Zniżki oczekujące na akceptację";
     public static final String TXT_CLIETN_EMAIL = "Email klienta";
     public static final String TXT_DISCOUNT_CONFIRMATION = "Zatwierdzenie zniżki";
     public static final String TXT_USER = "Użytkownik";
@@ -61,7 +64,123 @@ public class Words {
     public static final String TXT_CONF_DEC_DESCRIPTION = "Powód zatwierdzenia/odrzucenia";
     public static final String TXT_CONFIRM = "Zatwierdz";
     public static final String TXT_SET_GRANT_DESCRIPTION = "Wpisz powód";
+    public static final String TXT_CORRECT_VALUE = "Wprowadz poprawną wartość zniżki";
     public static final String TXT_DECLINE = "Odrzuć";
+    public static final String TXT_START_TRAINING = "Rozpocznij szkolenie";
+    public static final String TXT_STATUS = "Status";
+    public static final String TXT_DETAILS = "Szczegóły";
+    public static final String TXT_COURSE_SUM_OF_MONEY = "Szacowany wpływ:";
+    public static final String TXT_NO_ACTIVE_TRAININGS = "Brak szkoleń";
+    public static final String TXT_START_DATE = "Data rozpoczęcia";
+    public static final String TXT_AVALIBLE_TERMS = "Terminy kursu";
+    public static final String TXT_CAPTION = "Nazwa";
+    public static final String TXT_END_DATE = "Data zakończenia";
+    public static final String TXT_FILL_ALL_FIELDS = "Wypełnij wszystkie pola";
+    public static final String TXT_START_TIME = "Wybierz czas rozpoczęcia";
+    public static final String TXT_END_TIME = "Wybierz czas zakończenia";
+    public static final String TXT_TRAINING_NAME = "Nazwa";
+    public static final String TXT_SELECT_TRAINING_ITEM = "Wybierz termin który chcesz usunąć";
+    public static final String TXT_MY_TRAININGS = "Trwające kursy";
+    public static final String TXT_COURSES_AWAITING_START = "Kursy oczekujące na rozpoczęcie";
+    public static final String TXT_DELETE_TEACHER_FROM_COURSE = "Wypisz nauczyciela ze szkolenia";
+    public static final String TXT_SET_TEACHER = "Wybierz nauczyciela";
+    public static final String TXT_ADD_TEACHER_TO_COURSE = "Dodaj nauczyciela do kursu";
+    public static final String TXT_SELECT_TEACHER_TO_ADD = "Wybierz nauczyciela do dodania";
+    public static final String TXT_IS_PAID = "Czy opłacono";
+    public static final String TXT_MODIFY = "Modyfikuj";
+    public static final String TXT_CLIENTS_IN_TRAINING = "Uczestnicy";
+    public static final String TXT_YES = "Tak";
+    public static final String TXT_NO = "Nie";
+    public static final String TXT_DELETE_CLIENT_FROM_TRAINING = "Usuń ze szkolenia";
+    public static final String TXT_TEACHER_STATUS = "Status wykładowcy";
+    public static final String TXT_TRAININGS_BY_TEACHER = "Szkolenia prowadzone przez wykładowcę";
+    public static final String TXT_FILE_NAME = "Nazwa pliku";
+    public static final String TXT_ADD_NEW_FILE = "Dodaj nowy";
+    public static final String TXT_ADD_NEW_FILE_TO_COURSE = "Dodaj nowy plik do szkolenia";
+    public static final String SET_SELECTED_CATEGORIES = "Wybierz kategorie w których występuje "
+            + "kurs";
+    public static final String TXT_WANT_DISCOUNT = "Przysługuje ci zniżka? ";
+    public static final String TXT_TRAINING_ADD_NAME = "Szkolenie kursu";
+    public static final String IS_PERCENTAGE = "Czy zniżka %?";
+    public static final String TXT_NEW_DISCOUNT = "Podaj powód aplikacji";
+    public static final String TXT_DISCOUNT_IS_AWAINTING = "Zniżka oczekuje na akceptację";
+    public static final String TXT_DISCOUNT_NOT_GRANTED = "Zniżka została odrzucona";
+    public static final String TXT_PLACE_OF_BIRTH = "Miejsce urodzenia";
+    public static final String TXT_VISIBLE_FOR_USERS = "Czy widoczny dla klientow";
+    public static final String TXT_IS_CONTRACT_SIGNED = "Czy podpisany kontrakt";
+    public static final String TXT_CONTRACT_BASE = "Typ zatrudnienia";
+    public static final String TXT_DEANERY_UERS = "Pracownicy dziekanatu";
+    public static final String TXT_ADMIN_GRANT = "Uprawnienia admina";
+    public static final String TXT_ADD_NEW_DEANEMPLYE = "Dodaj nowego pracownika dziekanatu";
+    public static final String TXT_INSERT_NEW_DEAN_EMPLOYEE = "Dodaj nowego pracownika dziekanatu";
+    public static final String TXT_LOGED_AS = "Zalogowany jako";
+    public static final String TXT_INFORM_ABOUT_START = "Poinformuj o spotkaniu organizacyjnym";
+    public static final String TXT_SET_DISCOUNT = "Nadaj zniżkę";
+    public static final String TXT_DETAILED_DESCRIPTION_FILE = "Plik ze szczegółowymi danymi";
+    public static final String TXT_UPLOAD_DETAILED_DESC = "Dodaj plik ze szczegółowym opisem";
+    public static final String TXT_DELETE_FILE = "Usuń plik";
+    public static final String TXT_IS_CYCLIC = "Spotkanie cotygodniowe";
+    public static final String TXT_WEEKS_TILL_END = "Liczba tygodni";
+    public static final String TXT_SUM_OF_WORKEDTIME = "Liczba zrealizowanych godzin w szkoleniu";
+    public static final String TXT_ADD_HOUR = "+1";
+    public static final String TXT_MINUS_HOUR = "-1";
+    public static final String TXT_TIME_IN_TRAINING = "Czas pracy";
+    public static final String TXT_GENERATE_TIME = "Pokaż raport godzinowy";
+    public static final String TXT_TIME_RAPORT = "Raport Godzinowy";
+    public static final String TXT_MEETING_NAME = "Nazwa spotkania";
+    public static final String TXT_TIME_IN_HOURS = "Czas (godziny)";
+    public static final String TXT_SUM = "Suma";
+    public static final String TXT_END_TRAINING = "Zakończ szkolenie";
+    public static final String TXT_TRAINING_ENDING = "Zakończenie szkolenia";
+    public static final String TXT_IS_GRADUATING = "Czy pomyślnie zakończony kurs";
+    public static final String TXT_ADD_CERTIFCATE = "Dodaj certyfikat";
+    public static final String TXT_DOWNLOAD_CERTIFICATE = "Pobierz certyfikat";
+    public static final String TXT_DELETE_CERTIFICATE = "Usuń certyfikat";
+    public static final String TXT_IS_CLIENT_GRAD = "Ukończono";
+    public static final String TXT_IS_CERTIFICATE_ADDED = "Dodany certyfikat";
+    public static final String TXT_ENDED_COURSES = "Ukończone kursy";
+    public static final String TXT_NO_GRADUATED_COURSES = "Brak ukończonych kursów";
+    public static final String TXT_GRADUATED_COURSES = "Ukończone kursy";
+    public static final String TXT_GET_CERTIFICATE = "Certyfikat";
+    public static final String TXT_ADD_CERTIFICATE_FOR_ALL_GRADUATED_USERS = "Dodaj certyfikaty "
+            + "dla wszytskich użytkowników którzy ukończyli kurs";
+    public static final String TXT_STATISTICS = "Statystyki";
+    public static final String TXT_START = "Od:";
+    public static final String TXT_END = "Do:";
+    public static final String TXT_UPDATE = "Odśwież";
+    public static final String TXT_TRAININGS_IN_DATES = "Szkolenia uruchomione w danym okresie";
+    public static final String TXT_CREATE_DATE = "Data utworzenia";
+    public static final String TXT_USERS_REGISTERED_IN_TIME = "Uzytkownicy zarejestrowani w danym "
+            + "okresie";
+    public static final String TXT_FILES = "Pliki";
+    public static final String TXT_ADD_FILE = "Dodaj plik";
+    public static final String TXT_INCOME = "Wpływ";
+    public static final String TXT_COUNT_OF_PARTICIPANTS = "Liczba członków";
+    public static final String TXT_COUNT_OF_GRADUATES = "Liczba absolwentów";
+    public static final String TXT_ACTIVE_TRAININGS = "Trwające szkolenia";
+    public static final String TXT_ACTUAL_DATA = "Dane do uruchomienia szkolenia";
+    public static final String TXT_TERM = "Termin";
+    public static final String TXT_SEND = "Wyślij";
+    public static final String TXT_ADD_NEW_teRM = "Dodaj nowy termin do szkolenia";
+    public static final String TXT_MODIFY_CLIENT_DATA = "Modyfikuj dane klienta";
+    public static final String TXT_PRICE_WITHDISCOUNT = "Cena dla studentów PJATK";
+    public static final String TXT_LOGIN = "Login";
+    public static final String TXT_RE_PASSWORD = "Powtórz hasło";
+    public static final String TXT_INCORECT_DATA = "Błędne dane";
+    public static final String TXT_CORRECTLY_DELETED = "Poprawnie usunięto";
+    public static final String TXT_TRAININGS = "Trwające szkolenia";
+    public static final String TXT_IS_ACTIVE = "Konto aktywowane";
+    public static final String TXT_INACTIVE = "Pokaż tylko nieaktywne konta";
+    public static final String TXT_NOT_ACTIVATED = "Konto jest nieaktywne.";
+    public static final String TXT_COURSE_INCOME = "Szacowany wpływ(cena - zniżki)";
+    public static final String TXT_MAIL_CONTENT = "Treść maila";
+    public static final String TXT_EMAIL_SENDED_TO_COURSE_INTERESTS = "Do osób "
+            + "zainteresowanych szkoleniem wysłano wiadomość:";
+    public static final String TXT_EMAIL_SENDED_TO_TRAINING_PARTICIPANTS = "Do członków szkolenia "
+            + "wysłano email:";
+    public static final String TXT_EMAIL_SENDED_TO_YOUR_MAIL = "Na skrzynkę pocztową wysłano "
+            + "wiadomość:";
+    public static final String TXT_NEW_EMAIL = "Wysłany email";
 
     /*SQL QUERYS
 
@@ -72,11 +191,12 @@ public class Words {
     public static String SQL_SELECT_MY_COURSES_QUERY = "select * from pjkursdb.MOJE_KURSY_V";
     public static String SQL_SELECT_ARCHIVE_COURSES_QUERY = "select * from pjkursdb.KURSY_ARCH_V";
     public final static String SESSION_LOGIN_NAME = "SESSION_LOGED_USER";
-    public final static String TXT_APP_NAME = "Wgl sie nie nazywa jeszcez";
+    public final static String TXT_APP_NAME = "PJKURS";
 
     public final static String SESSION_LOGGED_LOGIN = "SESSION_LOGGED_LOGIN";
     public final static String SESSION_LOGGED_EMAIL = "SESSION_LOGGED_EMAIL";
     public static String SESSION_LOGGED_USER = "SESSION_LOGGED_USER";
+    public static final String SESSION_ADMIN = "SESSION_ADMIN";
 
     public final static String TXT_MY_DATA = "Moje dane";
     public final static String TXT_LOGOUT = "Wyloguj";
@@ -124,13 +244,13 @@ public class Words {
     public static String TXT_INSERT_NEW_COURSE_DATA = "Wprowadz dane nowego kursu";
     public static String TXT_DESCRIPTION = "Opis:";
     public static String TXT_ADD_NEW_COURSE = "Dodaj";
-    public static String TXT_MIN_PERSON_NUMBER = "Minimalna ilość uczestników";
+    public static String TXT_MIN_PERSON_NUMBER = "Minimalna liczba uczestników";
     public static String TXT_INSERT_NEW_TEACHER_DATA = "Wprowadz dane nowego wykładowcy";
     public static String TXT_SURRNAME = "Nazwisko";
     public static String CANT_OPEN_LOG_FILE = "Nie mozna otworzyć pliku do logowania";
     public static String TXT_MY_COURSES = "Moje kursy";
     public static String TXT_COURSE_LECTURER = "Wykładowca";
-    public static String TXT_COURSE_PARTICIPANTS = "Ilość członków";
+    public static String TXT_COURSE_PARTICIPANTS = "Liczba zapisanych osób:";
     public static String TXT_SIGN_TO_COURSE = "Zapisz do kursu";
     public static String TXT_SEND_QUESTION = "Wyslij wiadomość";
     public static String TXT_MESSAGE = "Wiadomość: (minimum 20 znaków)";
@@ -163,8 +283,8 @@ public class Words {
     public static String TXT_NO_CATEGORIES = "Brak kategori";
     public static String TXT_SELECT_CATEGORY = "Wybierz kategorię";
     public static String TXT_SUBCATEGORYNAME = "Podkategoria";
-    public static String TXT_ADD_CATEGORY = "Przypisz do podkategorii";
-    public static String TXT_SELECT_SUB_CATEGORY = "Wybierz podkategorie";
+    public static String TXT_ADD_CATEGORY = "Przypisz do kategori";
+    public static String TXT_SELECT_SUB_CATEGORY = "Wybierz Kategorie";
     public static String TXT_ERROR = "Błąd";
 
 

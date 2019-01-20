@@ -17,6 +17,7 @@
 package com.pjkurs.vaadin.views.controllers;
 
 import com.pjkurs.domain.Course;
+import com.pjkurs.domain.Training;
 
 /**
  *
@@ -40,9 +41,15 @@ public interface InterfaceAdminViewController {
 
     void addNewCouurse(Course newCourse);
 
-    void menuSubcategoriesClicked();
-
-    void menuDiscountsClicked();
-
     void menuAwaitingDicountsClicked();
+
+    void detailedTrainingPanelClicked(Training training);
+
+    void correctlyLoged();
+
+    void deaneryUsersClicked();
+
+    void statistickMenuClicked();
+
+    void menuTrainigsClicked();
 }

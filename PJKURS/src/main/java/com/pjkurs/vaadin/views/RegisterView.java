@@ -47,13 +47,14 @@ public class RegisterView extends MyContainer<RegisterViewModel> implements View
     public Component buildView() {
         this.setStyleName("horrizontaly-full-view");
         VerticalLayout layout = new VerticalLayout();
+        layout.setSizeFull();
         layout.setMargin(false);
         layout.setWidthUndefined();
-        layout.addComponent(generateTopPanel());
+        layout.addComponentsAndExpand(generateTopPanel());
         
-        layout.addComponent(generateMenu());
+        layout.addComponentsAndExpand(generateMenu());
         
-        layout.addComponent(generateMainAppPanel());
+        layout.addComponentsAndExpand(generateMainAppPanel());
         return layout;
     }
     
@@ -65,6 +66,7 @@ public class RegisterView extends MyContainer<RegisterViewModel> implements View
     @Override
     public Component generateMenu() {
         Button button = new Button(Words.TXT_BACK);
+        button.setStyleName("v-button");
         button.addClickListener((event) -> {
             getModel().backButtonClicked(event);
         });
@@ -81,10 +83,19 @@ public class RegisterView extends MyContainer<RegisterViewModel> implements View
         TextField password = new PasswordField(Words.TXT_PASSWORD);
         verticalLayout.addComponent(password);
         
-        TextField passwordConfirmation = new PasswordField(Words.TXT_PASSWORD);
+        TextField passwordConfirmation = new PasswordField(Words.TXT_RE_PASSWORD);
         verticalLayout.addComponent(passwordConfirmation);
+
+        TextField name = new TextField(Words.TXT_NAME);
+        verticalLayout.addComponent(name);
+
+        TextField surname = new TextField(Words.TXT_SURRNAME);
+        verticalLayout.addComponent(surname);
+
+        TextField phoneNumber = new TextField(Words.TXT_PHONE_CONTACT);
+        verticalLayout.addComponent(phoneNumber);
         
-        getModel().bindLoginData(email, password, passwordConfirmation);
+        getModel().bindLoginData(email, password, passwordConfirmation, name, phoneNumber, surname);
         
         Button confirmButton = new Button(Words.TXT_REGISTER);
         confirmButton.addClickListener((event) -> {

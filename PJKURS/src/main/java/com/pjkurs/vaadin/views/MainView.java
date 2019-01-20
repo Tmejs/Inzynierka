@@ -19,15 +19,15 @@ package com.pjkurs.vaadin.views;
 import com.pjkurs.domain.Category;
 import com.pjkurs.domain.Course;
 import com.pjkurs.vaadin.NavigatorUI;
-import com.pjkurs.vaadin.ui.containers.ArchiveCoursesPanel;
+import com.pjkurs.vaadin.ui.containers.client.ArchiveCoursesPanel;
 import com.pjkurs.vaadin.ui.containers.client.ContactDataPanel;
-import com.pjkurs.vaadin.ui.containers.CoursesPanel;
+import com.pjkurs.vaadin.ui.containers.client.CoursesPanel;
 import com.pjkurs.vaadin.ui.containers.client.DetailedCoursePanel;
-import com.pjkurs.vaadin.ui.containers.MyCoursesPanel;
+import com.pjkurs.vaadin.ui.containers.client.MyCoursesPanel;
 import com.pjkurs.vaadin.ui.containers.client.PersonalDataPanel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.ui.containers.TopPanel;
-import com.pjkurs.vaadin.ui.menu.MainMenuPanel;
+import com.pjkurs.vaadin.ui.containers.menu.MainMenuPanel;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
@@ -52,6 +52,12 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
         super(model, true);
     }
 
+    @Override
+    public void setMainPanel(Component newMainPanel) {
+        ((VerticalLayout) this.getContent()).replaceComponent(mainPanel, newMainPanel);
+        mainPanel = newMainPanel;
+    }
+
     //Zbudowanie widoku głównej aplikacji
     @Override
     public Component buildView() {
@@ -68,7 +74,6 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
 
     @Override
     public final Component generateTopPanel() {
-        //zwracamy top panel
         TopPanel topPanel = new TopPanel<>(getModel());
         return topPanel;
     }
@@ -108,7 +113,6 @@ public class MainView extends MyContainer<MainViewModel> implements View, Interf
 
     public void setDetailedCourseAsMainPanel(Integer id) {
         Logger.getGlobal().log(Level.SEVERE, "setDetailedCourseAsMainPanel:" + id);
-
         Course course = NavigatorUI.getDBProvider().getCourse(id);
         Logger.getGlobal().log(Level.SEVERE, course.name);
         DetailedCoursePanel panel = new DetailedCoursePanel(getModel(), course);

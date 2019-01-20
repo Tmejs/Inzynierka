@@ -16,7 +16,6 @@
  */
 package com.pjkurs.domain;
 
-import java.sql.Date;
 import java.util.List;
 
 /**
@@ -30,10 +29,10 @@ public class ArchiveCourse extends DBObject {
     public String description;
     public Integer statusId;
     public String statusName;
-    public List<SubCategory> subcategoryList;
+    public List<Category> categoryList;
 
-    public void setSubcategoryList(List<SubCategory> subcategoryList) {
-        this.subcategoryList = subcategoryList;
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
     }
  
    

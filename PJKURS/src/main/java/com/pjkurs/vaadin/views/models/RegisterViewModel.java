@@ -16,21 +16,28 @@
  */
 package com.pjkurs.vaadin.views.models;
 
-import com.pjkurs.InterfacePjkursDataProvider;
-import com.pjkurs.domain.Client;
+import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.mail.MessagingException;
+
+import com.pjkurs.domain.Appusers;
+import com.pjkurs.usables.EmailsGenerator;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
-import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.RegisterView;
+import com.pjkurs.vaadin.views.system.MyModel;
 import com.vaadin.data.Binder;
+import com.vaadin.data.Converter;
+import com.vaadin.data.Result;
+import com.vaadin.data.ValueContext;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
-import java.io.Serializable;
 
 /**
- *
  * @author Tmejs
  */
 public class RegisterViewModel extends MyModel<RegisterView> {
@@ -44,7 +51,7 @@ public class RegisterViewModel extends MyModel<RegisterView> {
 
     public void registerButtonClicked(Button.ClickEvent event) {
         Binder<RegisterData> binder = ((Binder) getParam(PARAM_BINDER_REGISTER));
-        RegisterData data = (RegisterData) getParam(PARAM_BINDER_REGISTER_DATA);
+        RegisterData data = getParam(PARAM_BINDER_REGISTER_DATA);
 
         if (!binder.writeBeanIfValid(data)) {
             return;
@@ -56,16 +63,25 @@ public class RegisterViewModel extends MyModel<RegisterView> {
             data.password = data.passwordConf = "";
             binder.readBean(data);
         } else {
-            Client client = new Client();
-            client.email = data.getLogin();
-            client.password = data.getPassword();
-            if (NavigatorUI.getDBProvider().registerNewClient(client)) {
-                NavigatorUI.setLoggeddUser(NavigatorUI.getDBProvider().getUser(client.email));
+            Appusers appuser = new Appusers();
+            appuser.email = data.login;
+            appuser.password = data.password;
+            appuser.name = data.name;
+            appuser.surname = data.surname;
+            appuser.contact_number = data.phoneNumber;
+            if (NavigatorUI.getDBProvider().registerNewUser(appuser)) {
+                Appusers registeredUser = NavigatorUI.getDBProvider().getUser(appuser.email);
+                NavigatorUI.setLoggeddUser(registeredUser);
                 getUi().getNavigator().navigateTo(NavigatorUI.View.MAINVIEW.getName());
                 Notification.show(Words.TXT_CORRECTLY_REGISTERED);
+                try {
+                    NavigatorUI.getMailSender()
+                            .sendAsHtml(EmailsGenerator.getRegistrationMessage(registeredUser));
+                } catch (MessagingException e) {
+                    Logger.getLogger(getClass().toString()).log(Level.WARNING, e.getMessage());
+                }
             } else {
-                //TODO błąd rejestracji
-            };
+            }
         }
     }
 
@@ -74,6 +90,34 @@ public class RegisterViewModel extends MyModel<RegisterView> {
         String login;
         String password;
         String passwordConf;
+        String name;
+
+        public String getSurname() {
+            return surname;
+        }
+
+        public void setSurname(String surname) {
+            this.surname = surname;
+        }
+
+        String surname;
+        String phoneNumber;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getPhoneNumber() {
+            return phoneNumber;
+        }
+
+        public void setPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
 
         public String getLogin() {
             return login;
@@ -105,7 +149,9 @@ public class RegisterViewModel extends MyModel<RegisterView> {
         getUi().getNavigator().navigateTo(NavigatorUI.View.MAINVIEW.getName());
     }
 
-    public void bindLoginData(TextField emailTextField, TextField passwordTextField, TextField confirmPasswordTextField) {
+    public void bindLoginData(TextField emailTextField, TextField passwordTextField,
+            TextField confirmPasswordTextField, TextField nameTextField,
+            TextField phoneNumberTextField, TextField surnameTextField) {
         Binder<RegisterData> registerBinder = new Binder<>(RegisterData.class);
         RegisterData registerData = new RegisterData();
         setParam(PARAM_BINDER_REGISTER_DATA, registerData);
@@ -118,8 +164,8 @@ public class RegisterViewModel extends MyModel<RegisterView> {
                         "Email musi zawierać @"
                 )
                 .withValidator((t) -> {
-                    return !NavigatorUI.getDBProvider().checkDoEmailOcuppied(t);
-                },
+                            return !NavigatorUI.getDBProvider().checkDoEmailOcuppied(t);
+                        },
                         Words.TXT_USED_EMAIL
                 ).
                 bind(RegisterData::getLogin, RegisterData::setLogin);
@@ -130,6 +176,47 @@ public class RegisterViewModel extends MyModel<RegisterView> {
 
         registerBinder.forField(confirmPasswordTextField)
                 .bind(RegisterData::getPasswordConf, RegisterData::setPasswordConf);
+
+        registerBinder.forField(phoneNumberTextField)
+                .withValidator(RegisterViewModel::isValidNumber, "Numer telefonu może "
+                        + "zawierać tylko \"+\" oraz cyfry")
+                .withConverter(new Converter<String, String>() {
+                    @Override
+                    public Result<String> convertToModel(String value, ValueContext context) {
+                        String string = value;
+                        string = string.replace(" ", "");
+                        return Result.ok(string);
+                    }
+
+                    @Override
+                    public String convertToPresentation(String value, ValueContext context) {
+                        return value;
+                    }
+                })
+                .bind(RegisterData::getPhoneNumber, RegisterData::setPhoneNumber);
+
+        registerBinder.forField(nameTextField)
+                .withValidator(RegisterViewModel::isValidName, "Imie może zawierać tylko litery")
+                .bind(RegisterData::getName, RegisterData::setName);
+
+        registerBinder.forField(surnameTextField)
+                .withValidator(RegisterViewModel::isValidName, "Nazwisko może zawierać tylko "
+                        + "litery")
+                .bind(RegisterData::getSurname, RegisterData::setSurname);
     }
 
+    private static Boolean isValidNumber(String string) {
+        string = string.replace(" ", "");
+        string = string.replace("+", "");
+        for (char c : string.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static Boolean isValidName(String name) {
+        return name.matches("[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]*");
+    }
 }

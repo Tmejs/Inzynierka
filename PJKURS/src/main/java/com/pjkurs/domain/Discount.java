@@ -1,41 +1,30 @@
 package com.pjkurs.domain;
 
-public class Discount extends DBObject {
+
+public class Discount extends  DBObject{
 
     public Integer id;
-    public Double discount_precentage;
-    public String name;
-    public String description;
-    public Double money;
+    public Integer appusers_id;
+    public Boolean isConfirmed ;
+    public String userDescription;
+    public String grantedDescription;
+    public Integer trening_id;
+    public Integer value;
+    public Boolean is_percentValue;
 
-    public Integer getId() {
-        return id;
+    public Integer getAppusers_id() {
+        return appusers_id;
     }
 
-    public Double getDiscount_precentage() {
-        return discount_precentage;
+    public Boolean getConfirmed() {
+        return isConfirmed;
     }
 
-    public String getName() {
-        return name;
+    public String getUserDescription() {
+        return userDescription;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public Double getMoney() {
-        return money;
-    }
-
-    public Discount() {
-    }
-
-    public Discount(Discount selectedDiscount) {
-        this.id = selectedDiscount.id;
-        this.discount_precentage = selectedDiscount.discount_precentage;
-        this.name = selectedDiscount.name;
-        this.description = selectedDiscount.description;
-        this.money = selectedDiscount.money;
+    public String getGrantedDescription() {
+        return grantedDescription;
     }
 }

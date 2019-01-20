@@ -16,11 +16,14 @@
  */
 package com.pjkurs.vaadin.ui.containers.client;
 
+import com.pjkurs.usables.EmailsGenerator;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
+import com.vaadin.annotations.Theme;
 import com.vaadin.data.HasValue;
+import com.vaadin.flow.component.html.Nav;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
@@ -31,10 +34,13 @@ import com.vaadin.ui.VerticalLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.mail.MessagingException;
+
 /**
  *
  * @author Tmejs
  */
+@Theme("pjtheme")
 public class ContactDataPanel<T extends MainViewModel> extends MyContainer<T> {
 
     public ContactDataPanel(T model) {
@@ -73,7 +79,13 @@ public class ContactDataPanel<T extends MainViewModel> extends MyContainer<T> {
 
         final String[] data = new String[2];
         Button sendFormularButton = new Button(Words.TXT_SEND_QUESTION, (event) -> {
-            Logger.getGlobal().log(Level.SEVERE, data[0] + "   " + data[1]);
+
+            try {
+                NavigatorUI.getMailSender().sendAsHtml(EmailsGenerator
+                        .generateContactEmail(NavigatorUI.PARAMS.EMAIL_LOGIN, data[0], data[1]));
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
         });
         sendFormularButton.setEnabled(false);
 

@@ -19,6 +19,7 @@ package com.pjkurs.vaadin.ui.containers.admin;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
+import com.vaadin.annotations.Theme;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Label;
@@ -29,6 +30,7 @@ import com.vaadin.ui.VerticalLayout;
  *
  * @author Tmejs
  */
+@Theme("pjtheme")
 public class AddTeacherPanel<T extends AdminViewModel> extends MyContainer<T>  {
 
     public AddTeacherPanel(T model) {

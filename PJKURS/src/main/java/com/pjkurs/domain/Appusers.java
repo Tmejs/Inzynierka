@@ -32,6 +32,17 @@ public class Appusers extends DBObject{
     public String surname;
     public Date birth_date;
     public String contact_number;
+    public Boolean isActive;
+
+    public String getPlace_of_birth() {
+        return place_of_birth;
+    }
+
+    public void setPlace_of_birth(String place_of_birth) {
+        this.place_of_birth = place_of_birth;
+    }
+
+    public String place_of_birth;
 
 
     public Appusers() {

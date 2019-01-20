@@ -1,42 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/InterfacePjkursDataProvider.java" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/DetailedTrainingPanel.java" line="447" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/DetailedTrainingPanel.java" line="366" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/DetailedTrainingPanel.java" line="147" mnemonic="5" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="a35d2427-71c4-49d8-9030-2c59565e1a0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/GrantedDiscount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AwaitingDiscounstsPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/CalendarEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Teachers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Training.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/TrainingFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/TrainingStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/usables/EmailsGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/usables/MailObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/utils/FilesUitl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/utils/MailSenderUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/DeansEmplyesPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/DetailedTrainingPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/StatisticsPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/TeachersPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/TeacherTrainingsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/InterfacePjkursDataProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/InterfacePjkursDataProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/InterfacePjkursDataProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/db/InterfacePjkursDataProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Appusers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Appusers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/ArchiveCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/ArchiveCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Course.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/DBObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/DBObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/GrantedDiscount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/SubCategory.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/usables/Words.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/usables/Words.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/AddCoursePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AddCoursePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/AddTeacherPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AddTeacherPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/AdminCoursesOverviewPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AdminCoursesOverviewPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/AdminEditCoursePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AdminEditCoursePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/ArchiveCoursePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/ArchiveCoursePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/ArchiveCoursesPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/ArchiveCoursesPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/ContactDataPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/ContactDataPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/DetailedCoursePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/DetailedCoursePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/DiscountsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/DiscountsPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/EditCategoriesPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditCategoriesPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/EditSubcategoriesPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditSubcategoriesPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/EditableUsersListPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditableUsersListPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/LoggedInPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/LoggedInPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/LoginPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/LoginPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/PersonalDataPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/PersonalDataPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/RegisterPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/RegisterPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/StudentCourseDataPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/StudentCourseDataPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/TopPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/TopPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/menu/AdminMenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/menu/AdminMenuPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/utils/Params.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/utils/Params.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/NavigatorUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/NavigatorUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/ArchiveCoursesPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/ArchiveCoursesPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/CoursePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/CoursePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/CoursesPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/MyCoursesPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/MyCoursesPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AddCoursePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AddCoursePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AdminCoursesOverviewPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AdminCoursesOverviewPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AdminEditCoursePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AdminEditCoursePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AwaitingDiscounstsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AwaitingDiscounstsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/DiscountsPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditCategoriesPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditCategoriesPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditSubcategoriesPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditableUsersListPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditableUsersListPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/DetailedCoursePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/DetailedCoursePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/PersonalDataPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/PersonalDataPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/menu/AdminMenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/menu/AdminMenuPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/menu/MainMenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/menu/MainMenuPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/menu/MyMainMenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/menu/MyMainMenuPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/AdminView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/AdminView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MainView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MyAccountView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MyAccountView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MyAccountView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/RegisterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/RegisterView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/AdminViewControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/AdminViewControllerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/InterfaceAdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/InterfaceAdminViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/InterfaceMainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/InterfaceMainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/MainViewControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/MainViewControllerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/AdminViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/AdminViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/MainViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/MainViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/MyAccountViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/RegisterViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/RegisterViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/system/MyContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/system/MyContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/system/MyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/system/MyModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/VAADIN/themes/pjtheme/addons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/VAADIN/themes/pjtheme/addons.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/VAADIN/themes/pjtheme/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/VAADIN/themes/pjtheme/styles.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,154 +80,109 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-859140087">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="7" />
-          <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.38" value="1" />
-          <entry key="project.open.time.42" value="1" />
-          <entry key="project.open.time.43" value="2" />
-          <entry key="project.open.time.49" value="1" />
-          <entry key="project.open.time.73" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="8" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="class" value="8" />
-          <entry key="java" value="285" />
-          <entry key="sql" value="3" />
-          <entry key="xml" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CLASS" value="8" />
-          <entry key="JAVA" value="285" />
-          <entry key="SQL" value="3" />
-          <entry key="XML" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="21249" />
-          <entry key="txt" value="10" />
-          <entry key="xml" value="22" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="21249" />
-          <entry key="PLAIN_TEXT" value="10" />
-          <entry key="XML" value="22" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.vcs.git.usages" />
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditableUsersListPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="350">
+              <caret line="140" column="21" lean-forward="true" selection-start-line="140" selection-start-column="21" selection-end-line="140" selection-end-column="21" />
+              <folding>
+                <element signature="e#1557#1558#0" expanded="true" />
+                <element signature="e#1585#1586#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/CoursePanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="37" column="7" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
+              <folding>
+                <element signature="e#1653#1654#0" expanded="true" />
+                <element signature="e#1693#1694#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/menu/CoursesPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-561">
+              <caret line="45" column="21" lean-forward="true" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/StatisticsPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/DeansEmplyesPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/PersonalDataPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="128" column="64" selection-start-line="128" selection-start-column="64" selection-end-line="128" selection-end-column="64" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+        <entry file="uml://JAVA/com.pjkurs.vaadin.ui.containers">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JAVA</ID>
+              <OriginalElement>com.pjkurs.vaadin.ui.containers</OriginalElement>
+              <nodes>
+                <node x="503.33333333333337" y="112.7777777777778">com.pjkurs.vaadin.ui.containers.admin.StatisticsPanel</node>
+                <node x="-0.5555555555555713" y="-36.666666666666686">com.pjkurs.vaadin.ui.containers.admin.AddCoursePanel</node>
+                <node x="0.0" y="25.0">com.pjkurs.vaadin.ui.containers.admin.AdminEditCoursePanel</node>
+                <node x="-2.2222222222221717" y="222.22222222222229">com.pjkurs.vaadin.ui.containers.admin.EditCategoriesPanel</node>
+                <node x="502.2222222222222" y="66.66666666666671">com.pjkurs.vaadin.ui.containers.admin.AddTeacherPanel</node>
+                <node x="-1.1111111111110858" y="91.11111111111111">com.pjkurs.vaadin.ui.containers.admin.AdminCoursesOverviewPanel</node>
+                <node x="505.55555555555577" y="218.33333333333334">com.pjkurs.vaadin.ui.containers.admin.DeansEmplyesPanel</node>
+                <node x="501.3333333333334" y="18.33333333333333">com.pjkurs.vaadin.ui.containers.admin.TeachersPanel</node>
+                <node x="503.7777777777778" y="166.66666666666666">com.pjkurs.vaadin.ui.containers.admin.AwaitingDiscounstsPanel</node>
+                <node x="272.22222222222223" y="86.66666666666666">com.pjkurs.vaadin.ui.containers.admin.DetailedTrainingPanel</node>
+                <node x="-2.0" y="279.44444444444446">com.pjkurs.vaadin.ui.containers.admin.ArchiveCoursePanel</node>
+                <node x="-1.444444444444514" y="156.1111111111111">com.pjkurs.vaadin.ui.containers.admin.EditableUsersListPanel</node>
+              </nodes>
+              <notes />
+              <edges />
+              <settings layout="Hierarchic Group" zoom="0.9" x="430.181818181818" y="277.44444444444446" />
+              <SelectedNodes />
+              <Categories />
+              <SCOPE>All</SCOPE>
+              <VISIBILITY>private</VISIBILITY>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/usables/Words.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/MainViewControllerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="63" column="53" selection-start-line="63" selection-start-column="53" selection-end-line="63" selection-end-column="53" />
+            <state relative-caret-position="187">
+              <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/AdminViewModel.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/InterfacePjkursDataProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6">
-              <caret line="67" column="13" lean-forward="true" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
-              <folding>
-                <element signature="e#2489#2490#0" expanded="true" />
-                <element signature="e#2538#2539#0" expanded="true" />
-                <element signature="e#2601#2602#0" expanded="true" />
-                <element signature="e#2657#2658#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/InterfaceAdminViewController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/menu/AdminMenuPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="72" selection-start-line="72" selection-end-line="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AwaitingDiscounstsPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="99" column="65" selection-start-line="99" selection-start-column="65" selection-end-line="99" selection-end-column="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/domain/GrantedDiscount.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/AdminViewControllerImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="98" selection-start-line="98" selection-end-line="98" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/AdminView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="667" column="72" selection-start-line="667" selection-start-column="72" selection-end-line="667" selection-end-column="72" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="2125">
+              <caret line="140" selection-start-line="140" selection-end-line="140" />
             </state>
           </provider>
         </entry>
@@ -208,36 +198,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getCourseStat</find>
-      <find>course</find>
-      <find>new Course()</find>
-      <find>archive</find>
-      <find>filteredStatuses</find>
-      <find>shownList</find>
-      <find>fil</find>
-      <find>filter</find>
-      <find>Native</find>
-      <find>NativeSele</find>
-      <find>singleS</find>
-      <find>single</find>
-      <find>CourseSPane</find>
-      <find>cena</find>
-      <find>buildMyDa</find>
-      <find>refres</find>
-      <find>addB</find>
-      <find>info</find>
-      <find>editDisc</find>
-      <find>Editable</find>
-      <find>editable</find>
-      <find>nativ</find>
-      <find>nativeSe</find>
-      <find>adddi`</find>
-      <find>edit</find>
-      <find>empty</find>
-      <find>event</find>
-      <find>g</find>
-      <find>Grid</find>
-      <find>Window</find>
+      <find>sub_ca</find>
+      <find>sub</find>
+      <find>TXT_CA</find>
+      <find>categories</find>
+      <find>categoryche</find>
+      <find>checkf</find>
+      <find>Course</find>
+      <find>przypisz</find>
+      <find>discou</find>
+      <find>discount</find>
+      <find>Discount</find>
+      <find>DiscountsPanel</find>
+      <find>user</find>
+      <find>training</find>
+      <find>disco</find>
+      <find>AwaitingDiscount</find>
+      <find>AdminViewControllerImpl</find>
+      <find>%</find>
+      <find>trening_idtraining_id</find>
+      <find>trening</find>
+      <find>apply</find>
+      <find>trening_id</find>
+      <find>Training</find>
+      <find>detailedTrainingPanelClicked</find>
+      <find>isInEditableMode</find>
+      <find>courses</find>
+      <find>rozpocznij s</find>
+      <find>dostepne_kursy_v</find>
+      <find>get</find>
+      <find>getuser</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -246,57 +236,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/CourseSubCategory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/ArchiveCoursesPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/SubCategory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/db/DBConnector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/EditSubcategoriesPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/InterfaceMainViewController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/MainViewControllerImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/system/MyContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AdminCoursesOverviewPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/menu/AdminMenuPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/menu/MainMenuPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/utils/Files.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Training.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/InterfacePjkursDataProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/utils/FilesUitl.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/usables/EmailTexts.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/usables/MailObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/RegisterView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/NavigatorUI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/utils/Params.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/RegisterViewModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/utils/MailSenderUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/usables/EmailsGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Category.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/ArchiveCourse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/AddCoursePanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Appusers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/LoggedInPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/ContactDataPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/EditableUsersListPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/MyCoursesPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/CoursePanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/DetailedCoursePanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/CourseStatus.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/system/MyContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/ArchiveCoursesPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/CoursesPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/AdminCoursesOverviewPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/AdminEditCoursePanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/EditCategoriesPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Course.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/RegisterView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MainView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/NavigatorUI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/menu/MainMenuPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/RegisterViewModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/MainViewModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/LoginPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/PersonalDataPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/InterfaceAdminViewController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/DiscountsPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/ArchiveCoursePanel.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/DiscountsPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/DBObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/menu/AdminMenuPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/AdminViewModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/AdminViewControllerImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/AwaitingDiscounstPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/AwaitingDiscount.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AwaitingDiscounstPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Discount.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/InterfacePjkursDataProvider.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditCategoriesPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/menu/AdminMenuPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/GrantedDiscount.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AwaitingDiscounstsPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/usables/Words.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/InterfaceAdminViewController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/AdminViewModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Discount.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/AdminViewControllerImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/TeacherTrainingsPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/InterfaceMainViewController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/MainViewControllerImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/MainViewModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AddCoursePanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Course.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AdminEditCoursePanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/MyCoursesPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Appusers.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/PersonalDataPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/DetailedCoursePanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/TrainingFile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Client.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/DetailedTrainingPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/usables/Words.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Teachers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/TeachersPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/db/InterfacePjkursDataProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditableUsersListPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/menu/CoursesPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/CoursePanel.java" />
       </list>
     </option>
   </component>
@@ -325,6 +315,11 @@
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="PJKURS" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="PJKURS" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
         </path>
         <path>
@@ -337,14 +332,14 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="85" />
-    <option name="y" value="25" />
-    <option name="width" value="1750" />
-    <option name="height" value="970" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1939" />
+    <option name="height" value="1099" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="PackagesPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -373,780 +368,55 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="PJKURS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PJKURS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pjkurs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PJKURS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PJKURS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pjkurs" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PJKURS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PJKURS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pjkurs" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PJKURS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PJKURS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pjkurs" type="462c0819:PsiDirectoryNode" />
-              <item name="vaadin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PJKURS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PJKURS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pjkurs" type="462c0819:PsiDirectoryNode" />
-              <item name="vaadin" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PJKURS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PJKURS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pjkurs" type="462c0819:PsiDirectoryNode" />
-              <item name="vaadin" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PJKURS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PJKURS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pjkurs" type="462c0819:PsiDirectoryNode" />
-              <item name="vaadin" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PJKURS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PJKURS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pjkurs" type="462c0819:PsiDirectoryNode" />
-              <item name="vaadin" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PJKURS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PJKURS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pjkurs" type="462c0819:PsiDirectoryNode" />
-              <item name="vaadin" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PJKURS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PJKURS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pjkurs" type="462c0819:PsiDirectoryNode" />
-              <item name="vaadin" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PJKURS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PJKURS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pjkurs" type="462c0819:PsiDirectoryNode" />
-              <item name="vaadin" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PJKURS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PJKURS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pjkurs" type="462c0819:PsiDirectoryNode" />
-              <item name="vaadin" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-    </panes>
-  </component>
-  <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="termin&#9;ACTION&#9;ActivateTerminalToolWindow&#10;ter&#9;null&#9;null" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540410486782" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.pjkurs.vaadin.ui.containers" />
-    </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager">
-    <configuration name="PJKURS [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="jetty:run" />
-              </list>
-            </option>
-            <option name="pomFileName" value="pom.xml" />
-            <option name="profilesMap">
-              <map>
-                <entry key="vaadin-prerelease" value="true" />
-              </map>
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="jetty:run" />
-              </list>
-            </option>
-            <option name="pomFileName" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Maven.PJKURS [install]" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="a35d2427-71c4-49d8-9030-2c59565e1a0f" name="Default Changelist" comment="" />
-      <created>1539525355059</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1539525355059</updated>
-    </task>
-    <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48368794" visible="true" weight="0.26040268" />
-      <window_info id="Structure" order="1" sideWeight="0.51631206" side_tool="true" weight="0.2785235" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.36510068" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2818792" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32907802" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3261745" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.2785235" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" weight="0.23892617" />
-    </layout>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditSubcategoriesPanel.java</url>
-          <line>100</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java</url>
-          <line>457</line>
-          <properties />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/RegisterViewModel.java</url>
-          <line>61</line>
-          <properties />
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java</url>
-          <line>128</line>
-          <properties />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java</url>
-          <line>132</line>
-          <properties />
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java</url>
-          <line>486</line>
-          <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java</url>
-          <line>488</line>
-          <properties />
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AdminEditCoursePanel.java</url>
-          <line>184</line>
-          <properties />
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java</url>
-          <line>299</line>
-          <properties />
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java</url>
-          <line>297</line>
-          <properties />
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/PersonalDataPanel.java</url>
-          <line>149</line>
-          <properties />
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/PersonalDataPanel.java</url>
-          <line>151</line>
-          <properties />
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java</url>
-          <line>569</line>
-          <properties />
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/PersonalDataPanel.java</url>
-          <line>128</line>
-          <properties />
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="setValue">
-      <expression>
-        <expression-string>&quot;SELECT d.*, ad.appusers_id, ad.grantedDescription, ad.isConfirmed, ad.userDescription, ap.email FROM pjkursdb.discounts d join pjkursdb.appusers_discounts ad on d.id = ad.discount_id join pjkursdb. appusers ap on ad.appusers_id = ap.id where ad.isConfirmed is null&quot;</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>&quot;SELECT d.*, ad.appusers_id, ad.grantedDescription, ad.isConfirmed, ad.userDescription, ap.email FROM pjkursdb.discounts d join pjkursdb.appusers_discounts ad on d.id = ad.discount_id join pjkursdb. appusers ap on ad.appusers_id = ap.id where ad.isConfirmed=null&quot;</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Course.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="88" column="25" selection-start-line="88" selection-start-column="25" selection-end-line="88" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/RegisterView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="90" column="40" lean-forward="true" selection-start-line="90" selection-start-column="40" selection-end-line="90" selection-end-column="40" />
-          <folding>
-            <element signature="e#2030#2031#0" expanded="true" />
-            <element signature="e#2077#2078#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/menu/MainMenuPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="63" column="35" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
-          <folding>
-            <element signature="e#1265#1266#0" expanded="true" />
-            <element signature="e#1293#1294#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/NavigatorUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="83" column="26" selection-start-line="83" selection-start-column="26" selection-end-line="83" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/8.2.0/vaadin-server-8.2.0-sources.jar!/com/vaadin/navigator/Navigator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="643" column="16" selection-start-line="643" selection-start-column="16" selection-end-line="643" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/RegisterViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/8.2.0/vaadin-server-8.2.0-sources.jar!/com/vaadin/event/ListenerMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="498" selection-start-line="498" selection-end-line="498" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/8.2.0/vaadin-server-8.2.0-sources.jar!/com/vaadin/ui/AbstractSingleSelect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="155" selection-start-line="155" selection-end-line="155" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AddCoursePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AdminCoursesOverviewPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#5629#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AdminEditCoursePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditSubcategoriesPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AddTeacherPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="43" column="52" selection-start-line="43" selection-start-column="52" selection-end-line="43" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/LoggedInPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/MainViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="97" column="24" selection-start-line="97" selection-start-column="24" selection-end-line="97" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/MainViewControllerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="59" column="23" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/MainView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="129" column="27" selection-start-line="129" selection-start-column="27" selection-end-line="129" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/ArchiveCoursesPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="36" column="24" lean-forward="true" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/LoginPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/ContactDataPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-208">
-          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/DetailedCoursePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/CoursePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="37" column="6" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/MyCoursesPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1683">
-          <caret line="127" column="42" selection-start-line="127" selection-start-column="42" selection-end-line="127" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="82" column="20" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/system/MyContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="74" column="16" selection-start-line="74" selection-start-column="16" selection-end-line="74" selection-end-column="16" />
-          <folding>
-            <element signature="e#1980#1981#0" expanded="true" />
-            <element signature="e#2024#2025#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/RegisterPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/DiscountsPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="102" column="78" selection-start-line="102" selection-start-column="78" selection-end-line="102" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/8.2.0/vaadin-server-8.2.0-sources.jar!/com/vaadin/ui/NativeSelect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="150" column="28" selection-start-line="150" selection-start-column="28" selection-end-line="150" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/StudentCourseDataPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/JDK/src.zip!/java/lang/Boolean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="42" column="26" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/JDK/src.zip!/java/lang/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="482" column="27" selection-start-line="482" selection-start-column="27" selection-end-line="482" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/JDK/src.zip!/java/lang/reflect/Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="216" column="20" selection-start-line="216" selection-start-column="20" selection-end-line="216" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DBConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="86" selection-start-line="86" selection-end-line="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/8.2.0/vaadin-server-8.2.0-sources.jar!/com/vaadin/ui/Button.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="318" column="20" selection-start-line="318" selection-start-column="20" selection-end-line="318" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/domain/DBObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/domain/AwaitingDiscount.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditableUsersListPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="177" column="11" lean-forward="true" selection-start-line="159" selection-start-column="8" selection-end-line="177" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/domain/Discount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
-          <folding>
-            <element signature="e#240#241#0" expanded="true" />
-            <element signature="e#265#266#0" expanded="true" />
-            <element signature="e#311#312#0" expanded="true" />
-            <element signature="e#353#354#0" expanded="true" />
-            <element signature="e#384#385#0" expanded="true" />
-            <element signature="e#411#412#0" expanded="true" />
-            <element signature="e#449#450#0" expanded="true" />
-            <element signature="e#483#484#0" expanded="true" />
-            <element signature="e#515#516#0" expanded="true" />
-            <element signature="e#543#544#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/ArchiveCoursePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="37" column="73" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/EditCategoriesPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="122" column="34" lean-forward="true" selection-start-line="121" selection-start-column="16" selection-end-line="122" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/InterfacePjkursDataProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="115" column="26" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/AdminView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/menu/AdminMenuPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/AdminViewControllerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/db/DbDataProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="667" column="72" selection-start-line="667" selection-start-column="72" selection-end-line="667" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/domain/GrantedDiscount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/admin/AwaitingDiscounstsPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="99" column="65" selection-start-line="99" selection-start-column="65" selection-end-line="99" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/usables/Words.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="63" column="53" selection-start-line="63" selection-start-column="53" selection-end-line="63" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/models/AdminViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="67" column="13" lean-forward="true" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
-          <folding>
-            <element signature="e#2489#2490#0" expanded="true" />
-            <element signature="e#2538#2539#0" expanded="true" />
-            <element signature="e#2601#2602#0" expanded="true" />
-            <element signature="e#2657#2658#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/views/controllers/InterfaceAdminViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pjkurs/vaadin/ui/containers/client/PersonalDataPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="128" column="64" selection-start-line="128" selection-start-column="64" selection-end-line="128" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-  </component>
-</project>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="PJKURS" type="58d84e3e:PackageViewProjectNode" />
+              <item name="PJKURS" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="PJKURS" type="58d84e3e:PackageViewProjectNode" />
+              <item name="PJKURS" type="616d4139:PackageViewModuleNode" />
+              <item name="com.pjkurs" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="PJKURS" type="58d84e3e:PackageViewProjectNode" />
+              <item name="PJKURS" type="616d4139:PackageViewModuleNode" />
+              <item name="com.pjkurs" type="1f31426a:PackageElementNode" />
+              <item name="db" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="PJKURS" type="58d84e3e:PackageViewProjectNode" />
+              <item name="PJKURS" type="616d4139:PackageViewModuleNode" />
+              <item name="com.pjkurs" type="1f31426a:PackageElementNode" />
+              <item name="domain" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="PJKURS" type="58d84e3e:PackageViewProjectNode" />
+              <item name="PJKURS" type="616d4139:PackageViewModuleNode" />
+              <item name="com.pjkurs" type="1f31426a:PackageElementNode" />
+              <item name="usables" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="PJKURS" type="58d84e3e:PackageViewProjectNode" />
+              <item name="PJKURS" type="616d4139:PackageViewModuleNode" />
+              <item name="com.pjkurs" type="1f31426a:PackageElementNode" />
+              <item name="utils" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="PJKURS" type="58d84e3e:PackageViewProjectNode" />
+              <item name="PJKURS" type="616d4139:PackageViewModuleNode" />
+              <item name="com.pjkurs" type="1f31426a:PackageElementNode" />
+              <item name="vaadin" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="PJKURS" type="58d84e3e:PackageViewProjectNode" />
+              <item name="PJKURS" type="616d4139:PackageViewModuleNode" />
+              <item name="com.pjkurs" type="1f31426a:PackageElementNode" />
+              <item name="vaadin" type="1f31426a:PackageElementNode" />
+              <item name="ui.containers" type="1f31426a:PackageElementNode

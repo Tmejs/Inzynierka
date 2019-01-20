@@ -19,6 +19,7 @@ package com.pjkurs.vaadin.views.models;
 import com.pjkurs.domain.Appusers;
 import com.pjkurs.domain.Category;
 import com.pjkurs.domain.Course;
+import com.pjkurs.domain.Training;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.system.MyModel;
@@ -41,7 +42,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Tmejs
  */
 public class MainViewModel extends MyModel<MainView> implements InterfaceMainViewController {
@@ -82,7 +82,6 @@ public class MainViewModel extends MyModel<MainView> implements InterfaceMainVie
         this.controller = new MainViewControllerImpl(this);
     }
 
-
     @Override
     public void contactDataButtonClicked(MenuBar.MenuItem selectedItem) {
         getController().contactDataButtonClicked(selectedItem);
@@ -91,6 +90,11 @@ public class MainViewModel extends MyModel<MainView> implements InterfaceMainVie
     @Override
     public void coursesButtonClicked(Category category, MenuBar.MenuItem event) {
         getController().coursesButtonClicked(category, event);
+    }
+
+    @Override
+    public void graduatedCourses() {
+        getController().graduatedCourses();
     }
 
     @Override
@@ -115,6 +119,11 @@ public class MainViewModel extends MyModel<MainView> implements InterfaceMainVie
     }
 
     @Override
+    public void myTrainingsButtonClicked(MenuBar.MenuItem selectedItem) {
+        getController().myTrainingsButtonClicked(selectedItem);
+    }
+
+    @Override
     public void registerToCourseButtonClicked(Button.ClickEvent event) {
         getController().registerToCourseButtonClicked(event);
     }
@@ -132,28 +141,34 @@ public class MainViewModel extends MyModel<MainView> implements InterfaceMainVie
 
     @Override
     public void loginButtonClick(Button.ClickEvent event) {
-        if (((Binder) getParam(PARAM_BINDER_LOGIN)).writeBeanIfValid(getParam(PARAM_BINDED_LOGIN_DATA))) {
+        if (((Binder) getParam(PARAM_BINDER_LOGIN))
+                .writeBeanIfValid(getParam(PARAM_BINDED_LOGIN_DATA))) {
 
             //funkcja sprawdzająca zalogowanie
-            boolean loginStatus = NavigatorUI.getDBProvider().loginClient(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email, ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password);
+            boolean loginStatus = NavigatorUI.getDBProvider()
+                    .loginClient(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email,
+                            ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password);
 
             Appusers user =
-                    NavigatorUI.getDBProvider().getUser(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email);
+                    NavigatorUI.getDBProvider()
+                            .getUser(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email);
 
-            if (loginStatus) {
+            if (loginStatus && (user.isActive!=null && user.isActive) ) {
                 Notification.show(Words.TXT_CORRECTLY_LOGGED);
 
                 //Ustawienie w sesji zalogowanego usera
                 getUi().getSession().setAttribute(Words.SESSION_LOGIN_NAME, user);
 
-
                 getView().refreshView();
+            } else if (loginStatus &&(user.isActive==null || !user.isActive)) {
+                Notification.show(Words.TXT_NOT_ACTIVATED);
             } else {
                 Notification.show(Words.TXT_WRONG_LOGIN_DATA);
                 //Reset hasła
                 ((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).password = "";
                 //Czyszczenie inputu w widoku
-                ((Binder) getParam(PARAM_BINDER_LOGIN)).readBean(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)));
+                ((Binder) getParam(PARAM_BINDER_LOGIN))
+                        .readBean(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)));
             }
         } else {
             Notification.show("Wprowadz poprawne dane");
@@ -175,7 +190,7 @@ public class MainViewModel extends MyModel<MainView> implements InterfaceMainVie
         String basepath = VaadinService.getCurrent()
                 .getBaseDirectory().getAbsolutePath();
 
-// Image as a file resource
+        // Image as a file resource
         FileResource resource = new FileResource(new File(basepath
                 + Words.IMAGE_FOLDER_PATH + "/" + Words.PJURS_LOGO_IMAGE_NAME));
 
@@ -187,7 +202,9 @@ public class MainViewModel extends MyModel<MainView> implements InterfaceMainVie
         LoginData loginData = new LoginData();
         setParam(PARAM_BINDED_LOGIN_DATA, loginData);
         setParam(PARAM_BINDER_LOGIN, loginBinder);
-//((InterfacePjkursDataProvider) getUi().getSession().getAttribute(NavigatorUI.PARAM_DATA_PROVIDER)).checkDoEmailOcuppied(((LoginData) getParam(PARAM_BINDED_LOGIN_DATA)).email).toString()
+        //((InterfacePjkursDataProvider) getUi().getSession().getAttribute(NavigatorUI
+        // .PARAM_DATA_PROVIDER)).checkDoEmailOcuppied(((LoginData) getParam
+        // (PARAM_BINDED_LOGIN_DATA)).email).toString()
         //TODO poprawna walidacja
         loginBinder.forField(emailTextField)
                 .withValidator(
@@ -195,12 +212,14 @@ public class MainViewModel extends MyModel<MainView> implements InterfaceMainVie
                         "Email musi zawierać @"
                 ).bind(LoginData::getEmail, LoginData::setEmail);
         //TODO validator do rejestracji
-//                .withValidator(
-//                        t -> ((InterfacePjkursDataProvider) getUi().getSession().getAttribute(NavigatorUI.PARAM_DATA_PROVIDER)).checkDoEmailOcuppied(t),
-//                         "Email musi zawierać @"
-//                ).
+        //                .withValidator(
+        //                        t -> ((InterfacePjkursDataProvider) getUi().getSession()
+        // .getAttribute(NavigatorUI.PARAM_DATA_PROVIDER)).checkDoEmailOcuppied(t),
+        //                         "Email musi zawierać @"
+        //                ).
 
-        loginBinder.forField(passwordTextField).bind(LoginData::getPassword, LoginData::setPassword);
+        loginBinder.forField(passwordTextField)
+                .bind(LoginData::getPassword, LoginData::setPassword);
     }
 
     @Override
@@ -208,4 +227,9 @@ public class MainViewModel extends MyModel<MainView> implements InterfaceMainVie
         Notification.show("Próba zarejestrowania do kursu:" + course.name);
     }
 
+    @Override
+    public void detailedTrainingPanelClicked(Training training, Boolean inEditMode,
+            Boolean isOpenedByTeacher) {
+        controller.detailedTrainingPanelClicked(training, inEditMode, isOpenedByTeacher);
+    }
 }

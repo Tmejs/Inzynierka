@@ -23,6 +23,7 @@ import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
+import com.vaadin.annotations.Theme;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.*;
 import org.w3c.dom.ranges.Range;
@@ -34,6 +35,7 @@ import java.util.stream.IntStream;
  *
  * @author Tmejs
  */
+@Theme("pjtheme")
 public class AddCoursePanel<T extends AdminViewModel> extends MyContainer<T> {
 
     public AddCoursePanel(T model) {
@@ -59,16 +61,11 @@ public class AddCoursePanel<T extends AdminViewModel> extends MyContainer<T> {
 
         mainLayout.addComponent(descriptionTextField);
 
-        ComboBox<Integer> select = new ComboBox(Words.TXT_MIN_PERSON_NUMBER, IntStream.rangeClosed(1, Words.INTEGER_MINIMUM_USER_NUMBBER_AVALIBLE)
-                .boxed().collect(Collectors.toList()));
-
-        mainLayout.addComponent(select);
         //Guzik logowania
         Button loginButton = new Button(Words.TXT_ADD_NEW_COURSE, ((event) -> {
             Course newCourse = new Course();
             newCourse.name = nameTextField.getValue();
             newCourse.description = descriptionTextField.getValue();
-            newCourse.minimumParticipants = select.getValue();
             getModel().addNewCouurse(newCourse);
             getModel().menuCoursesOverviewClicked();
             Notification.show(Words.TXT_COURSE_ADDED, Notification.Type.TRAY_NOTIFICATION);

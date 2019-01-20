@@ -16,9 +16,11 @@
  */
 package com.pjkurs.vaadin.views;
 
+import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.ui.containers.admin.AdminCoursesOverviewPanel;
 import com.pjkurs.vaadin.ui.containers.TopPanel;
-import com.pjkurs.vaadin.ui.menu.AdminMenuPanel;
+import com.pjkurs.vaadin.ui.containers.admin.LoginAdminPanel;
+import com.pjkurs.vaadin.ui.containers.menu.AdminMenuPanel;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.navigator.View;
@@ -35,10 +37,12 @@ public class AdminView extends MyContainer<AdminViewModel> implements View, Inte
     Component menuPanel;
     Component mainPanel;
 
+
     public AdminView(AdminViewModel model) {
         super(model, true);
     }
 
+    @Override
     public void setMainPanel(Component newMainPanel) {
         ((VerticalLayout) this.getContent()).replaceComponent(mainPanel, newMainPanel);
         mainPanel = newMainPanel;
@@ -50,12 +54,20 @@ public class AdminView extends MyContainer<AdminViewModel> implements View, Inte
         VerticalLayout mainLayout = new VerticalLayout();
         topPanel = generateTopPanel();
         mainLayout.addComponent(topPanel);
-        menuPanel = generateMenu();
-        mainLayout.addComponent(menuPanel);
-        mainPanel = generateMainAppPanel();
-        mainLayout.addComponent(mainPanel);
+        if(NavigatorUI.getAdminLoginStatus()) {
+            menuPanel = generateMenu();
+            mainLayout.addComponent(menuPanel);
+            mainPanel = generateMainAppPanel();
+            mainLayout.addComponent(mainPanel);
+        }else{
+            mainLayout.addComponent(generateLoginAdminPanel());
+        }
         return mainLayout;
 
+    }
+
+    private Component generateLoginAdminPanel() {
+        return new LoginAdminPanel(getModel());
     }
 
     @Override

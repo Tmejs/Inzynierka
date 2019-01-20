@@ -17,6 +17,7 @@
 package com.pjkurs.vaadin.views.models;
 
 import com.pjkurs.domain.Course;
+import com.pjkurs.domain.Training;
 import com.pjkurs.vaadin.views.AdminView;
 import com.pjkurs.vaadin.views.controllers.AdminViewControllerImpl;
 import com.pjkurs.vaadin.views.controllers.InterfaceAdminViewController;
@@ -81,16 +82,32 @@ public class AdminViewModel extends MyModel<AdminView> implements InterfaceAdmin
     }
 
     @Override
-    public void menuSubcategoriesClicked() {
-        controller.menuSubcategoriesClicked();
-    }
-
-    public void menuDiscountsClicked() {
-        controller.menuDiscountsClicked();
+    public void menuAwaitingDicountsClicked() {
+        controller.menuAwaitingDicountsClicked();
     }
 
     @Override
-    public void menuAwaitingDicountsClicked() {
-        controller.menuAwaitingDicountsClicked();
+    public void detailedTrainingPanelClicked(Training training) {
+        controller.detailedTrainingPanelClicked(training);
+    }
+
+    @Override
+    public void correctlyLoged() {
+        getView().refreshView();
+    }
+
+    @Override
+    public void deaneryUsersClicked() {
+        controller.deaneryUsersClicked();
+    }
+
+    @Override
+    public void statistickMenuClicked() {
+        controller.statistickMenuClicked();
+    }
+
+    @Override
+    public void menuTrainigsClicked() {
+        controller.menuTrainigsClicked();
     }
 }

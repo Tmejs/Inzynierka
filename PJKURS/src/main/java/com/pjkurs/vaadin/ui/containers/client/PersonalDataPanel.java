@@ -17,31 +17,27 @@
 package com.pjkurs.vaadin.ui.containers.client;
 
 import java.sql.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.pjkurs.domain.Appusers;
-import com.pjkurs.domain.Discount;
-import com.pjkurs.domain.GrantedDiscount;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.views.system.MyModel;
+import com.vaadin.annotations.Theme;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.NativeSelect;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Window;
 
 /**
  * @author Tmejs
  */
+@Theme("pjtheme")
 public class PersonalDataPanel<T extends MyModel> extends MyContainer<T> {
 
     public PersonalDataPanel(T model) {
@@ -92,12 +88,17 @@ public class PersonalDataPanel<T extends MyModel> extends MyContainer<T> {
         if (selectedUser.getBirth_date() != null) {
             birth_dateDatePicker.setValue(selectedUser.getBirth_date().toLocalDate());
         }
+
+        TextArea placeOfBirth = new TextArea(Words.TXT_PLACE_OF_BIRTH);
+        if (selectedUser.getPlace_of_birth() != null) {
+            surnameArea.setValue(selectedUser.getPlace_of_birth());
+        }
+
+
         TextArea contactNumberArea = new TextArea(Words.TXT_PHONE_CONTACT);
         if (selectedUser.getContact_number() != null) {
             contactNumberArea.setValue(selectedUser.getContact_number());
         }
-
-        Component discountComponent = generateDiscountComponent();
 
         Button editDataButton = new Button(Words.TXT_EDIT);
         editDataButton.addClickListener(event -> {
@@ -110,102 +111,16 @@ public class PersonalDataPanel<T extends MyModel> extends MyContainer<T> {
         surnameArea.setReadOnly(true);
         contactNumberArea.setReadOnly(true);
         birth_dateDatePicker.setReadOnly(true);
+        placeOfBirth.setReadOnly(true);
 
         layout.addComponent(emailArea);
-        layout.addComponent(discountComponent);
         layout.addComponent(nameArea);
         layout.addComponent(surnameArea);
         layout.addComponent(birth_dateDatePicker);
+        layout.addComponent(placeOfBirth);
         layout.addComponent(contactNumberArea);
         layout.addComponent(editDataButton);
         return layout;
-    }
-
-    private Component generateDiscountComponent() {
-        HorizontalLayout lay = new HorizontalLayout();
-        Label label = new Label();
-        label.setCaption(Words.TXT_DISCOUNT_DISCOUNT_VALUE);
-        GrantedDiscount discount = NavigatorUI.getDBProvider().getUserGrantedDiscount(selectedUser);
-        if (discount != null && (discount.isConfirmed != null || !discount.isConfirmed)) {
-            String value = "";
-            if (discount == null) {
-                value = discount.name + "(" + Words.TXT_AWAITING_FOR_CONFIRMATION + ")";
-            } else if (discount.isConfirmed) {
-                if (discount.money != null) {
-                    value = discount.money.toString() + " PLN";
-                } else {
-                    value = discount.discount_precentage.toString() + " %";
-                }
-            }
-            label.setValue(value);
-            return label;
-        }
-        lay.addComponent(label);
-        lay.addComponent(generateAskForDiscountPanel());
-        return lay;
-    }
-
-    private Component generateAskForDiscountPanel() {
-        Button askForDiscountButton = new Button(Words.TXT_APPLY_FOR_DISCOUNT);
-        askForDiscountButton.addClickListener(mainEvent -> {
-            com.vaadin.ui.Window subWindow = new Window(Words.TXT_INSERT_NEW_CATEGORY_DATA);
-            VerticalLayout subContent = new VerticalLayout();
-
-            TextArea discountDescriptionArea = new TextArea();
-            discountDescriptionArea.setReadOnly(true);
-            discountDescriptionArea.setVisible(false);
-            discountDescriptionArea.setCaption(Words.TXT_DESCRIPTION);
-
-            List<Discount> discountList = NavigatorUI.getDBProvider().getDicsounts();
-            NativeSelect<Discount> discountSelect = new NativeSelect<>();
-            discountSelect.setItems(discountList);
-            discountSelect.setEmptySelectionAllowed(false);
-            discountSelect.setItemCaptionGenerator(item -> item.name);
-            discountSelect.addValueChangeListener(event -> {
-                if (event.getValue().description != null) {
-                    discountDescriptionArea.setValue(event.getValue().description);
-                    discountDescriptionArea.setVisible(true);
-                } else {
-                    discountDescriptionArea.setVisible(false);
-                }
-            });
-
-            TextArea reasonArea = new TextArea();
-            reasonArea.setCaption(Words.TXT_REASON);
-
-            Button addButton = new Button(Words.TXT_APPLY);
-            addButton.addClickListener(event -> {
-                if (reasonArea.getValue() == null) {
-                    Notification.show(Words.TXT_REASON_CANT_BE_EMPTY);
-                } else if (discountSelect.getValue() == null) {
-                    Notification.show(Words.TXT_SELECT_DISCOUNT);
-                } else {
-                    GrantedDiscount discount = new GrantedDiscount();
-                    Discount selectedDiscount = discountSelect.getValue();
-                    discount.id = selectedDiscount.id;
-                    discount.isConfirmed = false;
-                    discount.userDescription = reasonArea.getValue();
-                    discount.appusers_id = selectedUser.id;
-
-                    if (NavigatorUI.getDBProvider().addAplicationForDiscount(discount)) {
-                        subWindow.close();
-                        refreshPanel();
-                        Notification.show(Words.TXT_CORRECTLY_SEND);
-                    } else {
-                        Notification.show(Words.TXT_SOMETHIN_WENT_WRONG);
-                    }
-                }
-            });
-            subContent.addComponent(discountDescriptionArea);
-            subContent.addComponent(discountSelect);
-            subContent.addComponent(reasonArea);
-            subContent.addComponent(addButton);
-            subWindow.setContent(subContent);
-            subWindow.center();
-            getModel().currentUI.addWindow(subWindow);
-        });
-
-        return askForDiscountButton;
     }
 
     private Component generateEditablePanel() {
@@ -227,6 +142,12 @@ public class PersonalDataPanel<T extends MyModel> extends MyContainer<T> {
         if (selectedUser.getBirth_date() != null) {
             birth_dateDatePicker.setValue(selectedUser.getBirth_date().toLocalDate());
         }
+
+        TextArea placeOfBirth = new TextArea(Words.TXT_PLACE_OF_BIRTH);
+        if (selectedUser.getPlace_of_birth() != null) {
+            surnameArea.setValue(selectedUser.getPlace_of_birth());
+        }
+
         TextArea contactNumberArea = new TextArea(Words.TXT_PHONE_CONTACT);
         if (selectedUser.getContact_number() != null) {
             contactNumberArea.setValue(selectedUser.getContact_number());
@@ -247,6 +168,7 @@ public class PersonalDataPanel<T extends MyModel> extends MyContainer<T> {
                         Date.valueOf(birth_dateDatePicker.getValue());
                 editedUser.contact_number = contactNumberArea.getValue();
                 editedUser.password = passwordArea.getValue();
+                editedUser.place_of_birth = placeOfBirth.getValue();
                 NavigatorUI.getDBProvider().updateAppuser(editedUser);
                 selectedUser = NavigatorUI.getDBProvider().getUser(editedUser.email);
                 isEditable = false;
@@ -272,6 +194,7 @@ public class PersonalDataPanel<T extends MyModel> extends MyContainer<T> {
         layout.addComponent(nameArea);
         layout.addComponent(surnameArea);
         layout.addComponent(birth_dateDatePicker);
+        layout.addComponent(placeOfBirth);
         layout.addComponent(contactNumberArea);
         layout.addComponent(passwordArea);
         layout.addComponent(newL);

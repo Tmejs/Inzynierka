@@ -8,6 +8,7 @@
  */
 package com.pjkurs.vaadin.views.system;
 
+import com.pjkurs.domain.Training;
 import com.vaadin.ui.UI;
 import java.util.HashMap;
 
@@ -48,5 +49,6 @@ public class MyModel<T> {
     public <T> T getParam(String paramName) {
         return (T) modelParams.get(paramName);
     }
+
 
 }

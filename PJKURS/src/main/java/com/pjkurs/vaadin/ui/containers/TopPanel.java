@@ -18,8 +18,9 @@ package com.pjkurs.vaadin.ui.containers;
 
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
-import com.pjkurs.vaadin.ui.containers.client.LoginPanel;
-import com.pjkurs.vaadin.ui.containers.client.LoggedInPanel;
+import com.pjkurs.vaadin.ui.containers.menu.LoginPanel;
+import com.pjkurs.vaadin.ui.containers.menu.LoggedInPanel;
+import com.pjkurs.vaadin.views.AdminView;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.models.RegisterViewModel;
@@ -27,6 +28,7 @@ import com.pjkurs.vaadin.views.system.MyModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.annotations.Theme;
 import com.vaadin.event.MouseEvents;
+import com.vaadin.flow.component.html.Nav;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.Resource;
 import com.vaadin.server.VaadinService;
@@ -35,10 +37,11 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.VerticalLayout;
+
 import java.io.File;
 
 /**
- *
  * @author Tmejs
  */
 @Theme("pjtheme")
@@ -54,7 +57,7 @@ public class TopPanel<T extends MyModel> extends MyContainer<T> {
         String basepath = VaadinService.getCurrent()
                 .getBaseDirectory().getAbsolutePath();
 
-// Image as a file resource
+        // Image as a file resource
         FileResource resource = new FileResource(new File(basepath
                 + Words.IMAGE_FOLDER_PATH + "/" + Words.PJURS_LOGO_IMAGE_NAME));
 
@@ -63,26 +66,18 @@ public class TopPanel<T extends MyModel> extends MyContainer<T> {
 
     @Override
     public Component buildView() {
-        //TODO
-        //to trzeba wywalić bo będzie zajmować większość ekranu w apliacji
-        this.setSizeFull();
         HorizontalLayout mainLayout = new HorizontalLayout();
         mainLayout.setSizeFull();
-        //
+        mainLayout.setHeight("20%");
         if (getModel() instanceof MainViewModel) {
             MainViewModel currentModel = (MainViewModel) getModel();
             //LOGO aplikacji
             Image logoImage = new Image();
-//            logoImage.setAlternateText(Words.TXT_LOGO_NAME);
+            //            logoImage.setAlternateText(Words.TXT_LOGO_NAME);
             logoImage.setStyleName("logo-image");
             logoImage.setIcon(getLogoResource());
 
             mainLayout.addComponent(logoImage);
-
-            //Nazwa aplikcji
-            Label textField = new Label(Words.TXT_APP_NAME);
-            textField.addStyleName("app-name-label");
-            mainLayout.addComponent(textField);
 
             //Panel logowania
             Component loginPanel;
@@ -131,15 +126,21 @@ public class TopPanel<T extends MyModel> extends MyContainer<T> {
             textField.addStyleName("app-name-label");
             mainLayout.addComponent(textField);
 
-            Button exitButton = new Button(Words.TXT_BACK);
-
-            exitButton.addClickListener((event) -> {
-                getUI().getNavigator().navigateTo(NavigatorUI.View.MAINVIEW.getName());
-            });
-            mainLayout.addComponent(exitButton);
-
+            if (NavigatorUI.getAdminLoginStatus()) {
+                VerticalLayout verLay= new VerticalLayout();
+                Label label = new Label();
+                label.setCaption(Words.TXT_LOGED_AS);
+                label.setValue(NavigatorUI.getLoggedAdmin().getEmail());
+                Button exitButton = new Button(Words.TXT_LOGOUT);
+                exitButton.addClickListener((event) -> {
+                    NavigatorUI.setLogedAdmin(null);
+                    ((AdminView) getUI().getNavigator().getCurrentView()).refreshView();
+                });
+                verLay.addComponent(label);
+                verLay.addComponent(exitButton);
+                mainLayout.addComponent(verLay);
+            }
         }
-
         return mainLayout;
     }
 

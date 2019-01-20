@@ -22,6 +22,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Class handling configuration file with input parameters. Config file should
@@ -57,15 +59,6 @@ public class Params {
 
     private static final String COMMENT_CHAR = "#";
 
-    class MyException extends Exception {
-
-        @Override
-        public String getMessage() {
-            return "To jest mój błąd";
-        }
-
-    }
-
     //HashTable for not defined parameters
     public HashMap<String, Object> otherParams;
 
@@ -88,7 +81,18 @@ public class Params {
     public String TRUE_STRING_VALUE;
     public String FALSE_STRING_VALUE;
 
-    public Params(String pathToConfigurationFile) throws Exception, IOException, MyException {
+
+    //Email
+    public String EMAIL_LOGIN;
+    public String EMAIL_PASSWORD;
+    public String EMAIL_SMTP;
+    public String EMAIL_PORT;
+
+
+    public String ADMIN_LOGIN;
+    public String ADMIN_PASSWORD;
+
+    public Params(String pathToConfigurationFile) throws Exception, IOException {
 
 //        throw (new MyException());
         //Set path to configurationFile
@@ -106,9 +110,13 @@ public class Params {
     
     
     //Without creating patyToConf file
-    public Params() throws Exception, IOException, MyException {
+    public Params() {
         //Read and set AppParameters
-        readAndSetParams();
+        try {
+            readAndSetParams();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     /**
@@ -192,7 +200,9 @@ public class Params {
             //not defined type so only param vale
             parameterValue = line.split(PARAMETER_VALUE_DELIMETER)[1];
         }
-
+        //TODO delete
+        Logger.getLogger(getClass().toString()).log(Level.INFO, "paramName: " + parameterName +
+                "\tparamVal: " + parameterValue + "\tparameterType: " + parameterType);
         setParameter(parameterName, parameterValue, parameterType);
     }
 

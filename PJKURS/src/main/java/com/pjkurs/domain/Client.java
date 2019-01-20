@@ -20,12 +20,24 @@ package com.pjkurs.domain;
  *
  * @author Tmejs
  */
-public class Client extends DBObject {
+public class Client extends Appusers {
 
-    public Integer id;
-    public String name;
-    public String surname;
-    public String email ;
-    public String password;
+    public Boolean is_paid;
+    public Boolean is_contract_signed;
 
+    public Boolean getIs_contract_signed() {
+        return is_contract_signed;
+    }
+
+    public void setIs_contract_signed(Boolean is_contract_signed) {
+        this.is_contract_signed = is_contract_signed;
+    }
+
+    public Boolean getPaid() {
+        return is_paid;
+    }
+
+    public void setPaid(Boolean paid) {
+        is_paid = paid;
+    }
 }

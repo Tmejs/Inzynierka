@@ -8,6 +8,7 @@
  */
 package com.pjkurs.vaadin.views.system;
 
+import com.vaadin.ui.Component;
 import com.vaadin.ui.Panel;
 
 /**
@@ -23,6 +24,8 @@ public abstract class MyContainer<T extends MyModel> extends Panel implements In
     public void setModel(T model) {
         this.model = model;
     }
+
+    public void setMainPanel(Component newMainPanel){}
 
     @Override
     public T getModel() {

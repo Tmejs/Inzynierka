@@ -16,20 +16,24 @@
  */
 package com.pjkurs.vaadin.views.controllers;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.pjkurs.db.DbDataProvider;
 import com.pjkurs.domain.Category;
 import com.pjkurs.domain.Client;
 import com.pjkurs.domain.Course;
+import com.pjkurs.domain.Training;
 import com.pjkurs.usables.Words;
+import com.pjkurs.vaadin.ui.containers.admin.DetailedTrainingPanel;
+import com.pjkurs.vaadin.ui.containers.admin.TeacherTrainingsPanel;
+import com.pjkurs.vaadin.ui.containers.client.GraduatedCoursesPanel;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.Notification;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- *
  * @author Tmejs
  */
 public class MainViewControllerImpl implements InterfaceMainViewController {
@@ -46,10 +50,8 @@ public class MainViewControllerImpl implements InterfaceMainViewController {
 
     @Override
     public void coursesButtonClicked(Category category, MenuBar.MenuItem event) {
-        getModel().getView().setCoursesAsMainPanel(category,event);
+        getModel().getView().setCoursesAsMainPanel(category, event);
     }
-
-   
 
     @Override
     public void contactDataButtonClicked(MenuBar.MenuItem selectedItem) {
@@ -79,12 +81,16 @@ public class MainViewControllerImpl implements InterfaceMainViewController {
 
     @Override
     public void personalDataButtonClicked(Button.ClickEvent event) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException(
+                "Not supported yet."); //To change body of generated methods, choose Tools |
+        // Templates.
     }
 
     @Override
     public void registerToCourseButtonClicked(Button.ClickEvent event) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException(
+                "Not supported yet."); //To change body of generated methods, choose Tools |
+        // Templates.
     }
 
     @Override
@@ -101,7 +107,9 @@ public class MainViewControllerImpl implements InterfaceMainViewController {
 
     @Override
     public void niezlogowanyButtonClicked(Button.ClickEvent event) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException(
+                "Not supported yet."); //To change body of generated methods, choose Tools |
+        // Templates.
     }
 
     @Override
@@ -111,17 +119,34 @@ public class MainViewControllerImpl implements InterfaceMainViewController {
 
     @Override
     public void addToCourseButtonClicked(Button.ClickEvent event, Course course) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException(
+                "Not supported yet."); //To change body of generated methods, choose Tools |
+        // Templates.
     }
 
     private void registerNewUser() {
         DbDataProvider dataProvider = new DbDataProvider();
-        //TODO przezucić do modelu
-        if (dataProvider.registerNewClient(new Client())) {
+        if (dataProvider.registerNewUser(new Client())) {
             Notification.show("Poprawnie zalogowano");
         } else {
             Notification.show("Zle zalogowano");
         }
     }
 
+    @Override
+    public void detailedTrainingPanelClicked(Training training, Boolean inEditMode,
+            Boolean openedByTeachers) {
+        getModel().getView().setMainPanel(new DetailedTrainingPanel(model,
+                training, inEditMode, openedByTeachers));
+    }
+
+    @Override
+    public void myTrainingsButtonClicked(MenuBar.MenuItem selectedItem) {
+        getModel().getView().setMainPanel(new TeacherTrainingsPanel(model));
+    }
+
+    @Override
+    public void graduatedCourses() {
+        getModel().getView().setMainPanel(new GraduatedCoursesPanel(model));
+    }
 }
