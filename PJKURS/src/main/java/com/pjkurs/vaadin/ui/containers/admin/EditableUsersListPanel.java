@@ -19,6 +19,7 @@ package com.pjkurs.vaadin.ui.containers.admin;
 import com.pjkurs.domain.Appusers;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
+import com.pjkurs.vaadin.views.ConfirmationPopup;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.sun.org.apache.xpath.internal.operations.Bool;
@@ -245,8 +246,14 @@ public class EditableUsersListPanel<T extends AdminViewModel> extends MyContaine
             refreshPanel();
         }), new ComponentRenderer());
         userGrid.addColumn(p -> new Button(Words.TXT_DELETE, event -> {
-            NavigatorUI.getDBProvider().deleteUser(p);
-            refreshPanel();
+            ConfirmationPopup.showPopup(getModel().getUi(), Words.TXT_DELETE_USER_TXT + p.email,
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            NavigatorUI.getDBProvider().deleteUser(p);
+                            refreshPanel();
+                        }
+                    });
         }), new ComponentRenderer());
 
         lay.addComponentsAndExpand(userGrid);

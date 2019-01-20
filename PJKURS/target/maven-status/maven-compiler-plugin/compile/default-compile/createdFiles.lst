@@ -14,6 +14,7 @@ com\pjkurs\utils\Params.class
 com\pjkurs\vaadin\NavigatorUI$MainViewServlet.class
 com\pjkurs\vaadin\ui\containers\admin\AwaitingDiscounstsPanel$AwaitingDiscount.class
 com\pjkurs\domain\BigDecimalValue.class
+com\pjkurs\vaadin\ui\containers\admin\DetailedTrainingPanel$5.class
 com\pjkurs\vaadin\ui\containers\client\GraduatedCoursesPanel$1.class
 com\pjkurs\domain\ArchiveCourse.class
 com\pjkurs\domain\Discount.class
@@ -21,6 +22,8 @@ com\pjkurs\vaadin\ui\containers\admin\AdminEditCoursePanel.class
 com\pjkurs\vaadin\ui\containers\RegisterPanel.class
 com\pjkurs\utils\EncryptionUtil.class
 com\pjkurs\vaadin\ui\containers\admin\DeansEmployesPanel.class
+com\pjkurs\vaadin\views\ConfirmationPopup.class
+com\pjkurs\vaadin\ui\containers\admin\AdminEditCoursePanel$6.class
 com\pjkurs\vaadin\ui\containers\TopPanel.class
 com\pjkurs\vaadin\ui\containers\client\MyCoursesPanel$1.class
 com\pjkurs\db\InterfacePjkursDataProvider.class
@@ -36,6 +39,7 @@ com\pjkurs\vaadin\views\MainView.class
 com\pjkurs\vaadin\ui\containers\admin\DetailedTrainingPanel$4.class
 com\pjkurs\vaadin\ui\containers\client\ContactDataPanel.class
 com\pjkurs\vaadin\views\AdminView.class
+com\pjkurs\vaadin\ui\containers\admin\EditableUsersListPanel$3.class
 com\pjkurs\utils\FilesUitl.class
 com\pjkurs\domain\Category.class
 com\pjkurs\domain\CourseStatus.class
@@ -55,6 +59,7 @@ com\pjkurs\domain\DeaneryUser.class
 com\pjkurs\domain\DBObject.class
 com\pjkurs\vaadin\ui\containers\client\PersonalDataPanel.class
 com\pjkurs\vaadin\ui\containers\admin\DetailedTrainingPanel$3.class
+com\pjkurs\vaadin\ui\containers\admin\DetailedTrainingPanel$6.class
 com\pjkurs\domain\TrainingStatus.class
 com\pjkurs\vaadin\ui\containers\admin\LoginAdminPanel.class
 com\pjkurs\vaadin\ui\containers\menu\LoggedInPanel.class
@@ -62,6 +67,7 @@ com\pjkurs\vaadin\views\controllers\AdminViewControllerImpl.class
 com\pjkurs\vaadin\views\models\RegisterViewModel.class
 com\pjkurs\vaadin\ui\containers\client\GraduatedCoursesPanel$2.class
 com\pjkurs\vaadin\views\RegisterView.class
+com\pjkurs\vaadin\ui\containers\admin\DeansEmployesPanel$2.class
 com\pjkurs\vaadin\NavigatorUI$View.class
 com\pjkurs\vaadin\ui\containers\client\ContactDataPanel$2.class
 com\pjkurs\utils\Logger.class
@@ -74,6 +80,7 @@ com\pjkurs\usables\Words.class
 com\pjkurs\vaadin\NavigatorUI.class
 com\pjkurs\vaadin\ui\containers\admin\DetailedTrainingPanel$CalendarItem.class
 com\pjkurs\domain\Client.class
+com\pjkurs\vaadin\ui\containers\client\DetailedCoursePanel$2.class
 com\pjkurs\vaadin\ui\containers\client\CoursesPanel$1.class
 com\pjkurs\vaadin\ui\containers\menu\AdminMenuPanel.class
 com\pjkurs\vaadin\ui\containers\client\ArchiveCoursesPanel.class
@@ -87,6 +94,7 @@ com\pjkurs\vaadin\ui\containers\client\PersonalDataPanel$1.class
 com\pjkurs\domain\Teachers.class
 com\pjkurs\vaadin\ui\containers\admin\DetailedTrainingPanel$1.class
 com\pjkurs\vaadin\ui\containers\TopPanel$1.class
+com\pjkurs\vaadin\ui\containers\admin\DetailedTrainingPanel$3$1.class
 com\pjkurs\db\DbDataProvider.class
 com\pjkurs\vaadin\ui\containers\client\ContactDataPanel$1.class
 com\pjkurs\vaadin\ui\containers\admin\AddCoursePanel.class
@@ -95,6 +103,7 @@ com\pjkurs\vaadin\ui\containers\admin\StatisticsPanel.class
 com\pjkurs\vaadin\ui\containers\admin\AdminCoursesOverviewPanel.class
 com\pjkurs\vaadin\ui\containers\client\CoursesPanel.class
 com\pjkurs\domain\Course.class
+com\pjkurs\vaadin\ui\containers\admin\DetailedTrainingPanel$7.class
 com\pjkurs\vaadin\ui\containers\client\CoursePanel.class
 com\pjkurs\domain\MyCourse.class
 com\pjkurs\vaadin\views\models\RegisterViewModel$1.class
@@ -105,7 +114,9 @@ com\pjkurs\vaadin\views\controllers\InterfaceMyAccountViewController.class
 com\pjkurs\vaadin\views\controllers\MainViewControllerImpl.class
 com\pjkurs\vaadin\views\system\InterfaceMyView.class
 com\pjkurs\vaadin\ui\containers\client\GraduatedCoursesPanel.class
+com\pjkurs\vaadin\ui\containers\admin\AdminEditCoursePanel$7.class
 com\pjkurs\vaadin\ui\containers\admin\DeansEmployesPanel$1.class
+com\pjkurs\vaadin\ui\containers\admin\EditCategoriesPanel$1.class
 com\pjkurs\domain\CalendarEvent.class
 com\pjkurs\vaadin\ui\containers\menu\MainMenuPanel.class
 com\pjkurs\vaadin\ui\containers\admin\AdminEditCoursePanel$1.class

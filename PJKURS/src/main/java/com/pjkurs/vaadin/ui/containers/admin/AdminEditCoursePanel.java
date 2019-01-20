@@ -42,6 +42,7 @@ import com.pjkurs.usables.Words;
 import com.pjkurs.utils.FilesUitl;
 import com.pjkurs.utils.MailSenderUtil;
 import com.pjkurs.vaadin.NavigatorUI;
+import com.pjkurs.vaadin.views.ConfirmationPopup;
 import com.pjkurs.vaadin.views.PopupWithMessage;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
@@ -214,10 +215,17 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
         }, new ComponentRenderer()).setCaption(Words.TXT_DISCOUNT);
 
         clientsGrid.addColumn(p -> new Button(Words.TXT_DELETE, (event) -> {
-            NavigatorUI.getDBProvider().deleteCientFromCourse(p, course);
-            refreshView();
+            ConfirmationPopup.showPopup(getModel().getUi(),
+                    Words.TXT_DELETE_CLIENT_FROM_COURSE_TEXT, new Runnable() {
+                        @Override
+                        public void run() {
+                            NavigatorUI.getDBProvider().deleteCientFromCourse(p, course);
+                            refreshView();
+                        }
+                    });
         }), new ComponentRenderer());
 
+        clientsGrid.setSizeFull();
         return clientsGrid;
     }
 
@@ -227,6 +235,7 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
 
         TextArea value = new TextArea(Words.TXT_DISCOUNT);
         TextArea userName = new TextArea(Words.TXT_USER);
+        userName.setEnabled(false);
         userName.setValue(p.getEmail());
 
         Button addButton = new Button(Words.TXT_SAVE_DATA, (newEvent) -> {
@@ -329,10 +338,16 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
         });
 
         Button startCourse = new Button(Words.TXT_START_TRAINING, event -> {
-            NavigatorUI.getDBProvider().createNewTrainingFromCourse(course);
-            NavigatorUI.getDBProvider().getTrainingsForCourse(course).stream()
-                    .sorted(Comparator.comparing(Training::getStart_date)).findFirst()
-                    .ifPresent(o -> getModel().detailedTrainingPanelClicked(o));
+            ConfirmationPopup.showPopup(getModel().getUi(), Words.TXT_CONFIRM_START_TRAINING,
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            NavigatorUI.getDBProvider().createNewTrainingFromCourse(course);
+                            NavigatorUI.getDBProvider().getTrainingsForCourse(course).stream()
+                                    .sorted(Comparator.comparing(Training::getStart_date)).findFirst()
+                                    .ifPresent(o -> getModel().detailedTrainingPanelClicked(o));
+                        }
+                    });
         });
 
         lay.addComponentsAndExpand(informAboutStartCourse);
@@ -342,7 +357,7 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
     }
 
     private void generateStartingDatePopup() {
-        com.vaadin.ui.Window subWindow = new Window(Words.TXT_INSERT_NEW_CATEGORY_DATA);
+        com.vaadin.ui.Window subWindow = new Window(Words.TXT_SET_DATE);
         VerticalLayout subContent = new VerticalLayout();
         DateField startDate =
                 new DateField(Words.TXT_TERM);
@@ -415,6 +430,7 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
         if (course.getDescription() != null) {
             courseDesc.setValue(course.getDescription());
         }
+        courseDesc.setSizeFull();
 
         HorizontalLayout descriptionFileLayout = new HorizontalLayout();
         if (course.description_file != null) {

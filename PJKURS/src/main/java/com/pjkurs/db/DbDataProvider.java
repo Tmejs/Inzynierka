@@ -845,7 +845,8 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
                 =
                 "select tr.* from pjkursdb.trainings tr right join pjkursdb.teachers_trainings tt"
                         + " on tt.training_id=tr.id "
-                        + "where tt.teacher_id = " + selectedTeacher.getTeacher_id();
+                        + "where tt.teacher_id = " + selectedTeacher.getTeacher_id()
+                +   " and tr.status_id=1";
         try {
             List<Training> list = dbConnector
                     .getMappedArrayList(new Training(), buildedFunction);
@@ -1377,5 +1378,31 @@ public class DbDataProvider implements InterfacePjkursDataProvider {
             Logger.getLogger(this.getClass().getCanonicalName())
                     .log(Level.ALL, "getTeacherTimeInTraining", exception);
         }
+    }
+
+    @Override
+    public List<Training> getEndedTrainingsForTeacher(Teachers teacher) {
+        String buildedFunction
+                ="select tr.* from pjkursdb.trainings tr right join pjkursdb.teachers_trainings tt"
+                + " on tt.training_id=tr.id "
+                + "where tt.teacher_id = " + teacher.getTeacher_id()
+                +   " and tr.status_id=2";
+        try {
+            List<Training> list = dbConnector
+                    .getMappedArrayList(new Training(), buildedFunction);
+
+            list.forEach(l -> {
+                        l.setTeachersList(getTeachersForTraining(l));
+                        if (l.getTrainingStatusId() != null) {
+                            l.setTrainingStatus(getTrainingStatusFor(l.getTrainingStatusId()));
+                        }
+                    }
+            );
+            return list;
+        } catch (Exception exception) {
+            Logger.getLogger(this.getClass().getCanonicalName())
+                    .log(Level.ALL, "getCourseStatuses", exception);
+        }
+        return new ArrayList<>();
     }
 }

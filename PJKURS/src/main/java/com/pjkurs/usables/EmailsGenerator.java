@@ -36,13 +36,13 @@ public class EmailsGenerator {
     public static MailObject getStartingTrainingMessage(Course course, Date startingDate,
             String time) {
         String title = "Uruchomienie kursu \"" + course.getName() + "\"";
-        SimpleDateFormat dt1 = new SimpleDateFormat("yyyyy-mm-dd");
+        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
 
         String body =
                 "<html> Witaj,<br> Zaplanowano spotkanie organizacyjne dla kursu \"" + course
                         .getName() + "\"" +
-                        " na dzien " + dt1.format(startingDate) + " " + time +
-                        ".<br>Prosimy o pojawienie sie na spotkaniu z wydrukowanym potwierdzeniem "
+                        " na dzień " + dt1.format(startingDate) + " " + time +
+                        ".<br>Prosimy o pojawienie się na spotkaniu z wydrukowanym potwierdzeniem "
                         + "płatności.<br><br> Portal PJKURS</html>";
 
         return new MailObject(title, body);

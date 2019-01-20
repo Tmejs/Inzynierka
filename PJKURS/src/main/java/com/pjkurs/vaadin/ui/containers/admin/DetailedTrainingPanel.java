@@ -35,6 +35,7 @@ import com.pjkurs.usables.MailObject;
 import com.pjkurs.usables.Words;
 import com.pjkurs.utils.FilesUitl;
 import com.pjkurs.vaadin.NavigatorUI;
+import com.pjkurs.vaadin.views.ConfirmationPopup;
 import com.pjkurs.vaadin.views.PopupWithMessage;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.models.MainViewModel;
@@ -129,7 +130,7 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         clientsGrid.addColumn(
                 c -> isGraduated.get(c.getId()) != null && fileMap.get(c.getId()) != null ?
                         Words.TXT_YES :
-                        Words.TXT_NO).setCaption(Words.TXT_IS_CLIENT_GRAD);
+                        Words.TXT_NO).setCaption(Words.TXT_IS_CERTIFICATE_ADDED);
 
         clientsGrid.setSelectionMode(Grid.SelectionMode.SINGLE);
         clientsGrid.addSelectionListener(
@@ -319,6 +320,10 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
             }
         }, new ComponentRenderer());
 
+        grid.addColumn(TrainingFile::getPath).setCaption(Words.TXT_FILE_NAME);
+        grid.addColumn(TrainingFile::getDescription).setCaption(Words.TXT_DESCRIPTION);
+
+        lay.addComponentsAndExpand(grid);
         if (isInEditableMode) {
             grid.addColumn(new ValueProvider<TrainingFile, Button>() {
                 @Override
@@ -326,12 +331,17 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
 
                     Button deleteButton = new Button(VaadinIcons.DEL);
                     deleteButton.addClickListener(event -> {
-                        NavigatorUI.getDBProvider().deleteFile(trainingFile);
+                        ConfirmationPopup.showPopup(getModel().getUi(),
+                                Words.TXT_CONFIRM_DELETE_FILE, new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        NavigatorUI.getDBProvider().deleteFile(trainingFile);
 
-                        FilesUitl.deleteFile(trainingFile.getPath());
-                        refreshView();
+                                        FilesUitl.deleteFile(trainingFile.getPath());
+                                        refreshView();
+                                    }
+                                });
                     });
-
                     return deleteButton;
                 }
             }, new ComponentRenderer());
@@ -342,11 +352,6 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
             });
             lay.addComponentsAndExpand(fileUpload);
         }
-
-        grid.addColumn(TrainingFile::getPath).setCaption(Words.TXT_FILE_NAME);
-        grid.addColumn(TrainingFile::getDescription).setCaption(Words.TXT_DESCRIPTION);
-
-        lay.addComponentsAndExpand(grid);
         return lay;
     }
 
@@ -434,7 +439,6 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
     private void generateModifyClientPopup(Client client) {
         Window subWindow = new Window(Words.TXT_MODIFY_CLIENT_DATA);
         VerticalLayout subContent = new VerticalLayout();
-
         Label email = new Label(client.email);
         email.setCaption(Words.TXT_EMAIL);
 
@@ -456,19 +460,32 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         });
 
         Button delButton = new Button(Words.TXT_DELETE_CLIENT_FROM_TRAINING, event -> {
-            NavigatorUI.getDBProvider().deleteClientFromTraining(client, training);
+            ConfirmationPopup.showPopup(getModel().getUi(),
+                    Words.TXT_DELETE_CLIENT_FROM_TRAINING_TXT, new Runnable() {
+                        @Override
+                        public void run() {
+                            NavigatorUI.getDBProvider().deleteClientFromTraining(client, training);
+                            refreshView();
+                            subWindow.close();
+                        }
+                    });
+        });
+
+        Button okButton = new Button(Words.TXT_SAVE_DATA, event -> {
             refreshView();
             subWindow.close();
         });
 
-        subContent.addComponentsAndExpand(email);
+        subContent.addComponent(email);
         subContent.addComponent(isPaidCheckBox);
         subContent.addComponent(isContractSigned);
-        subContent.addComponent(delButton);
+
+        VerticalLayout verLay = new VerticalLayout();
+        verLay.addComponent(okButton);
+        verLay.addComponent(delButton);
+        subContent.addComponent(verLay);
 
         subWindow.setContent(subContent);
-        subContent.setSizeFull();
-        subWindow.setSizeFull();
         subWindow.center();
         getModel().currentUI.addWindow(subWindow);
     }
@@ -484,9 +501,15 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         grid.setSelectionMode(Grid.SelectionMode.SINGLE);
         if (getModel() instanceof AdminViewModel) {
             grid.addColumn(p -> new Button(Words.TXT_DELETE_TEACHER_FROM_COURSE, event -> {
-                NavigatorUI.getDBProvider()
-                        .deleteTeacherFromTraining(p, training);
-                refreshView();
+                ConfirmationPopup.showPopup(getModel().getUi(),
+                        Words.TXT_DELETE_TEACHER_FROM_TRAINING, new Runnable() {
+                            @Override
+                            public void run() {
+                                NavigatorUI.getDBProvider()
+                                        .deleteTeacherFromTraining(p, training);
+                                refreshView();
+                            }
+                        });
             }), new ComponentRenderer());
         }
         lay.addComponent(grid);
@@ -542,13 +565,17 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
 
         Course course = NavigatorUI.getDBProvider().getCourse(training.course_id);
 
-        Label courseName = new Label();
+        TextArea courseName = new TextArea();
         courseName.setValue(course.getName());
         courseName.setCaption(Words.TXT_COURSE_NAME);
+        courseName.setReadOnly(true);
 
-        Label courseDescription = new Label();
+        TextArea courseDescription = new TextArea();
         courseDescription.setValue(course.getDescription());
         courseDescription.setCaption(Words.TXT_DESCRIPTION);
+        courseDescription.setReadOnly(true);
+        courseDescription.setSizeFull();
+
 
         lay.addComponent(courseName);
         lay.addComponent(courseDescription);
@@ -558,10 +585,11 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
     private Component generateModifyPane(List<CalendarEvent> calendarItems) {
         VerticalLayout lay = new VerticalLayout();
 
-        Button addNew = new Button(Words.TXT_ADD);
+        Button addNew = new Button(Words.TXT_ADD_NEW_teRM);
         addNew.addClickListener(event -> newTermPopup());
 
         Grid<CalendarEvent> calendarEventGrid = new Grid<>();
+        calendarEventGrid.setSizeFull();
         calendarEventGrid.setItems(NavigatorUI.getDBProvider().getCalendarTermsFor(training));
         calendarEventGrid.addColumn(CalendarEvent::getName).setCaption(Words.TXT_TRAINING_NAME);
         calendarEventGrid.addColumn(d ->
@@ -570,12 +598,18 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         calendarEventGrid.addColumn(d -> new SimpleDateFormat("YYYY-MM-dd HH:mm")
                 .format(new Date(d.end_date.getTime()))).setCaption(Words.TXT_END_DATE);
         calendarEventGrid.addColumn(p -> new Button(Words.TXT_DELETE, e -> {
-            NavigatorUI.getDBProvider().deteteTrainingTerm(p);
-            refreshView();
+            ConfirmationPopup.showPopup(getModel().getUi(), Words.TXT_CONFIRM_DELETE_DATE,
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            NavigatorUI.getDBProvider().deteteTrainingTerm(p);
+                            refreshView();
+                        }
+                    });
         }), new ComponentRenderer());
         calendarEventGrid.setSelectionMode(Grid.SelectionMode.SINGLE);
 
-        lay.addComponentsAndExpand(calendarEventGrid);
+        lay.addComponent(calendarEventGrid);
         lay.addComponent(addNew);
         if (getModel() instanceof AdminViewModel) {
             Button showTimePopUp = new Button(Words.TXT_GENERATE_TIME,
@@ -590,7 +624,6 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
     private void newTermPopup() {
         Window subWindow = new Window(Words.TXT_ADD_NEW_teRM);
         VerticalLayout subContent = new VerticalLayout();
-        subContent.setSizeFull();
         TextArea nameArea = new TextArea(Words.TXT_CAPTION);
         TextArea desriptionArea = new TextArea(Words.TXT_DESCRIPTION);
         HorizontalLayout startDateLay = new HorizontalLayout();
@@ -680,11 +713,10 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         subContent.addComponent(startDateLay);
         subContent.addComponent(endDateLay);
         subContent.addComponent(cyclicMeetingLayout);
-        subContent.addComponentsAndExpand(lay);
+        subContent.addComponent(lay);
 
         subWindow.setContent(subContent);
         subWindow.center();
-        subWindow.setSizeFull();
         getModel().currentUI.addWindow(subWindow);
     }
 
@@ -725,6 +757,13 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         HorizontalLayout lay = new HorizontalLayout();
 
         Calendar<CalendarItem> calendar = new Calendar<>(Words.TXT_AVALIBLE_TERMS);
+        java.util.Calendar ccStart = java.util.Calendar.getInstance();
+        ccStart.set(java.util.Calendar.DAY_OF_MONTH,1);
+        java.util.Calendar ccEnd= java.util.Calendar.getInstance();
+        ccEnd.set(java.util.Calendar.DAY_OF_MONTH,30);
+
+        calendar.setStartDate(ccStart.getTime().toInstant().atZone(ZoneId.systemDefault()));
+        calendar.setEndDate(ccEnd.getTime().toInstant().atZone(ZoneId.systemDefault()));
         calendar.setSizeFull();
         List<CalendarEvent> calendarItems =
                 NavigatorUI.getDBProvider().getCalendarTermsFor(training);
@@ -743,35 +782,35 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         return lay;
     }
 
-    private void showTimePopup(HashMap<String, Integer> buildTimeMap) {
+    private void showTimePopup(HashMap<String, Double> buildTimeMap) {
         Window subWindow = new Window(Words.TXT_TIME_RAPORT);
         VerticalLayout subContent = new VerticalLayout();
-        subContent.setSizeFull();
         buildTimeMap.entrySet();
-        Grid<Map.Entry<String, Integer>> description = new Grid<>();
+        Grid<Map.Entry<String, Double>> description = new Grid<>();
         description.setItems(buildTimeMap.entrySet());
 
         Grid.Column one = description.addColumn(m -> m.getKey()).setCaption(Words.TXT_MEETING_NAME);
         Grid.Column two =
-                description.addColumn(m -> m.getValue()).setCaption(Words.TXT_TIME_IN_HOURS);
+                description.addColumn(m -> new Double(m.getValue()/60)).setCaption(Words.TXT_TIME_IN_HOURS);
         FooterRow footerRow = description.prependFooterRow();
         footerRow.getCell(one).setText(Words.TXT_SUM);
+        Long summed = buildTimeMap.values().stream().mapToLong(f->f.longValue()).sum();
         footerRow.getCell(two).setText(
-                String.valueOf(buildTimeMap.values().stream().mapToInt(Integer::intValue).sum()));
+                String.valueOf(new Double(summed/60)));
         subContent.addComponent(description);
         subWindow.setContent(subContent);
         subWindow.center();
         getModel().currentUI.addWindow(subWindow);
     }
 
-    private static HashMap<String, Integer> buildTimeMap(List<CalendarEvent> calendarItems) {
-        HashMap<String, Integer> timeMap = new HashMap<>();
+    private static HashMap<String, Double> buildTimeMap(List<CalendarEvent> calendarItems) {
+        HashMap<String, Double> timeMap = new HashMap<>();
 
         calendarItems.forEach(f -> {
             String name = f.getName();
-            Integer newTime = toIntExact(compareTwoTimeStamps(f.end_date, f.start_date));
+            Double newTime = new Double(compareTwoTimeStamps(f.end_date, f.start_date));
             if (timeMap.containsKey(name)) {
-                Integer oldTime = timeMap.get(name);
+                Double oldTime = new Double( timeMap.get(name));
                 newTime += oldTime;
             }
             timeMap.put(name, newTime);
@@ -790,7 +829,7 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         long diffHours = diff / (60 * 60 * 1000);
         long diffDays = diff / (24 * 60 * 60 * 1000);
 
-        return diffHours;
+        return diffMinutes;
     }
 
     private static final class CalendarItem extends BasicItem {

@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 import com.pjkurs.domain.Category;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
+import com.pjkurs.vaadin.views.ConfirmationPopup;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.views.system.MyModel;
 import com.vaadin.annotations.Theme;
@@ -36,7 +37,6 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
 /**
- *
  * @author Tmejs
  */
 @Theme("pjtheme")
@@ -66,8 +66,17 @@ public class EditCategoriesPanel<T extends MyModel> extends MyContainer<T> {
         VerticalLayout lay = new VerticalLayout();
         Button deleteButton;
         deleteButton = new Button(Words.TXT_DELETE, (event) -> {
-            NavigatorUI.getDBProvider().deleteCategory(selectedCategory);
-            refreshCategoriesPanel();
+            if (selectedCategory != null) {
+                ConfirmationPopup.showPopup(getModel().getUi(),
+                        Words.TXT_DELETE_CATEGORY_TEXT + "\"" + selectedCategory.name + "\"",
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                NavigatorUI.getDBProvider().deleteCategory(selectedCategory);
+                                refreshCategoriesPanel();
+                            }
+                        });
+            }
         });
 
         lay.setSizeFull();
@@ -75,9 +84,10 @@ public class EditCategoriesPanel<T extends MyModel> extends MyContainer<T> {
         List<Category> e = NavigatorUI.getDBProvider().getCategories();
         categoryList = e;
         if (!e.isEmpty()) {
-            NativeSelect<String> categoriesSelect = new NativeSelect(Words.TXT_CATEGORIES, e.stream().map((t) -> {
-                return t.name;
-            }).collect(Collectors.toList()));
+            NativeSelect<String> categoriesSelect = new NativeSelect(Words.TXT_CATEGORIES,
+                    e.stream().map((t) -> {
+                        return t.name;
+                    }).collect(Collectors.toList()));
 
             categoriesSelect.setVisibleItemCount(e.size() != 1 ? e.size() : e.size() + 1);
             categoriesSelect.setEmptySelectionAllowed(false);

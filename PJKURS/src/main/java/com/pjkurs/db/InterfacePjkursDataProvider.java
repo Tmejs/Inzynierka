@@ -196,4 +196,6 @@ public interface InterfacePjkursDataProvider {
     Integer getCountOfGraduates(Training t);
 
     void deleteUser(Appusers p);
+
+    List<Training> getEndedTrainingsForTeacher(Teachers teacher);
 }

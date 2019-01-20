@@ -40,6 +40,7 @@ public class RegisterView extends MyContainer<RegisterViewModel> implements View
     
     public RegisterView(RegisterViewModel model) {
         super(model, true);
+        setSizeFull();
     }
 
     //Zbudowanie Widoku dla panelu rejestrowania
@@ -50,17 +51,20 @@ public class RegisterView extends MyContainer<RegisterViewModel> implements View
         layout.setSizeFull();
         layout.setMargin(false);
         layout.setWidthUndefined();
-        layout.addComponentsAndExpand(generateTopPanel());
+        layout.addComponent(generateTopPanel());
+
+        layout.addComponent(generateMenu());
         
-        layout.addComponentsAndExpand(generateMenu());
-        
-        layout.addComponentsAndExpand(generateMainAppPanel());
+        layout.addComponent
+                (generateMainAppPanel());
         return layout;
     }
     
     @Override
     public Component generateTopPanel() {
-        return new TopPanel(getModel());
+        Component topPanel = new TopPanel(getModel());
+        topPanel.setSizeFull();
+        return topPanel;
     }
     
     @Override
@@ -103,6 +107,7 @@ public class RegisterView extends MyContainer<RegisterViewModel> implements View
         });
         
         verticalLayout.addComponent(confirmButton);
+        verticalLayout.setSizeFull();
         
         return verticalLayout;
     }

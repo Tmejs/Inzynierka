@@ -3,6 +3,7 @@ package com.pjkurs.vaadin.ui.containers.admin;
 import com.pjkurs.domain.DeaneryUser;
 import com.pjkurs.usables.Words;
 import com.pjkurs.vaadin.NavigatorUI;
+import com.pjkurs.vaadin.views.ConfirmationPopup;
 import com.pjkurs.vaadin.views.models.AdminViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.vaadin.annotations.Theme;
@@ -39,7 +40,7 @@ public class DeansEmployesPanel<T extends AdminViewModel> extends MyContainer<T>
         com.vaadin.ui.Window subWindow = new Window(Words.TXT_INSERT_NEW_DEAN_EMPLOYEE);
         VerticalLayout subContent = new VerticalLayout();
 
-        TextArea nameArea = new TextArea(Words.TXT_EMAIL);
+        TextArea nameArea = new TextArea(Words.TXT_LOGIN);
         TextArea password = new TextArea(Words.TXT_PASSWORD);
         CheckBox adminGrant = new CheckBox(Words.TXT_ADMIN_GRANT);
 
@@ -91,7 +92,7 @@ public class DeansEmployesPanel<T extends AdminViewModel> extends MyContainer<T>
 
         grid.setItems(NavigatorUI.getDBProvider().getDeaneryUsers());
 
-        grid.addColumn(DeaneryUser::getEmail).setCaption(Words.TXT_EMAIL);
+        grid.addColumn(DeaneryUser::getEmail).setCaption(Words.TXT_LOGIN);
         grid.addColumn(new ValueProvider<DeaneryUser, Object>() {
             @Override
             public Object apply(DeaneryUser deaneryUser) {
@@ -108,9 +109,15 @@ public class DeansEmployesPanel<T extends AdminViewModel> extends MyContainer<T>
         }),new ComponentRenderer());
 
         grid.addColumn(p -> new Button(Words.TXT_DELETE, e -> {
-            NavigatorUI.getDBProvider().deleteDeaneryUser(p);
-            refreshView();
-            Notification.show(Words.TXT_CORRECTLY_DELETED);
+            ConfirmationPopup.showPopup(getModel().getUi(),
+                    Words.TXT_CONFIRM_DELETE_DEANERY_USER, new Runnable() {
+                        @Override
+                        public void run() {
+                            NavigatorUI.getDBProvider().deleteDeaneryUser(p);
+                            refreshView();
+                            Notification.show(Words.TXT_CORRECTLY_DELETED);
+                        }
+                    });
         }), new ComponentRenderer());
 
         return grid;

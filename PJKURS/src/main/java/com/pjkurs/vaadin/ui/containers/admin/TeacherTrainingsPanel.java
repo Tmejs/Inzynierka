@@ -14,14 +14,17 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.renderers.ComponentRenderer;
+
 @Theme("pjtheme")
 public class TeacherTrainingsPanel extends MyContainer<MainViewModel> {
 
     Teachers teacher;
+
     public TeacherTrainingsPanel(MainViewModel model) {
         super(false, model);
-        Appusers appuser =NavigatorUI.getLoggedUser();
+        Appusers appuser = NavigatorUI.getLoggedUser();
         teacher =
                 NavigatorUI.getDBProvider().getTeachers().stream()
                         .filter(t -> t.getId().equals(appuser.id)).findFirst().get();
@@ -30,8 +33,10 @@ public class TeacherTrainingsPanel extends MyContainer<MainViewModel> {
 
     @Override
     public Component buildView() {
-        HorizontalLayout lay = new HorizontalLayout();
-        lay.addComponentsAndExpand(generateTrainingsPanel());
+        VerticalLayout lay = new VerticalLayout();
+        lay.setSizeFull();
+        lay.addComponent(generateTrainingsPanel());
+        lay.addComponent(generateEndedTrainingsPanel());
         return lay;
     }
 
@@ -42,13 +47,31 @@ public class TeacherTrainingsPanel extends MyContainer<MainViewModel> {
         grid.setItems(trainings);
         trainings.forEach(t -> t.setCourse(NavigatorUI.getDBProvider().getCourse(t.course_id)));
 
-        grid.addColumn(t ->t.getCourse().getName()).setCaption(Words.TXT_COURSE_NAME);
-        grid.addColumn(t ->t.getStart_date()).setCaption(Words.TXT_START_DATE);
+        grid.addColumn(t -> t.getCourse().getName()).setCaption(Words.TXT_COURSE_NAME);
+        grid.addColumn(t -> t.getStart_date()).setCaption(Words.TXT_START_DATE);
+        grid.addColumn(t -> NavigatorUI.getDBProvider().getTeacherTimeInTraining(teacher,
+                t.getId())).setCaption(Words.TXT_SUM_OF_WORKEDTIME);
         grid.addColumn(t -> new Button(Words.TXT_DETAILS,
-                        event -> getModel().detailedTrainingPanelClicked(t,true, true)),
+                        event -> getModel().detailedTrainingPanelClicked(t, true, true)),
                 new ComponentRenderer());
+        grid.setSizeFull();
         return grid;
     }
 
+    private Component generateEndedTrainingsPanel() {
+        List<Training> trainings =
+                NavigatorUI.getDBProvider().getEndedTrainingsForTeacher(teacher);
+        Grid<Training> grid = new Grid<>(Words.TXT_ALREADY_ENDED_COURSES);
+        grid.setItems(trainings);
+        trainings.forEach(t -> t.setCourse(NavigatorUI.getDBProvider().getCourse(t.course_id)));
+
+        grid.addColumn(t -> t.getCourse().getName()).setCaption(Words.TXT_COURSE_NAME);
+        grid.addColumn(t -> t.getStart_date()).setCaption(Words.TXT_START_DATE);
+        grid.addColumn(t -> t.end_date).setCaption(Words.TXT_END_DATE);
+        grid.addColumn(t -> NavigatorUI.getDBProvider().getTeacherTimeInTraining(teacher,
+                t.getId())).setCaption(Words.TXT_SUM_OF_WORKEDTIME);
+        grid.setSizeFull();
+        return grid;
+    }
 
 }

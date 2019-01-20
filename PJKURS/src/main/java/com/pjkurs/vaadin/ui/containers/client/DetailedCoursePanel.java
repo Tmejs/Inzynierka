@@ -33,6 +33,7 @@ import com.pjkurs.usables.MailObject;
 import com.pjkurs.usables.Words;
 import com.pjkurs.utils.FilesUitl;
 import com.pjkurs.vaadin.NavigatorUI;
+import com.pjkurs.vaadin.views.ConfirmationPopup;
 import com.pjkurs.vaadin.views.PopupWithMessage;
 import com.pjkurs.vaadin.views.models.MainViewModel;
 import com.pjkurs.vaadin.views.system.MyContainer;
@@ -147,15 +148,21 @@ public class DetailedCoursePanel<T extends MyModel> extends MyContainer<T> {
                 Button undoCoursSign = new Button(Words.TXT_UNDO_SIGN_TO_COURS);
 
                 undoCoursSign.addClickListener(event -> {
-                    NavigatorUI.getDBProvider()
-                            .deleteCientFromCourse(NavigatorUI.getLoggedUser(), course);
-                    ((MainViewModel) getModel()).myCoursesButtonClicked(null);
-                    Notification.show(Words.TXT_CORRECTLY_UNSGNED);
+                    ConfirmationPopup.showPopup(getModel().getUi(), Words.TXT_UNDO_SIGN_TEXT,
+                            new Runnable() {
+                                @Override
+                                public void run() {
+                                    NavigatorUI.getDBProvider()
+                                            .deleteCientFromCourse(NavigatorUI.getLoggedUser(), course);
+                                    ((MainViewModel) getModel()).myCoursesButtonClicked(null);
+                                    Notification.show(Words.TXT_CORRECTLY_UNSGNED);
+                                }
+                            });
                 });
                 layout.addComponent(undoCoursSign);
             }
         } else {
-            layout.addComponent(new Label("Zaloguj aby zapisać się do kursu"));
+            layout.addComponent(new Label(Words.TXT_ONLY_LOGGED_CAN_SIGN_TO_COURSE));
         }
         return layout;
     }

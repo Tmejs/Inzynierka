@@ -91,9 +91,8 @@ public class PersonalDataPanel<T extends MyModel> extends MyContainer<T> {
 
         TextArea placeOfBirth = new TextArea(Words.TXT_PLACE_OF_BIRTH);
         if (selectedUser.getPlace_of_birth() != null) {
-            surnameArea.setValue(selectedUser.getPlace_of_birth());
+            placeOfBirth.setValue(selectedUser.getPlace_of_birth());
         }
-
 
         TextArea contactNumberArea = new TextArea(Words.TXT_PHONE_CONTACT);
         if (selectedUser.getContact_number() != null) {
@@ -145,7 +144,7 @@ public class PersonalDataPanel<T extends MyModel> extends MyContainer<T> {
 
         TextArea placeOfBirth = new TextArea(Words.TXT_PLACE_OF_BIRTH);
         if (selectedUser.getPlace_of_birth() != null) {
-            surnameArea.setValue(selectedUser.getPlace_of_birth());
+            placeOfBirth.setValue(selectedUser.getPlace_of_birth());
         }
 
         TextArea contactNumberArea = new TextArea(Words.TXT_PHONE_CONTACT);
@@ -169,6 +168,7 @@ public class PersonalDataPanel<T extends MyModel> extends MyContainer<T> {
                 editedUser.contact_number = contactNumberArea.getValue();
                 editedUser.password = passwordArea.getValue();
                 editedUser.place_of_birth = placeOfBirth.getValue();
+                editedUser.isActive = selectedUser.isActive;
                 NavigatorUI.getDBProvider().updateAppuser(editedUser);
                 selectedUser = NavigatorUI.getDBProvider().getUser(editedUser.email);
                 isEditable = false;
