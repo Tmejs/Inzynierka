@@ -74,6 +74,7 @@ public class GraduatedCoursesPanel<T extends MyModel> extends MyContainer<T> {
                 if(course.certificateFile==null){
                     fileDownlaod.setEnabled(false);
                 }
+
                 FileResource resource = new FileResource(FilesUitl.getFile(course.certificateFile));
                 FileDownloader download = new FileDownloader(resource);
                 download.extend(fileDownlaod);

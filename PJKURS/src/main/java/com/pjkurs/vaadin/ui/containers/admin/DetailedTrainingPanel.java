@@ -105,21 +105,13 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         Button endTrainignButton = new Button(Words.TXT_END_TRAINING);
 
         Map<Integer, Boolean> isGraduated = new HashMap<>();
-        Map<Integer, String> fileMap = new HashMap<>();
 
         endTrainignButton.addClickListener(e -> {
             ConfirmationPopup.showPopup(getModel().getUi(), Words.TXT_END_TRAINING_TEXT,
                     new Runnable() {
                         @Override
                         public void run() {
-                            if (isGraduated.entrySet().size() > 0 &&
-                                    !isGraduated.entrySet().stream()
-                                            .filter(p -> p.getValue())
-                                            .allMatch(p -> fileMap.get(p.getKey()) != null)) {
-                                Notification.show(Words.TXT_ADD_CERTIFICATE_FOR_ALL_GRADUATED_USERS);
-                                return;
-                            }
-                            endTraining(clients, isGraduated, fileMap);
+                            endTraining(clients, isGraduated);
                             subWindow.close();
                             ((AdminViewModel)getModel()).statistickMenuClicked();
                         }
@@ -133,14 +125,10 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
                 c -> isGraduated.get(c.getId()) != null && isGraduated.get(c.getId()) ?
                         Words.TXT_YES :
                         Words.TXT_NO).setCaption(Words.TXT_IS_CLIENT_GRAD);
-        clientsGrid.addColumn(
-                c -> isGraduated.get(c.getId()) != null && fileMap.get(c.getId()) != null ?
-                        Words.TXT_YES :
-                        Words.TXT_NO).setCaption(Words.TXT_IS_CERTIFICATE_ADDED);
 
         clientsGrid.setSelectionMode(Grid.SelectionMode.SINGLE);
         clientsGrid.addSelectionListener(
-                t -> updateUserGraduationPanel(t.getFirstSelectedItem(), isGraduated, fileMap,
+                t -> updateUserGraduationPanel(t.getFirstSelectedItem(), isGraduated,
                         graduationLayout));
 
 
@@ -151,14 +139,12 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         getModel().currentUI.addWindow(subWindow);
     }
 
-    private void endTraining(List<Client> clients, Map<Integer, Boolean> isGraduated,
-            Map<Integer, String> fileMap) {
+    private void endTraining(List<Client> clients, Map<Integer, Boolean> isGraduated) {
         NavigatorUI.getDBProvider().endTraining(training);
         clients.forEach(c -> {
             Boolean clientGraduated = isGraduated.get(c.getId());
-            String certificate = fileMap.get(c.getId());
             if (clientGraduated!=null && clientGraduated) {
-                NavigatorUI.getDBProvider().addGraduation(c, training, certificate);
+                NavigatorUI.getDBProvider().addGraduation(c, training, "");
                 Course course = NavigatorUI.getDBProvider().getCourse(training.course_id);
                 MailObject m = EmailsGenerator.getTrainingEndingMessage(c, course);
                 try {
@@ -176,8 +162,7 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
                 Words.TXT_EMAIL_SENDED_TO_TRAINING_PARTICIPANTS, m);
     }
 
-    private void updateUserGraduationPanel(Optional<Client> t, Map<Integer, Boolean> isGraduated,
-            Map<Integer, String> fileMap, Layout graduationLayout) {
+    private void updateUserGraduationPanel(Optional<Client> t, Map<Integer, Boolean> isGraduated, Layout graduationLayout) {
         if(!t.isPresent()) {
             graduationLayout.setVisible(false);
             return;
@@ -188,10 +173,6 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         graduationLayout.removeAllComponents();
 
         CheckBox isGraduating = new CheckBox();
-        Upload uploadCertificate = new Upload();
-        Button downloadCertificate = new Button(Words.TXT_DOWNLOAD_CERTIFICATE);
-        Button deleteCertificate = new Button(Words.TXT_DELETE_CERTIFICATE);
-        HorizontalLayout fileLayout = new HorizontalLayout();
 
         //Checkbox
         isGraduating.setCaption(Words.TXT_IS_GRADUATING);
@@ -199,74 +180,17 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
             isGraduated.put(client.getId(),
                     event.getValue());
 
-            if (event.getValue()) {
-                if (fileMap.get(client.getId()) != null) {
-                    fileLayout.setVisible(true);
-                    uploadCertificate.setVisible(false);
-                } else {
-                    fileLayout.setVisible(false);
-                    uploadCertificate.setVisible(true);
-                }
-            } else {
-                fileLayout.setVisible(false);
-                uploadCertificate.setVisible(false);
-            }
         });
 
         Boolean isClientGraduated = isGraduated.get(client.id);
         if (isClientGraduated != null) {
             isGraduating.setValue(isClientGraduated);
-            if (fileMap.get(client.getId()) != null) {
-                fileLayout.setVisible(true);
-                uploadCertificate.setVisible(false);
-            } else {
-                fileLayout.setVisible(false);
-                uploadCertificate.setVisible(true);
-            }
+
         } else {
             isGraduating.setValue(false);
-            fileLayout.setVisible(false);
-            uploadCertificate.setVisible(false);
         }
 
-        // uplaodFile
-        uploadCertificate.setCaption(Words.TXT_ADD_CERTIFCATE);
-        uploadCertificate.setReceiver(new Upload.Receiver() {
-            @Override
-            public OutputStream receiveUpload(String filename, String mimeType) {
-                FileOutputStream fos = null; // Stream to write to
-                try {
-                    // Open the file for writing.
-                    filename = training.id + "_" + client.getId() + "_" + filename;
-                    File file = FilesUitl
-                            .createFile(filename);
-                    fos = new FileOutputStream(file);
-                    fileMap.put(client.getId(), filename);
-                    uploadCertificate.setVisible(false);
-                    fileLayout.setVisible(true);
-                    FileResource resource = new FileResource(FilesUitl.getFile(filename));
-                    FileDownloader download = new FileDownloader(resource);
-                    download.extend(downloadCertificate);
-                } catch (final java.io.FileNotFoundException e) {
-                    new Notification("Could not open file");
-                    return null;
-                }
-                return fos; // Return the output stream to write to
-            }
-        });
-        uploadCertificate.setImmediateMode(false);
-
-        deleteCertificate.addClickListener(event -> {
-            fileMap.put(client.getId(), null);
-            fileLayout.setVisible(false);
-            uploadCertificate.setVisible(true);
-        });
-
         graduationLayout.addComponent(isGraduating);
-        fileLayout.addComponents(downloadCertificate, deleteCertificate);
-        graduationLayout.addComponent(fileLayout);
-        graduationLayout.addComponent(uploadCertificate);
-
     }
 
     private Component generateTeacherTime() {

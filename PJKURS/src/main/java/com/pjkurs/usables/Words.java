@@ -166,7 +166,9 @@ public class Words {
     public static final String TXT_MODIFY_CLIENT_DATA = "Modyfikuj dane klienta";
     public static final String TXT_PRICE_WITHDISCOUNT = "Cena dla studentów i absolwentów PJATK";
     public static final String TXT_LOGIN = "Login";
+    public static final String TXT_LOGIN_OBL = "Login*";
     public static final String TXT_RE_PASSWORD = "Powtórz hasło";
+    public static final String TXT_RE_PASSWORD_OBL = "Powtórz hasło*";
     public static final String TXT_INCORECT_DATA = "Błędne dane";
     public static final String TXT_CORRECTLY_DELETED = "Poprawnie usunięto";
     public static final String TXT_TRAININGS = "Trwające szkolenia";
@@ -211,6 +213,7 @@ public class Words {
     public static final String TXT_COURSE_DETAILED_DESCRIPTION = "Szczegółowy opis";
     public static final String TXT_TERM_NAME = "Nazwa spotkania";
     public static final String TXT_END_TRAINING_TEXT = "Czy na pewno chcesz zakończyć szkolenie?";
+    public static final String TXT_EMAIL_OBL = "Email*";
 
     /*SQL QUERYS
 
@@ -241,6 +244,7 @@ public class Words {
     public final static String TXT_FORGOT_PASSWORD = "Reset hasła?";
     public final static String TXT_REGISTER = "Zarejestruj";
     public static String TXT_PASSWORD = "Hasło";
+    public static String TXT_PASSWORD_OBL = "Hasło*";
     public static String WARRNING_WRONG_EMAIL = "Błędny email";
     public static String CONF_FILE_ERROR = "Błąd pliku konfiguracyjnego";
     public static String WRONG_DEFINED_PARAM = "Błędnie skonfigurowany parametr";

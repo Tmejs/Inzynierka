@@ -86,10 +86,10 @@ public class RegisterView extends MyContainer<RegisterViewModel> implements View
     public Component generateMainAppPanel() {
         VerticalLayout verticalLayout = new VerticalLayout();
         
-        TextField email = new TextField(Words.TXT_EMAIL);
+        TextField email = new TextField(Words.TXT_EMAIL_OBL);
         verticalLayout.addComponent(email);
         
-        TextField password = new PasswordField(Words.TXT_PASSWORD);
+        TextField password = new PasswordField(Words.TXT_PASSWORD_OBL);
         verticalLayout.addComponent(password);
         
         TextField passwordConfirmation = new PasswordField(Words.TXT_RE_PASSWORD);

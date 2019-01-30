@@ -40,8 +40,8 @@ public class DeansEmployesPanel<T extends AdminViewModel> extends MyContainer<T>
         com.vaadin.ui.Window subWindow = new Window(Words.TXT_INSERT_NEW_DEAN_EMPLOYEE);
         VerticalLayout subContent = new VerticalLayout();
 
-        TextArea nameArea = new TextArea(Words.TXT_LOGIN);
-        TextArea password = new TextArea(Words.TXT_PASSWORD);
+        TextArea nameArea = new TextArea(Words.TXT_LOGIN_OBL);
+        TextArea password = new TextArea(Words.TXT_PASSWORD_OBL);
         CheckBox adminGrant = new CheckBox(Words.TXT_ADMIN_GRANT);
 
         Button addButton = new Button(Words.TXT_ADD, (newEvent) -> {
