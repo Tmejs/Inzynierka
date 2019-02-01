@@ -1,10 +1,13 @@
 package com.pjkurs.vaadin.ui.containers.client;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.pjkurs.domain.GraduatedCourse;
 import com.pjkurs.usables.Words;
 import com.pjkurs.utils.FilesUitl;
+import com.pjkurs.utils.PDFCreator;
 import com.pjkurs.vaadin.NavigatorUI;
 import com.pjkurs.vaadin.views.system.MyContainer;
 import com.pjkurs.vaadin.views.system.MyModel;
@@ -19,6 +22,8 @@ import com.vaadin.ui.Grid;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.renderers.ComponentRenderer;
+import org.bouncycastle.asn1.icao.LDSVersionInfo;
+
 @Theme("pjtheme")
 public class GraduatedCoursesPanel<T extends MyModel> extends MyContainer<T> {
 
@@ -71,11 +76,15 @@ public class GraduatedCoursesPanel<T extends MyModel> extends MyContainer<T> {
             @Override
             public Button apply(GraduatedCourse course) {
                 Button fileDownlaod = new Button(VaadinIcons.DOWNLOAD);
-                if(course.certificateFile==null){
-                    fileDownlaod.setEnabled(false);
+                String name = null;
+                try {
+                    name = PDFCreator.getPdfCertificate(NavigatorUI.getLoggedUser(), course);
+                } catch (Exception e) {
+                    Logger.getGlobal().log(Level.WARNING, "Błąd generoania pliku");
+                    e.printStackTrace();
                 }
 
-                FileResource resource = new FileResource(FilesUitl.getFile(course.certificateFile));
+                FileResource resource = new FileResource(FilesUitl.getFile(name));
                 FileDownloader download = new FileDownloader(resource);
                 download.extend(fileDownlaod);
                 return fileDownlaod;

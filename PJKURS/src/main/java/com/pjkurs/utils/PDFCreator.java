@@ -7,6 +7,8 @@ import com.pjkurs.domain.Appusers;
 import com.pjkurs.domain.GraduatedCourse;
 
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -25,28 +27,37 @@ public class PDFCreator {
 
         // dodac url
         String fileName = user.id + "_" + course.id + "_cert.pdf";
-        String url = "url" + fileName;
+        String url = fileName;
         generateFile(converted, url);
         return fileName;
     }
 
     private static String readTemplate() throws Exception {
-        File file = FilesUitl.getFile(certificateFile);
-        String content = "";
-        FileReader fileStream = new FileReader(file);
-        BufferedReader bufferedReader = new BufferedReader(fileStream);
-        String line = null;
-
-        while ((line = bufferedReader.readLine()) != null) {
-            content += line;
-        }
+        String content = "<html>\n" +
+                "<head>\n" +
+                "        <style>\n" +
+                "        * { font-family: Arial; }\n" +
+                "        </style>\n" +
+                "    </head>"+
+                "<p style=\"text-align: center;\"><img style=\"text-align: center;\" src=\".\\logo.png\" alt=\"\" /></p>\n" +
+                "<h1 style=\"text-align: center;\"><strong>Certyfikat ukończenia szkolenia</strong></h1>\n" +
+                "<p style=\"text-align: center;\">Jest to zaświadczenie że uczestnik</p>\n" +
+                "<h2 style=\"text-align: center;\">#NAME# #SURNAME#</h2>\n" +
+                "<p style=\"text-align: center;\">pomyślnie ukończył szkolenie</p>\n" +
+                "<h2 style=\"text-align: center;\"><strong>#COURSENAME#</strong></h2>\n" +
+                "<p>&nbsp;</p>\n" +
+                "<p style=\"text-align: right;\"><strong>Data: #DATE#</strong></p>\n" +
+                "</html>";
         return content;
     }
 
     private static void generateFile(String k, String url) {
         // wykorzystac filewriter?
         try {
-            OutputStream file = new FileOutputStream(new File(url));
+            Path currentRelativePath = Paths.get("");
+            currentRelativePath.toAbsolutePath();
+            OutputStream file =
+                    new FileOutputStream(new File(currentRelativePath.toAbsolutePath()+"\\"+url));
 
             // step 1
             Document document = new Document();
@@ -72,8 +83,8 @@ public class PDFCreator {
 
         k = k.replaceAll("#NAME#", name);
         k = k.replaceAll("#SURNAME#", surname);
-        k = k.replaceAll("#DATE#", name + " " + date);
-        k = k.replaceAll("#COURSENAME#", name + " " + certificateName);
+        k = k.replaceAll("#DATE#", date);
+        k = k.replaceAll("#COURSENAME#", certificateName);
         System.out.println(k);
         return k;
     }

@@ -359,7 +359,8 @@ public class AdminEditCoursePanel<T extends AdminViewModel> extends MyContainer<
         VerticalLayout subContent = new VerticalLayout();
         DateField startDate =
                 new DateField(Words.TXT_TERM);
-        startDate.setDescription("format dd.MM.rr");
+        startDate.setDateFormat("yyyy-MM-dd");
+        startDate.setDescription("format rrrr.MM.dd");
         ComboBox<String> startTimeCombo = new ComboBox(Words.TXT_START_TIME);
         startTimeCombo.setItems(generateTimeSet());
         Button inform = new Button(Words.TXT_SEND);

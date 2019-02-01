@@ -43,7 +43,15 @@ public class EmailsGenerator {
                         .getName() + "\"" +
                         " na dzień " + dt1.format(startingDate) + " " + time +
                         ".<br>Prosimy o pojawienie się na spotkaniu z wydrukowanym potwierdzeniem "
-                        + "płatności.<br><br> Portal PJKURS</html>";
+                        + "płatności.<br>"
+                        +"Wpłat należy dokonywać na konto PJATK:<br>"
+                        + "Bank DnB NORD Polska S.A. numer rachunku:<br>"
+                        + "<br>"
+                        + "38 2190 0002 3000 0046 2893 0101<br>"
+                        + "<br>"
+                        + "Jako tytuł na dowodzie wpłaty należy KONIECZNIE podać:  swoje imię i "
+                        + "nazwisko wraz z dopiskiem: KURS " + course.getName() + " - Gdańsk."
+                        + "<br><br> Portal PJKURS</html>";
 
         return new MailObject(title, body);
     }

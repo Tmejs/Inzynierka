@@ -81,7 +81,8 @@ public class StatisticsPanel<T extends AdminViewModel> extends MyContainer<T> {
 
         Label startLabel = new Label(Words.TXT_START);
         DateField startDateField = new DateField();
-        startDateField.setDescription("format dd.MM.rr");
+        startDateField.setDateFormat("yyyy-MM-dd");
+        startDateField.setDescription("format rrrr.MM.dd");
         if (startDate != null) {
             startDateField.setValue(startDate);
         }
@@ -92,7 +93,8 @@ public class StatisticsPanel<T extends AdminViewModel> extends MyContainer<T> {
 
         Label endLabel = new Label(Words.TXT_END);
         DateField endDateField = new DateField();
-        endDateField.setDescription("format dd.MM.rr");
+        endDateField.setDateFormat("yyyy-MM-dd");
+        endDateField.setDescription("format rrrr.MM.dd");
 
         if (endDate == null) {
             endDate = LocalDate.now();

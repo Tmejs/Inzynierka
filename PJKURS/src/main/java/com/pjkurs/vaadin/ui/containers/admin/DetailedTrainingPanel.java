@@ -559,7 +559,8 @@ public class DetailedTrainingPanel extends MyContainer<MyModel> {
         HorizontalLayout startDateLay = new HorizontalLayout();
         DateField startDate =
                 new DateField(Words.TXT_START_DATE);
-        startDate.setDescription("format dd.MM.rr");
+        startDate.setDateFormat("yyyy-MM-dd");
+        startDate.setDescription("format rrrr.MM.dd");
         ComboBox startTimeCombo = new ComboBox(Words.TXT_START_TIME);
         startTimeCombo.setItems(generateTimeSet());
         startTimeCombo.setEmptySelectionAllowed(false);

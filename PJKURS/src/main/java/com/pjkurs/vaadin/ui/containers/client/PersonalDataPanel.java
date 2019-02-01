@@ -85,7 +85,8 @@ public class PersonalDataPanel<T extends MyModel> extends MyContainer<T> {
         }
         DateField birth_dateDatePicker =
                 new DateField(Words.TXT_BIRTH_DATE);
-        birth_dateDatePicker.setDescription("format dd.MM.rr");
+        birth_dateDatePicker.setDateFormat("yyyy-MM-dd");
+        birth_dateDatePicker.setDescription("format rrrr.MM.dd");
         if (selectedUser.getBirth_date() != null) {
             birth_dateDatePicker.setValue(selectedUser.getBirth_date().toLocalDate());
         }
