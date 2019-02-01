@@ -7,6 +7,7 @@ import com.pjkurs.domain.Appusers;
 import com.pjkurs.domain.GraduatedCourse;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
@@ -40,10 +41,11 @@ public class PDFCreator {
                 "        </style>\n" +
                 "    </head>"+
                 "<p style=\"text-align: center;\"><img style=\"text-align: center;\" src=\".\\logo.png\" alt=\"\" /></p>\n" +
-                "<h1 style=\"text-align: center;\"><strong>Certyfikat ukończenia szkolenia</strong></h1>\n" +
-                "<p style=\"text-align: center;\">Jest to zaświadczenie że uczestnik</p>\n" +
+                "<h1 style=\"text-align: center;\"><strong>Certyfikat ukonczenia "
+                + "szkolenia</strong></h1>\n" +
+                "<p style=\"text-align: center;\">Jest to zaswiadczenie ze uczestnik</p>\n" +
                 "<h2 style=\"text-align: center;\">#NAME# #SURNAME#</h2>\n" +
-                "<p style=\"text-align: center;\">pomyślnie ukończył szkolenie</p>\n" +
+                "<p style=\"text-align: center;\">pomyslnie ukonczyl szkolenie</p>\n" +
                 "<h2 style=\"text-align: center;\"><strong>#COURSENAME#</strong></h2>\n" +
                 "<p>&nbsp;</p>\n" +
                 "<p style=\"text-align: right;\"><strong>Data: #DATE#</strong></p>\n" +
@@ -69,8 +71,8 @@ public class PDFCreator {
 
             XMLWorkerHelper worker = XMLWorkerHelper.getInstance();
 
-            InputStream is = new ByteArrayInputStream(k.getBytes());
-            worker.parseXHtml(writer, document, is);
+            InputStream is = new ByteArrayInputStream(k.getBytes("UTF-8"));
+            worker.parseXHtml(writer, document, is, Charset.forName("UTF-8"));
             // step 5
             document.close();
         } catch (Exception e) {
